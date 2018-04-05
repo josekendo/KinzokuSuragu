@@ -57,29 +57,29 @@ LDLIBSOPTIONS=-L/usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/libsfml-wind
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prototipobase
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prototipobase: /usr/lib/x86_64-linux-gnu/libsfml-window.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: /usr/lib/x86_64-linux-gnu/libsfml-window.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prototipobase: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prototipobase: /usr/lib/x86_64-linux-gnu/libsfml-system.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: /usr/lib/x86_64-linux-gnu/libsfml-system.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prototipobase: libbox2d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: libbox2d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prototipobase: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prototipobase ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/TileMap.o: TileMap.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -I../Box2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TileMap.o TileMap.cpp
+	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TileMap.o TileMap.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -I../Box2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -87,7 +87,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prototipobase
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase
 
 # Subprojects
 .clean-subprojects:
