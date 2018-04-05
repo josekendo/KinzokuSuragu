@@ -5,12 +5,17 @@
 #include <cmath>
 #include <sstream>
 #include "Box2D.h"
+#include "Juego.hpp"
 //Constantes
 #define PI 3.14159265
 
 int main()
 {
-    //esto es para el personaje que tenga sprites dinamicos
+    //adaptacion nuevo main
+        Juego *juego = Juego::getInstance();
+    //fin adaptacion nuevo main bloque externo
+    
+        //esto es para el personaje que tenga sprites dinamicos
     sf::Clock animaciones;//nos sirve para ver el tiempo que ha pasado desde el ultimo frame
     
     int numpp = 0;//numero de animacion dentro del sprite
@@ -154,12 +159,15 @@ int main()
             spritepersonaje.setTextureRect(sf::IntRect(numpp*228, numest*300, 228,300));
             animaciones.restart();
         }
+        //inicio pintura, este apartado se sustituira por juego
         window.setView(jugador1);//ponemos la camara del jugador1
         window.clear(sf::Color::Black);
         window.draw(map);//pintamos mapa entero
         window.draw(spritepersonaje);//pintamos mapa entero 
         window.display();
-        
+        //por esta linea
+        juego->Draw();
+        //fin pintura
     }
 
     return 0;
