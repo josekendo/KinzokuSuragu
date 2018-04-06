@@ -16,11 +16,20 @@
 
 class Coordenadas {
 public:
-    Coordenadas();
+    Coordenadas();//pone coordenadas a 0
+    Coordenadas(int xi, int yi);//inicializa las coordenadas a x, y
     Coordenadas(const Coordenadas& orig);
     virtual ~Coordenadas();
+    void cambiarPosicion(int xi, int yi);//esto cambia la posicion de x e y, copiandolos en ax y ay
+    int getCoordenadaX();//devuelve las coordenadas x
+    int getCoordenadaY();//devuelve las coordenadas y
+    int getCoordenadaXI(float tiempo);//devuelve coordenada interpolada x
+    int getCoordenadaYI(float tiempo);//devuelve coordenada interpolada y
+    void setCoordenadasA(int iax, int iay);
+   
 private:
-
+    int x,y;//estados nuevos
+    int ax,ay;//son los estados anteriores de ax e ay
 };
 
 #endif /* COORDENADAS_HPP */

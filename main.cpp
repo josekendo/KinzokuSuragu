@@ -8,8 +8,11 @@
 #include "Juego.hpp"
 #include "Motor2D.hpp"
 #include "Nivel.hpp"
+#include "Coordenadas.hpp"
+
 //Constantes
 #define PI 3.14159265
+#define TIEMPOUPDATE 1000/15//tiempoque debera pasar para actualizar de nuevo
 
 int main()
 {
@@ -19,27 +22,32 @@ int main()
         Nivel *nivel = Nivel::getInstance();//clase global
     //fin adaptacion nuevo main bloque externo
     
-        //esto es para el personaje que tenga sprites dinamicos
-    sf::Clock animaciones;//nos sirve para ver el tiempo que ha pasado desde el ultimo frame
-    
-    int numpp = 0;//numero de animacion dentro del sprite
-    int numest =0;//numero de estado del sprite
+    //coordenadas de prueba
+        Coordenadas coor(20,220);
+        //std::cout << coor.getCoordenadaX() << " -- " << coor.getCoordenadaY() << std::endl;
+    //coordenadas prueba fin
+        
+    //esto es para el personaje que tenga sprites dinamicos
+        sf::Clock animaciones,update;
+    //nos sirve para ver el tiempo que ha pasado desde el ultimo frame
+        int numpp = 0;//numero de animacion dentro del sprite
+        int numest =0;//numero de estado del sprite
     //fin sprite dinamicos
     
     //prueba de que la libreria funciona bien
-    b2Vec2 gravity(0.0f, -10.0f);
-    b2World world(gravity);
+        b2Vec2 gravity(0.0f, -10.0f);
+        b2World world(gravity);
     //fin box2d
     
     //Apartado grafico 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Prototipo Base");
-    window.setFramerateLimit(60);//calidad buena
+        sf::RenderWindow window(sf::VideoMode(800, 600), "Kinzoku Suragu");
+        window.setFramerateLimit(60);//calidad buena
     //fin apartado grafico 
     
     //camara (habra solo una)
-    sf::View jugador1 = sf::View(sf::FloatRect(0, 0, 800, 600));
-    sf::Texture mapa,personaje_textura;
-    jugador1.setCenter(400,0);
+        sf::View jugador1 = sf::View(sf::FloatRect(0, 0, 800, 600));
+        sf::Texture mapa,personaje_textura;
+        jugador1.setCenter(400,0);
     //fin camara
     
     //cargamos todas las texturas
@@ -59,7 +67,7 @@ int main()
     spritepersonaje.setOrigin(228/2,300/2);
     spritepersonaje.setTextureRect(sf::IntRect(0*228, 0*300, 228,300));
     spritepersonaje.scale(sf::Vector2f(0.3f, 0.3f));
-    spritepersonaje.setPosition(20,220);
+    spritepersonaje.setPosition(coor.getCoordenadaX(),coor.getCoordenadaY());
     spritemapa.setTextureRect(sf::IntRect(0, 0, 1056,528));
     spritemapa.setPosition(0,0);
     
@@ -95,10 +103,8 @@ int main()
         //Bucle de obtención de eventos        
         sf::Event event;
         while (window.pollEvent(event))
-        {
-            
-           
-            switch(event.type){
+        {            
+                switch(event.type){
                 //Si se recibe el evento de cerrar la ventana la cierro
                 case sf::Event::Closed:
                     window.close();
@@ -113,9 +119,11 @@ int main()
                         case sf::Keyboard::Right:
                             //Escala por defecto
                             //aqui cambiariamos de estado para cargar la nueva animacion
+                                coor.cambiarPosicion(coor.getCoordenadaX()+80,coor.getCoordenadaY());
                             break;
 
                         case sf::Keyboard::Left:
+                                coor.cambiarPosicion(coor.getCoordenadaX()-80,coor.getCoordenadaY());
                             //Reflejo vertical
                         break;
                         
@@ -146,9 +154,7 @@ int main()
                     }
 
             }
-            
-        }
-        
+    }
         
         if(animaciones.getElapsedTime().asMilliseconds() > 100)
         {
@@ -167,10 +173,23 @@ int main()
         window.setView(jugador1);//ponemos la camara del jugador1
         window.clear(sf::Color::Black);
         window.draw(map);//pintamos mapa entero
-        window.draw(spritepersonaje);//pintamos mapa entero 
+        //logica de render
+        //std::cout << "T:" << update.getElapsedTime().asMilliseconds() << std::endl;
+        
+        spritepersonaje.setPosition(coor.getCoordenadaXI(update.getElapsedTime().asMilliseconds()),coor.getCoordenadaYI(update.getElapsedTime().asMilliseconds()));
+        
+        window.draw(spritepersonaje);
+        //pintamos mapa entero
+        
+        if(update.getElapsedTime().asMilliseconds() > TIEMPOUPDATE)
+        {
+            coor.cambiarPosicion(coor.getCoordenadaX()+5,coor.getCoordenadaY());
+            update.restart();
+        }
+        
         window.display();
         //por esta linea
-        juego->Draw();
+        //juego->Draw();
         //fin pintura
     }
 
