@@ -12,13 +12,9 @@
  */
 
 #include "Motor2D.hpp"
+Motor2D* Motor2D::unica_instancia = 0;
 
-Motor2D::Motor2D() {
+Motor2D::Motor2D() 
+{
+
 }
-
-Motor2D::Motor2D(const Motor2D& orig) {
-}
-
-Motor2D::~Motor2D() {
-}
-

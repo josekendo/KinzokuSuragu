@@ -16,11 +16,20 @@
 
 class Motor2D {
 public:
-    Motor2D();
-    Motor2D(const Motor2D& orig);
-    virtual ~Motor2D();
+    //clase singleton
+    ~Motor2D(void);
+    static Motor2D *getInstance()
+    {
+        if(unica_instancia == 0)
+        unica_instancia = new Motor2D();
+        return unica_instancia;  
+    }
+    //fin singleton public
 private:
-
+    //clase singleton 
+    Motor2D();
+    static Motor2D* unica_instancia;
+    //fin clase singleto private
 };
 
 #endif /* MOTOR2D_HPP */
