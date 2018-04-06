@@ -7,6 +7,7 @@
 #include "Box2D.h"
 #include "Juego.hpp"
 #include "Motor2D.hpp"
+#include "Nivel.hpp"
 //Constantes
 #define PI 3.14159265
 
@@ -14,7 +15,8 @@ int main()
 {
     //adaptacion nuevo main
         Juego *juego = Juego::getInstance();//clase global
-        Motor2D *Motor2D = Motor2D::getInstance();//clase global
+        Motor2D *motor2D = Motor2D::getInstance();//clase global
+        Nivel *nivel = Nivel::getInstance();//clase global
     //fin adaptacion nuevo main bloque externo
     
         //esto es para el personaje que tenga sprites dinamicos

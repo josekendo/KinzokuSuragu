@@ -12,13 +12,8 @@
  */
 
 #include "Nivel.hpp"
+Nivel* Nivel::unica_instancia = 0;
 
 Nivel::Nivel() {
-}
-
-Nivel::Nivel(const Nivel& orig) {
-}
-
-Nivel::~Nivel() {
 }
 

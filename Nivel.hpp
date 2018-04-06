@@ -16,11 +16,20 @@
 
 class Nivel {
 public:
-    Nivel();
-    Nivel(const Nivel& orig);
-    virtual ~Nivel();
+    //clase singleton
+    ~Nivel(void);
+    static Nivel *getInstance()
+    {
+        if(unica_instancia == 0)
+        unica_instancia = new Nivel();
+        return unica_instancia;  
+    }
+    //fin singleton public
 private:
-
+    //clase singleton 
+    Nivel();
+    static Nivel* unica_instancia;
+    //fin clase singleto private
 };
 
 #endif /* NIVEL_HPP */
