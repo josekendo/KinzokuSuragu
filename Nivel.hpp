@@ -13,6 +13,7 @@
 
 #ifndef NIVEL_HPP
 #define NIVEL_HPP
+#include "FabricarNivel.hpp"
 
 class Nivel {
 public:

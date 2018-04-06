@@ -12,6 +12,8 @@
  */
 
 #include "Motor2D.hpp"
+#include "TileMap.cpp"
+
 Motor2D* Motor2D::unica_instancia = 0;
 
 Motor2D::Motor2D() 

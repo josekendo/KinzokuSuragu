@@ -12,6 +12,7 @@
  */
 
 #include "Enemigos.hpp"
+#include "Coordenadas.hpp"
 
 Enemigos::Enemigos() {
 }

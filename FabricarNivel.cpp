@@ -12,6 +12,7 @@
  */
 
 #include "FabricarNivel.hpp"
+#include "tinyxml.h"
 
 FabricarNivel::FabricarNivel() {
 }

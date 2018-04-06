@@ -13,6 +13,9 @@
 
 #ifndef MOTOR2D_HPP
 #define MOTOR2D_HPP
+//clases basicas
+#include <SFML/Graphics.hpp>
+//fin clases basicas
 
 class Motor2D {
 public:

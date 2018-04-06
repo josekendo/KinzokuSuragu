@@ -12,6 +12,7 @@
  */
 
 #include "Jugadores.hpp"
+#include "Coordenadas.hpp"
 
 Jugadores::Jugadores() {
 }
