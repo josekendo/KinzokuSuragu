@@ -68,7 +68,7 @@ int Coordenadas::getCoordenadaXI(float tiempo)
         if(tick > 1)
             tick = 1;
         
-        std::cout << "tick " << tick << std::endl;
+        //std::cout << "tick " << tick << std::endl;
         int paso= ax*(1-tick)+x*tick;
         if(paso >= x)
         {
