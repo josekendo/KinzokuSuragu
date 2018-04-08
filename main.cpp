@@ -9,7 +9,8 @@
 #include "Motor2D.hpp"
 #include "Nivel.hpp"
 #include "Coordenadas.hpp"
-
+#include "Jugadores.hpp"
+#include "Enemigos.hpp"
 //Constantes
 #define PI 3.14159265
 #define TIEMPOUPDATE 1000/15//tiempoque debera pasar para actualizar de nuevo
@@ -20,6 +21,8 @@ int main()
         Juego *juego = Juego::getInstance();//clase global
         Motor2D *motor2D = Motor2D::getInstance();//clase global
         Nivel *nivel = Nivel::getInstance();//clase global
+        Jugadores jugador();
+        Enemigos enemigo();
     //fin adaptacion nuevo main bloque externo
     
     //coordenadas de prueba

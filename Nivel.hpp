@@ -14,6 +14,8 @@
 #ifndef NIVEL_HPP
 #define NIVEL_HPP
 #include "FabricarNivel.hpp"
+#include "Jugadores.hpp"
+#include "Enemigos.hpp"
 
 class Nivel {
 public:
@@ -31,6 +33,8 @@ private:
     Nivel();
     static Nivel* unica_instancia;
     //fin clase singleto private
+    Jugadores *jugadores;//array de jugadores
+    Enemigos *enemigos;//array de enemigos
 };
 
 #endif /* NIVEL_HPP */
