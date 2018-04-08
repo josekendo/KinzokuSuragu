@@ -12,8 +12,31 @@
  */
 
 #include "Nivel.hpp"
+#include <iostream>
+
 Nivel* Nivel::unica_instancia = 0;
 
-Nivel::Nivel() {
+Nivel::Nivel() 
+{
+    
+}
+
+void Nivel::cargarNivel(int niv)
+{
+    switch(niv)
+    {
+        case 1:
+            fabrica.construirNivel("resources/niveles/1.xml");
+        break;
+        case 2:
+            fabrica.construirNivel("resources/niveles/2.xml");
+        break;
+        case 3:
+            fabrica.construirNivel("resources/niveles/3.xml");
+        break;
+        case 4:
+            fabrica.construirNivel("resources/niveles/4.xml");
+        break;
+    }
 }
 

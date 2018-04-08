@@ -13,9 +13,11 @@
 
 #ifndef NIVEL_HPP
 #define NIVEL_HPP
-#include "FabricarNivel.hpp"
+
+
 #include "Jugadores.hpp"
 #include "Enemigos.hpp"
+#include "FabricarNivel.h"
 
 class Nivel {
 public:
@@ -28,14 +30,15 @@ public:
         return unica_instancia;  
     }
     //fin singleton public
+    void cargarNivel(int niv);//carga el nivel pasado empezando por 1
 private:
     //clase singleton 
     Nivel();
     static Nivel* unica_instancia;
     //fin clase singleto private
+    FabricarNivel fabrica;
     Jugadores *jugadores;//array de jugadores
     Enemigos *enemigos;//array de enemigos
 };
 
 #endif /* NIVEL_HPP */
-

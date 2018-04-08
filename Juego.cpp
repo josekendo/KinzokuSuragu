@@ -43,3 +43,20 @@ void Juego::Draw()
 {
     estado->Pintar();
 }
+
+//Nivel
+void Juego::cargarNivel(int niv)
+{
+    Nivel *nivel = Nivel::getInstance();//clase global
+    nivel->cargarNivel(niv);//llamamos a cargar nivel de nivel
+}
+
+void Juego::cargaCompleta()
+{
+    //cambiaremos el estado ya que termino el loading
+    cambiarEstado(2);
+}
+
+//Menu
+
+//Estadistica

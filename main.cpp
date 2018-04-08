@@ -1,7 +1,6 @@
 //Librerias
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "TileMap.cpp"
 #include <cmath>
 #include <sstream>
 #include "Box2D.h"
@@ -24,7 +23,7 @@ int main()
         Jugadores jugador();
         Enemigos enemigo();
     //fin adaptacion nuevo main bloque externo
-    
+        juego->cargarNivel(2);
     //coordenadas de prueba
         Coordenadas coor(20,220);
         //std::cout << coor.getCoordenadaX() << " -- " << coor.getCoordenadaY() << std::endl;
@@ -43,8 +42,7 @@ int main()
     //fin box2d
     
     //Apartado grafico 
-        sf::RenderWindow window(sf::VideoMode(800, 600), "Kinzoku Suragu");
-        window.setFramerateLimit(60);//calidad buena
+        //calidad buena
     //fin apartado grafico 
     
     //camara (habra solo una)
@@ -74,43 +72,17 @@ int main()
     spritemapa.setTextureRect(sf::IntRect(0, 0, 1056,528));
     spritemapa.setPosition(0,0);
     
-    //vamos a crear la clase tiled (esta en la pagina oficial de sfml) y a crear su mapa para que se pinte por bloques pero de una forma optima
-    //Nuestro Nivel(para la version completa lo cambiaremos por una clase que lea un archivo)
-    const int level[] =
-    {
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,8,9,9,9,10,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,53,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,8,9,10,-1,-1,-1,53,-1,1,-1,-1,-1,
-        -1,-1,-1,-1,16,20,18,-1,8,9,9,9,41,-1,-1,-1,
-        8,9,10,56,16,20,18,56,16,17,17,18,34,56,56,56,
-    };
-    //la carga de nivel (como pueden ver es muy simple)
-    TileMap map;
-    map.setPosition(0,43);
-    //vamos a ver el primer parametro es donde esta la imagen, el vector es el tamano del recorte, y el nivel es cuanto debe cargar 
-    if (!map.load("resources/tilesetbase.png", sf::Vector2u(32, 32), level, 16, 8))
-        return -1;
-    //fin de carga de mapa
-    
-    //vamos con la logica de los sprites dinamicos tendran varios estados
-    //ejemplo quieto (1) o en movimiento(2)
-    //la carga de los sprites se ha realizado arriba
-    //dentro de cada estado tendran un limite de frames pondremos la carga a 0.2 s o 200ms 
     //Bucle del juego
-    
-    while (window.isOpen())
+    while (motor2D->execVentana())
     {
         //Bucle de obtención de eventos        
         sf::Event event;
-        while (window.pollEvent(event))
+        while (motor2D->getVentana().pollEvent(event))
         {            
                 switch(event.type){
                 //Si se recibe el evento de cerrar la ventana la cierro
                 case sf::Event::Closed:
-                    window.close();
+                    motor2D->getVentana().close();
                     break;
                 //Se pulsó una tecla, imprimo su codigo
                 case sf::Event::KeyPressed:
@@ -140,12 +112,12 @@ int main()
                         
                         //Tecla ESC para salir
                         case sf::Keyboard::Escape:
-                            window.close();
+                            motor2D->getVentana().close();
                         break;
                         
                         //Tecla ESC para salir
                         case sf::Keyboard::Q:
-                            window.close();
+                            motor2D->getVentana().close();
                             break;
                             
                             
@@ -173,15 +145,14 @@ int main()
             animaciones.restart();
         }
         //inicio pintura, este apartado se sustituira por juego
-        window.setView(jugador1);//ponemos la camara del jugador1
-        window.clear(sf::Color::Black);
-        window.draw(map);//pintamos mapa entero
+        motor2D->getVentana().setView(jugador1);//ponemos la camara del jugador1
+        motor2D->getVentana().clear(sf::Color::Black);
         //logica de render
         //std::cout << "T:" << update.getElapsedTime().asMilliseconds() << std::endl;
         
         spritepersonaje.setPosition(coor.getCoordenadaXI(update.getElapsedTime().asMilliseconds()),coor.getCoordenadaYI(update.getElapsedTime().asMilliseconds()));
         
-        window.draw(spritepersonaje);
+        motor2D->getVentana().draw(spritepersonaje);
         //pintamos mapa entero
         
         if(update.getElapsedTime().asMilliseconds() > TIEMPOUPDATE)
@@ -190,9 +161,8 @@ int main()
             update.restart();
         }
         
-        window.display();
         //por esta linea
-        //juego->Draw();
+        juego->Draw();
         //fin pintura
     }
 
