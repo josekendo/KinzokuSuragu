@@ -30,12 +30,13 @@ public:
         return unica_instancia;  
     }
     //fin singleton public
-    
+    bool execVentana();//redireccion a motor2d
     void cambiarEstado (int est);//1 sera el estado de menu, 2 jugando, 3 en estadistica
     void Draw();//llama a las diferentes draw segun estado
     void cargarNivel(int nivel);//Carga el nivel pasado por parametro
     void cargaCompleta();//cuando se carga un nivel se llama a esta funcion para que le diga a menu que esta completada la carga y quite el panel de loading
     void Ejecucion();//realiza la logica del juego 15 veces por frame
+    void Inputs();//redireccion a motor2d seccion inputss
 private:
     
     //clase singleton 

@@ -17,6 +17,7 @@
 //clases basicas
 #include <SFML/Graphics.hpp>
 #include "TileMap.cpp"
+#include "Controles.h"
 //fin clases basicas
 
 class Motor2D {
@@ -35,6 +36,7 @@ public:
     void drawCap1();//pinta la capa 1
     void drawCap2();//pinta la capa 2
     void drawCap3();//pinta la capa 3
+    void Inputs();//gestiona los inputs y los envia a controles (despues es gestionado por juego)
     bool execVentana();//nos dice si esta abierta la ventana
     void mostrar();//nos muestra el frame
     sf::RenderWindow &getVentana();//Esto se borrara es provisional
@@ -60,6 +62,7 @@ private:
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto
     sf::Clock animaciones;//nos sirve para saber cuando tenemos que cambiar de animacion
+    Controles *controles;
 };
 
 #endif /* MOTOR2D_HPP */

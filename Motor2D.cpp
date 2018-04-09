@@ -22,6 +22,7 @@ Motor2D::Motor2D()
     window.setFramerateLimit(60);
     texturas[0].loadFromFile("resources/pp.png");
     initCamera();
+    controles = Controles::getInstance();
 }
 
 bool Motor2D::cargarCapa(int* matriz, int capa, int longitud, int anchura, int altura, char tileset[])
@@ -115,17 +116,81 @@ void Motor2D::drawCamera()
     window.setView(camera);
 }
 
-int Motor2D::darUPDATE()
-{
-    return update.getElapsedTime().asMilliseconds();
-}
 
 void Motor2D::reiniciarUPDATE()
 {
     update.restart();
 }
 
+void Motor2D::Inputs()
+{
+    sf::Event eventos;
+    while (window.pollEvent(eventos))
+    {
+              
+            switch(eventos.type){
+                //Si se recibe el evento de cerrar la ventana la cierro
+                //comprobacion de mandos
+                case sf::Event::JoystickButtonPressed:
+                    std::cout << "boton:" << eventos.joystickButton.button << std::endl; 
+                    break;
+                case sf::Event::JoystickMoved:
+                    std::cout << "joystick:" << eventos.joystickMove.axis << std::endl;
+                    std::cout << "joystick:" << eventos.joystickMove.position << std::endl; 
+                    break;
+                    //fin mandos
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                //Se pulsó una tecla, imprimo su codigo
+                case sf::Event::KeyPressed:
+                    
+                    if(eventos.key.code == sf::Keyboard::Num1)//un jugador a
+                        controles->cambiarControl(1);
+                    if(eventos.key.code == sf::Keyboard::Num2)//un jugador b
+                        controles->cambiarControl(2);
+                    if(eventos.key.code == sf::Keyboard::Num3)//dos jugadores
+                        controles->onTwo();
+                    if(eventos.key.code == sf::Keyboard::Num4)//dos jugadores
+                        controles->offTwo();
+                    //Verifico si se pulsa alguna tecla de movimiento
+                        //Mapeo del cursor
+                        if(controles->whatPlayer(eventos.key.code) == 1)
+                        {
+                            controles->cambiarControl(1);
+                        }
+                        else if(controles->whatPlayer(eventos.key.code) == 2)
+                        {
+                            controles->cambiarControl(2);
+                        }
+                    
+                        if(eventos.key.code == controles->moveRIGHT())
+                        std::cout << "derecha" << std::endl;
+                        else if(eventos.key.code == controles->moveLEFT())
+                        std::cout << "izquierda" << std::endl;   
+                        else if(eventos.key.code == controles->moveUP())
+                        std::cout << "salto" << std::endl;   
+                        else if(eventos.key.code == controles->moveDOWN())
+                        std::cout << "caida rapida o agacharse" << std::endl;   
+                        else if(eventos.key.code == controles->moveAtaque())
+                        std::cout << "ataque" << std::endl;   
+                        else if(eventos.key.code == controles->moveDefensa())
+                        std::cout << "defensa" << std::endl;   
+                        else if(eventos.key.code == controles->moveSalir())
+                        window.close();
+                              
+                    
+
+        }
+            
+    }
+}
 int Motor2D::darAnimacion()
 {
     return animaciones.getElapsedTime().asMilliseconds();
+}
+
+int Motor2D::darUPDATE()
+{
+    return update.getElapsedTime().asMilliseconds();
 }

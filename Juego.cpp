@@ -40,6 +40,16 @@ Juego::~Juego() {
     
 }
 
+bool Juego::execVentana()
+{
+    return motor->execVentana();
+}
+
+void Juego::Inputs()
+{
+    motor->Inputs();
+}
+
 void Juego::Draw()
 {
     estado->Pintar();

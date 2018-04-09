@@ -12,16 +12,16 @@ CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
 CND_ARTIFACT_NAME_Debug=juegobase
 CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/juegobase
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=juegobase.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/juegobase.tar
+CND_PACKAGE_NAME_Debug=kinzokusuragu.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/kinzokusuragu.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=juegobase
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/juegobase
+CND_ARTIFACT_NAME_Release=kinzokusuragu
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/kinzokusuragu
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=juegobase.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/juegobase.tar
+CND_PACKAGE_NAME_Release=kinzokusuragu.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/kinzokusuragu.tar
 #
 # include compiler specific variables
 #

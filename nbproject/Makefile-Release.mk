@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Controles.o \
 	${OBJECTDIR}/Coordenadas.o \
 	${OBJECTDIR}/Enemigos.o \
 	${OBJECTDIR}/Estado.o \
@@ -69,11 +70,16 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kinzokusuragu
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kinzokusuragu: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kinzokusuragu ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Controles.o: Controles.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Controles.o Controles.cpp
 
 ${OBJECTDIR}/Coordenadas.o: Coordenadas.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -151,7 +157,7 @@ ${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kinzokusuragu
 
 # Subprojects
 .clean-subprojects:

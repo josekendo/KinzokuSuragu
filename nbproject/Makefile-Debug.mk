@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Controles.o \
 	${OBJECTDIR}/Coordenadas.o \
 	${OBJECTDIR}/Enemigos.o \
 	${OBJECTDIR}/Estado.o \
@@ -82,6 +83,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: libbox2d.a
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Controles.o: Controles.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Controles.o Controles.cpp
 
 ${OBJECTDIR}/Coordenadas.o: Coordenadas.cpp 
 	${MKDIR} -p ${OBJECTDIR}
