@@ -16,6 +16,8 @@
 
 #include "Estado.hpp"
 #include "Nivel.hpp"
+#include "Motor2D.hpp"
+
 class Juego {
 public:
     
@@ -33,13 +35,14 @@ public:
     void Draw();//llama a las diferentes draw segun estado
     void cargarNivel(int nivel);//Carga el nivel pasado por parametro
     void cargaCompleta();//cuando se carga un nivel se llama a esta funcion para que le diga a menu que esta completada la carga y quite el panel de loading
+    void Ejecucion();//realiza la logica del juego 15 veces por frame
 private:
     
     //clase singleton 
     Juego();
     static Juego* unica_instancia;
     //fin clase singleto private
-    
+    Motor2D *motor;
     Estado * estado;
     Estadisticas estadisticas;
     Menu menu;

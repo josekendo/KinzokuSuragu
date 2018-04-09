@@ -39,4 +39,57 @@ void Nivel::cargarNivel(int niv)
         break;
     }
 }
+//carga de un jugador
+void Nivel::juegoIndividual(int tipo)
+{
+    modo = 1;
+    if(tipo == 0)//masculino jugador 1
+    {
+      jugadores[0].initJugador(0,1);  
+    }
+    if(tipo == 1)//femenino jugador 1
+    {
+      jugadores[0].initJugador(1,1);  
+    }    
+}
+//carga de dos jugadores
+void Nivel::juegoMultijugador(int tipo1, int tipo2)
+{
+    modo = 2;
+    if(tipo1 == 0)//masculino jugador 1
+    {
+        jugadores[0].initJugador(0,1);  
+    }
+    if(tipo1 == 1)//femenino jugador 1
+    {
+        jugadores[0].initJugador(1,1);  
+    }
+    if(tipo2 == 0)//maculino jugador 2
+    {
+        jugadores[1].initJugador(0,2);  
+    }
+    if(tipo2 == 1)//femenino jugador 2
+    {
+        jugadores[1].initJugador(1,2);  
+    }
+}
 
+void Nivel::draw()
+{
+     Motor2D *motor2D = Motor2D::getInstance();//clase global
+     motor2D->drawCap1();
+     motor2D->drawCap2();
+     //pintamos a enemigos y jugadores
+     if(modo == 1)
+     {
+         //std::cout << "draw de nivel m 1" << std::endl;
+         jugadores[0].draw();
+     }
+     else
+     {
+         //std::cout << "draw de nivel m 2"  << std::endl;
+         jugadores[0].draw();
+         jugadores[1].draw();
+     } 
+     motor2D->drawCap3();
+}

@@ -25,7 +25,7 @@ FabricarNivel::FabricarNivel(const FabricarNivel& orig) {
 FabricarNivel::~FabricarNivel() {
 }
 
-void FabricarNivel::construirNivel(char nivel[])
+void FabricarNivel::construirNivel(char *nivel)
 {
     //se llama desde aqui a motor2d para que cargue las diferentes capas
     Motor2D *motor2D = Motor2D::getInstance();//clase global

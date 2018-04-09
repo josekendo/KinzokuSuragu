@@ -12,7 +12,6 @@
  */
 
 #include "Coordenadas.hpp"
-#include <algorithm>    // std::min
 #include <iostream>
 
 Coordenadas::Coordenadas() 
@@ -86,8 +85,18 @@ int Coordenadas::getCoordenadaYI(float tiempo)
     }
     else
     {
-        return y;
-        //hacemos calculo
+        float tick = (tiempo/(1000/15));
+        
+        if(tick > 1)
+            tick = 1;
+        
+        //std::cout << "tick " << tick << std::endl;
+        int paso= ay*(1-tick)+y*tick;
+        if(paso >= y)
+        {
+            ay = y;
+        }
+        return paso;
     }
 }
 //cambia las coordenadas pasadas

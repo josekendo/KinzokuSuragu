@@ -6,6 +6,16 @@
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/Nivel.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/Juego.hpp</file>
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/main.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/Juego.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/Motor2D.hpp</file>
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/Jugadores.hpp</file>
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/Estado.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/Motor2D.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/Jugadores.cpp</file>
+        </group>
     </open-files>
 </project-private>

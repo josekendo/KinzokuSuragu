@@ -18,6 +18,7 @@ Juego* Juego::unica_instancia = 0;
 Juego::Juego() 
 {
     estado = &menu;
+    motor = Motor2D::getInstance();
 }
 
 void Juego::cambiarEstado(int est)
@@ -55,6 +56,16 @@ void Juego::cargaCompleta()
 {
     //cambiaremos el estado ya que termino el loading
     cambiarEstado(2);
+}
+
+void Juego::Ejecucion()
+{
+        if(motor->darUPDATE() > 1000/15)
+        {
+            //en este momento realizamos logica 
+            //si hay un boton presionado hacemos la logica que sea
+            motor->reiniciarUPDATE();
+        }
 }
 
 //Menu

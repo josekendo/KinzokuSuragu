@@ -14,6 +14,7 @@
 #ifndef JUGADORES_HPP
 #define JUGADORES_HPP
 #include "Coordenadas.hpp"
+#include "Motor2D.hpp"
 
 class Jugadores {
 public:
@@ -30,10 +31,20 @@ public:
     //estadisticas
     void addMuerte();//se agrega la muerte al marcador
     void addDano(int dano);//se agrega el dano realizado al marcador
-    
+    void initJugador(int tip, int play);//define tipo y el numero de jugador
+    void draw();//llama a motor2D para pintar el personaje segun su tipo
 private:
-    int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;    
-    Coordenadas coordenadas;
+    int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;  //stats  
+    Coordenadas coordenadas;//coordenadas del sprite
+    int tipo;//masculino 0, femenino 1
+    int player;//numero de jugador
+    Motor2D *motor;
+    int estado;//nos servira para saber cuantos estados tiene la animacion
+    int frame;//nos sirve para saber cuantos frames tiene la animacion
+    int estado_actual;//estado en el que estamos
+    int frame_actual;//frame en el que estamos
+    int frame_refresh;//velocidad de refresco de la animacion en milisegundos
+    int proximo;//nos da el siguiente tiempo para poner la animacion
 };
 
 #endif /* JUGADORES_HPP */

@@ -13,6 +13,7 @@
 
 #ifndef MOTOR2D_HPP
 #define MOTOR2D_HPP
+#define TIEMPOUPDATE 1000/15
 //clases basicas
 #include <SFML/Graphics.hpp>
 #include "TileMap.cpp"
@@ -28,15 +29,24 @@ public:
         unica_instancia = new Motor2D();
         return unica_instancia;  
     }
+    //fin singleton public
+    
     bool cargarCapa(int *matriz, int capa, int longitud, int anchura, int altura, char tileset[]);//carga las capas en las capas locales
     void drawCap1();//pinta la capa 1
     void drawCap2();//pinta la capa 2
     void drawCap3();//pinta la capa 3
     bool execVentana();//nos dice si esta abierta la ventana
     void mostrar();//nos muestra el frame
-    sf::RenderWindow &getVentana();
-    //fin singleton public
-    
+    sf::RenderWindow &getVentana();//Esto se borrara es provisional
+    void drawPersonaje(int player,int esta, int fram, float x,float y);//pinta el personaje
+    void initPersonaje(int player,int tipo);//le asigna el conjunto de sprites al personaje
+    void initCamera();//inicializamos la camara
+    void drawCamera();//seleccionamos la camara para pintar en ella
+    //relojes
+    int darUPDATE();
+    void reiniciarUPDATE();
+    int darAnimacion();
+    //fin relojes
 private:
     //clase singleton 
     Motor2D();
@@ -44,8 +54,12 @@ private:
     //fin clase singleto private
     sf::RenderWindow window;//ventana
     TileMap ca1,ca2,ca3;//capas
-    sf::Sprite *jugadores;
-    sf::Sprite *enemigos;    
+    sf::Sprite jugadores[2];//jugadores
+    sf::Sprite *enemigos;//enemigos vector
+    sf::Texture texturas[10];//tilesets
+    sf::View camera;//camara del juego
+    sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto
+    sf::Clock animaciones;//nos sirve para saber cuando tenemos que cambiar de animacion
 };
 
 #endif /* MOTOR2D_HPP */

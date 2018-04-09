@@ -28,7 +28,7 @@ public:
     FabricarNivel();
     FabricarNivel(const FabricarNivel& orig);
     virtual ~FabricarNivel();
-    void construirNivel(char nivel[]);
+    void construirNivel(char *nivel);
     int numeroNiveles();//devuelve el numero de niveles
 private:
     int longitud;//longitud de sprites

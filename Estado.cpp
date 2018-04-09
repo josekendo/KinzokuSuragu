@@ -13,6 +13,7 @@
 
 #include "Estado.hpp"
 #include "Motor2D.hpp"
+#include "Nivel.hpp"
 
 void Menu::Draw()
 {
@@ -27,14 +28,11 @@ void Estadisticas::Draw()
 void Jugando::Draw()
 {
      Motor2D *motor2D = Motor2D::getInstance();//clase global
-     
-     motor2D->drawCap1();
-     motor2D->drawCap2();
-     //pintamos a enemigos y jugadores
-     motor2D->drawCap3();
+     Nivel *nivel = Nivel::getInstance();//clase global
+     motor2D->drawCamera();
+     nivel->draw();
      motor2D->mostrar();
-     
-     std::cout << "Pintar Jugando(Nivel)" << std::endl;
+     //std::cout << "Pintar Jugando(Nivel)" << std::endl;
 }
 
 

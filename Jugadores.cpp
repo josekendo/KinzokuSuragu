@@ -12,6 +12,7 @@
  */
 
 #include "Jugadores.hpp"
+#include <iostream>
 
 Jugadores::Jugadores() 
 {
@@ -22,6 +23,15 @@ Jugadores::Jugadores()
     muertes = 0;
     danototal = 0;
     elemento = 0;
+    //Fin stats
+    motor = Motor2D::getInstance();
+    //animacion
+    estado = 7;//estados
+    frame = 9;//numero de frames
+    estado_actual= 0;
+    frame_actual=-1;
+    frame_refresh=200;//milisegundos
+    proximo = 0;
 }
 
 Jugadores::Jugadores(const Jugadores& orig) {
@@ -56,6 +66,44 @@ void Jugadores::setDefensa(int defen)
 {
     if(defen >= 0 && defen <= 100)
         defensa = defen;
+}
+
+void Jugadores::initJugador(int tip, int play)
+{
+    //std::cout << play << " tipo textura - " << tip  << " t "<< std::endl;
+    motor->initPersonaje(play,tip);
+    tipo = tip;
+    player = play;
+    if(play <= 1)
+    {
+        coordenadas = Coordenadas(20,220);
+    }
+    else
+    {
+        coordenadas = Coordenadas(80,220);
+    }
+}
+
+void Jugadores::draw()
+{
+    //std::cout << " x " << coordenadas.getCoordenadaX() << " y " << coordenadas.getCoordenadaY() << std::endl;
+    /*comprobamos que animacion sea mayor que el frame que le hayamos dado de refresco*/
+    if(proximo <= motor->darAnimacion())
+    {
+        proximo = motor->darAnimacion()+frame_refresh;
+        
+        if(frame > frame_actual)
+        {
+            frame_actual = frame_actual+1;
+        }
+        else
+        {
+            frame_actual = 0;
+        }
+    }
+    
+    
+    motor->drawPersonaje(player-1,estado_actual,frame_actual,coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY());
 }
 
 bool Jugadores::tieneDefensa()

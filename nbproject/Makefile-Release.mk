@@ -35,8 +35,20 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Coordenadas.o \
+	${OBJECTDIR}/Enemigos.o \
+	${OBJECTDIR}/Estado.o \
+	${OBJECTDIR}/FabricarNivel.o \
+	${OBJECTDIR}/Juego.o \
+	${OBJECTDIR}/Jugadores.o \
+	${OBJECTDIR}/Motor2D.o \
+	${OBJECTDIR}/Nivel.o \
 	${OBJECTDIR}/TileMap.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/tinystr.o \
+	${OBJECTDIR}/tinyxml.o \
+	${OBJECTDIR}/tinyxmlerror.o \
+	${OBJECTDIR}/tinyxmlparser.o
 
 
 # C Compiler Flags
@@ -63,6 +75,46 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/Coordenadas.o: Coordenadas.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Coordenadas.o Coordenadas.cpp
+
+${OBJECTDIR}/Enemigos.o: Enemigos.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Enemigos.o Enemigos.cpp
+
+${OBJECTDIR}/Estado.o: Estado.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Estado.o Estado.cpp
+
+${OBJECTDIR}/FabricarNivel.o: FabricarNivel.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FabricarNivel.o FabricarNivel.cpp
+
+${OBJECTDIR}/Juego.o: Juego.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Juego.o Juego.cpp
+
+${OBJECTDIR}/Jugadores.o: Jugadores.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugadores.o Jugadores.cpp
+
+${OBJECTDIR}/Motor2D.o: Motor2D.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Motor2D.o Motor2D.cpp
+
+${OBJECTDIR}/Nivel.o: Nivel.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Nivel.o Nivel.cpp
+
 ${OBJECTDIR}/TileMap.o: TileMap.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -72,6 +124,26 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/tinystr.o: tinystr.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinystr.o tinystr.cpp
+
+${OBJECTDIR}/tinyxml.o: tinyxml.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxml.o tinyxml.cpp
+
+${OBJECTDIR}/tinyxmlerror.o: tinyxmlerror.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlerror.o tinyxmlerror.cpp
+
+${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlparser.o tinyxmlparser.cpp
 
 # Subprojects
 .build-subprojects:
