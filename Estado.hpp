@@ -20,24 +20,29 @@ class Estado {
 private:
     //funciones que tiene la interfaz como virtual (porque no existen pero deberian)
     virtual void Draw() = 0;
+    virtual int Esta() = 0;    
 public:
     void Pintar(){ Draw(); };
+    int QueEstado(){ return Esta(); };
 };
 
 //diferentes clases de estado
 class Menu: public Estado{
     private:
         void Draw();
+        int Esta();
 };
 
 class Jugando: public Estado{
     private:
         void Draw();
+        int Esta();
 };
 
 class Estadisticas: public Estado{
     private:
         void Draw();
+        int Esta();
 };
 #endif /* ESTADO_HPP */
 

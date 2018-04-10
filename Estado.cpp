@@ -17,12 +17,25 @@
 
 void Menu::Draw()
 {
-     std::cout << "Pintar Menu" << std::endl;
+     Motor2D *motor2D = Motor2D::getInstance();//clase global
+     motor2D->drawCamera();
+     motor2D->drawMenu();
+     motor2D->mostrar();    
+}
+
+int Menu::Esta()
+{
+    return 1;
 }
 
 void Estadisticas::Draw()
 {
      std::cout << "Pintar Estadisticas" << std::endl;
+}
+
+int Estadisticas::Esta()
+{
+    return 3;
 }
 
 void Jugando::Draw()
@@ -35,4 +48,7 @@ void Jugando::Draw()
      //std::cout << "Pintar Jugando(Nivel)" << std::endl;
 }
 
-
+int Jugando::Esta()
+{
+    return 2;
+}
