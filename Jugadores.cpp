@@ -103,7 +103,16 @@ void Jugadores::draw()
     }
     
     
-    motor->drawPersonaje(player-1,estado_actual,frame_actual,coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY());
+    motor->drawPersonaje(player-1,estado_actual,frame_actual,coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()));
+}
+
+void Jugadores::mover()
+{
+    //segun estado ponemos una velocidad o otra
+    //comprobar colisiones
+    //obtenemos la posicion en la que estamos segun su tiempo de interpolacion
+    //std::cout << "entro en jugador" << std::endl;
+    coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+5,coordenadas.getCoordenadaYI(motor->darUPDATE()));
 }
 
 bool Jugadores::tieneDefensa()

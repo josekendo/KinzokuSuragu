@@ -12,7 +12,6 @@
  */
 
 #include "Nivel.hpp"
-#include <iostream>
 
 Nivel* Nivel::unica_instancia = 0;
 
@@ -92,4 +91,10 @@ void Nivel::draw()
          jugadores[1].draw();
      } 
      motor2D->drawCap3();
+}
+
+void Nivel::moverJugador(int jugador)
+{
+    //std::cout << "entro en nivel " << jugador << std::endl;
+    jugadores[jugador].mover();//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
 }

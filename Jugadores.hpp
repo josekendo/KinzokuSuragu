@@ -33,6 +33,7 @@ public:
     void addDano(int dano);//se agrega el dano realizado al marcador
     void initJugador(int tip, int play);//define tipo y el numero de jugador
     void draw();//llama a motor2D para pintar el personaje segun su tipo
+    void mover();//se movera segun su estado una velocidad o otro (se debera agregar la colision aqui)
 private:
     int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;  //stats  
     Coordenadas coordenadas;//coordenadas del sprite

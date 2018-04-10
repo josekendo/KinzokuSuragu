@@ -12,6 +12,7 @@
  */
 
 #include "Motor2D.hpp"
+#include "Juego.hpp"
 #include <iostream>
 
 Motor2D* Motor2D::unica_instancia = 0;
@@ -19,10 +20,12 @@ Motor2D* Motor2D::unica_instancia = 0;
 Motor2D::Motor2D() 
 {
     window.create(sf::VideoMode(800, 600), "Kinzoku Suragu");
+    initMenu();
     window.setFramerateLimit(60);
     texturas[0].loadFromFile("resources/pp.png");
     initCamera();
     controles = Controles::getInstance();
+    initMenu();
 }
 
 bool Motor2D::cargarCapa(int* matriz, int capa, int longitud, int anchura, int altura, char tileset[])
@@ -52,6 +55,16 @@ bool Motor2D::execVentana()
 sf::RenderWindow& Motor2D::getVentana()
 {
     return window;
+}
+
+void Motor2D::initMenu()
+{
+    menus = new Menus(window.getSize().x,window.getSize().y,0);
+}
+
+void Motor2D::drawMenu()
+{
+    menus->draw(window);
 }
 
 void Motor2D::drawCap1()
@@ -125,12 +138,19 @@ void Motor2D::reiniciarUPDATE()
 void Motor2D::Inputs()
 {
     sf::Event eventos;
+    Juego *juego = Juego::getInstance();
+    
     while (window.pollEvent(eventos))
     {
               
             switch(eventos.type){
                 //Si se recibe el evento de cerrar la ventana la cierro
                 //comprobacion de mandos
+                case sf::Event::MouseButtonPressed:
+                    // std::cout << "mouse:" << eventos.mouseButton.button << eventos.mouseButton.y << std::endl;
+                     juego->mouse(eventos.mouseButton.button,eventos.mouseButton.x,eventos.mouseButton.y);
+  
+                break;
                 case sf::Event::JoystickButtonPressed:
                     std::cout << "boton:" << eventos.joystickButton.button << std::endl; 
                     break;
@@ -163,27 +183,65 @@ void Motor2D::Inputs()
                         {
                             controles->cambiarControl(2);
                         }
-                    
+                                              
+                        
                         if(eventos.key.code == controles->moveRIGHT())
-                        std::cout << "derecha" << std::endl;
+                            juego->derecha(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveLEFT())
-                        std::cout << "izquierda" << std::endl;   
+                            juego->izquierda(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveUP())
-                        std::cout << "salto" << std::endl;   
+                            juego->salto(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveDOWN())
-                        std::cout << "caida rapida o agacharse" << std::endl;   
+                            juego->agacharse(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveAtaque())
-                        std::cout << "ataque" << std::endl;   
+                            juego->ataque(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveDefensa())
-                        std::cout << "defensa" << std::endl;   
+                            juego->defensa(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveSalir())
-                        window.close();
-                              
-                    
-
+                        window.close();                                                  
         }
             
     }
+}
+
+void Motor2D::menuUP()
+{
+    menus->MoverArriba();
+}
+
+void Motor2D::menuDOWN()
+{
+    menus->MoverAbajo();
+}
+
+void Motor2D::menuIZQ()
+{
+    
+}
+
+void Motor2D::menuDER()
+{
+    
+}
+
+void Motor2D::menuSPACE()
+{
+    menus->Intro();
+}
+
+void Motor2D::menuSPACE(int x, int y)
+{
+    menus->Intro(x,y);
+}
+
+void Motor2D::menuSALIR()
+{
+    menus->Intro();
+}
+
+void Motor2D::menuATRAS()
+{
+    menus->volverMenus();
 }
 int Motor2D::darAnimacion()
 {

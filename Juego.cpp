@@ -55,6 +55,144 @@ void Juego::Draw()
     estado->Pintar();
 }
 
+void Juego::izquierda(int play)
+{
+    //jugando
+    if(estado->QueEstado() == 2)
+    {
+    
+    }
+    //estadistica
+    if(estado->QueEstado() == 3)
+    {
+    
+    }
+}
+
+void Juego::derecha(int play)
+{
+    //jugando
+    if(estado->QueEstado() == 2)
+    {
+        Nivel *nivel = Nivel::getInstance();//clase global
+        if(play == -1)
+        {
+            nivel->moverJugador(0);
+        }
+        else
+        {
+            nivel->moverJugador(play-1);
+        }
+    }
+    //estadistica
+    if(estado->QueEstado() == 3)
+    {
+    
+    }
+}
+
+void Juego::salto(int play)
+{
+    //menu
+    if(estado->QueEstado() == 1)
+    {
+        motor->menuUP();
+    }
+    //jugando
+    if(estado->QueEstado() == 2)
+    {
+    
+    }
+    //estadistica
+    if(estado->QueEstado() == 3)
+    {
+    
+    }
+}
+
+void Juego::agacharse(int play)
+{
+    //menu
+    if(estado->QueEstado() == 1)
+    {
+        motor->menuDOWN();
+    }
+    //jugando
+    if(estado->QueEstado() == 2)
+    {
+        
+    }
+    //estadistica
+    if(estado->QueEstado() == 3)
+    {
+        
+    }
+}
+
+void Juego::ataque(int play)
+{
+    //menu
+    if(estado->QueEstado() == 1)
+    {
+        motor->menuSPACE();
+    }
+    //jugando
+    if(estado->QueEstado() == 2)
+    {
+        
+    }
+    //estadistica
+    if(estado->QueEstado() == 3)
+    {
+    
+    }
+}
+
+void Juego::defensa(int play)
+{
+    //menu
+    if(estado->QueEstado() == 1)
+    {
+        motor->menuATRAS();
+    }
+    //jugando
+    if(estado->QueEstado() == 2)
+    {
+    
+    }
+    //estadistica
+    if(estado->QueEstado() == 3)
+    {
+    
+    }
+}
+
+void Juego::mouse(int boton, int x, int y)
+{
+    //menu
+    if(estado->QueEstado() == 1)
+    {
+        if(boton == 0)
+        {
+            motor->menuSPACE(x,y);
+        }
+        else
+        {
+            motor->menuATRAS();
+        }
+    }
+    //jugando
+    if(estado->QueEstado() == 2)
+    {
+    
+    }
+    //estadistica
+    if(estado->QueEstado() == 3)
+    {
+    
+    }
+}
+
 //Nivel
 void Juego::cargarNivel(int niv)
 {

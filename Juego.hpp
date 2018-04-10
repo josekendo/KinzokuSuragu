@@ -36,7 +36,16 @@ public:
     void cargarNivel(int nivel);//Carga el nivel pasado por parametro
     void cargaCompleta();//cuando se carga un nivel se llama a esta funcion para que le diga a menu que esta completada la carga y quite el panel de loading
     void Ejecucion();//realiza la logica del juego 15 veces por frame
+//inputs
     void Inputs();//redireccion a motor2d seccion inputss
+    void derecha(int play);
+    void izquierda(int play);
+    void salto(int play);
+    void agacharse(int play);
+    void ataque(int play);
+    void defensa(int play);
+    void mouse(int boton, int x, int y);
+//fin inputs
 private:
     
     //clase singleton 

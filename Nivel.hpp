@@ -18,6 +18,9 @@
 #include "Jugadores.hpp"
 #include "Enemigos.hpp"
 #include "FabricarNivel.h"
+#include "Bullet.hpp"
+#include <vector> 
+#include <iostream>
 
 class Nivel {
 public:
@@ -33,6 +36,7 @@ public:
     void cargarNivel(int niv);//carga el nivel pasado empezando por 1
     void juegoIndividual(int tipo);//prepara el personaje con el tipo 0-masculino, 1-femenino
     void juegoMultijugador(int tipo1,int tipo2);//prepara los personajes con los tipos(0 masculino, 1 femenino)
+    void moverJugador(int jugador);
     void draw();
 private:
     //clase singleton 
@@ -41,7 +45,8 @@ private:
     //fin clase singleto private
     FabricarNivel fabrica;
     Jugadores jugadores[2];//array de jugadores
-    Enemigos *enemigos;//array de enemigos
+    std::vector<Enemigos> enemigos;//array autodimensionable de enemigos
+    std::vector<Bullet> bullet;//array autodimensionable de proyectiles
     int modo;//modo un jugador(0), dos jugadores(1)
 };  
 
