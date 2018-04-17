@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="97">
+<configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -12,6 +12,7 @@
       <itemPath>FabricarNivel.h</itemPath>
       <itemPath>Juego.hpp</itemPath>
       <itemPath>Jugadores.hpp</itemPath>
+      <itemPath>Menus.h</itemPath>
       <itemPath>Motor2D.hpp</itemPath>
       <itemPath>Nivel.hpp</itemPath>
     </logicalFolder>
@@ -29,6 +30,7 @@
       <itemPath>FabricarNivel.cpp</itemPath>
       <itemPath>Juego.cpp</itemPath>
       <itemPath>Jugadores.cpp</itemPath>
+      <itemPath>Menus.cpp</itemPath>
       <itemPath>Motor2D.cpp</itemPath>
       <itemPath>Nivel.cpp</itemPath>
       <itemPath>TileMap.cpp</itemPath>
@@ -112,6 +114,10 @@
       </item>
       <item path="Jugadores.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Menus.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Menus.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Motor2D.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Motor2D.hpp" ex="false" tool="3" flavor2="0">
@@ -185,6 +191,10 @@
       <item path="Jugadores.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Jugadores.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Menus.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Menus.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Motor2D.cpp" ex="false" tool="1" flavor2="0">
       </item>

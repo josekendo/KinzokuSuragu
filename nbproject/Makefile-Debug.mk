@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/FabricarNivel.o \
 	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/Jugadores.o \
+	${OBJECTDIR}/Menus.o \
 	${OBJECTDIR}/Motor2D.o \
 	${OBJECTDIR}/Nivel.o \
 	${OBJECTDIR}/TileMap.o \
@@ -84,77 +85,82 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Controles.o: Controles.cpp 
+${OBJECTDIR}/Controles.o: Controles.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Controles.o Controles.cpp
 
-${OBJECTDIR}/Coordenadas.o: Coordenadas.cpp 
+${OBJECTDIR}/Coordenadas.o: Coordenadas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Coordenadas.o Coordenadas.cpp
 
-${OBJECTDIR}/Enemigos.o: Enemigos.cpp 
+${OBJECTDIR}/Enemigos.o: Enemigos.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Enemigos.o Enemigos.cpp
 
-${OBJECTDIR}/Estado.o: Estado.cpp 
+${OBJECTDIR}/Estado.o: Estado.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Estado.o Estado.cpp
 
-${OBJECTDIR}/FabricarNivel.o: FabricarNivel.cpp 
+${OBJECTDIR}/FabricarNivel.o: FabricarNivel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FabricarNivel.o FabricarNivel.cpp
 
-${OBJECTDIR}/Juego.o: Juego.cpp 
+${OBJECTDIR}/Juego.o: Juego.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Juego.o Juego.cpp
 
-${OBJECTDIR}/Jugadores.o: Jugadores.cpp 
+${OBJECTDIR}/Jugadores.o: Jugadores.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugadores.o Jugadores.cpp
 
-${OBJECTDIR}/Motor2D.o: Motor2D.cpp 
+${OBJECTDIR}/Menus.o: Menus.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Menus.o Menus.cpp
+
+${OBJECTDIR}/Motor2D.o: Motor2D.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Motor2D.o Motor2D.cpp
 
-${OBJECTDIR}/Nivel.o: Nivel.cpp 
+${OBJECTDIR}/Nivel.o: Nivel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Nivel.o Nivel.cpp
 
-${OBJECTDIR}/TileMap.o: TileMap.cpp 
+${OBJECTDIR}/TileMap.o: TileMap.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TileMap.o TileMap.cpp
 
-${OBJECTDIR}/main.o: main.cpp 
+${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/tinystr.o: tinystr.cpp 
+${OBJECTDIR}/tinystr.o: tinystr.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinystr.o tinystr.cpp
 
-${OBJECTDIR}/tinyxml.o: tinyxml.cpp 
+${OBJECTDIR}/tinyxml.o: tinyxml.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxml.o tinyxml.cpp
 
-${OBJECTDIR}/tinyxmlerror.o: tinyxmlerror.cpp 
+${OBJECTDIR}/tinyxmlerror.o: tinyxmlerror.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlerror.o tinyxmlerror.cpp
 
-${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp 
+${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlparser.o tinyxmlparser.cpp
@@ -165,6 +171,7 @@ ${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsfml-window.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsfml-graphics.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsfml-system.so
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase
 
 # Subprojects
