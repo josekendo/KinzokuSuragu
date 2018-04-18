@@ -17,6 +17,7 @@
 #include "Estado.hpp"
 #include "Nivel.hpp"
 #include "Motor2D.hpp"
+#include "Camara.hpp"
 
 class Juego {
 public:
@@ -54,6 +55,7 @@ private:
     //fin clase singleto private
     Motor2D *motor;
     Estado * estado;
+    Camara *camara;
     Estadisticas estadisticas;
     Menu menu;
     Jugando jugando;

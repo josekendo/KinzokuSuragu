@@ -12,6 +12,7 @@
  */
 
 #include "Jugadores.hpp"
+#include "Camara.hpp"
 #include <iostream>
 
 Jugadores::Jugadores() 
@@ -112,7 +113,19 @@ void Jugadores::mover()
     //comprobar colisiones
     //obtenemos la posicion en la que estamos segun su tiempo de interpolacion
     //std::cout << "entro en jugador" << std::endl;
-    coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+5,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+    int mov = 5;
+    Camara *camara = Camara::getInstance();
+    
+    if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE())))
+    {
+        
+    }
+    else //obtenemos el movimiento maximo
+    {
+    
+    }
+    
+    coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));    
 }
 
 bool Jugadores::tieneDefensa()

@@ -18,7 +18,8 @@
 void Menu::Draw()
 {
      Motor2D *motor2D = Motor2D::getInstance();//clase global
-     motor2D->drawCamera();
+     Camara *camara = Camara::getInstance();
+     camara->draw();
      motor2D->drawMenu();
      motor2D->mostrar();    
 }
@@ -42,7 +43,8 @@ void Jugando::Draw()
 {
      Motor2D *motor2D = Motor2D::getInstance();//clase global
      Nivel *nivel = Nivel::getInstance();//clase global
-     motor2D->drawCamera();
+     Camara *camara = Camara::getInstance();
+     camara->draw();
      nivel->draw();
      motor2D->mostrar();
      //std::cout << "Pintar Jugando(Nivel)" << std::endl;

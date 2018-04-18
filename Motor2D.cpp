@@ -93,6 +93,8 @@ void Motor2D::drawPersonaje(int player,int esta, int fram, float x,float y)
     //std::cout << "draw de motor2dpersonaje player " << player << " estado " << esta << " frame " << fram <<  "\n x " << x << " y " << y << std::endl;
     jugadores[player].setTextureRect(sf::IntRect(fram*228, esta*300, 228,300));
     jugadores[player].setPosition(x,y);
+    Camara *camara = Camara::getInstance();
+    camara->meMuevo(x,y);
     window.draw(jugadores[player]);
 }
 
@@ -129,6 +131,10 @@ void Motor2D::drawCamera()
     window.setView(camera);
 }
 
+void Motor2D::cambiarPosicionCamera(int x, int y)
+{
+    camera.setCenter(x,y);
+}
 
 void Motor2D::reiniciarUPDATE()
 {

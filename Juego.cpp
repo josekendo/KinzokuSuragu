@@ -19,6 +19,7 @@ Juego::Juego()
 {
     estado = &menu;
     motor = Motor2D::getInstance();
+    camara = Camara::getInstance();
 }
 
 void Juego::cambiarEstado(int est)

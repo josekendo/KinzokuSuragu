@@ -55,6 +55,7 @@ public:
     void initPersonaje(int player,int tipo);//le asigna el conjunto de sprites al personaje
     void initCamera();//inicializamos la camara
     void drawCamera();//seleccionamos la camara para pintar en ella
+    void cambiarPosicionCamera(int x,int y);//cambia la posicion de la view
     //relojes
     int darUPDATE();
     void reiniciarUPDATE();
