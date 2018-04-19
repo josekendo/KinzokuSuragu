@@ -30,6 +30,7 @@ public:
 private:
     int x,y;//estados nuevos
     int ax,ay;//son los estados anteriores de ax e ay
+
 };
 
 #endif /* COORDENADAS_HPP */

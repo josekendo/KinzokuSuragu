@@ -98,3 +98,24 @@ void Nivel::moverJugador(int jugador)
     //std::cout << "entro en nivel " << jugador << std::endl;
     jugadores[jugador].mover();//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
 }
+
+void Nivel::moverJugadorAtras(int jugador)
+{
+    //std::cout << "entro en nivel " << jugador << std::endl;
+    jugadores[jugador].moverAtras();//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
+}
+
+int Nivel::getModo()
+{
+    return modo;
+}
+
+int Nivel::separacion()
+{
+    if(modo == 2)
+    {
+        int newS = jugadores[0].getX() - jugadores[1].getX();
+        return abs(newS);
+    }       
+    return 0;
+}

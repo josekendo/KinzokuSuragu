@@ -13,6 +13,7 @@
 
 #include "Camara.hpp"
 #include "Motor2D.hpp"
+#include "Nivel.hpp"
 #include <iostream>
 
 Camara* Camara::unica_instancia = 0;
@@ -47,10 +48,10 @@ void Camara::meMuevo(int xn, int yn)
     //std::cout << "Memuevo 0 " << (x+400) << " - " << xn << std::endl;
     if(!block && xn < maxLimite)
     {
-        std::cout << "Memuevo 1 " << xn << std::endl;
+        //std::cout << "Memuevo 1 " << xn << std::endl;
         if(xn > x+370)
         {
-            std::cout << "Memuevo 2 " << xn << std::endl;
+            //std::cout << "Memuevo 2 " << xn << std::endl;
             x = x+(xn-(x+370));
         }
     }
@@ -58,17 +59,46 @@ void Camara::meMuevo(int xn, int yn)
 
 bool Camara::mePuedoMover(int xn, int yn)
 {
+    Nivel *nivel = Nivel::getInstance();
     if(!block)
     {
-        if(xn < maxLimite)
-            return true;
-        else
-            return false;
+        //segun modo de juego se debe hacer una deteccion u otra
+        if(nivel->getModo() == 1)
+        {
+            //en este modo solo tenemos que comprobar que este dentro del rango 
+            if(xn < maxLimite && xn > x-380)
+                return true;
+            else
+                return false;
+        }
+        
+        if(nivel->getModo() == 2)
+        {
+            //en este modo tenemos que comprobar que entre uno y otro no haya mas de 790 puesto que las medidas de la camara son de 800 
+            if(xn < maxLimite && xn > x-380)
+            {
+                std::cout << nivel->separacion() << "no " << (x+400)-xn<< std::endl;
+                if(nivel->separacion() < 750 && (x+400)-xn >= 25)
+                {        
+                    return true;
+                }
+                else if(((x+400)-xn) >= 775 && nivel->separacion() >= 750)
+                {
+                    return true;
+                }
+                else if(((x+400)-xn) >= 35 && nivel->separacion() >= 750)
+                {
+                    return true;
+                }
+            }
+            else
+                return false;        
+        }
     }
     else
     {
         //tenemos que comprobar que no se salga del rango en el que estamos
-        if(xn < x)
+        if(xn-380 < x  && xn+380 > x)
             return true;
         else
             return false;

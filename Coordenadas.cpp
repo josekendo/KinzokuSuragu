@@ -62,8 +62,9 @@ int Coordenadas::getCoordenadaXI(float tiempo)
     }
     else
     {
-        float tick = (tiempo/(1000/15));
-        
+        float tick;
+        tick = (tiempo/(1000/15));
+
         if(tick > 1)
             tick = 1;
         

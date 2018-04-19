@@ -28,12 +28,15 @@ void Juego::cambiarEstado(int est)
     {
         case 1:
             estado = &menu;
+            camara->setCoordenadas(400,0);
             break;
         case 2:
            estado = &jugando;
+           camara->setCoordenadas(400,0);
            break;
         case 3:
             estado = &estadisticas;
+            camara->setCoordenadas(400,0);
     }
 }
 
@@ -61,7 +64,15 @@ void Juego::izquierda(int play)
     //jugando
     if(estado->QueEstado() == 2)
     {
-    
+        Nivel *nivel = Nivel::getInstance();//clase global
+        if(play == -1)
+        {
+            nivel->moverJugadorAtras(0);
+        }
+        else
+        {
+            nivel->moverJugadorAtras(play-1);
+        }    
     }
     //estadistica
     if(estado->QueEstado() == 3)
@@ -216,7 +227,4 @@ void Juego::Ejecucion()
             motor->reiniciarUPDATE();
         }
 }
-
-//Menu
-
 //Estadistica

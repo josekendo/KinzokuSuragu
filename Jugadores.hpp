@@ -34,6 +34,8 @@ public:
     void initJugador(int tip, int play);//define tipo y el numero de jugador
     void draw();//llama a motor2D para pintar el personaje segun su tipo
     void mover();//se movera segun su estado una velocidad o otro (se debera agregar la colision aqui)
+    void moverAtras();//se movera hacia atras (aplicar colisiones o factores que hagan que no se mueva)
+    int getX();//obtenemos la coordenada x
 private:
     int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;  //stats  
     Coordenadas coordenadas;//coordenadas del sprite

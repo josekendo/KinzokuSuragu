@@ -118,14 +118,35 @@ void Jugadores::mover()
     
     if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE())))
     {
-        
+        //std::cout << "true moviendo" << std::endl;  
+        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));
     }
     else //obtenemos el movimiento maximo
     {
-    
+        //std::cout << "false moviendo" << std::endl;
     }
+        
+}
+
+void Jugadores::moverAtras()
+{
+    //segun estado ponemos una velocidad o otra
+    //comprobar colisiones
+    //obtenemos la posicion en la que estamos segun su tiempo de interpolacion
+    //std::cout << "entro en jugador" << std::endl;
+    int mov = -5;
+    Camara *camara = Camara::getInstance();
     
-    coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));    
+    if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE())))
+    {
+        //std::cout << "true moviendo" << std::endl;  
+        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+    }
+    else //obtenemos el movimiento maximo
+    {
+        //std::cout << "false moviendo" << std::endl;
+    }
+        
 }
 
 bool Jugadores::tieneDefensa()
@@ -195,4 +216,9 @@ int Jugadores::getDano(int element,int tipo)
     }
     
     return ataque;
+}
+
+int Jugadores::getX()
+{
+    return coordenadas.getCoordenadaX();
 }
