@@ -14,6 +14,7 @@
 #include "Jugadores.hpp"
 #include <iostream>
 
+
 Jugadores::Jugadores() 
 {
     vida = 100;
@@ -27,11 +28,15 @@ Jugadores::Jugadores()
     motor = Motor2D::getInstance();
     //animacion
     estado = 7;//estados
-    frame = 9;//numero de frames
+    frame = 7;//numero de frames
     estado_actual= 0;
     frame_actual=-1;
-    frame_refresh=200;//milisegundos
+    frame_refresh=80;//milisegundos
     proximo = 0;
+    weapon = 0; //arma con la que inicia
+    orientacion = 1;
+    stat = 0; //dice si el personaje está en movimiento o no
+    
 }
 
 Jugadores::Jugadores(const Jugadores& orig) {
@@ -50,6 +55,111 @@ void Jugadores::addMuerte()
 {
     muertes= muertes+1;
 }
+
+void Jugadores::Idle(int dir)
+{
+    estado = 0;
+    estado_actual = estado;
+    orientacion = dir;
+    draw();
+    
+}
+
+void Jugadores::Walk(int dir)
+{
+    estado = 1;
+    estado_actual = estado;
+    //SI DIR = 1 VA A LA DERECHA
+    //SI DIR = -1 VA A LA IZQUIERDA
+    orientacion = dir;
+    stat = 1;
+    draw();
+}
+
+
+
+void Jugadores::Shoot(int dir)
+{
+    estado = 2;
+    estado_actual = estado;
+    orientacion = dir;
+    draw();
+    
+    
+}
+
+void Jugadores::Kick(int dir)
+{
+    estado = 3;
+    estado_actual = estado;
+    orientacion = dir;
+    draw();
+    
+    
+}
+
+void Jugadores::Block(int dir)
+{
+    estado = 4;
+    estado_actual = estado;
+    orientacion = dir;
+    if (tieneDefensa() == true)
+    {
+        if(proximo <= motor->darAnimacion()) // ANIMACIÓN DE DEFENSA 
+        {
+            proximo = motor->darAnimacion()+frame_refresh;
+
+            if(frame > frame_actual)
+            {
+                frame_actual = frame_actual+1;
+            }
+            else
+            {
+
+            }
+        }
+        motor->drawPersonaje(player-1,estado_actual,frame_actual,orientacion,coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY(), stat);
+        //CHECK COLISION == FALSE;
+    
+    }
+    
+}
+
+void Jugadores::Jump(int dir)
+{
+    estado = 5;
+    estado_actual = estado;
+    orientacion = dir;
+    frame = 9;
+    draw();
+    
+    
+}
+void Jugadores::Die(int dir)
+{
+    estado = 6;
+    estado_actual = estado;
+    //SI DIR = 1 VA A LA DERECHA
+    //SI DIR = -1 VA A LA IZQUIERDA
+    orientacion = dir;
+    
+        if(proximo <= motor->darAnimacion()) // ANIMACIÓN DE DEFENSA 
+        {
+            proximo = motor->darAnimacion()+frame_refresh;
+
+            if(frame > frame_actual)
+            {
+                frame_actual = frame_actual+1;
+            }
+            else
+            {
+
+            }
+        }
+        motor->drawPersonaje(player-1,estado_actual,frame_actual,orientacion,coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY(), stat);
+        //CHECK COLISION == FALSE;
+}
+
 
 void Jugadores::addDano(int dano)
 {
@@ -88,6 +198,7 @@ void Jugadores::draw()
 {
     //std::cout << " x " << coordenadas.getCoordenadaX() << " y " << coordenadas.getCoordenadaY() << std::endl;
     /*comprobamos que animacion sea mayor que el frame que le hayamos dado de refresco*/
+    
     if(proximo <= motor->darAnimacion())
     {
         proximo = motor->darAnimacion()+frame_refresh;
@@ -101,9 +212,7 @@ void Jugadores::draw()
             frame_actual = 0;
         }
     }
-    
-    
-    motor->drawPersonaje(player-1,estado_actual,frame_actual,coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY());
+    motor->drawPersonaje(player-1,estado_actual,frame_actual,orientacion,coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY(), stat);
 }
 
 bool Jugadores::tieneDefensa()

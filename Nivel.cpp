@@ -88,8 +88,19 @@ void Nivel::draw()
      else
      {
          //std::cout << "draw de nivel m 2"  << std::endl;
-         jugadores[0].draw();
-         jugadores[1].draw();
+         //jugadores[0].draw();
+         jugadores[0].Idle(1); //Estado default
+         //jugadores[1].draw();
+         jugadores[1].Idle(1); //Estado default
+         
+         
+         //jugadores[0].Walk(1); //COMPROBAR QUE WALK FUNCIONA
+         //jugadores[0].Shoot(1); //COMPROBAR QUE SHOOT FUNCIONA
+         //jugadores[0].Kick(1); //COMPROBAR QUE SHOOT FUNCIONA
+         //jugadores[0].setDefensa(1);//COMPROBAR QUE SETDEFENSA FUNCIONA
+         //jugadores[0].Block(1); //COMPROBAR QUE BLOCK FUNCIONA
+         //jugadores[0].Die(-1); //COMPROBAR QUE DIE FUNCIONA
+         //jugadores[0].Jump(1); //COMPROBAR QUE ANIMACIÓN JUMP FUNCIONA 
      } 
      motor2D->drawCap3();
 }

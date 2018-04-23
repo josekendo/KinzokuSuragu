@@ -33,11 +33,20 @@ public:
     void addDano(int dano);//se agrega el dano realizado al marcador
     void initJugador(int tip, int play);//define tipo y el numero de jugador
     void draw();//llama a motor2D para pintar el personaje segun su tipo
+    
+    void Idle(int dir);
+    void Walk(int dir);
+    void Shoot(int dir);
+    void Kick(int dir);
+    void Block(int dir);
+    void Jump(int dir);
+    void Die(int dir);
 private:
     int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;  //stats  
     Coordenadas coordenadas;//coordenadas del sprite
     int tipo;//masculino 0, femenino 1
     int player;//numero de jugador
+    int weapon; //tipo de arma
     Motor2D *motor;
     int estado;//nos servira para saber cuantos estados tiene la animacion
     int frame;//nos sirve para saber cuantos frames tiene la animacion
@@ -45,6 +54,8 @@ private:
     int frame_actual;//frame en el que estamos
     int frame_refresh;//velocidad de refresco de la animacion en milisegundos
     int proximo;//nos da el siguiente tiempo para poner la animacion
+    int orientacion;
+    int stat;
 };
 
 #endif /* JUGADORES_HPP */
