@@ -21,6 +21,7 @@
 #include "Bullet.hpp"
 #include <vector> 
 #include <iostream>
+#include "Controles.h"
 
 class Nivel {
 public:

@@ -41,6 +41,8 @@ void Nivel::cargarNivel(int niv)
 //carga de un jugador
 void Nivel::juegoIndividual(int tipo)
 {
+    Controles *con = Controles::getInstance();
+    con->offTwo();
     modo = 1;
     if(tipo == 0)//masculino jugador 1
     {
@@ -54,6 +56,8 @@ void Nivel::juegoIndividual(int tipo)
 //carga de dos jugadores
 void Nivel::juegoMultijugador(int tipo1, int tipo2)
 {
+    Controles *con = Controles::getInstance();
+    con->onTwo();
     modo = 2;
     if(tipo1 == 0)//masculino jugador 1
     {
