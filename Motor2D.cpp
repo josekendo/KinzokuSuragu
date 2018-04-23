@@ -14,7 +14,7 @@
 #include "Motor2D.hpp"
 #include "Juego.hpp"
 #include <iostream>
-
+#define kVel 1
 Motor2D* Motor2D::unica_instancia = 0;
 
 Motor2D::Motor2D() 
@@ -22,7 +22,8 @@ Motor2D::Motor2D()
     window.create(sf::VideoMode(800, 600), "Kinzoku Suragu");
     initMenu();
     window.setFramerateLimit(60);
-    texturas[0].loadFromFile("resources/pp.png");
+    texturas[0].loadFromFile("resources/SpriteSheet_Character1.png");
+    //texturas[1].loadFromFile("resources/SpriteSheet_Character2.png"); FALTA SPRITESHEET JUGADOR 2
     initCamera();
     controles = Controles::getInstance();
     initMenu();
@@ -88,16 +89,56 @@ void Motor2D::mostrar()
     window.display();
 }
 
-void Motor2D::drawPersonaje(int player,int esta, int fram, float x,float y)
+void Motor2D::drawPersonaje(int player,int esta, int fram, int ori, float x,float y, int st)
 {
     //std::cout << "draw de motor2dpersonaje player " << player << " estado " << esta << " frame " << fram <<  "\n x " << x << " y " << y << std::endl;
-    jugadores[player].setTextureRect(sf::IntRect(fram*228, esta*300, 228,300));
+    if (ori == -1)
+    {
+        fram = fram + 1;
+    }
+    jugadores[player].setTextureRect(sf::IntRect(fram*48, esta*48, 48*ori,48));
     jugadores[player].setPosition(x,y);
     Camara *camara = Camara::getInstance();
     camara->meMuevo(x,y);
+    
+    /*if (ori == 1) //SI VA HACIA LA DERECHA
+    {
+        jugadores[player].setTextureRect(sf::IntRect(fram*48, esta*48,48*ori,48));
+        
+        if (st == 1)  //SI ESTÁ EN MOVIMIENTO
+        {
+            jugadores[player].move(kVel, 0);
+            x = jugadores[player].getPosition().x;
+            jugadores[player].setPosition(x,y);
+            
+        }
+        else if (st == 0)//SI ESTÁ ESTÁTICO
+        {
+            jugadores[player].setPosition(x,y);
+        }
+    }
+    
+    else if (ori == -1) //SI VA HACIA LA IZQUIERDA
+    {
+        fram = fram + 1;
+        jugadores[player].setTextureRect(sf::IntRect(fram*48, esta*48,48*ori,48));
+        
+        if (st == 1) // SI ESTÁ EN MOVIMIENTO
+        {
+         jugadores[player].move(-kVel, 0);
+         x = jugadores[player].getPosition().x;
+         jugadores[player].setPosition(x,y);
+        }
+        else if (st == 0) // SI ESTÁ ESTÁTICO
+        {
+            jugadores[player].setPosition(x,y);
+        }
+    
+    }*/
+    
+
     window.draw(jugadores[player]);
 }
-
 void Motor2D::initPersonaje(int player, int tipo)
 {
     
@@ -105,18 +146,18 @@ void Motor2D::initPersonaje(int player, int tipo)
     {
         //std::cout << player-1 << " tipo textura 1" << tipo  << " t "<< std::endl;
         jugadores[player-1].setTexture(texturas[tipo]);
-        jugadores[player-1].setOrigin(228/2,300/2);
-        jugadores[player-1].setTextureRect(sf::IntRect(0*228, 0*300, 228,300));
-        jugadores[player-1].scale(sf::Vector2f(0.3f, 0.3f));
+        jugadores[player-1].setOrigin(48/2,48/2);
+        jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48, 48,48));
+        jugadores[player-1].scale(sf::Vector2f(2, 2));
     }
     
     if(player == 2)
     {
         //std::cout << player-1 << " tipo textura 2" << tipo  << " t "<< std::endl;
         jugadores[player-1].setTexture(texturas[tipo]);
-        jugadores[player-1].setOrigin(228/2,300/2);
-        jugadores[player-1].setTextureRect(sf::IntRect(0*228, 0*300, 228,300));
-        jugadores[player-1].scale(sf::Vector2f(0.3f, 0.3f));
+        jugadores[player-1].setOrigin(48/2,48/2);
+        jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48, 48,48));
+        jugadores[player-1].scale(sf::Vector2f(2, 2));
     }
 }
 
