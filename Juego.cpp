@@ -20,6 +20,7 @@ Juego::Juego()
     estado = &menu;
     motor = Motor2D::getInstance();
     camara = Camara::getInstance();
+    control = Controles::getInstance();
 }
 
 void Juego::cambiarEstado(int est)
@@ -59,108 +60,179 @@ void Juego::Draw()
     estado->Pintar();
 }
 
-void Juego::izquierda(int play)
+void Juego::izquierda()
 {
     //jugando
     if(estado->QueEstado() == 2)
     {
         Nivel *nivel = Nivel::getInstance();//clase global
-        if(play == -1)
+        if(nivel->getModo() == 1)
         {
-            nivel->moverJugadorAtras(0);
+            if(control->getl(1))
+            {
+                nivel->moverJugadorAtras(0);
+            }
         }
         else
         {
-            nivel->moverJugadorAtras(play-1);
-        }    
-    }
-    //estadistica
-    if(estado->QueEstado() == 3)
-    {
-    
+            if(control->getl(1))
+            {
+                nivel->moverJugadorAtras(0);
+            }
+            
+            if(control->getl(2))
+            {
+                nivel->moverJugadorAtras(1);
+            }
+        }   
     }
 }
 
-void Juego::derecha(int play)
+void Juego::derecha()
 {
     //jugando
     if(estado->QueEstado() == 2)
     {
         Nivel *nivel = Nivel::getInstance();//clase global
-        if(play == -1)
+        if(nivel->getModo() == 1)
         {
-            nivel->moverJugador(0);
+            if(control->getr(1))
+            {
+                nivel->moverJugador(0);
+            }
         }
         else
         {
-            nivel->moverJugador(play-1);
+            if(control->getr(1))
+            {
+                nivel->moverJugador(0);
+            }
+            
+            if(control->getr(2))
+            {
+                nivel->moverJugador(1);
+            }
         }
     }
-    //estadistica
-    if(estado->QueEstado() == 3)
-    {
-    
-    }
 }
 
-void Juego::salto(int play)
+void Juego::salto()
 {
     //menu
     if(estado->QueEstado() == 1)
     {
-        motor->menuUP();
+        if(control->getu(1))
+        {
+            motor->menuUP();
+        }
     }
     //jugando
     if(estado->QueEstado() == 2)
     {
-    
-    }
-    //estadistica
-    if(estado->QueEstado() == 3)
-    {
-    
+        Nivel *nivel = Nivel::getInstance();//clase global
+        if(nivel->getModo() == 1)
+        {
+            if(control->getu(1))
+            {
+                //saltar jugador 0
+            }
+        }
+        else
+        {
+            if(control->getu(1))
+            {
+                //saltar jugador 0
+            }
+            
+            if(control->getu(2))
+            {
+                //saltar jugador 1
+            }
+        }
     }
 }
 
-void Juego::agacharse(int play)
+void Juego::agacharse()
 {
     //menu
     if(estado->QueEstado() == 1)
     {
-        motor->menuDOWN();
+        if(control->getd(1))
+        {
+            motor->menuDOWN();
+        }
     }
     //jugando
     if(estado->QueEstado() == 2)
     {
-        
-    }
-    //estadistica
-    if(estado->QueEstado() == 3)
-    {
-        
+        Nivel *nivel = Nivel::getInstance();//clase global
+        if(nivel->getModo() == 1)
+        {
+            if(control->getd(1))
+            {
+                //agacharse o soltar elemento 0
+            }
+        }
+        else
+        {
+            if(control->getd(1))
+            {
+                //agacharse o soltar elemento 0
+            }
+            
+            if(control->getd(2))
+            {
+                //agacharse o soltar elemento 1
+            }
+        }
     }
 }
 
-void Juego::ataque(int play)
+void Juego::ataque()
 {
     //menu
     if(estado->QueEstado() == 1)
     {
-        motor->menuSPACE();
+        if(control->geta(1))
+        {
+            motor->menuSPACE();
+        }
     }
     //jugando
     if(estado->QueEstado() == 2)
     {
-        
+        Nivel *nivel = Nivel::getInstance();//clase global
+        if(nivel->getModo() == 1)
+        {
+            if(control->geta(1))
+            {
+                //ataca jugador 0
+            }
+        }
+        else
+        {
+            if(control->geta(1))
+            {
+                //ataca jugador 0
+            }
+            
+            if(control->geta(2))
+            {
+                //atacca jugador 1
+            }
+        }        
     }
     //estadistica
     if(estado->QueEstado() == 3)
     {
-    
+        if(control->geta(1))
+        {
+            //aceptar estadisticas vuelta al menu
+        }
     }
 }
 
-void Juego::defensa(int play)
+void Juego::defensa()
 {
     //menu
     if(estado->QueEstado() == 1)
@@ -170,12 +242,26 @@ void Juego::defensa(int play)
     //jugando
     if(estado->QueEstado() == 2)
     {
-    
-    }
-    //estadistica
-    if(estado->QueEstado() == 3)
-    {
-    
+        Nivel *nivel = Nivel::getInstance();//clase global
+        if(nivel->getModo() == 1)
+        {
+            if(control->getf(1))
+            {
+                //defensa jugador 0
+            }
+        }
+        else
+        {
+            if(control->getf(1))
+            {
+                //defensa jugador 0
+            }
+            
+            if(control->getf(2))
+            {
+                //defensa jugador 1
+            }
+        }      
     }
 }
 
@@ -224,7 +310,12 @@ void Juego::Ejecucion()
         {
             //en este momento realizamos logica 
             //si hay un boton presionado hacemos la logica que sea
+            derecha();            
+            izquierda();
+            ataque();
+            defensa();
+            agacharse();
+            salto();
             motor->reiniciarUPDATE();
         }
 }
-//Estadistica

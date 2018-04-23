@@ -18,6 +18,7 @@
 #include "Nivel.hpp"
 #include "Motor2D.hpp"
 #include "Camara.hpp"
+#include "Controles.h"
 
 class Juego {
 public:
@@ -39,12 +40,12 @@ public:
     void Ejecucion();//realiza la logica del juego 15 veces por frame
 //inputs
     void Inputs();//redireccion a motor2d seccion inputss
-    void derecha(int play);
-    void izquierda(int play);
-    void salto(int play);
-    void agacharse(int play);
-    void ataque(int play);
-    void defensa(int play);
+    void derecha();
+    void izquierda();
+    void salto();
+    void agacharse();
+    void ataque();
+    void defensa();
     void mouse(int boton, int x, int y);
 //fin inputs
 private:
@@ -59,6 +60,7 @@ private:
     Estadisticas estadisticas;
     Menu menu;
     Jugando jugando;
+    Controles *control;
 };
 
 #endif /* JUEGO_HPP */
