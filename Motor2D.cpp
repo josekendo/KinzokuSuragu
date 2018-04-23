@@ -192,19 +192,34 @@ void Motor2D::Inputs()
                                               
                         
                         if(eventos.key.code == controles->moveRIGHT())
-                            juego->derecha(controles->whatPlayer(eventos.key.code));
+                            controles->pr(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveLEFT())
-                            juego->izquierda(controles->whatPlayer(eventos.key.code));
+                            controles->pl(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveUP())
-                            juego->salto(controles->whatPlayer(eventos.key.code));
+                            controles->pu(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveDOWN())
-                            juego->agacharse(controles->whatPlayer(eventos.key.code));
+                            controles->pd(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveAtaque())
-                            juego->ataque(controles->whatPlayer(eventos.key.code));
+                            controles->pa(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveDefensa())
-                            juego->defensa(controles->whatPlayer(eventos.key.code));
+                            controles->pf(controles->whatPlayer(eventos.key.code));
                         else if(eventos.key.code == controles->moveSalir())
-                        window.close();                                                  
+                            window.close();
+                        
+                        break;
+                case sf::Event::KeyReleased:
+                        if(eventos.key.code == controles->moveRIGHT())
+                            controles->dr(controles->whatPlayer(eventos.key.code));
+                        else if(eventos.key.code == controles->moveLEFT())
+                            controles->dl(controles->whatPlayer(eventos.key.code));
+                        else if(eventos.key.code == controles->moveUP())
+                            controles->du(controles->whatPlayer(eventos.key.code));
+                        else if(eventos.key.code == controles->moveDOWN())
+                            controles->dd(controles->whatPlayer(eventos.key.code));
+                        else if(eventos.key.code == controles->moveAtaque())
+                            controles->da(controles->whatPlayer(eventos.key.code));
+                        else if(eventos.key.code == controles->moveDefensa())
+                            controles->df(controles->whatPlayer(eventos.key.code));
         }
             
     }
