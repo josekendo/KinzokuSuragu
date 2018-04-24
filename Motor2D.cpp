@@ -23,6 +23,9 @@ Motor2D::Motor2D()
     initMenu();
     window.setFramerateLimit(60);
     texturas[0].loadFromFile("resources/pp.png");
+    texturas[1].loadFromFile("resources/hud/life.png");
+    texturas[2].loadFromFile("resources/hud/defense.png");
+    texturas[2].loadFromFile("resources/hud/loa.png");
     initCamera();
     controles = Controles::getInstance();
     initMenu();
