@@ -91,11 +91,11 @@ void Nivel::draw()
      else
      {
          //std::cout << "draw de nivel m 2"  << std::endl;
-         //jugadores[0].draw();
+         jugadores[0].draw();
          
          
          //jugadores[0].Idle(1); //Estado default
-         //jugadores[1].draw();
+         jugadores[1].draw();
          //jugadores[1].Idle(1); //Estado default
          
          //moverJugador(1); //Comprobar que la función MoverJugador() funciona
