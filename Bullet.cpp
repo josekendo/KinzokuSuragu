@@ -13,7 +13,11 @@
 
 #include "Bullet.hpp"
 
-Bullet::Bullet() {
+Bullet::Bullet(tipo, elemento, dano, x, y, jugador) {
+    
+    
+    
+    
 }
 
 Bullet::Bullet(const Bullet& orig) {
@@ -21,4 +25,6 @@ Bullet::Bullet(const Bullet& orig) {
 
 Bullet::~Bullet() {
 }
+
+
 

@@ -23,6 +23,8 @@ Motor2D::Motor2D()
     initMenu();
     window.setFramerateLimit(60);
     texturas[0].loadFromFile("resources/SpriteSheet_Character1.png");
+    texturas[1].loadFromFile("resources/SpriteSheet_Character2.png");
+    texturas[2].loadFromFile("resources/Bullet_SpriteSheet");
     //texturas[1].loadFromFile("resources/SpriteSheet_Character2.png"); FALTA SPRITESHEET JUGADOR 2
     initCamera();
     controles = Controles::getInstance();
@@ -101,44 +103,12 @@ void Motor2D::drawPersonaje(int player,int esta, int fram, int ori, float x,floa
     Camara *camara = Camara::getInstance();
     camara->meMuevo(x,y);
     
-    /*if (ori == 1) //SI VA HACIA LA DERECHA
-    {
-        jugadores[player].setTextureRect(sf::IntRect(fram*48, esta*48,48*ori,48));
-        
-        if (st == 1)  //SI ESTÁ EN MOVIMIENTO
-        {
-            jugadores[player].move(kVel, 0);
-            x = jugadores[player].getPosition().x;
-            jugadores[player].setPosition(x,y);
-            
-        }
-        else if (st == 0)//SI ESTÁ ESTÁTICO
-        {
-            jugadores[player].setPosition(x,y);
-        }
-    }
-    
-    else if (ori == -1) //SI VA HACIA LA IZQUIERDA
-    {
-        fram = fram + 1;
-        jugadores[player].setTextureRect(sf::IntRect(fram*48, esta*48,48*ori,48));
-        
-        if (st == 1) // SI ESTÁ EN MOVIMIENTO
-        {
-         jugadores[player].move(-kVel, 0);
-         x = jugadores[player].getPosition().x;
-         jugadores[player].setPosition(x,y);
-        }
-        else if (st == 0) // SI ESTÁ ESTÁTICO
-        {
-            jugadores[player].setPosition(x,y);
-        }
-    
-    }*/
     
 
     window.draw(jugadores[player]);
 }
+
+
 void Motor2D::initPersonaje(int player, int tipo)
 {
     
@@ -176,6 +146,8 @@ void Motor2D::cambiarPosicionCamera(int x, int y)
 {
     camera.setCenter(x,y);
 }
+
+
 
 void Motor2D::reiniciarUPDATE()
 {
@@ -314,3 +286,10 @@ int Motor2D::darUPDATE()
 {
     return update.getElapsedTime().asMilliseconds();
 }
+
+void Motor2D::initBala(int px, int py, int tipo, int elemento)
+{
+    
+    
+}
+

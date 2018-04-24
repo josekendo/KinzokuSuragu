@@ -119,11 +119,13 @@ void Juego::derecha()
 void Juego::salto()
 {
     //menu
+    Nivel *nivel = Nivel::getInstance();//clase global
     if(estado->QueEstado() == 1)
     {
         if(control->getu(1))
         {
             motor->menuUP();
+            nivel->brincarJugador(0);
         }
     }
     //jugando
@@ -134,19 +136,19 @@ void Juego::salto()
         {
             if(control->getu(1))
             {
-                //saltar jugador 0
+                nivel->brincarJugador(0);//saltar jugador 0
             }
         }
         else
         {
             if(control->getu(1))
             {
-                //saltar jugador 0
+                nivel->brincarJugador(0);//saltar jugador 0
             }
             
             if(control->getu(2))
             {
-                //saltar jugador 1
+                nivel->brincarJugador(1);//saltar jugador 1
             }
         }
     }
@@ -170,19 +172,19 @@ void Juego::agacharse()
         {
             if(control->getd(1))
             {
-                //agacharse o soltar elemento 0
+                nivel->AtaqueCercano(0);//agacharse o soltar elemento 0
             }
         }
         else
         {
             if(control->getd(1))
             {
-                //agacharse o soltar elemento 0
+                nivel->AtaqueCercano(0);//agacharse o soltar elemento 0
             }
             
             if(control->getd(2))
             {
-                //agacharse o soltar elemento 1
+                nivel->AtaqueCercano(1);//agacharse o soltar elemento 1
             }
         }
     }
@@ -206,19 +208,19 @@ void Juego::ataque()
         {
             if(control->geta(1))
             {
-                //ataca jugador 0
+                nivel->AtaqueLejano(0);//ataca jugador 0
             }
         }
         else
         {
             if(control->geta(1))
             {
-                //ataca jugador 0
+                nivel->AtaqueLejano(0);//ataca jugador 0
             }
             
             if(control->geta(2))
             {
-                //atacca jugador 1
+                nivel->AtaqueLejano(1);//atacca jugador 1
             }
         }        
     }

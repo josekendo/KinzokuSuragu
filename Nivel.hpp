@@ -39,6 +39,11 @@ public:
     void juegoMultijugador(int tipo1,int tipo2);//prepara los personajes con los tipos(0 masculino, 1 femenino)
     void moverJugador(int jugador);//mueve el jugador hacia delante
     void moverJugadorAtras(int jugador);//mueve el jugador pasado hacia atras
+    void brincarJugador(int jugador);
+   
+    void AtaqueCercano(int jugador);
+    void AtaqueLejano(int jugador);
+    void IdleJugador(int jugador);
     void draw();//llama a pintar a todas las partes relacionadas con el nivel
     int getModo();//nos devuelve el modo de juego
     int separacion();//devuelve la separacion entre los jugadores solo en modo 2 si no devuelve 0 siempre

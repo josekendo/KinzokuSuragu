@@ -57,11 +57,14 @@ public:
     void initCamera();//inicializamos la camara
     void drawCamera();//seleccionamos la camara para pintar en ella
     void cambiarPosicionCamera(int x,int y);//cambia la posicion de la view
+    
     //relojes
     int darUPDATE();
     void reiniciarUPDATE();
     int darAnimacion();
     //fin relojes
+    
+    void initBala(int px, int py, int tipo, int elemento);
 private:
     //clase singleton 
     Motor2D();
@@ -71,7 +74,7 @@ private:
     TileMap ca1,ca2,ca3;//capas
     sf::Sprite jugadores[2];//jugadores
     sf::Sprite *enemigos;//enemigos vector
-    sf::Sprite *bullets;//proyectiles
+    std::vector<sf::Sprite> bullets;//proyectiles
     sf::Texture texturas[10];//tilesets
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto

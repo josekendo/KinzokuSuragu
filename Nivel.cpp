@@ -58,6 +58,7 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
 {
     Controles *con = Controles::getInstance();
     con->onTwo();
+    tipo2 = 1;
     modo = 2;
     if(tipo1 == 0)//masculino jugador 1
     {
@@ -87,6 +88,7 @@ void Nivel::draw()
      {
          //std::cout << "draw de nivel m 1" << std::endl;
          jugadores[0].draw();
+         //jugadores[0].Idle(1);
      }
      else
      {
@@ -94,20 +96,10 @@ void Nivel::draw()
          jugadores[0].draw();
          
          
-         //jugadores[0].Idle(1); //Estado default
+        //jugadores[0].Idle(1); //Estado default
          jugadores[1].draw();
          //jugadores[1].Idle(1); //Estado default
-         
-         //moverJugador(1); //Comprobar que la función MoverJugador() funciona
-         //moverJugadorAtras(1); //Comprobar que la función MoverJugadorAtras() funciona
-         
-         //jugadores[0].Walk(1); //COMPROBAR QUE WALK FUNCIONA
-         //jugadores[0].Shoot(-1); //COMPROBAR QUE SHOOT FUNCIONA
-         //jugadores[0].Kick(1); //COMPROBAR QUE SHOOT FUNCIONA
-         //jugadores[0].setDefensa(1);//COMPROBAR QUE SETDEFENSA FUNCIONA
-         //jugadores[0].Block(1); //COMPROBAR QUE BLOCK FUNCIONA
-         //jugadores[0].Die(-1); //COMPROBAR QUE DIE FUNCIONA
-         //jugadores[0].Jump(1); //COMPROBAR QUE ANIMACIÓN JUMP FUNCIONA 
+   
      } 
      motor2D->drawCap3();
 }
@@ -124,7 +116,7 @@ void Nivel::moverJugador(int jugador)
     }
     else if (jugadores[jugador].mover() == 0)
     {
-        jugadores[jugador].Idle(1);//Función para desplazar a personaje hacia adelante
+        jugadores[jugador].Idle();//Función de estado default
     }
     
 }
@@ -137,14 +129,55 @@ void Nivel::moverJugadorAtras(int jugador)
       //std::cout << "entro en nivel " << jugador << std::endl;
     if (jugadores[jugador].moverAtras() == 1)
     {
+       
         jugadores[jugador].Walk(-1);//función para desplazar a personaje hacia atrás
     
     }
     else if (jugadores[jugador].moverAtras() == 0)
     {
-        jugadores[jugador].Idle(-1);//Función para desplazar a personaje hacia adelante
+        jugadores[jugador].Idle();//Función de estado default
     }
 }
+
+void Nivel::brincarJugador(int jugador)
+{
+    jugadores[jugador].mover();//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
+        
+    //std::cout << "entro en nivel " << jugador << std::endl;
+    if (jugadores[jugador].mover() == 1)
+    {
+        jugadores[jugador].Jump();//Función para desplazar que brinque el personaje
+    
+    }
+    else if (jugadores[jugador].mover() == 0)
+    {
+        jugadores[jugador].Idle();//Función de estado default
+    }
+    
+}
+
+void Nivel::AtaqueCercano(int jugador)
+{
+    if (jugadores[jugador].isMoving() != 1)
+    {
+        jugadores[jugador].Kick(); //Función para que el personaje Patee (ataquecercano) 
+    }
+}
+
+void Nivel::AtaqueLejano(int jugador)
+{
+    jugadores[jugador].Shoot();//Función para que el personaje Dispare (ataquelejano)
+}
+
+void Nivel::IdleJugador(int jugador)
+{
+    jugadores[jugador].Idle();//Función de estado default
+}
+
+
+
+
+
 
 int Nivel::getModo()
 {

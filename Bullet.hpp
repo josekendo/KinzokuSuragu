@@ -13,6 +13,7 @@
 
 #ifndef BULLET_HPP
 #define BULLET_HPP
+#include "Coordenadas.hpp"
 
 class Bullet {
 public:
@@ -20,7 +21,9 @@ public:
     Bullet(const Bullet& orig);
     virtual ~Bullet();
 private:
-
+    
+    Coordenadas coordenadas;
+    
 };
 
 #endif /* BULLET_HPP */
