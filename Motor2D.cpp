@@ -13,7 +13,6 @@
 
 #include "Motor2D.hpp"
 #include "Juego.hpp"
-#include <iostream>
 #define kVel 1
 Motor2D* Motor2D::unica_instancia = 0;
 
@@ -24,9 +23,9 @@ Motor2D::Motor2D()
     window.setFramerateLimit(60);
     texturas[0].loadFromFile("resources/SpriteSheet_Character1.png");
     //texturas[1].loadFromFile("resources/SpriteSheet_Character2.png"); FALTA SPRITESHEET JUGADOR 2
-    texturas[3].loadFromFile("resources/hud/life.png");
-    texturas[4].loadFromFile("resources/hud/defense.png");
-    texturas[5].loadFromFile("resources/hud/loa.png");
+    texturas[3].loadFromFile("resources/Hud/life.png");
+    texturas[4].loadFromFile("resources/Hud/defense.png");
+    texturas[5].loadFromFile("resources/Hud/loa.png");
     initCamera();
     controles = Controles::getInstance();
     initMenu();
@@ -317,3 +316,45 @@ int Motor2D::darUPDATE()
 {
     return update.getElapsedTime().asMilliseconds();
 }
+
+void Motor2D::crearBala(int tipo, int elemento)
+{
+    if(tipo == 0)//jugadores
+    {
+        sf::Sprite *bala = new sf::Sprite;
+        bala->setTexture(texturas[3]);
+        bala->setTextureRect(sf::IntRect(0, 0, 15,14));
+        
+        //color elemento
+        if(elemento == 0)
+            bala->setColor(sf::Color::White);
+        else if(elemento == 1)
+            bala->setColor(sf::Color::Blue);
+        else if(elemento == 2)
+            bala->setColor(sf::Color::Cyan);
+        else if(elemento == 3)
+            bala->setColor(sf::Color::Green);
+        else if(elemento == 4)
+            bala->setColor(sf::Color::Magenta);
+        else if(elemento == 5)
+            bala->setColor(sf::Color::Red);
+            
+        bullets.push_back(bala);
+        //std::cout << "bullets guarda " << int(bullets.size()) << " numero de balas.\n";
+    }
+}
+
+void Motor2D::drawBala(int point,int x, int y)
+{
+    bullets[point]->setPosition(x,y);
+    window.draw(*bullets[point]);
+    //std::cout << "bullets guarda " << bullets[point]->getPosition().x << " numero de balas. "<< bullets[point]->getPosition().y << "\n";
+    //std::cout << "bullets guarda " << x << " numero de balas. "<< y << "\n";
+}
+
+void Motor2D::matarBala(int point)
+{
+    delete[] (bullets[point]);
+    bullets.erase(bullets.begin()+point);   
+}
+

@@ -46,6 +46,7 @@ public:
     void agacharse();
     void ataque();
     void defensa();
+    void quieto();
     void mouse(int boton, int x, int y);
 //fin inputs
 private:

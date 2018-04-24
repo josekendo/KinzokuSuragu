@@ -213,11 +213,13 @@ void Juego::ataque()
         {
             if(control->geta(1))
             {
+                nivel->crearBala(0,1,400,180,0,20);//dispara
                 //ataca jugador 0
             }
             
             if(control->geta(2))
             {
+                nivel->crearBala(0,0,400,210,1,20);//dispara
                 //atacca jugador 1
             }
         }        
@@ -265,6 +267,33 @@ void Juego::defensa()
     }
 }
 
+void Juego::quieto()
+{
+    //
+    if(estado->QueEstado() == 2)
+    {
+        Nivel *nivel = Nivel::getInstance();//clase global
+        if(nivel->getModo() == 1)
+        {
+            if(control->getf(1))
+            {
+                //defensa jugador 0
+            }
+        }
+        else
+        {
+            if(control->getf(1))
+            {
+                //defensa jugador 0
+            }
+            
+            if(control->getf(2))
+            {
+                //defensa jugador 1
+            }
+        }      
+    }
+}
 void Juego::mouse(int boton, int x, int y)
 {
     //menu
@@ -316,6 +345,8 @@ void Juego::Ejecucion()
             defensa();
             agacharse();
             salto();
+            Nivel *niv = Nivel::getInstance();
+            niv->realimentarBalas();
             motor->reiniciarUPDATE();
         }
 }

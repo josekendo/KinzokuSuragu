@@ -109,6 +109,14 @@ void Nivel::draw()
          //jugadores[0].Die(-1); //COMPROBAR QUE DIE FUNCIONA
          //jugadores[0].Jump(1); //COMPROBAR QUE ANIMACIÓN JUMP FUNCIONA 
      } 
+     //pintamos balas
+     
+     int contador = 0;
+     for(int a = 0; a < bullet.size();a++)
+     {
+         bullet[a]->draw(a);
+     }
+     
      motor2D->drawCap2();
 }
 
@@ -159,4 +167,17 @@ int Nivel::separacion()
         return abs(newS);
     }       
     return 0;
+}
+
+void Nivel::crearBala(int tipo, int elemento, int x, int y, int jugador, int dano)
+{
+    bullet.push_back(new Bullet(tipo,elemento,x,y,jugador,dano));
+}
+
+void Nivel::realimentarBalas()
+{
+     for(int o = 0; o < bullet.size();o++)
+     {
+         bullet[o]->realimentar();
+     }  
 }
