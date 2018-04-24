@@ -51,7 +51,8 @@ public:
     bool execVentana();//nos dice si esta abierta la ventana
     void mostrar();//nos muestra el frame
     sf::RenderWindow &getVentana();//Esto se borrara es provisional
-    void drawPersonaje(int player,int esta, int fram, float x,float y);//pinta el personaje
+    void drawPersonaje(int player,int esta, int fram, int ori, float x,float y, int st);//pinta el personaje
+    void ResetDirPersonaje(int player,int tipo);//le asigna la orientación (izquierda o derecha) del sprite
     void initPersonaje(int player,int tipo);//le asigna el conjunto de sprites al personaje
     void initCamera();//inicializamos la camara
     void drawCamera();//seleccionamos la camara para pintar en ella

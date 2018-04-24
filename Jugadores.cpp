@@ -14,6 +14,8 @@
 #include "Jugadores.hpp"
 #include "Camara.hpp"
 #include <iostream>
+#define kVel 2
+using namespace std;
 
 Jugadores::Jugadores() 
 {
@@ -28,11 +30,15 @@ Jugadores::Jugadores()
     motor = Motor2D::getInstance();
     //animacion
     estado = 7;//estados
-    frame = 9;//numero de frames
+    frame = 7;//numero de frames
     estado_actual= 0;
     frame_actual=-1;
-    frame_refresh=200;//milisegundos
+    frame_refresh=80;//milisegundos
     proximo = 0;
+    weapon = 0; //arma con la que inicia
+    orientacion = 0;
+    stat = 0; //dice si el personaje está en movimiento o no
+    
 }
 
 Jugadores::Jugadores(const Jugadores& orig) {
@@ -51,6 +57,128 @@ void Jugadores::addMuerte()
 {
     muertes= muertes+1;
 }
+
+void Jugadores::Idle(int dir)
+{
+    estado = 0;
+    estado_actual = estado;
+    orientacion = dir;
+    stat = 0;
+    draw();
+    
+}
+
+void Jugadores::Walk(int dir)
+{
+    estado = 1;
+    estado_actual = estado;
+    //SI DIR = 1 VA A LA DERECHA
+    //SI DIR = -1 VA A LA IZQUIERDA
+    
+    orientacion = dir;
+    stat = 1;
+    if (dir == 1)
+    {   
+        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+kVel,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+    }
+    
+    else if (dir == -1)
+    {
+        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-kVel,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+    }
+    
+    
+    draw();
+    std::cout<< "Mover está en estado: " << mover() << std::endl;
+}
+
+
+
+void Jugadores::Shoot(int dir)
+{
+    estado = 2;
+    estado_actual = estado;
+    orientacion = dir;
+    stat = 0;
+    draw();
+    
+    
+}
+
+void Jugadores::Kick(int dir)
+{
+    estado = 3;
+    estado_actual = estado;
+    orientacion = dir;
+    stat = 0;
+    draw();
+    
+    
+}
+
+void Jugadores::Block(int dir)
+{
+    estado = 4;
+    estado_actual = estado;
+    orientacion = dir;
+    if (tieneDefensa() == true)
+    {
+        if(proximo <= motor->darAnimacion()) // ANIMACIÓN DE DEFENSA 
+        {
+            proximo = motor->darAnimacion()+frame_refresh;
+
+            if(frame > frame_actual)
+            {
+                frame_actual = frame_actual+1;
+            }
+            else
+            {
+
+            }
+        }
+        motor->drawPersonaje(player-1,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()), stat);
+        //CHECK COLISION == FALSE;
+    
+    }
+    
+}
+
+void Jugadores::Jump(int dir)
+{
+    estado = 5;
+    estado_actual = estado;
+    orientacion = dir;
+    frame = 9;
+    stat = 0;
+    draw();
+    
+    
+}
+void Jugadores::Die(int dir)
+{
+    estado = 6;
+    estado_actual = estado;
+    //SI DIR = 1 VA A LA DERECHA
+    //SI DIR = -1 VA A LA IZQUIERDA
+    orientacion = dir;
+    
+        if(proximo <= motor->darAnimacion()) // ANIMACIÓN DE DEFENSA 
+        {
+            proximo = motor->darAnimacion()+frame_refresh;
+
+            if(frame > frame_actual)
+            {
+                frame_actual = frame_actual+1;
+            }
+            else
+            {
+
+            }
+        }
+        motor->drawPersonaje(player-1,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()), stat);
+        //CHECK COLISION == FALSE;
+}
+
 
 void Jugadores::addDano(int dano)
 {
@@ -89,6 +217,7 @@ void Jugadores::draw()
 {
     //std::cout << " x " << coordenadas.getCoordenadaX() << " y " << coordenadas.getCoordenadaY() << std::endl;
     /*comprobamos que animacion sea mayor que el frame que le hayamos dado de refresco*/
+    
     if(proximo <= motor->darAnimacion())
     {
         proximo = motor->darAnimacion()+frame_refresh;
@@ -102,51 +231,69 @@ void Jugadores::draw()
             frame_actual = 0;
         }
     }
+    std::cout<< "Se está dibujando el personaje " << std::endl;
     
+    if (stat == 1)
+    {
+        motor->drawPersonaje(player-1,estado_actual,frame_actual,orientacion, coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY(), stat);
+    }
+    else if (stat == 0)
+    {
+        motor->drawPersonaje(player-1,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()), stat);
     
-    motor->drawPersonaje(player-1,estado_actual,frame_actual,coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()));
+    }
+    
 }
 
-void Jugadores::mover()
+bool Jugadores::mover()
 {
     //segun estado ponemos una velocidad o otra
     //comprobar colisiones
     //obtenemos la posicion en la que estamos segun su tiempo de interpolacion
     //std::cout << "entro en jugador" << std::endl;
-    int mov = 5;
+    //int mov = 5;
+    int mov = kVel;
     Camara *camara = Camara::getInstance();
     
     if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE())))
     {
         //std::cout << "true moviendo" << std::endl;  
-        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+        //coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+       
+        return 1;
     }
     else //obtenemos el movimiento maximo
     {
         //std::cout << "false moviendo" << std::endl;
+        
+        return 0;
     }
         
 }
 
-void Jugadores::moverAtras()
+bool Jugadores::moverAtras()
 {
     //segun estado ponemos una velocidad o otra
     //comprobar colisiones
     //obtenemos la posicion en la que estamos segun su tiempo de interpolacion
     //std::cout << "entro en jugador" << std::endl;
-    int mov = -5;
+    //int mov = -5;
+    int mov = -kVel;
     Camara *camara = Camara::getInstance();
     
     if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE())))
     {
         //std::cout << "true moviendo" << std::endl;  
-        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+        //coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+        
+        return  1;
     }
     else //obtenemos el movimiento maximo
     {
         //std::cout << "false moviendo" << std::endl;
+       
+        return 0;
     }
-        
 }
 
 bool Jugadores::tieneDefensa()
