@@ -114,7 +114,17 @@ void Nivel::draw()
      int contador = 0;
      for(int a = 0; a < bullet.size();a++)
      {
-         bullet[a]->draw(a);
+         if(bullet[a]->sigoViva())
+            bullet[a]->draw(a);
+         else
+         {
+             
+             bool ver = bullet[a]->matarBala(a);
+             delete bullet[a];
+             bullet[a] = NULL;
+             bullet.erase(bullet.begin()+a);
+             //std::cout << "se borra bala " << a << "\n";
+         }
      }
      
      motor2D->drawCap2();

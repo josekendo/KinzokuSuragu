@@ -56,7 +56,7 @@ void Bullet::realimentar()
 bool Bullet::sigoViva()
 {
     Camara *cam = Camara::getInstance();
-    if(coordenadas.getCoordenadaX() > cam->coordenadaX()+400)
+    if(coordenadas.getCoordenadaX() > cam->coordenadaX()+400 || coordenadas.getCoordenadaX() < cam->coordenadaX()-400)
     {
         return false;
     }

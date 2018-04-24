@@ -354,7 +354,9 @@ void Motor2D::drawBala(int point,int x, int y)
 
 void Motor2D::matarBala(int point)
 {
-    delete[] (bullets[point]);
-    bullets.erase(bullets.begin()+point);   
+    delete bullets[point];
+    bullets[point] = NULL;
+    bullets.erase(bullets.begin()+point);
+    //std::cout << "se borra bala-sprite " << point << "\n";
 }
 
