@@ -36,16 +36,18 @@ public:
 
     bool mover();//se movera segun su estado una velocidad o otro (se debera agregar la colision aqui)
     bool moverAtras();//se movera hacia atras (aplicar colisiones o factores que hagan que no se mueva)
+    bool isMoving();
     int getX();//obtenemos la coordenada x
 
     
-    void Idle(int dir);
+    void Idle();
     void Walk(int dir);
-    void Shoot(int dir);
-    void Kick(int dir);
-    void Block(int dir);
-    void Jump(int dir);
-    void Die(int dir);
+    void Shoot();
+    void Kick();
+    void Block();
+    void Jump();
+    void Die();
+    
 
 private:
     int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;  //stats  

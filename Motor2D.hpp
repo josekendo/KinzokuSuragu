@@ -52,17 +52,20 @@ public:
     bool execVentana();//nos dice si esta abierta la ventana
     void mostrar();//nos muestra el frame
     sf::RenderWindow &getVentana();//Esto se borrara es provisional
-    void drawPersonaje(int player,int esta, int fram, int ori, float x,float y, int st);//pinta el personaje
+    void drawPersonaje(int player,int esta, int fram, int ori, float x,float y);//pinta el personaje
     void ResetDirPersonaje(int player,int tipo);//le asigna la orientación (izquierda o derecha) del sprite
     void initPersonaje(int player,int tipo);//le asigna el conjunto de sprites al personaje
     void initCamera();//inicializamos la camara
     void drawCamera();//seleccionamos la camara para pintar en ella
     void cambiarPosicionCamera(int x,int y);//cambia la posicion de la view
+    
     //relojes
     int darUPDATE();
     void reiniciarUPDATE();
     int darAnimacion();
     //fin relojes
+    
+    void initBala(int px, int py, int tipo, int elemento);
     //bala
     void crearBala(int tipo, int elemento);//crea un sprite de una bala
     void drawBala(int point, int x, int y);//pinta la bala en esa posicion
@@ -80,8 +83,9 @@ private:
     sf::RenderWindow window;//ventana
     TileMap ca1,ca2,ca3;//capas
     sf::Sprite jugadores[2];//jugadores
-    std::vector<sf::Sprite*> enemigos;//enemigos vector
+    
     std::vector<sf::Sprite*> bullets;//proyectiles
+    std::vector<sf::Sprite*> enemigos;//enemigos vector
     sf::Texture texturas[10];//tilesets
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto

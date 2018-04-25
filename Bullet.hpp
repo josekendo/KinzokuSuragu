@@ -25,6 +25,7 @@ public:
     bool matarBala(int point);//mata a su sprite en el motor 
     void realimentar();//realimentamos su velocidad
 private:
+    
     Coordenadas coordenadas = Coordenadas(400,30);
     int tipob;
     int elementob;
