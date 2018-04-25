@@ -63,8 +63,16 @@ public:
     void reiniciarUPDATE();
     int darAnimacion();
     //fin relojes
+<<<<<<< HEAD
     
     void initBala(int px, int py, int tipo, int elemento);
+=======
+    //bala
+    void crearBala(int tipo, int elemento);//crea un sprite de una bala
+    void drawBala(int point, int x, int y);//pinta la bala en esa posicion
+    void matarBala(int point);//elimina el sprite de la bala 
+    //fin bala
+>>>>>>> master
 private:
     //clase singleton 
     Motor2D();
@@ -73,8 +81,13 @@ private:
     sf::RenderWindow window;//ventana
     TileMap ca1,ca2,ca3;//capas
     sf::Sprite jugadores[2];//jugadores
+<<<<<<< HEAD
     sf::Sprite *enemigos;//enemigos vector
     std::vector<sf::Sprite> bullets;//proyectiles
+=======
+    std::vector<sf::Sprite*> enemigos;//enemigos vector
+    std::vector<sf::Sprite*> bullets;//proyectiles
+>>>>>>> master
     sf::Texture texturas[10];//tilesets
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto

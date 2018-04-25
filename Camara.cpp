@@ -77,7 +77,7 @@ bool Camara::mePuedoMover(int xn, int yn)
             //en este modo tenemos que comprobar que entre uno y otro no haya mas de 790 puesto que las medidas de la camara son de 800 
             if(xn < maxLimite && xn > x-380)
             {
-                std::cout << nivel->separacion() << "no " << (x+400)-xn<< std::endl;
+                //std::cout << nivel->separacion() << "no " << (x+400)-xn<< std::endl;
                 if(nivel->separacion() < 750 && (x+400)-xn >= 25)
                 {        
                     return true;

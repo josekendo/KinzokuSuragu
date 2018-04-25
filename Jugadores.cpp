@@ -13,6 +13,7 @@
 
 #include "Jugadores.hpp"
 #include "Camara.hpp"
+#include "Nivel.hpp"
 #include <iostream>
 #define kVel 4
 using namespace std;
@@ -239,7 +240,7 @@ bool Jugadores::mover()
     //int mov = 5;
     int mov = kVel;
     Camara *camara = Camara::getInstance();
-    
+    Nivel *niv = Nivel::getInstance();
     if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE())))
     {
         //std::cout << "true moviendo" << std::endl;  

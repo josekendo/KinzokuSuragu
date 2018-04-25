@@ -80,8 +80,8 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
 void Nivel::draw()
 {
      Motor2D *motor2D = Motor2D::getInstance();//clase global
+     motor2D->drawCap3();
      motor2D->drawCap1();
-     motor2D->drawCap2();
      //pintamos a enemigos y jugadores
      if(modo == 1)
      {
@@ -100,7 +100,25 @@ void Nivel::draw()
          //jugadores[1].Idle(1); //Estado default
    
      } 
-     motor2D->drawCap3();
+     //pintamos balas
+     
+     int contador = 0;
+     for(int a = 0; a < bullet.size();a++)
+     {
+         if(bullet[a]->sigoViva())
+            bullet[a]->draw(a);
+         else
+         {
+             
+             bool ver = bullet[a]->matarBala(a);
+             delete bullet[a];
+             bullet[a] = NULL;
+             bullet.erase(bullet.begin()+a);
+             //std::cout << "se borra bala " << a << "\n";
+         }
+     }
+     
+     motor2D->drawCap2();
 }
 
 void Nivel::moverJugador(int jugador)
@@ -197,4 +215,17 @@ int Nivel::separacion()
         return abs(newS);
     }       
     return 0;
+}
+
+void Nivel::crearBala(int tipo, int elemento, int x, int y, int jugador, int dano)
+{
+    bullet.push_back(new Bullet(tipo,elemento,x,y,jugador,dano));
+}
+
+void Nivel::realimentarBalas()
+{
+     for(int o = 0; o < bullet.size();o++)
+     {
+         bullet[o]->realimentar();
+     }  
 }

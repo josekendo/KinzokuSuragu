@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Bullet.o \
 	${OBJECTDIR}/Camara.o \
 	${OBJECTDIR}/Controles.o \
 	${OBJECTDIR}/Coordenadas.o \
@@ -77,6 +78,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kinzokusuragu: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kinzokusuragu ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Bullet.o: Bullet.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bullet.o Bullet.cpp
 
 ${OBJECTDIR}/Camara.o: Camara.cpp 
 	${MKDIR} -p ${OBJECTDIR}

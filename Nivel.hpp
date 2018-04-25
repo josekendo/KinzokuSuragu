@@ -54,6 +54,9 @@ public:
     int getModo();//nos devuelve el modo de juego
     int separacion();//devuelve la separacion entre los jugadores solo en modo 2 si no devuelve 0 siempre
     int notificarActivacion(int x,int y);//este parametro notifica las coordenadas de la camara cada vez que se mueve para darselo a los enemigos
+    void crearBala(int tipo, int elemento,int x,int y,int jugador, int dano);//creamos una nueva bala
+    void matarBala(int point);//elimina la bala
+    void realimentarBalas();//le da propulsion a la bala
 private:
     //clase singleton 
     Nivel();
@@ -62,7 +65,7 @@ private:
     FabricarNivel fabrica;
     Jugadores jugadores[2];//array de jugadores
     std::vector<Enemigos> enemigos;//array autodimensionable de enemigos
-    std::vector<Bullet> bullet;//array autodimensionable de proyectiles
+    vector<Bullet*> bullet;//array autodimensionable de proyectiles
     int modo;//modo un jugador(0), dos jugadores(1)
 };  
 
