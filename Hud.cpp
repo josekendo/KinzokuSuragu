@@ -13,12 +13,75 @@
 
 #include "Hud.hpp"
 
-Hud::Hud() {
+Hud* Hud::unica_instancia = 0;
+
+Hud::Hud() 
+{
+    vidas[0]=100;
+    vidas[1]=100;
+    defensas[0]=0;
+    defensas[0]=0;
+    municiones[0]=0;//infinita
+    municiones[0]=0;//infinita
 }
 
-Hud::Hud(const Hud& orig) {
+Hud::~Hud(void) 
+
+{
+    
 }
 
-Hud::~Hud() {
+void Hud::cambiarDefensa(int player, int defensa)
+{
+    if(player <= 1)
+    {
+        defensas[0] = defensa;
+    }
+    
+    if(player == 2)
+    {
+        defensas[1] = defensa;
+    }  
 }
 
+void Hud::cambiarVida(int player, int vida)
+{
+    if(player <= 1)
+    {
+        vidas[0] = vida;
+    }
+    
+    if(player == 2)
+    {
+        vidas[1] = vida;
+    }    
+}
+
+void Hud::cambiarMunicion(int player, int municion)
+{
+    if(player <= 1)
+    {
+        municiones[0] = municion;
+    }
+    
+    if(player == 2)
+    {
+        municiones[1] = municion;
+    }
+}
+
+void Hud::draw(int modo)
+{
+    if(modo == 1)
+    {
+        //pinto hud1
+        
+    }
+    else
+    {
+        //pinto hud1 
+        
+        //pinto hud2
+        
+    }
+}
