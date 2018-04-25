@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Enemigos.o \
 	${OBJECTDIR}/Estado.o \
 	${OBJECTDIR}/FabricarNivel.o \
+	${OBJECTDIR}/Hud.o \
 	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/Jugadores.o \
 	${OBJECTDIR}/Menus.o \
@@ -121,6 +122,11 @@ ${OBJECTDIR}/FabricarNivel.o: FabricarNivel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FabricarNivel.o FabricarNivel.cpp
+
+${OBJECTDIR}/Hud.o: Hud.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Hud.o Hud.cpp
 
 ${OBJECTDIR}/Juego.o: Juego.cpp 
 	${MKDIR} -p ${OBJECTDIR}
