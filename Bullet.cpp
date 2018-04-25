@@ -15,13 +15,6 @@
 #include "Motor2D.hpp"
 #include "Camara.hpp"
 
-<<<<<<< HEAD
-Bullet::Bullet(tipo, elemento, dano, x, y, jugador) {
-    
-    
-    
-    
-=======
 Bullet::Bullet(int tipo, int elemento, int x, int y, int jugador, int dano)
 {
     //creamos bala en el motor2d
@@ -35,7 +28,6 @@ Bullet::Bullet(int tipo, int elemento, int x, int y, int jugador, int dano)
     coordenadas = Coordenadas(x,y);
     velocidad = 14;
     ini = true;
->>>>>>> master
 }
 
 Bullet::~Bullet() {
@@ -61,10 +53,6 @@ void Bullet::realimentar()
     coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+velocidad,coordenadas.getCoordenadaY());
 }
 
-<<<<<<< HEAD
-
-
-=======
 bool Bullet::sigoViva()
 {
     Camara *cam = Camara::getInstance();
@@ -77,4 +65,3 @@ bool Bullet::sigoViva()
         return true;
     }
 }
->>>>>>> master

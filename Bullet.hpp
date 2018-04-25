@@ -14,10 +14,7 @@
 #ifndef BULLET_HPP
 #define BULLET_HPP
 #include "Coordenadas.hpp"
-<<<<<<< HEAD
-=======
 #include <iostream>
->>>>>>> master
 
 class Bullet {
 public:
@@ -28,11 +25,7 @@ public:
     bool matarBala(int point);//mata a su sprite en el motor 
     void realimentar();//realimentamos su velocidad
 private:
-<<<<<<< HEAD
     
-    Coordenadas coordenadas;
-    
-=======
     Coordenadas coordenadas = Coordenadas(400,30);
     int tipob;
     int elementob;
@@ -40,7 +33,6 @@ private:
     int danob;
     int velocidad;//velocidad que tendra las 15 veces que se ejecute por reloj
     bool ini = false;
->>>>>>> master
 };
 
 #endif /* BULLET_HPP */

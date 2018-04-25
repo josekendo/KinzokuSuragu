@@ -14,6 +14,7 @@
 #include "Motor2D.hpp"
 #include "Juego.hpp"
 #define kVel 1
+
 Motor2D* Motor2D::unica_instancia = 0;
 
 Motor2D::Motor2D() 
@@ -289,12 +290,10 @@ int Motor2D::darUPDATE()
     return update.getElapsedTime().asMilliseconds();
 }
 
-<<<<<<< HEAD
 void Motor2D::initBala(int px, int py, int tipo, int elemento)
 {
     
-    
-=======
+}
 void Motor2D::crearBala(int tipo, int elemento)
 {
     if(tipo == 0)//jugadores
@@ -336,6 +335,6 @@ void Motor2D::matarBala(int point)
     bullets[point] = NULL;
     bullets.erase(bullets.begin()+point);
     //std::cout << "se borra bala-sprite " << point << "\n";
->>>>>>> master
+    
 }
 

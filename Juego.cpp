@@ -215,22 +215,16 @@ void Juego::ataque()
         {
             if(control->geta(1))
             {
-<<<<<<< HEAD
                 nivel->AtaqueLejano(0);//ataca jugador 0
-=======
                 nivel->crearBala(0,1,400,180,0,20);//dispara
                 //ataca jugador 0
->>>>>>> master
             }
             
             if(control->geta(2))
             {
-<<<<<<< HEAD
                 nivel->AtaqueLejano(1);//atacca jugador 1
-=======
                 nivel->crearBala(0,0,400,210,1,20);//dispara
                 //atacca jugador 1
->>>>>>> master
             }
         }        
     }
