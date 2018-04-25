@@ -16,7 +16,8 @@
 
 class Camara {
 public:
-      //clase singleton
+    
+    //clase singleton
     ~Camara(void);
     static Camara *getInstance()
     {
@@ -36,10 +37,12 @@ public:
     bool mePuedoMover(int xn,int yn);//devuelve true si se puede mover a esa posicion el jugador
     
 private:
+    
     //clase singleton 
     Camara();
     static Camara* unica_instancia;
     //fin clase singleto private
+    
     int x,y=0;//nos servira para saber las posiciones de la camara
     int block = false;//nos servira para saber si esta bloqueada o no
     int minLimite,maxLimite = 0;//los limites de la camara

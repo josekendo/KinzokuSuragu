@@ -12,6 +12,7 @@
  */
 
 #include "Nivel.hpp"
+#include "Hud.hpp"
 
 Nivel* Nivel::unica_instancia = 0;
 

@@ -19,6 +19,7 @@
 #include "TileMap.cpp"
 #include "Controles.h"
 #include "Menus.h"
+#include "Hud.hpp"
 //fin clases basicas
 
 class Motor2D {
@@ -67,6 +68,10 @@ public:
     void drawBala(int point, int x, int y);//pinta la bala en esa posicion
     void matarBala(int point);//elimina el sprite de la bala 
     //fin bala
+    //hud
+    void initHud(int player);
+    void drawHud(int player);
+    //fin hud
 private:
     //clase singleton 
     Motor2D();
@@ -83,6 +88,10 @@ private:
     sf::Clock animaciones;//nos sirve para saber cuando tenemos que cambiar de animacion
     Controles *controles;
     Menus *menus;
+    sf::Text textos[6];//aqui iran los valores de los marcadores
+    sf::Sprite marcadores[6];//aqui iran los marcadores
+    sf::View hud1,hud2;
+    sf::Font fuent;
 };
 
 #endif /* MOTOR2D_HPP */

@@ -40,6 +40,14 @@ public:
     void draw(int modo);//esta funcion llama a motor2d con los valores para pintar sus propiedades 
     
     //fin funciones para nivel
+    
+    //funciones para motor2d
+    
+    int getVida(int player){if(player <= 1){return vidas[0];}else{return vidas[1];}};
+    int getDefensa(int player){if(player <= 1){return defensas[0];}else{return defensas[1];}};
+    int getMunicion(int player){if(player <= 1){return municiones[0];}else{return municiones[1];}};
+    
+    //fin funciones motor2d
 private:
 
     //clase singleton 

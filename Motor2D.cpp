@@ -13,6 +13,7 @@
 
 #include "Motor2D.hpp"
 #include "Juego.hpp"
+
 #define kVel 1
 Motor2D* Motor2D::unica_instancia = 0;
 
@@ -21,6 +22,7 @@ Motor2D::Motor2D()
     window.create(sf::VideoMode(800, 600), "Kinzoku Suragu");
     initMenu();
     window.setFramerateLimit(60);
+    fuent.loadFromFile("resources/Menu/fuente.ttf");
     texturas[0].loadFromFile("resources/SpriteSheet_Character1.png");
     //texturas[1].loadFromFile("resources/SpriteSheet_Character2.png"); FALTA SPRITESHEET JUGADOR 2
     texturas[3].loadFromFile("resources/Hud/life.png");
@@ -360,3 +362,101 @@ void Motor2D::matarBala(int point)
     //std::cout << "se borra bala-sprite " << point << "\n";
 }
 
+void Motor2D::initHud(int player)
+{   
+    if(player <= 1)
+    {
+        hud1 = sf::View(sf::FloatRect(0, 0, 100, 100));
+        marcadores[0].setTexture(texturas[3]);
+        marcadores[1].setTexture(texturas[4]);
+        marcadores[2].setTexture(texturas[5]);
+        marcadores[0].setTextureRect(sf::IntRect(0,0,15,14));
+        marcadores[1].setTextureRect(sf::IntRect(0,0,15,16));
+        marcadores[2].setTextureRect(sf::IntRect(0,0,11,8));
+        marcadores[0].setOrigin(15/2,14/2);
+        marcadores[1].setOrigin(15/2,16/2);
+        marcadores[2].setOrigin(11/2,8/2);
+        marcadores[0].setPosition(265,-26);
+        marcadores[1].setPosition(265,-1);
+        marcadores[2].setPosition(265,24);
+        textos[0].setFont(fuent);
+        textos[0].setColor(sf::Color::Red);
+        textos[0].setString("0");        
+        textos[0].setPosition(280,-50);
+        textos[1].setFont(fuent);
+        textos[1].setColor(sf::Color::Green);
+        textos[1].setString("0");        
+        textos[1].setPosition(280,-25);
+        textos[2].setFont(fuent);
+        textos[2].setColor(sf::Color::Blue);
+        textos[2].setString("0");        
+        textos[2].setPosition(280,0);
+        hud1.setCenter(300,0);
+        hud1.setViewport(sf::FloatRect(0.0f, 0, 0.25f, 0.25f));
+    }
+    
+    if(player == 2)
+    {
+        hud2 = sf::View(sf::FloatRect(0, 0, 100, 100));
+        marcadores[3].setTexture(texturas[3]);
+        marcadores[4].setTexture(texturas[4]);
+        marcadores[5].setTexture(texturas[5]);
+        marcadores[3].setTextureRect(sf::IntRect(0,0,15,14));
+        marcadores[4].setTextureRect(sf::IntRect(0,0,15,16));
+        marcadores[5].setTextureRect(sf::IntRect(0,0,11,8));
+        marcadores[3].setOrigin(15/2,14/2);
+        marcadores[4].setOrigin(15/2,16/2);
+        marcadores[5].setOrigin(11/2,8/2);
+        marcadores[3].setPosition(265,-26);
+        marcadores[4].setPosition(265,-1);
+        marcadores[5].setPosition(265,24);
+        textos[3].setFont(fuent);
+        textos[3].setColor(sf::Color::Red);
+        textos[3].setString("0");        
+        textos[3].setPosition(280,-50);
+        textos[4].setFont(fuent);
+        textos[4].setColor(sf::Color::Green);
+        textos[4].setString("0");        
+        textos[4].setPosition(280,-25);
+        textos[5].setFont(fuent);
+        textos[5].setColor(sf::Color::Blue);
+        textos[5].setString("0");        
+        textos[5].setPosition(280,0);
+        hud2.setCenter(300,0);
+        hud2.setViewport(sf::FloatRect(0.85f, 0, 0.25f, 0.25f));
+    }
+}
+
+void Motor2D::drawHud(int player)
+{
+    Hud *hud = Hud::getInstance();
+    if(player <= 1)
+    {       
+        std::cout << "se pinta draw hud1" << "\n";
+        window.setView(hud1);
+        textos[0].setString(to_string(hud->getVida(1)));
+        window.draw(textos[0]);
+        textos[1].setString(to_string(hud->getDefensa(1)));
+        window.draw(textos[1]);
+        textos[2].setString(to_string(hud->getMunicion(1)));
+        window.draw(textos[2]);
+        window.draw(marcadores[0]);
+        window.draw(marcadores[1]);
+        window.draw(marcadores[2]);
+    }
+    
+    if(player == 2)
+    {
+        std::cout << "se pinta draw hud2" << "\n";
+        window.setView(hud2);
+        textos[3].setString(to_string(hud->getVida(2)));
+        window.draw(textos[3]);
+        textos[4].setString(to_string(hud->getDefensa(2)));
+        window.draw(textos[4]);
+        textos[5].setString(to_string(hud->getMunicion(2)));
+        window.draw(textos[5]);
+        window.draw(marcadores[3]);
+        window.draw(marcadores[4]);
+        window.draw(marcadores[5]);
+    }
+}

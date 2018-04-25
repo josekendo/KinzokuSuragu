@@ -14,6 +14,7 @@
 #include "Estado.hpp"
 #include "Motor2D.hpp"
 #include "Nivel.hpp"
+#include "Hud.hpp"
 
 void Menu::Draw()
 {
@@ -43,9 +44,11 @@ void Jugando::Draw()
 {
      Motor2D *motor2D = Motor2D::getInstance();//clase global
      Nivel *nivel = Nivel::getInstance();//clase global
+     Hud *hud = Hud::getInstance();
      Camara *camara = Camara::getInstance();
      camara->draw();
      nivel->draw();
+     hud->draw(nivel->getModo());
      motor2D->mostrar();
      //std::cout << "Pintar Jugando(Nivel)" << std::endl;
 }
