@@ -44,7 +44,13 @@ public:
     void AtaqueCercano(int jugador);
     void AtaqueLejano(int jugador);
     void IdleJugador(int jugador);
+    
+   
+    
+    
     void draw();//llama a pintar a todas las partes relacionadas con el nivel
+    
+    void BlockJugador(int jugador);
     int getModo();//nos devuelve el modo de juego
     int separacion();//devuelve la separacion entre los jugadores solo en modo 2 si no devuelve 0 siempre
     int notificarActivacion(int x,int y);//este parametro notifica las coordenadas de la camara cada vez que se mueve para darselo a los enemigos

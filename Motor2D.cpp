@@ -91,7 +91,7 @@ void Motor2D::mostrar()
     window.display();
 }
 
-void Motor2D::drawPersonaje(int player,int esta, int fram, int ori, float x,float y, int st)
+void Motor2D::drawPersonaje(int player,int esta, int fram, int ori, float x,float y)
 {
     //std::cout << "draw de motor2dpersonaje player " << player << " estado " << esta << " frame " << fram <<  "\n x " << x << " y " << y << std::endl;
     if (ori == -1)

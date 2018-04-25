@@ -58,7 +58,6 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
 {
     Controles *con = Controles::getInstance();
     con->onTwo();
-    tipo2 = 1;
     modo = 2;
     if(tipo1 == 0)//masculino jugador 1
     {
@@ -174,7 +173,13 @@ void Nivel::IdleJugador(int jugador)
     jugadores[jugador].Idle();//Función de estado default
 }
 
-
+void Nivel::BlockJugador(int jugador)
+{
+    if (jugadores[jugador].isMoving() != 1 )
+    {
+        jugadores[jugador].Block(); //Función para que el personaje Patee (ataquecercano) 
+    }
+}
 
 
 

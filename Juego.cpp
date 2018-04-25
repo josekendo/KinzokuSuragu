@@ -249,19 +249,19 @@ void Juego::defensa()
         {
             if(control->getf(1))
             {
-                //defensa jugador 0
+                nivel->BlockJugador(0);//defensa jugador 0
             }
         }
         else
         {
             if(control->getf(1))
             {
-                //defensa jugador 0
+                nivel->BlockJugador(0);//defensa jugador 0
             }
             
             if(control->getf(2))
             {
-                //defensa jugador 1
+                nivel->BlockJugador(1);//defensa jugador 1
             }
         }      
     }

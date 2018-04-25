@@ -115,6 +115,7 @@ void Jugadores::Kick()
     estado = 3;
     estado_actual = estado;
     frame = 7;
+    stat = 0;
   
     
 }
@@ -123,26 +124,9 @@ void Jugadores::Block()
 {
     estado = 4;
     estado_actual = estado;
-    if (tieneDefensa() == true)
-    {
-        if(proximo <= motor->darAnimacion()) // ANIMACIÓN DE DEFENSA 
-        {
-            proximo = motor->darAnimacion()+frame_refresh;
-
-            if(frame > frame_actual)
-            {
-                frame_actual = frame_actual+1;
-            }
-            else
-            {
-
-            }
-        }
-        motor->drawPersonaje(player-1,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()), stat);
-        //CHECK COLISION == FALSE;
-    
-    }
-    
+    frame = 7;
+    stat = 0;
+       
 }
 
 void Jugadores::Jump()
@@ -152,9 +136,6 @@ void Jugadores::Jump()
     //orientacion = dir;
     frame = 9;
     stat = 0;
-    draw();
-    
-    
 }
 void Jugadores::Die()
 {
@@ -177,7 +158,7 @@ void Jugadores::Die()
 
             }
         }
-        motor->drawPersonaje(player-1,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()), stat);
+        motor->drawPersonaje(player-1,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()));
         //CHECK COLISION == FALSE;
 }
 
@@ -239,11 +220,11 @@ void Jugadores::draw()
     
     if (stat == 1)
     {
-        motor->drawPersonaje(player-1,estado_actual,frame_actual,orientacion, coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY(), stat);
+        motor->drawPersonaje(player-1,estado_actual,frame_actual,orientacion, coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY());
     }
     else if (stat == 0)
     {
-        motor->drawPersonaje(player-1,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()), stat);
+        motor->drawPersonaje(player-1,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()));
     
     }
     
@@ -324,6 +305,15 @@ bool Jugadores::setDanoVida(int dano)
     if(defensa < dano)
     {
         vida = vida-dano;
+    }
+    
+    if(tieneDefensa() == 1)
+    {
+        if (defensa == 100)
+        {
+            vida = vida - (dano/2);
+        }
+    
     }
     
     if(vida > 0)
