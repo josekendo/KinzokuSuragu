@@ -12,6 +12,7 @@
       <itemPath>Enemigos.hpp</itemPath>
       <itemPath>Estado.hpp</itemPath>
       <itemPath>FabricarNivel.h</itemPath>
+      <itemPath>GestionArchivos.hpp</itemPath>
       <itemPath>Hud.hpp</itemPath>
       <itemPath>Juego.hpp</itemPath>
       <itemPath>Jugadores.hpp</itemPath>
@@ -33,6 +34,7 @@
       <itemPath>Enemigos.cpp</itemPath>
       <itemPath>Estado.cpp</itemPath>
       <itemPath>FabricarNivel.cpp</itemPath>
+      <itemPath>GestionArchivos.cpp</itemPath>
       <itemPath>Hud.cpp</itemPath>
       <itemPath>Juego.cpp</itemPath>
       <itemPath>Jugadores.cpp</itemPath>
@@ -119,6 +121,10 @@
       <item path="FabricarNivel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FabricarNivel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GestionArchivos.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GestionArchivos.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Hud.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -209,6 +215,10 @@
       <item path="FabricarNivel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FabricarNivel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GestionArchivos.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GestionArchivos.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Hud.cpp" ex="false" tool="1" flavor2="0">
       </item>
