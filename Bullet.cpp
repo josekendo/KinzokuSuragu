@@ -14,13 +14,15 @@
 #include "Bullet.hpp"
 #include "Motor2D.hpp"
 #include "Camara.hpp"
+using namespace std;
 
-Bullet::Bullet(int tipo, int elemento, int x, int y, int jugador, int dano)
+Bullet::Bullet(int tipo, int elemento, int x, int y, int jugador, int dano, int ori)
 {
     //creamos bala en el motor2d
     Motor2D *motor = Motor2D::getInstance();
-    motor->crearBala(tipo,elemento);
+    motor->crearBala(tipo,elemento, ori);
     //fin de creacion
+    orientacion = ori;
     tipob =tipo;
     elementob = elemento;
     jugadorb = jugador;
@@ -47,10 +49,19 @@ bool Bullet::matarBala(int point)
     return true;
 }
 
-void Bullet::realimentar()
+void Bullet::realimentar(int ori)
 {
     Motor2D *motor = Motor2D::getInstance();
-    coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+velocidad,coordenadas.getCoordenadaY());
+    coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+(velocidad*ori),coordenadas.getCoordenadaY());
+    
+    if(ori == -1)
+        std::cout<< "Orientacion ha cambiado" << ori << endl;
+        std::cout<< "Posicion de bala en X: " << coordenadas.getCoordenadaXI(motor->darUPDATE()) << endl;
+}
+
+int Bullet::getOri()
+{
+    return orientacion;
 }
 
 bool Bullet::sigoViva()
@@ -65,3 +76,5 @@ bool Bullet::sigoViva()
         return true;
     }
 }
+
+

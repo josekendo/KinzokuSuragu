@@ -67,7 +67,7 @@ public:
     
     void initBala(int px, int py, int tipo, int elemento);
     //bala
-    void crearBala(int tipo, int elemento);//crea un sprite de una bala
+    void crearBala(int tipo, int elemento, int ori);//crea un sprite de una bala
     void drawBala(int point, int x, int y);//pinta la bala en esa posicion
     void matarBala(int point);//elimina el sprite de la bala 
     //fin bala

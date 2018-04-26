@@ -184,8 +184,21 @@ void Nivel::AtaqueCercano(int jugador)
 
 void Nivel::AtaqueLejano(int jugador)
 {
+   
+    
+    int x = jugadores[jugador].getX();
+    int y = jugadores[jugador].getY();
+    int elemento = jugadores[jugador].getElement();
+    int tipo = jugadores[jugador].getType();
+    int dano = jugadores[jugador].getDano(elemento, tipo);
+    int ori = jugadores[jugador].getOri();
+    std::cout<< "Orientacion: " << ori << endl;
+    crearBala(tipo, elemento, x, y, jugador, dano, ori);
     jugadores[jugador].Shoot();//Función para que el personaje Dispare (ataquelejano)
+    
 }
+    
+
 
 void Nivel::IdleJugador(int jugador)
 {
@@ -218,15 +231,19 @@ int Nivel::separacion()
     return 0;
 }
 
-void Nivel::crearBala(int tipo, int elemento, int x, int y, int jugador, int dano)
+void Nivel::crearBala(int tipo, int elemento, int x, int y, int jugador, int dano, int ori)
 {
-    bullet.push_back(new Bullet(tipo,elemento,x,y,jugador,dano));
+    bullet.push_back(new Bullet(tipo,elemento,x,y,jugador,dano, ori));
 }
 
 void Nivel::realimentarBalas()
 {
+    
      for(int o = 0; o < bullet.size();o++)
      {
-         bullet[o]->realimentar();
+         
+            bullet[o]->realimentar(bullet[o]->getOri());
+         
      }  
+     
 }

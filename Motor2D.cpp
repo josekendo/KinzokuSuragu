@@ -26,7 +26,7 @@ Motor2D::Motor2D()
     fuent.loadFromFile("resources/Menu/fuente.ttf");
     texturas[0].loadFromFile("resources/SpriteSheet_Character1.png");
     texturas[1].loadFromFile("resources/SpriteSheet_Character2.png");
-    texturas[2].loadFromFile("resources/Bullet_SpriteSheet");
+    texturas[2].loadFromFile("resources/Bullet_SpriteSheet.png");
     //texturas[1].loadFromFile("resources/SpriteSheet_Character2.png"); FALTA SPRITESHEET JUGADOR 2
     texturas[3].loadFromFile("resources/Hud/life.png");
     texturas[4].loadFromFile("resources/Hud/defense.png");
@@ -296,27 +296,45 @@ void Motor2D::initBala(int px, int py, int tipo, int elemento)
 {
     
 }
-void Motor2D::crearBala(int tipo, int elemento)
+void Motor2D::crearBala(int tipo, int elemento, int ori)
 {
     if(tipo == 0)//jugadores
     {
         sf::Sprite *bala = new sf::Sprite;
-        bala->setTexture(texturas[3]);
-        bala->setTextureRect(sf::IntRect(0, 0, 15,14));
+        bala->setTexture(texturas[2]);
+        bala->setOrigin(48/2, 48/2);
+        bala->setScale(sf::Vector2f(2, 2));
+        bala->setTextureRect(sf::IntRect(0, 0, 48,48));
+        int fram;
+        
+        if (ori == -1)
+        {
+            fram = 1;
+        }
+        else if (ori == 1)
+        {
+            fram = 0;
+        }
         
         //color elemento
         if(elemento == 0)
-            bala->setColor(sf::Color::White);
+            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
+            //bala->setColor(sf::Color::White);
         else if(elemento == 1)
-            bala->setColor(sf::Color::Blue);
+            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
+            //bala->setColor(sf::Color::Blue);
         else if(elemento == 2)
-            bala->setColor(sf::Color::Cyan);
+            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
+            //bala->setColor(sf::Color::Cyan);
         else if(elemento == 3)
-            bala->setColor(sf::Color::Green);
+            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
+            //bala->setColor(sf::Color::Green);
         else if(elemento == 4)
-            bala->setColor(sf::Color::Magenta);
+            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
+            //bala->setColor(sf::Color::Magenta);
         else if(elemento == 5)
-            bala->setColor(sf::Color::Red);
+            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
+            //bala->setColor(sf::Color::Red);
             
         bullets.push_back(bala);
         //std::cout << "bullets guarda " << int(bullets.size()) << " numero de balas.\n";
@@ -410,7 +428,7 @@ void Motor2D::drawHud(int player)
     Hud *hud = Hud::getInstance();
     if(player <= 1)
     {       
-        std::cout << "se pinta draw hud1" << "\n";
+        //std::cout << "se pinta draw hud1" << "\n";
         window.setView(hud1);
         textos[0].setString(to_string(hud->getVida(1)));
         window.draw(textos[0]);
@@ -425,7 +443,7 @@ void Motor2D::drawHud(int player)
     
     if(player == 2)
     {
-        std::cout << "se pinta draw hud2" << "\n";
+        //std::cout << "se pinta draw hud2" << "\n";
         window.setView(hud2);
         textos[3].setString(to_string(hud->getVida(2)));
         window.draw(textos[3]);

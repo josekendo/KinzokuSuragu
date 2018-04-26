@@ -40,6 +40,10 @@ Jugadores::Jugadores()
     orientacion = 1;
     stat = 0; //dice si el personaje está en movimiento o no
     
+    
+    posX_actual = getX();
+    posY_actual = getY();
+    
 }
 
 Jugadores::Jugadores(const Jugadores& orig) {
@@ -80,6 +84,7 @@ void Jugadores::Walk(int dir)
     //SI DIR = -1 VA A LA IZQUIERDA
     
     orientacion = dir;
+    orientacion_actual = orientacion;
     stat = 1;
     if (dir == 1)
     {   
@@ -378,3 +383,24 @@ int Jugadores::getX()
 {
     return coordenadas.getCoordenadaX();
 }
+
+int Jugadores::getY()
+{
+    return coordenadas.getCoordenadaY();
+}
+
+int Jugadores::getElement()
+{
+    return elemento;
+}
+
+int Jugadores::getType()
+{
+    return tipo;
+}
+
+int Jugadores::getOri()
+{
+    return orientacion_actual;
+}
+

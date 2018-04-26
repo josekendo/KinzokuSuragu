@@ -18,15 +18,18 @@
 
 class Bullet {
 public:
-    Bullet(int tipo, int elemento, int x, int y, int jugador, int dano);
+    Bullet(int tipo, int elemento, int x, int y, int jugador, int dano, int ori);
     virtual ~Bullet();
     void draw(int point);//se le llama a pintar esa bala en el motor
     bool sigoViva();//si sigue viva devuelve true si no false
     bool matarBala(int point);//mata a su sprite en el motor 
-    void realimentar();//realimentamos su velocidad
+    int getOri();
+    void realimentar(int ori);//realimentamos su velocidad
+    
 private:
     
     Coordenadas coordenadas = Coordenadas(400,30);
+    int orientacion;
     int tipob;
     int elementob;
     int jugadorb;

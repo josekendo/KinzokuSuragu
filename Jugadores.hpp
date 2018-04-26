@@ -38,6 +38,7 @@ public:
     bool moverAtras();//se movera hacia atras (aplicar colisiones o factores que hagan que no se mueva)
     bool isMoving();
     int getX();//obtenemos la coordenada x
+    int getY();//obtenemos la coordenada y
 
     
     void Idle();
@@ -47,6 +48,10 @@ public:
     void Block();
     void Jump();
     void Die();
+    
+    int getElement();
+    int getType();
+    int getOri();
     
 
 private:
@@ -63,7 +68,10 @@ private:
     int frame_refresh;//velocidad de refresco de la animacion en milisegundos
     int proximo;//nos da el siguiente tiempo para poner la animacion
     int orientacion;
+    int orientacion_actual;
     int stat;
+    int posX_actual; //posicion en x del jugador
+    int posY_actual; //posicion en y del jugador
     //bool mover;
     //bool moverAtras;
 };
