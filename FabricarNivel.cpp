@@ -25,7 +25,7 @@ FabricarNivel::FabricarNivel(const FabricarNivel& orig) {
 FabricarNivel::~FabricarNivel() {
 }
 
-void FabricarNivel::construirNivel(char *nivel)
+void FabricarNivel::construirNivel(char *nivel, char *tileset)
 {
     //se llama desde aqui a motor2d para que cargue las diferentes capas
     Motor2D *motor2D = Motor2D::getInstance();//clase global
@@ -51,9 +51,9 @@ void FabricarNivel::construirNivel(char *nivel)
             int *cap2 = FabricarNivel::Split(capa2,',');
             int *cap3 = FabricarNivel::Split(capa3,',');
             
-            motor2D->cargarCapa(cap1,1,32,16,8,"resources/tilesetbase.png");
-            motor2D->cargarCapa(cap2,2,32,16,8,"resources/tilesetbase.png");
-            motor2D->cargarCapa(cap3,3,32,16,8,"resources/tilesetbase.png");
+            motor2D->cargarCapa(cap1,1,32,350,26,tileset);
+            motor2D->cargarCapa(cap2,2,32,350,26,tileset);
+            motor2D->cargarCapa(cap3,3,32,350,26,tileset);
               
         }
     }

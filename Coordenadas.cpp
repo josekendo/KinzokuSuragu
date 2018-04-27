@@ -106,3 +106,12 @@ void Coordenadas::setCoordenadasA(int iax, int iay)
     ax = iax;
     ay = iay;
 }
+
+//resetea las coordenadas
+void Coordenadas::ResetCoordenadas(int xn, int yn)
+{
+    x = xn;
+    y = yn;
+    ax = xn;
+    ay= yn;
+}

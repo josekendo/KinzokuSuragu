@@ -23,7 +23,7 @@ Camara::Camara()
     x = 400;
     y = 0;
     minLimite = 400;
-    maxLimite = 4000;
+    maxLimite = 11150;
     Motor2D *motor = Motor2D::getInstance();
     motor->initCamera();
 }

@@ -251,19 +251,19 @@ void Juego::defensa()
         Nivel *nivel = Nivel::getInstance();//clase global
         if(nivel->getModo() == 1)
         {
-            if(control->getf(1))
+            if(control->getf(1) && control->geta(1) == false)
             {
                 nivel->BlockJugador(0);//defensa jugador 0
             }
         }
         else
         {
-            if(control->getf(1))
+            if(control->getf(1) && control->geta(1) == false)
             {
                 nivel->BlockJugador(0);//defensa jugador 0
             }
             
-            if(control->getf(2))
+            if(control->getf(2) && control->geta(2) == false)
             {
                 nivel->BlockJugador(1);//defensa jugador 1
             }
@@ -279,21 +279,24 @@ void Juego::quieto()
         Nivel *nivel = Nivel::getInstance();//clase global
         if(nivel->getModo() == 1)
         {
-            if(control->getf(1))
+            if(!(control->geta(0) || control->getf(0) || control->getl(0) || control->getr(0) || control->getd(0) || control->getu(0)))
             {
                 //defensa jugador 0
+                nivel->IdleJugador(0);
             }
         }
         else
         {
-            if(control->getf(1))
+            if(!(control->geta(1) || control->getf(1) || control->getl(1) || control->getr(1) || control->getd(1) || control->getu(1)))
             {
                 //defensa jugador 0
+                nivel->IdleJugador(1);
             }
             
-            if(control->getf(2))
+            if(!(control->geta(0) || control->getf(0) || control->getl(0) || control->getr(0) || control->getd(0) || control->getu(0)))
             {
                 //defensa jugador 1
+                nivel->IdleJugador(0);
             }
         }      
     }
@@ -343,12 +346,15 @@ void Juego::Ejecucion()
         {
             //en este momento realizamos logica 
             //si hay un boton presionado hacemos la logica que sea
+            quieto();
             derecha();            
             izquierda();
             ataque();
             defensa();
             agacharse();
             salto();
+            
+            
             Nivel *niv = Nivel::getInstance();
             niv->realimentarBalas();
             motor->reiniciarUPDATE();

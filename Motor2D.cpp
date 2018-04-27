@@ -42,15 +42,15 @@ bool Motor2D::cargarCapa(int* matriz, int capa, int longitud, int anchura, int a
     {
         case 1:
             if (ca1.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
-                ca1.setPosition(0,43);
+                ca1.setPosition(-32,-532);
         break;
         case 2:
             if (ca2.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
-                ca2.setPosition(0,43);
+                ca2.setPosition(-32,-532);
         break;
         case 3:
             if (ca3.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
-                ca3.setPosition(0,43);
+                ca3.setPosition(-32,-532);
         break;
     }
 }
@@ -211,32 +211,44 @@ void Motor2D::Inputs()
                         
                         if(eventos.key.code == controles->moveRIGHT())
                             controles->pr(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveLEFT())
+                        if(eventos.key.code == controles->moveLEFT())
                             controles->pl(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveUP())
+                        if(eventos.key.code == controles->moveUP())
                             controles->pu(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveDOWN())
+                        if(eventos.key.code == controles->moveDOWN())
                             controles->pd(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveAtaque())
+                        if(eventos.key.code == controles->moveAtaque())
                             controles->pa(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveDefensa())
+                        if(eventos.key.code == controles->moveDefensa())
                             controles->pf(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveSalir())
+                        if(eventos.key.code == controles->moveSalir())
+                        {
+                            std::cout << "salir"<<"\n";
                             window.close();
-                        
+                        }
                         break;
                 case sf::Event::KeyReleased:
+                        
+                    if(controles->whatPlayer(eventos.key.code) == 1)
+                        {
+                            controles->cambiarControl(1);
+                        }
+                        else if(controles->whatPlayer(eventos.key.code) == 2)
+                        {
+                            controles->cambiarControl(2);
+                        }
+                    
                         if(eventos.key.code == controles->moveRIGHT())
                             controles->dr(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveLEFT())
+                        if(eventos.key.code == controles->moveLEFT())
                             controles->dl(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveUP())
+                        if(eventos.key.code == controles->moveUP())
                             controles->du(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveDOWN())
+                        if(eventos.key.code == controles->moveDOWN())
                             controles->dd(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveAtaque())
+                        if(eventos.key.code == controles->moveAtaque())
                             controles->da(controles->whatPlayer(eventos.key.code));
-                        else if(eventos.key.code == controles->moveDefensa())
+                        if(eventos.key.code == controles->moveDefensa())
                             controles->df(controles->whatPlayer(eventos.key.code));
         }
             

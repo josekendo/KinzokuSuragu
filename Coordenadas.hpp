@@ -26,7 +26,7 @@ public:
     int getCoordenadaXI(float tiempo);//devuelve coordenada interpolada x
     int getCoordenadaYI(float tiempo);//devuelve coordenada interpolada y
     void setCoordenadasA(int iax, int iay);
-   
+    void ResetCoordenadas(int xn, int yn);
 private:
     int x,y;//estados nuevos
     int ax,ay;//son los estados anteriores de ax e ay

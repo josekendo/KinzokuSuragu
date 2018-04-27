@@ -26,16 +26,16 @@ void Nivel::cargarNivel(int niv)
     switch(niv)
     {
         case 1:
-            fabrica.construirNivel("resources/niveles/1.xml");
+            fabrica.construirNivel("resources/niveles/1.xml","resources/1.png");
         break;
         case 2:
-            fabrica.construirNivel("resources/niveles/2.xml");
+            fabrica.construirNivel("resources/niveles/2.xml","resources/2.png");
         break;
         case 3:
-            fabrica.construirNivel("resources/niveles/3.xml");
+            fabrica.construirNivel("resources/niveles/3.xml","resources/3.png");
         break;
         case 4:
-            fabrica.construirNivel("resources/niveles/4.xml");
+            fabrica.construirNivel("resources/niveles/4.xml","resources/4.png");
         break;
     }
 }
@@ -76,6 +76,8 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     {
         jugadores[1].initJugador(1,2);  
     }
+    jugadores[0].ResetCoordenadas(40,48);
+    jugadores[1].ResetCoordenadas(80,48);
 }
 
 void Nivel::draw()

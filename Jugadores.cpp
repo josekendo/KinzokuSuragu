@@ -39,11 +39,6 @@ Jugadores::Jugadores()
     weapon = 0; //arma con la que inicia
     orientacion = 1;
     stat = 0; //dice si el personaje está en movimiento o no
-    
-    
-    posX_actual = getX();
-    posY_actual = getY();
-    
 }
 
 Jugadores::Jugadores(const Jugadores& orig) {
@@ -66,8 +61,7 @@ void Jugadores::addMuerte()
 
 void Jugadores::Idle()
 {
-    estado = 0;
-    estado_actual = estado;
+    estado_actual = 0;
     frame = 7;
     stat = 0;
     //draw();
@@ -128,11 +122,23 @@ void Jugadores::Kick()
 
 void Jugadores::Block()
 {
-    estado = 4;
-    estado_actual = estado;
-    frame = 7;
-    stat = 0;
-       
+    if(estado == 4)//esto significa que ya estaba este estado por lo que tenemos que ponerlo en el frame de bloqueo
+    {
+        estado_actual = 4;
+        if(frame_actual >= 4)
+        {
+            frame_actual = 4;
+            stat = 0;
+            frame = 7;
+        }
+    }
+    else
+    {
+        estado = 4;
+        estado_actual = estado;
+        frame = 7;
+        stat = 0;    
+    }
 }
 
 void Jugadores::Jump()
@@ -404,3 +410,7 @@ int Jugadores::getOri()
     return orientacion_actual;
 }
 
+void Jugadores::ResetCoordenadas(int xn, int yn)
+{
+    coordenadas.ResetCoordenadas(xn,yn);
+}

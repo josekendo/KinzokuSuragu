@@ -53,7 +53,7 @@ public:
     void dr(int play){if(play == 1){right = false;}else{right2=false;}};//se despulsa derecha
     void dl(int play){if(play == 1){left = false;}else{left2=false;}};//se despulsa izquierda
     void da(int play){if(play == 1){ataque = false;}else{ataque2=false;}};//se despulsa ataque
-    void df(int play){if(play == 1){defensa = true;}else{defensa2=true;}};//se despulsa defensa
+    void df(int play){if(play == 1){defensa = false;}else{defensa2=false;}};//se despulsa defensa
     bool getu(int play){if(play == 1){return up;}else{return up2;}};
     bool getd(int play){if(play == 1){return down;}else{return down2;}};
     bool getr(int play){if(play == 1){return right;}else{return right2;}};

@@ -53,6 +53,7 @@ public:
     int getType();
     int getOri();
     
+    void ResetCoordenadas(int xn, int yn);//nos sirve para resetear las coordenadas del jugador
 
 private:
     int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;  //stats  
