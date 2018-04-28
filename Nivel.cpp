@@ -249,3 +249,19 @@ void Nivel::realimentarBalas()
      }  
      
 }
+
+int * Nivel::devolverEstadisticas()
+{
+    int * jug = new int[6];
+    int * jug1 = jugadores[0].devolverEstadisticas();
+    int * jug2 = jugadores[1].devolverEstadisticas();
+    jug[0] = jug1[0];
+    jug[1] = jug1[1];
+    jug[2] = jug1[2];
+    jug[3] = jug2[0];
+    jug[4] = jug2[1];
+    jug[5] = jug2[2];
+    delete jug1;
+    delete jug2;
+    return jug;
+}
