@@ -12,6 +12,8 @@
  */
 
 #include "Menus.h"
+#include "Juego.hpp"
+#include "GestionArchivos.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -23,7 +25,12 @@ Menus::Menus(float x,float y,int tipo) {
         std::cout << "error: cargando el menu" << std::endl;
     }
     Estadisticas = NULL;
+    
+    if(tipo == 8)
+    Menus::cambioEstado(8);
+    else
     Menus::cambioEstado(0);    
+    
 }
 
 Menus::Menus(const Menus& orig) {
@@ -45,7 +52,6 @@ void Menus::Intro(int x, int y)
     switch(estado)
     {
     //entramos segun el pick del raton
-    //std::cout << x << "- -" << y << std::endl;
     case 0:
         if(x > 330 && x < 605 && y > 50 && y < 100)
         {
@@ -144,6 +150,47 @@ void Menus::Intro(int x, int y)
                 }
             }
         }
+                    
+            if(x >=  100 && x <= 350 & y >= 150 && y <= 300)
+            {
+                if(sc.getPosition().y == -270)
+                {
+                    //nivel 1
+                    Juego *juego = Juego::getInstance();
+                    Nivel *nivel = Nivel::getInstance();
+                    juego ->cargarNivel(1);
+                    nivel ->juegoIndividual(0);
+                }
+            }
+
+            if(x >=  450 && x <= 700 & y >= 150 && y <= 300)
+            {
+                if(sc.getPosition().y == -270)
+                {
+                    //nivel 2
+                    Juego *juego = Juego::getInstance();
+                    Nivel *nivel = Nivel::getInstance();
+                    juego ->cargarNivel(2);
+                    nivel ->juegoIndividual(0);
+                }
+            }
+
+            /*if(x >=  100 && x <= 350 & y >= 400 && y <= 530)
+            {
+                if(yn == -270)
+                {
+                    //nivel 3
+                }
+            }
+
+            if(x >=  450 && x <= 700 & y >= 400 && y <= 530)
+            {
+                if(yn == -270)
+                {
+                    //nivel 4
+                    
+                }
+            }*/
     break;
     case 2:
         if(x >= 760 && x <= 780 && y >= 30 && y <= 570)
@@ -174,8 +221,49 @@ void Menus::Intro(int x, int y)
                     }
                     anterior = anterior+anchuraPaso;
                 }
+            }            
+        }
+        
+            if(x >=  100 && x <= 350 & y >= 150 && y <= 300)
+            {
+                if(sc.getPosition().y == -270)
+                {
+                    //nivel 1
+                    Juego *juego = Juego::getInstance();
+                    Nivel *nivel = Nivel::getInstance();
+                    juego ->cargarNivel(1);
+                    nivel ->juegoMultijugador(0,0);
+                }
             }
-        }        
+
+            if(x >=  450 && x <= 700 & y >= 150 && y <= 300)
+            {
+                if(sc.getPosition().y == -270)
+                {
+                    //nivel 2
+                    Juego *juego = Juego::getInstance();
+                    Nivel *nivel = Nivel::getInstance();
+                    juego ->cargarNivel(2);
+                    nivel ->juegoMultijugador(0,0);
+                }
+            }
+
+            /*if(x >=  100 && x <= 350 & y >= 400 && y <= 530)
+            {
+                if(yn == -270)
+                {
+                    //nivel 3
+                }
+            }
+
+            if(x >=  450 && x <= 700 & y >= 400 && y <= 530)
+            {
+                if(yn == -270)
+                {
+                    //nivel 4
+                    
+                }
+            }*/
     break;
     }
 }
@@ -352,6 +440,9 @@ void Menus::draw(sf::RenderWindow &ventana)
         case 5:
             Menus::drawConfiguracion(ventana);
             break;
+        case 8:
+            Menus::drawEstadisticas(ventana);
+            break;
     }
 }
 
@@ -493,13 +584,16 @@ void Menus::drawConfiguracion(sf::RenderWindow &ventana)
 void Menus::cambioEstado(int nuevo)
 {
     //esto reinicializa todas las variables y carga la nueva ventana
-    if(nuevo >= 0 && nuevo <= 5)
+    if(nuevo >= 0 && nuevo <= 8)
     {
         int Max = 4;
         int NumeroNiveles = 12;//esto se obtiene de FabricarNivel
         int Pages = NumeroNiveles/Max;
         int contador = 0;
+        std::ostringstream os;
         estado =nuevo;
+        GestionArchivos *gestion = GestionArchivos::getInstance();
+        int *info = gestion->devolverInformacion();
         switch(estado)
         {
             case 0:
@@ -621,7 +715,17 @@ void Menus::cambioEstado(int nuevo)
                         textoNiveles[a].setString(std::to_string(a+1));
                         textoNiveles[a].setPosition(niveles[a].getPosition().x+20,niveles[a].getPosition().y);
                         tituloNiveles[a].setFont(fuente);
-                        tituloNiveles[a].setString("Titulo \n nivel");//esto lo obtendremos de fabricarnivel
+                        if(a == 0)
+                            tituloNiveles[a].setString("Selva \nAlienigena");                            
+                        else if(a == 1)
+                        {
+                            tituloNiveles[a].setString("Ciudad \nVerde");
+                        }
+                        else
+                        {
+                            tituloNiveles[a].setString("\nProximamente");//esto lo obtendremos de gestionarchivos
+                            niveles[a].setColor(sf::Color::Yellow);
+                        }
                         tituloNiveles[a].setPosition(niveles[a].getPosition().x+90,niveles[a].getPosition().y+30);                    
                     contador++;
                 }
@@ -671,7 +775,17 @@ void Menus::cambioEstado(int nuevo)
                         textoNiveles[a].setString(std::to_string(a+1));
                         textoNiveles[a].setPosition(niveles[a].getPosition().x+20,niveles[a].getPosition().y);
                         tituloNiveles[a].setFont(fuente);
-                        tituloNiveles[a].setString("Titulo \n nivel");//esto lo obtendremos de fabricarnivel
+                        if(a == 0)
+                            tituloNiveles[a].setString("Selva \nAlienigena");                            
+                        else if(a == 1)
+                        {
+                            tituloNiveles[a].setString("Ciudad \nVerde");
+                        }
+                        else
+                        {
+                            tituloNiveles[a].setString("\nProximamente");//esto lo obtendremos de gestionarchivos
+                            niveles[a].setColor(sf::Color::Yellow);
+                        }
                         tituloNiveles[a].setPosition(niveles[a].getPosition().x+90,niveles[a].getPosition().y+30);                    
                     contador++;
                 }                
@@ -698,20 +812,34 @@ void Menus::cambioEstado(int nuevo)
                 {
                     Estadisticas[a].setFont(fuente);
                 }
-                Estadisticas[0].setString("Enemigos derrotados: 20");
+                os << "Dolor recibido:" << info[4]+info[5];
+                Estadisticas[0].setString(os.str());
                 Estadisticas[0].setPosition(30,-150);
-                Estadisticas[1].setString("Dolor total causado: 156982");
+                os.str("");
+                os << "Dolor total causado:" << info[6]+info[7];
+                Estadisticas[1].setString(os.str());
                 Estadisticas[1].setPosition(30,-110);
-                Estadisticas[2].setString("Objetos Cogidos: 500");
+                os.str("");
+                os << "Objetos Cogidos:" << info[11];
+                Estadisticas[2].setString(os.str());
                 Estadisticas[2].setPosition(30,-70);
-                Estadisticas[3].setString("Tiempo de Juego: 2 horas ,13 minutos");
+                os.str("");
+                os << "Tiempo de Juego:" << info[10] << " Minutos";
+                Estadisticas[3].setString(os.str());
                 Estadisticas[3].setPosition(30,-30);
-                Estadisticas[4].setString("Partidas Individuales: 10");
+                os.str("");
+                os << "Partidas Individuales:" << info[8];
+                Estadisticas[4].setString(os.str());
                 Estadisticas[4].setPosition(30,10);
-                Estadisticas[5].setString("Partidas Dos Jugadores: 0");
+                os.str("");
+                os << "Partidas Dos Jugadores:" << info[9];                
+                Estadisticas[5].setString(os.str());
                 Estadisticas[5].setPosition(30,50);
-                Estadisticas[6].setString("Numero de veces Muerto: 1696");
+                os.str("");
+                os << "Numero de veces Muerto:" << info[12];                 
+                Estadisticas[6].setString(os.str());
                 Estadisticas[6].setPosition(30,90);
+                delete info;
                 break;
             case 4:
                 bgNivels.setTexture(bgNiveles);
@@ -764,6 +892,57 @@ void Menus::cambioEstado(int nuevo)
                 conf[1].setTexture(c2);
                 conf[1].setPosition(500,-160);                
                 break;
+            case 8:
+                bgNivels.setTexture(bgNiveles);
+                bgNivels.setScale(1.4f,1.0f);
+                bgNivels.setPosition(0,-300);
+                scroll.setSmooth(true);
+                sc.setTexture(scroll);
+                sc.setPosition(760,-270);
+                sc.setScale(0.6,78.0f/(float)Pages);
+                tituloVentana.setPosition(50,-270);
+                tituloVentana.setString("Estadisticas de Nivel");
+                tituloVentana.setFont(fuente);
+                titulo.setSmooth(true);
+                titul.setTexture(titulo);
+                titul.setPosition(20,-270);
+                titul.setScale(1.8f,1.8f);
+                titul.setColor(sf::Color(255,255,255,180));
+                //los valores de la estadistica se obtendran de FabricarNivel
+                Estadisticas = new sf::Text[7];
+                for(int a = 0; a < 7;a++)
+                {
+                    Estadisticas[a].setFont(fuente);
+                }
+                os << "Presione Defensa para volver al menu" << info[4]+info[5];
+                Estadisticas[0].setString(os.str());
+                Estadisticas[0].setPosition(30,-150);
+                os.str("");
+                os << "Dolor Causado Jugador 1:" << info[6]+info[7];
+                Estadisticas[1].setString(os.str());
+                Estadisticas[1].setPosition(30,-110);
+                os.str("");
+                os << "Dolor Causado Jugador 2:" << info[11];
+                Estadisticas[2].setString(os.str());
+                Estadisticas[2].setPosition(30,-70);
+                os.str("");
+                os << "Dolor recibido Jugador 1:" << info[10];
+                Estadisticas[3].setString(os.str());
+                Estadisticas[3].setPosition(30,-30);
+                os.str("");
+                os << "Dolor recibido Jugador 2:" << info[8];
+                Estadisticas[4].setString(os.str());
+                Estadisticas[4].setPosition(30,10);
+                os.str("");
+                os << "Numero de veces Muerto Jugador 1" << info[9];                
+                Estadisticas[5].setString(os.str());
+                Estadisticas[5].setPosition(30,50);
+                os.str("");
+                os << "Numero de veces Muerto Jugador 2:" << info[12];                 
+                Estadisticas[6].setString(os.str());
+                Estadisticas[6].setPosition(30,90);
+                delete info;
+                break;                
         }
     }
 }

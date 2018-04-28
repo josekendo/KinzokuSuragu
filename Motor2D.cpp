@@ -468,3 +468,8 @@ void Motor2D::drawHud(int player)
         window.draw(marcadores[5]);
     }
 }
+
+void Motor2D::finalNivel()
+{
+    menus->cambioEstado(8);
+}

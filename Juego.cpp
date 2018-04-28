@@ -122,10 +122,9 @@ void Juego::salto()
     Nivel *nivel = Nivel::getInstance();//clase global
     if(estado->QueEstado() == 1)
     {
-        if(control->getu(1))
-        {
+        if(control->getu(2))
+        {  
             motor->menuUP();
-            nivel->brincarJugador(0);
         }
     }
     //jugando
@@ -159,7 +158,7 @@ void Juego::agacharse()
     //menu
     if(estado->QueEstado() == 1)
     {
-        if(control->getd(1))
+        if(control->getd(2))
         {
             motor->menuDOWN();
         }
@@ -195,7 +194,7 @@ void Juego::ataque()
     //menu
     if(estado->QueEstado() == 1)
     {
-        if(control->geta(1))
+        if(control->geta(2))
         {
             motor->menuSPACE();
         }
@@ -243,6 +242,7 @@ void Juego::defensa()
     //menu
     if(estado->QueEstado() == 1)
     {
+        if(control->getf(2))
         motor->menuATRAS();
     }
     //jugando
@@ -273,7 +273,7 @@ void Juego::defensa()
 
 void Juego::quieto()
 {
-    //
+
     if(estado->QueEstado() == 2)
     {
         Nivel *nivel = Nivel::getInstance();//clase global
@@ -315,16 +315,6 @@ void Juego::mouse(int boton, int x, int y)
             motor->menuATRAS();
         }
     }
-    //jugando
-    if(estado->QueEstado() == 2)
-    {
-    
-    }
-    //estadistica
-    if(estado->QueEstado() == 3)
-    {
-    
-    }
 }
 
 //Nivel
@@ -346,17 +336,40 @@ void Juego::Ejecucion()
         {
             //en este momento realizamos logica 
             //si hay un boton presionado hacemos la logica que sea
-            quieto();
-            derecha();            
-            izquierda();
-            ataque();
-            defensa();
-            agacharse();
-            salto();
+            if(estado->QueEstado() == 1)
+            {
+                ataque();
+                defensa();
+                agacharse();
+                salto();
+            }
             
+            if(estado->QueEstado() == 2)
+            {
+                quieto();
+                derecha();            
+                izquierda();
+                ataque();
+                defensa();
+                agacharse();
+                salto();
+                Nivel *niv = Nivel::getInstance();
+                niv->realimentarBalas();
+            }
             
-            Nivel *niv = Nivel::getInstance();
-            niv->realimentarBalas();
+            if(estado->QueEstado() == 3)
+            {
+               ataque(); 
+               defensa();
+            }
+            
             motor->reiniciarUPDATE();
         }
+}
+
+void Juego::finalNivel()
+{
+    estado=&menu;
+    motor->finalNivel();
+    control->offTwo();
 }

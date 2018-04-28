@@ -57,7 +57,7 @@ public:
     void crearBala(int tipo, int elemento,int x,int y,int jugador, int dano, int ori);//creamos una nueva bala
     void matarBala(int point);//elimina la bala
     void realimentarBalas();//le da propulsion a la bala
-    int * devolverEstadisticas();//devuelve las estadisticas de los jugadores 
+    int * devolverEstadisticas();//devuelve las estadisticas de los jugadores
 private:
     //clase singleton 
     Nivel();

@@ -53,6 +53,8 @@ void Nivel::juegoIndividual(int tipo)
     {
       jugadores[0].initJugador(1,1);  
     }    
+    
+    jugadores[0].ResetCoordenadas(40,48);
 }
 //carga de dos jugadores
 void Nivel::juegoMultijugador(int tipo1, int tipo2)

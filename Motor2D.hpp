@@ -75,6 +75,7 @@ public:
     void initHud(int player);
     void drawHud(int player);
     //fin hud
+    void finalNivel();//cambia el estado de menu
 private:
     //clase singleton 
     Motor2D();
