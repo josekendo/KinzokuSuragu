@@ -56,7 +56,6 @@ void GestionArchivos::crearArchivos()
     #endif
 
     FILE * archivo;
-    std::cout << "Se crean archivos de guardado" << "\n";
     #if defined _MSC_VER
         _mkdir(dir.c_str());
         archivo = fopen(arch.c_str(),"w");
@@ -66,12 +65,47 @@ void GestionArchivos::crearArchivos()
         archivo = fopen(arch.c_str(),"w");
         fclose(archivo);
     #endif
-    
+
+    //escribimos por primera vez en el archivo
+    std::ofstream buffer;    
+    buffer.open(arch,std::ofstream::out);
+    if(buffer.fail())
+    {
+        std::cout << "No se pudo abrir el archivo" << "\n";
+    }
+    else
+    {
+        int *info = devolverInformacion();
+        for(int a=0;a < 13;a++)
+        {
+            buffer << info[a] << "\n";
+        }
+        buffer.close();
+        std::cout << "Se han creado archivos de guardado.";
+    }
 }
 
 void GestionArchivos::cargarArchivos()
 {
+    std::ifstream buffer;
+    std::string arch;
+    #if defined _MSC_VER
+    arch = "saves\save";
+    #elif defined __GNUC__
+    arch = "saves/save";
+    #endif
 
+    buffer.open(arch.c_str(),std::ifstream::in);
+    int valores[13];
+    int contador = 0;
+    std::string texto;
+    while(!buffer.eof())
+    {
+        getline(buffer,texto);
+        //valores[contador] = std::stoi(texto.c_str());
+        //std::cout << contador << " "<< texto << "\n";
+        contador++;
+    }
 }
 
 void GestionArchivos::guardarArchivos(bool victoria, int modo)

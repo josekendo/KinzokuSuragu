@@ -22,6 +22,7 @@
 #include <string>
 #include "tinyxml.h"
 #include <dirent.h>
+#include <fstream>
 #if defined _MSC_VER
 #include <direct.h>
 #elif defined __GNUC__
