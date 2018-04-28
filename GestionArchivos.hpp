@@ -21,6 +21,13 @@
 #include <iosfwd>
 #include <string>
 #include "tinyxml.h"
+#include <dirent.h>
+#if defined _MSC_VER
+#include <direct.h>
+#elif defined __GNUC__
+#include <sys/types.h>
+#include <sys/stat.h>
+#endif
 
 class GestionArchivos {
 public:

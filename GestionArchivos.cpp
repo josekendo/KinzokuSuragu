@@ -47,7 +47,26 @@ GestionArchivos::~GestionArchivos()
 
 void GestionArchivos::crearArchivos()
 {
+    std::string dir,arch;
+    dir = "saves";
+    #if defined _MSC_VER
+    arch = "saves\save";
+    #elif defined __GNUC__
+    arch = "saves/save";
+    #endif
+
+    FILE * archivo;
     std::cout << "Se crean archivos de guardado" << "\n";
+    #if defined _MSC_VER
+        _mkdir(dir.c_str());
+        archivo = fopen(arch.c_str(),"w");
+        fclose(archivo);
+    #elif defined __GNUC__
+        mkdir(dir.c_str(),0777);
+        archivo = fopen(arch.c_str(),"w");
+        fclose(archivo);
+    #endif
+    
 }
 
 void GestionArchivos::cargarArchivos()
@@ -62,7 +81,29 @@ void GestionArchivos::guardarArchivos(bool victoria, int modo)
 
 bool GestionArchivos::ExisteArchivos()
 {
-    return false;
+    std::string dir,arch;
+    dir = "saves";
+    #if defined _MSC_VER
+    arch = "saves\save";
+    #elif defined __GNUC__
+    arch = "saves/save";
+    #endif
+    
+    if(opendir(dir.c_str()))
+    {
+        if(fopen(arch.c_str(),"r"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
 }
 
 int * GestionArchivos::devolverInformacion()
