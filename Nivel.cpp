@@ -122,6 +122,21 @@ void Nivel::draw()
              //std::cout << "se borra bala " << a << "\n";
          }
      }
+      for(int a = 0; a < enemigos.size();a++)
+     {
+         if(enemigos[a]->sigoVivo())
+            enemigos[a]->draw();
+         else
+         {
+             
+             bool ver = enemigos[a]->matarEnemigo(a);
+             delete enemigos[a];
+             enemigos[a] = NULL;
+             enemigos.erase(enemigos.begin()+a);
+             //std::cout << "se borra bala " << a << "\n";
+         }
+     }
+         
      
      motor2D->drawCap2();
 }
@@ -250,6 +265,16 @@ void Nivel::realimentarBalas()
          
      }  
      
+}
+
+void Nivel::crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo)
+{
+    enemy = tipo;
+    enemigos.push_back(new Enemigos(vid,ataq,ataqfisico,element,defen,tipo));
+}
+
+void Nivel::realimentarEnemigo()
+{
 }
 
 int * Nivel::devolverEstadisticas()

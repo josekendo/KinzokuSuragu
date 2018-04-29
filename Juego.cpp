@@ -322,6 +322,7 @@ void Juego::cargarNivel(int niv)
 {
     Nivel *nivel = Nivel::getInstance();//clase global
     nivel->cargarNivel(niv);//llamamos a cargar nivel de nivel
+    nivel->crearEnemigo(20,2,400,2,10,0);
 }
 
 void Juego::cargaCompleta()
@@ -355,6 +356,7 @@ void Juego::Ejecucion()
                 salto();
                 Nivel *niv = Nivel::getInstance();
                 niv->realimentarBalas();
+                niv->realimentarEnemigo();
             }
             
             if(estado->QueEstado() == 3)

@@ -31,6 +31,12 @@ Motor2D::Motor2D()
     texturas[3].loadFromFile("resources/Hud/life.png");
     texturas[4].loadFromFile("resources/Hud/defense.png");
     texturas[5].loadFromFile("resources/Hud/loa.png");
+    texturas[6].loadFromFile("resources/blob.png");
+    texturas[7].loadFromFile("resources/miniblob.png");
+    texturas[8].loadFromFile("resources/wizard3.png");
+    texturas[9].loadFromFile("resources/aliendog2.png");
+    texturas[10].loadFromFile("resources/zombiewalk2.png");
+    texturas[11].loadFromFile("resources/saiyan2.png");
     initCamera();
     controles = Controles::getInstance();
     initMenu();
@@ -134,6 +140,89 @@ void Motor2D::initPersonaje(int player, int tipo)
         jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48, 48,48));
         jugadores[player-1].scale(sf::Vector2f(2, 2));
     }
+}
+
+void Motor2D::drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float y)
+{
+    enemigos[enemigo].setPosition(x,y);
+    if(enemigo==0){
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*80, esta*300, ori*80,80));
+    }
+    else if(enemigo==1){
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*80, esta*300, ori*80,80));
+    }
+    else if(enemigo==2){
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*640, esta*750, ori*640, 750));
+    }
+    else if(enemigo==3){
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*65, esta*300, ori*65, 32));
+    }
+    else if(enemigo==4){
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*392, esta*550, ori*392, 550));
+    }
+    else if(enemigo==5){
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*95, esta*95, ori*95, 95));
+    }
+    window.draw(enemigos[enemigo]);
+}
+
+
+void Motor2D::initEnemigo(int enemigo, int tipo)
+{
+    if(tipo == 0)//jugadores
+    {
+        sf::Sprite *enemy = new sf::Sprite;
+        enemy->setTexture(texturas[6]);
+        enemy->setTextureRect(sf::IntRect(0, 0, 15,14));
+        tip = enemigo;
+        if(enemigo == 0){
+        enemigos[enemigo].setTexture(texturas[6]);
+        enemigos[enemigo].setOrigin(228/2,350/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*80, 0*300, 80,80));
+        enemigos[enemigo].scale(sf::Vector2f(1.5f, 1.5f));
+        }
+        else if(enemigo == 1){
+        enemigos[enemigo].setTexture(texturas[7]);
+        enemigos[enemigo].setOrigin(228/2,400/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*80, 0*300, 80,80));
+        enemy->scale(sf::Vector2f(1.5f, 1.5f));
+        }
+        else if(enemigo == 2){
+        enemigos[enemigo].setTexture(texturas[8]);
+        enemigos[enemigo].setOrigin(600/2,2600/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*640, 0*750, 640, 750));
+        enemigos[enemigo].scale(sf::Vector2f(0.2f, 0.2f));
+        }
+        else if(enemigo == 3){
+        enemigos[enemigo].setTexture(texturas[9]);
+        enemigos[enemigo].setOrigin(228/2,300/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*65, 0*300, 65, 32));
+        enemigos[enemigo].scale(sf::Vector2f(1.5f, 1.5f));
+        }
+        else if(enemigo == 4){
+        enemigos[enemigo].setTexture(texturas[10]);
+        enemigos[enemigo].setOrigin(228/2,300/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*392, 0*550, 392, 550));
+        enemigos[enemigo].scale(sf::Vector2f(0.2f, 0.2f));
+        }
+        else if(enemigo == 5){
+        enemigos[enemigo].setTexture(texturas[11]);
+        enemigos[enemigo].setOrigin(228/2,300/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*95, 0*95, 95, 95));
+        enemigos[enemigo].scale(sf::Vector2f(2.0f, 2.0f));
+        }
+            
+    }
+    
+}
+
+void Motor2D::matarEnemigo(int point)
+{
+   /* delete enemigos[point];
+    enemigos[point] = NULL;
+    enemigos.erase(enemigos.begin()+point);*/
+    //std::cout << "se borra bala-sprite " << point << "\n";
+    
 }
 
 void Motor2D::initCamera()
