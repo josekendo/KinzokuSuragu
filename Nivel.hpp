@@ -19,6 +19,7 @@
 #include "Enemigos.hpp"
 #include "FabricarNivel.h"
 #include "Bullet.hpp"
+#include "Elementos.hpp"
 #include <vector> 
 #include <iostream>
 #include "Controles.h"
@@ -60,6 +61,8 @@ public:
     void crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo);//creamos una nueva bala
     void realimentarEnemigo();//le da propulsion a la bala
     int * devolverEstadisticas();//devuelve las estadisticas de los jugadores
+    
+    void collectElement();
 private:
     //clase singleton 
     Nivel();
@@ -67,8 +70,10 @@ private:
     //fin clase singleto private
     FabricarNivel fabrica;
     Jugadores jugadores[2];//array de jugadores
+  
     std::vector<Enemigos*> enemigos;//array autodimensionable de enemigos
-    vector<Bullet*> bullet;//array autodimensionable de proyectiles
+    std::vector<Elementos*> elementos;//array autodimensionable de elementos a colectar
+    std::vector<Bullet*> bullet;//array autodimensionable de proyectiles
     int modo;//modo un jugador(0), dos jugadores(1)
     int enemy;
 };  

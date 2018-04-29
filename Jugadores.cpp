@@ -62,7 +62,8 @@ void Jugadores::addMuerte()
 
 void Jugadores::Idle()
 {
-    estado_actual = 0;
+    estado = 0;
+    estado_actual = estado;
     frame = 7;
     stat = 0;
     //draw();
@@ -77,7 +78,7 @@ void Jugadores::Walk(int dir)
     
     //SI DIR = 1 VA A LA DERECHA
     //SI DIR = -1 VA A LA IZQUIERDA
-    
+     estado_actual = estado;
     orientacion = dir;
     orientacion_actual = orientacion;
     stat = 1;
@@ -90,7 +91,7 @@ void Jugadores::Walk(int dir)
         coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-kVel,coordenadas.getCoordenadaYI(motor->darUPDATE()));
     }
     //draw();
-    estado_actual = estado;
+   
     //std::cout<< "Mover está en estado: " << mover() << std::endl;
 }
 
@@ -98,6 +99,8 @@ void Jugadores::Walk(int dir)
 
 void Jugadores::Shoot()
 {
+    frame = 7;
+    
     if (stat == 0)
     {
         estado = 2;

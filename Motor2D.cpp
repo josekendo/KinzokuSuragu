@@ -37,6 +37,7 @@ Motor2D::Motor2D()
     texturas[9].loadFromFile("resources/aliendog2.png");
     texturas[10].loadFromFile("resources/zombiewalk2.png");
     texturas[11].loadFromFile("resources/saiyan2.png");
+    texturas[12].loadFromFile("resources/Element_SpriteSheet.png");
     initCamera();
     controles = Controles::getInstance();
     initMenu();
@@ -561,4 +562,45 @@ void Motor2D::drawHud(int player)
 void Motor2D::finalNivel()
 {
     menus->cambioEstado(8);
+}
+
+
+void Motor2D::initEls(int elemento)
+{  
+   
+    sf::Sprite *el = new sf::Sprite;
+    el->setTexture(texturas[12]);
+    el->setOrigin(48/2,48/2);
+    el->scale(sf::Vector2f(2, 2));
+    
+    int el;
+    
+    if (elemento == 0 || elemento == 5)
+        el = 0;
+    else if (elemento == 1 || elemento == 6)
+        el = 1;
+    else if (elemento == 2 || elemento == 7)
+        el = 2;
+    else if (elemento == 3 || elemento == 8)
+        el = 3;
+    else if (elemento == 4 || elemento == 9)
+        el = 4;
+        
+        
+    el->setTextureRect(sf::IntRect(el*48, 0, 48,48));
+    
+    elementos.push_back(el);
+        
+}
+void Motor2D::DrawEls(int elemento, int x, int y)
+{  
+    elementos[elemento]->setPosition(x,y);
+    window.draw(*elementos[elemento]);
+    
+}
+
+void Motor2D::deleteEl(int elemento)
+{
+    delete elementos[elemento];
+    elementos[elemento] = NULL;
 }

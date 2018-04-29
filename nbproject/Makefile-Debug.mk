@@ -39,6 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Camara.o \
 	${OBJECTDIR}/Controles.o \
 	${OBJECTDIR}/Coordenadas.o \
+	${OBJECTDIR}/Elemento.o \
+	${OBJECTDIR}/Elementos.o \
 	${OBJECTDIR}/Enemigos.o \
 	${OBJECTDIR}/Estado.o \
 	${OBJECTDIR}/FabricarNivel.o \
@@ -108,6 +110,16 @@ ${OBJECTDIR}/Coordenadas.o: Coordenadas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Coordenadas.o Coordenadas.cpp
+
+${OBJECTDIR}/Elemento.o: Elemento.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Elemento.o Elemento.c
+
+${OBJECTDIR}/Elementos.o: Elementos.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Elementos.o Elementos.cpp
 
 ${OBJECTDIR}/Enemigos.o: Enemigos.cpp 
 	${MKDIR} -p ${OBJECTDIR}

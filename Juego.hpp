@@ -19,6 +19,7 @@
 #include "Motor2D.hpp"
 #include "Camara.hpp"
 #include "Controles.h"
+#include "Elementos.hpp"
 
 class Juego {
 public:

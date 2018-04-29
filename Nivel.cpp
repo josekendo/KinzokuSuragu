@@ -55,6 +55,11 @@ void Nivel::juegoIndividual(int tipo)
     }    
     
     jugadores[0].ResetCoordenadas(40,48);
+    
+    for (int i = 0; i > 5; i++)
+    {
+        elementos[i]->initElemento(i, 1);
+    }
 }
 //carga de dos jugadores
 void Nivel::juegoMultijugador(int tipo1, int tipo2)
@@ -80,6 +85,11 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     }
     jugadores[0].ResetCoordenadas(40,48);
     jugadores[1].ResetCoordenadas(80,48);
+    
+     for (int i = 0; i > 10; i++)
+    {
+        elementos[i]->initElemento(i, 2);
+    }
 }
 
 void Nivel::draw()
@@ -93,6 +103,10 @@ void Nivel::draw()
          //std::cout << "draw de nivel m 1" << std::endl;
          jugadores[0].draw();
          //jugadores[0].Idle(1);
+         for (int i = 0; i >= 5; i++)
+         {
+             elementos[i]->drawElemento();
+         }
      }
      else
      {
@@ -103,6 +117,11 @@ void Nivel::draw()
         //jugadores[0].Idle(1); //Estado default
          jugadores[1].draw();
          //jugadores[1].Idle(1); //Estado default
+         
+         for (int i = 0; i > 10; i++)
+         {
+             elementos[i]->drawElemento();
+         }
    
      } 
      //pintamos balas
@@ -150,10 +169,6 @@ void Nivel::moverJugador(int jugador)
     {
         jugadores[jugador].Walk(1);//Función para desplazar a personaje hacia adelante
     
-    }
-    else if (jugadores[jugador].mover() == 0)
-    {
-        jugadores[jugador].Idle();//Función de estado default
     }
     
 }
@@ -292,3 +307,78 @@ int * Nivel::devolverEstadisticas()
     delete jug2;
     return jug;
 }
+
+/*void Nivel::collectElement()
+{
+    if (modo == 1) //SI SOLO HAY UN JUGADOR
+    {
+        for (int i = 0; i > 5; i++)
+        {
+            if (jugadores[0].getX() == elementos[i].getX() && jugadores[0].getY() == elementos[i].getY()) // SI HAY COLISION DE JUGADOR Y ELEMENTO
+            {
+                if (i == 0)
+                    jugadores[0].cambiarElemento(i);
+                else if (i == 1)
+                    jugadores[0].cambiarElemento(i);
+                else if (i == 2)
+                    jugadores[0].cambiarElemento(i);
+                else if (i == 3)
+                    jugadores[0].cambiarElemento(i);
+                else if (i == 4)
+                    jugadores[0].cambiarElemento(i);
+                
+                
+                elementos[i].eraseEl(i);
+            
+            }
+        
+        
+        }
+    }
+    
+    else if (modo == 2) //SI HAY DOS JUGADORES
+    {
+        
+        for (int k = 0; k > 10; k++)
+        {
+            if (jugadores[0].getX() == elementos[k].getX() && jugadores[0].getY() == elementos[k].getY()) // SI HAY COLISION DE JUGADOR Y ELEMENTO
+            {
+                
+                if (k == 0 || k == 5)
+                    jugadores[0].cambiarElemento(0);
+                else if (k == 1|| k == 6)
+                    jugadores[0].cambiarElemento(1);
+                else if (k == 2|| k == 7)
+                    jugadores[0].cambiarElemento(2);
+                else if (k == 3|| k == 8)
+                    jugadores[0].cambiarElemento(3);
+                else if (k == 4|| k == 9)
+                    jugadores[0].cambiarElemento(4);
+                
+                elementos[k].eraseEl(k);
+            
+            }
+            
+            if (jugadores[1].getX() == elementos[k].getX() && jugadores[1].getY() == elementos[k].getY()) // SI HAY COLISION DE JUGADOR Y ELEMENTO
+            {
+                
+                 if (k == 0 || k == 5)
+                    jugadores[1].cambiarElemento(0);
+                else if (k == 1|| k == 6)
+                    jugadores[1].cambiarElemento(1);
+                else if (k == 2|| k == 7)
+                    jugadores[1].cambiarElemento(2);
+                else if (k == 3|| k == 8)
+                    jugadores[1].cambiarElemento(3);
+                else if (k == 4|| k == 9)
+                    jugadores[1].cambiarElemento(4);
+                
+                elementos[k].eraseEl(k);
+            
+            }
+        
+        }
+    
+    }
+
+}*/
