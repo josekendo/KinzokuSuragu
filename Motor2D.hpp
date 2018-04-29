@@ -59,6 +59,9 @@ public:
     void drawCamera();//seleccionamos la camara para pintar en ella
     void cambiarPosicionCamera(int x,int y);//cambia la posicion de la view
     
+    void initEnemigo(int tipo, int elemento);//crea un sprite de un enemigo
+    void drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float y);//pinta el enemigo en esa posicion
+    void matarEnemigo(int point);//elimina el sprite del enemigo 
     //relojes
     int darUPDATE();
     void reiniciarUPDATE();
@@ -75,6 +78,7 @@ public:
     void initHud(int player);
     void drawHud(int player);
     //fin hud
+    void finalNivel();//cambia el estado de menu
 private:
     //clase singleton 
     Motor2D();
@@ -85,7 +89,7 @@ private:
     sf::Sprite jugadores[2];//jugadores
     
     std::vector<sf::Sprite*> bullets;//proyectiles
-    std::vector<sf::Sprite*> enemigos;//enemigos vector
+    sf::Sprite enemigos[6];//enemigos vector
     sf::Texture texturas[10];//tilesets
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto
@@ -96,6 +100,7 @@ private:
     sf::Sprite marcadores[6];//aqui iran los marcadores
     sf::View hud1,hud2;
     sf::Font fuent;
+    int tip;
 };
 
 #endif /* MOTOR2D_HPP */

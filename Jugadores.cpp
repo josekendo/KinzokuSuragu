@@ -39,6 +39,7 @@ Jugadores::Jugadores()
     weapon = 0; //arma con la que inicia
     orientacion = 1;
     stat = 0; //dice si el personaje está en movimiento o no
+    danoecho = 0;
 }
 
 Jugadores::Jugadores(const Jugadores& orig) {
@@ -317,6 +318,7 @@ bool Jugadores::setDanoVida(int dano)
     if(defensa < dano)
     {
         vida = vida-dano;
+        addDano((dano));
     }
     
     if(tieneDefensa() == 1)
@@ -324,6 +326,7 @@ bool Jugadores::setDanoVida(int dano)
         if (defensa == 100)
         {
             vida = vida - (dano/2);
+            addDano((dano/2));
         }
     
     }
@@ -413,4 +416,13 @@ int Jugadores::getOri()
 void Jugadores::ResetCoordenadas(int xn, int yn)
 {
     coordenadas.ResetCoordenadas(xn,yn);
+}
+
+int * Jugadores::devolverEstadisticas()
+{
+    int * estas = new int[3];//muertes, danoecho, danototal(recibido)
+    estas[2] = danototal;
+    estas[1] = danoecho;
+    estas[0] = muertes;
+    return estas;
 }

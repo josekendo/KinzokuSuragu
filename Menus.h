@@ -17,8 +17,6 @@
 
 #include <SFML/Graphics.hpp>
 
-
-
 class Menus {
 public:
     Menus(float x,float y, int tipo);
@@ -27,10 +25,13 @@ public:
     void draw(sf::RenderWindow &ventana);
     void MoverArriba();
     void MoverAbajo();
+    void MoverIzquierda();
+    void MoverDerecha();
     void Intro();
     void Intro(int x,int y);
     void volverMenus();
     void cierrePunteros();
+    void cambioEstado(int nuevo);
 private:
     int seleccion;//la opcion seleccionada[General]
     int estado; //en que parte del menu nos encontramos[General]
@@ -66,7 +67,6 @@ private:
     void drawEstadisticas(sf::RenderWindow &ventana);
     void drawCreditos(sf::RenderWindow &ventana);
     void drawConfiguracion(sf::RenderWindow &ventana);
-    void cambioEstado(int nuevo);
 };
 
 #endif	// MENUS_H

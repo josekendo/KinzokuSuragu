@@ -53,6 +53,8 @@ void Nivel::juegoIndividual(int tipo)
     {
       jugadores[0].initJugador(1,1);  
     }    
+    
+    jugadores[0].ResetCoordenadas(40,48);
 }
 //carga de dos jugadores
 void Nivel::juegoMultijugador(int tipo1, int tipo2)
@@ -120,6 +122,21 @@ void Nivel::draw()
              //std::cout << "se borra bala " << a << "\n";
          }
      }
+      for(int a = 0; a < enemigos.size();a++)
+     {
+         if(enemigos[a]->sigoVivo())
+            enemigos[a]->draw();
+         else
+         {
+             
+             bool ver = enemigos[a]->matarEnemigo(a);
+             delete enemigos[a];
+             enemigos[a] = NULL;
+             enemigos.erase(enemigos.begin()+a);
+             //std::cout << "se borra bala " << a << "\n";
+         }
+     }
+         
      
      motor2D->drawCap2();
 }
@@ -248,4 +265,30 @@ void Nivel::realimentarBalas()
          
      }  
      
+}
+
+void Nivel::crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo)
+{
+    enemy = tipo;
+    enemigos.push_back(new Enemigos(vid,ataq,ataqfisico,element,defen,tipo));
+}
+
+void Nivel::realimentarEnemigo()
+{
+}
+
+int * Nivel::devolverEstadisticas()
+{
+    int * jug = new int[6];
+    int * jug1 = jugadores[0].devolverEstadisticas();
+    int * jug2 = jugadores[1].devolverEstadisticas();
+    jug[0] = jug1[0];
+    jug[1] = jug1[1];
+    jug[2] = jug1[2];
+    jug[3] = jug2[0];
+    jug[4] = jug2[1];
+    jug[5] = jug2[2];
+    delete jug1;
+    delete jug2;
+    return jug;
 }

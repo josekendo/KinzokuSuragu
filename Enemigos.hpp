@@ -14,11 +14,12 @@
 #ifndef ENEMIGOS_HPP
 #define ENEMIGOS_HPP
 #include "Coordenadas.hpp"
+#include "Motor2D.hpp"
 
 class Enemigos {
 public:
     Enemigos();
-    Enemigos(int vid, int ataq, int ataqfisico,int element,int defen);
+    Enemigos(int vid, int ataq, int ataqfisico,int element,int defen, int tipo);
     Enemigos(const Enemigos& orig);
     virtual ~Enemigos();
     int getVida();//devuelve la vida del personaje restante(100 maximo)
@@ -29,9 +30,31 @@ public:
     void cambiarElemento(int element);//cambia al elemento pasado por parametro: 0(neutral),1(aire),2(tierra),3(agua),4(fuego),5(metal) - El mejor
     //estadisticas
     void addDano(int dano);//se agrega el dano realizado al marcador
+    void draw();//se le llama a pintar esa bala en el motor
+    bool sigoVivo();//si sigue viva devuelve true si no false
+    bool matarEnemigo(int point);//mata a su sprite en el motor 
+    void realimentar();//realimentamos su velocidad
 private:
-    int vida,defensa,ataque,ataquefisico,danototal,elemento;    
+    int vida,defensa,ataque,ataquefisico,danototal,elemento, velocidad;    
     Coordenadas coordenadas;
+    int tipo;//masculino 0, femenino 1
+    int enemigo;
+    int player;//numero de jugador
+    int weapon; //tipo de arma
+    Motor2D *motor;
+    int estado;//nos servira para saber cuantos estados tiene la animacion
+    int frame;//nos sirve para saber cuantos frames tiene la animacion
+    int estado_actual;//estado en el que estamos
+    int frame_actual;//frame en el que estamos
+    int frame_refresh;//velocidad de refresco de la animacion en milisegundos
+    int proximo;//nos da el siguiente tiempo para poner la animacion
+    int orientacion;
+    int orientacion_actual;
+    int stat;
+    int posX_actual; //posicion en x del jugador
+    int posY_actual; //posicion en y del jugador
+    int danoecho;
+    int danorecibido;
 };
 
 #endif /* ENEMIGOS_HPP */

@@ -20,7 +20,16 @@
 #include <iostream>
 #include <iosfwd>
 #include <string>
-#include "tinyxml.h"
+#include <dirent.h>
+#include <fstream>
+#include <sstream>
+#include "Nivel.hpp"
+#if defined _MSC_VER
+#include <direct.h>
+#elif defined __GNUC__
+#include <sys/types.h>
+#include <sys/stat.h>
+#endif
 
 class GestionArchivos {
 public:
@@ -37,8 +46,8 @@ public:
     void crearArchivos();//crea los archivos de guardado, si existe los sobreescribe
     bool ExisteArchivos();//comprueba si existen archivos de guardado
     void cargarArchivos();//carga todos los archivos de guardado en memoria en el caso de que no exista los crea llamando a creararchivos
-    void guardarArchivos(bool victoria,int modo);//esto es llamado en estadisticas para guardar la informacion nueva, no se guarda configuracion de teclado, esta funcion llama a jugadores para obtener sus valores
-    
+    void guardarArchivos();//sobreescribe la informacion del save por lo que hay en memoria
+    void guardarValores(bool victoria,int modo);//esto es llamado en estadisticas para guardar la informacion nueva, no se guarda configuracion de teclado, esta funcion llama a jugadores para obtener sus valores
     int * devolverInformacion();
 
 private:

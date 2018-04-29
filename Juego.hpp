@@ -49,6 +49,7 @@ public:
     void quieto();
     void mouse(int boton, int x, int y);
 //fin inputs
+    void finalNivel();//se llamara cuando haya terminado nivel
 private:
     
     //clase singleton 
