@@ -565,27 +565,27 @@ void Motor2D::finalNivel()
 }
 
 
-void Motor2D::initEls(int elemento)
+void Motor2D::initEls(int el)
 {  
    
-    elementos[elemento].setTexture(texturas[12]);
-    elementos[elemento].setOrigin(48/2,48/2);
-    elementos[elemento].scale(sf::Vector2f(2, 2));
+    elementos[el].setTexture(texturas[12]);
+    elementos[el].setOrigin(48/2,48/2);
+    elementos[el].scale(sf::Vector2f(2, 2));
     
     int ele;
     
-    if (elemento == 0 || elemento == 5)
+    if (el == 0 || el == 5)
         ele = 0;
-    else if (elemento == 1 || elemento == 6)
+    else if (el == 1 || el == 6)
         ele = 1;
-    else if (elemento == 2 || elemento == 7)
+    else if (el == 2 || el == 7)
         ele = 2;
-    else if (elemento == 3 || elemento == 8)
+    else if (el == 3 || el == 8)
         ele = 3;
-    else if (elemento == 4 || elemento == 9)
+    else if (el == 4 || el == 9)
         ele = 4;
     
-    elementos[elemento].setTextureRect(sf::IntRect(ele*48, 0, 48,48));
+    elementos[el].setTextureRect(sf::IntRect(el*48, 0, 48,48));
         
 }
 
