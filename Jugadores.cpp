@@ -15,7 +15,7 @@
 #include "Camara.hpp"
 #include "Nivel.hpp"
 #include <iostream>
-#define kVel 4
+#define kVel 5
 using namespace std;
 
 Jugadores::Jugadores() 
@@ -85,6 +85,8 @@ void Jugadores::Walk(int dir)
     if (dir == 1)
     {   
         coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+kVel,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+        //posX = coordenadas.getCoordenadaX();
+        //std::cout<<"Nueva posicion en X"<<posX<<endl;
     }
     else if (dir == -1)
     {

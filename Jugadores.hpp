@@ -77,6 +77,8 @@ private:
     int posY_actual; //posicion en y del jugador
     int danoecho;
     int danorecibido;
+    int posX;
+    int posY;
     //bool mover;
     //bool moverAtras;
 };

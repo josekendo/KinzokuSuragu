@@ -62,7 +62,7 @@ public:
     void realimentarEnemigo();//le da propulsion a la bala
     int * devolverEstadisticas();//devuelve las estadisticas de los jugadores
     
-    void collectElement();
+    void collectElement(int jugador);
     
 private:
     //clase singleton 

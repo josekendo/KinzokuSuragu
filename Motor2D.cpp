@@ -37,7 +37,7 @@ Motor2D::Motor2D()
     texturas[9].loadFromFile("resources/aliendog2.png");
     texturas[10].loadFromFile("resources/zombiewalk2.png");
     texturas[11].loadFromFile("resources/saiyan2.png");
-    texturas[12].loadFromFile("resources/Element_SpriteSheet.png");
+    texturas[12].loadFromFile("resources/Element_SpriteS.png");
     initCamera();
     controles = Controles::getInstance();
     initMenu();
@@ -423,19 +423,17 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
             bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
             //bala->setColor(sf::Color::White);
         else if(elemento == 1)
-            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
+            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
             //bala->setColor(sf::Color::Blue);
         else if(elemento == 2)
-            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
+            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
             //bala->setColor(sf::Color::Cyan);
         else if(elemento == 3)
-            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
+            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
             //bala->setColor(sf::Color::Green);
         else if(elemento == 4)
-            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
+            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
             //bala->setColor(sf::Color::Magenta);
-        else if(elemento == 5)
-            bala->setTextureRect(sf::IntRect(0, 48*elemento, 48,48));
             //bala->setColor(sf::Color::Red);
             
         bullets.push_back(bala);
@@ -569,11 +567,8 @@ void Motor2D::initEls(int el)
 {  
    
     elementos[el].setTexture(texturas[12]);
-    elementos[el].setOrigin(48/2,48/2);
-    elementos[el].scale(sf::Vector2f(2, 2));
     
     int ele;
-    
     if (el == 0 || el == 5)
         ele = 0;
     else if (el == 1 || el == 6)
@@ -585,7 +580,9 @@ void Motor2D::initEls(int el)
     else if (el == 4 || el == 9)
         ele = 4;
     
-    elementos[el].setTextureRect(sf::IntRect(el*48, 0, 48,48));
+    elementos[el].setTextureRect(sf::IntRect(ele*48, 0, 48,48));
+    elementos[el].setOrigin(48/2,48/2);
+    elementos[el].scale(sf::Vector2f(2, 2));
         
 }
 
