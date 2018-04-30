@@ -193,7 +193,7 @@ bool Enemigos::sigoVivo()
 bool Enemigos::activacion()
 {
     Camara *cam = Camara::getInstance();
-    if(coordenadas.getCoordenadaX() > cam->coordenadaX()+400)
+    if(coordenadas.getCoordenadaX() > cam->coordenadaX()+600)
     {
         return false;
     }

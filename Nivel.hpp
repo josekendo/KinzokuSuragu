@@ -76,6 +76,7 @@ private:
     vector<Bullet*> bullet;//array autodimensionable de proyectiles
     int modo;//modo un jugador(0), dos jugadores(1)
     int enemy;
+    int nivel;
 };  
 
 #endif /* NIVEL_HPP */

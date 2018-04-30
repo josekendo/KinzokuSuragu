@@ -180,7 +180,7 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         enemigos[enemigo].setTexture(texturas[6]);
         enemigos[enemigo].setOrigin(228/2,350/2);
         enemigos[enemigo].setTextureRect(sf::IntRect(0*80, 0*300, 80,80));
-        enemigos[enemigo].scale(sf::Vector2f(1.5f, 1.5f));
+        enemigos[enemigo].scale(sf::Vector2f(1.0f, 1.0f));
         }
         else if(enemigo == 1){
         enemigos[enemigo].setTexture(texturas[7]);
@@ -219,7 +219,7 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
 
 void Motor2D::matarEnemigo(int point)
 {
-   /* delete enemigos[point];
+   /*delete enemigos[point];
     enemigos[point] = NULL;
     enemigos.erase(enemigos.begin()+point);*/
     //std::cout << "se borra bala-sprite " << point << "\n";

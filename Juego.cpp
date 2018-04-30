@@ -329,12 +329,25 @@ void Juego::cargarNivel(int niv)
     Nivel *nivel = Nivel::getInstance();//clase global
     nivel->cargarNivel(niv);//llamamos a cargar nivel de nivel
     if(niv==1){
-    nivel->crearEnemigo(20,1,4,2,0,1,700,222);
-    nivel->crearEnemigo(20,1,4,2,0,1,2100,222);
+    nivel->crearEnemigo(20,1,4,2,10,1,700,222);
+    nivel->crearEnemigo(20,1,4,2,10,1,1400,222);
+    nivel->crearEnemigo(20,1,4,2,10,1,2100,222);
+    nivel->crearEnemigo(20,1,4,2,10,1,2800,222);
+    nivel->crearEnemigo(40,2,4,2,20,0,3200,382);
+    nivel->crearEnemigo(20,1,4,2,10,1,4200,222);
+    nivel->crearEnemigo(20,1,4,2,10,1,4900,318);
+    nivel->crearEnemigo(20,1,4,2,10,1,5600,318);
+    nivel->crearEnemigo(20,1,4,2,10,1,6500,318);
+    nivel->crearEnemigo(20,1,4,2,10,1,7000,254);
+    nivel->crearEnemigo(20,1,4,2,10,1,7700,254);
+    nivel->crearEnemigo(20,1,4,2,10,1,8400,222);
+    nivel->crearEnemigo(20,1,4,2,10,1,9000,382);
+    nivel->crearEnemigo(20,1,4,2,10,1,9800,254);
+    nivel->crearEnemigo(60,3,5,2,30,2,10500,222);
     }
     else if(niv==2){
-    nivel->crearEnemigo(60,2,4,2,10,4,700,222);
-    nivel->crearEnemigo(60,2,4,2,10,4,2100,222);
+    nivel->crearEnemigo(40,2,4,2,10,3,600,382);
+    nivel->crearEnemigo(40,2,4,2,10,3,2100,382);
     }
 }
 

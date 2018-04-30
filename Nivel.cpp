@@ -27,9 +27,11 @@ void Nivel::cargarNivel(int niv)
     {
         case 1:
             fabrica.construirNivel("resources/niveles/1.xml","resources/1.png");
+            nivel = 1;
         break;
         case 2:
             fabrica.construirNivel("resources/niveles/2.xml","resources/2.png");
+            nivel = 2;
         break;
         case 3:
             fabrica.construirNivel("resources/niveles/3.xml","resources/3.png");
@@ -99,8 +101,15 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
 void Nivel::draw()
 {
      Motor2D *motor2D = Motor2D::getInstance();//clase global
+     if(nivel==1){
      motor2D->drawCap3();
      motor2D->drawCap1();
+     }
+     else{
+     motor2D->drawCap3();
+     motor2D->drawCap1();
+     motor2D->drawCap2();
+     }
      //pintamos a enemigos y jugadores
      if(modo == 1)
      {
@@ -144,16 +153,18 @@ void Nivel::draw()
             enemigos[a]->draw();
          else
          {
+             if(enemigos[a]->activacion()==true){
              bool ver = enemigos[a]->matarEnemigo(a);
              delete enemigos[a];
              enemigos[a] = NULL;
              enemigos.erase(enemigos.begin()+a);
-             //std::cout << "se borra bala " << a << "\n";
+             }
          }
      }
          
-     
+     if(nivel==1){
      motor2D->drawCap2();
+     }
 }
 
 void Nivel::moverJugador(int jugador)
