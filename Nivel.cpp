@@ -23,6 +23,7 @@ Nivel::Nivel()
 
 void Nivel::cargarNivel(int niv)
 {
+    level = niv;
     switch(niv)
     {
         case 1:
@@ -55,7 +56,15 @@ void Nivel::juegoIndividual(int tipo)
       jugadores[0].initJugador(1,1);  
     }    
     
-    jugadores[0].ResetCoordenadas(40,48);
+    switch(level)
+    {
+        case 1:
+            jugadores[0].ResetCoordenadas(40,48);
+            break;
+        case 2:
+            jugadores[0].ResetCoordenadas(40,48);
+            break;
+    }
     
     for (int i=0; i<10; i++)
     {
@@ -84,8 +93,17 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     {
         jugadores[1].initJugador(1,2);  
     }
-    jugadores[0].ResetCoordenadas(40,48);
-    jugadores[1].ResetCoordenadas(80,48);
+    switch(level)
+    {
+        case 1:
+            jugadores[0].ResetCoordenadas(40,48);
+            jugadores[1].ResetCoordenadas(80,48);
+            break;
+        case 2:
+            jugadores[0].ResetCoordenadas(40,48);
+            jugadores[1].ResetCoordenadas(80,48);
+            break;
+    }
     for (int i=0; i<10; i++)
     {
       elementos[i].initEl(i);
@@ -219,7 +237,7 @@ void Nivel::AtaqueLejano(int jugador)
     int tipo = jugadores[jugador].getType();
     int dano = jugadores[jugador].getDano(elemento, tipo);
     int ori = jugadores[jugador].getOri();
-    std::cout<< "Orientacion: " << ori << endl;
+    //std::cout<< "Orientacion: " << ori << endl;
     crearBala(tipo, elemento, x, y, jugador, dano, ori);
     jugadores[jugador].Shoot();//Función para que el personaje Dispare (ataquelejano)
     
@@ -317,7 +335,7 @@ void Nivel::collectElement(int jugador)
         
         if (jugadores[jugador].getX() == elementos[i].getX() && jugadores[jugador].getY() == elementos[i].getY()) // SI HAY COLISION DE JUGADOR Y ELEMENTO
         {
-            std::cout<<"Recogió el elemento"<<endl;
+            //std::cout<<"Recogió el elemento"<<endl;
             if (i == 0 || i == 5)
                 jugadores[jugador].cambiarElemento(0);
             else if (i == 1 || i == 6)
@@ -337,4 +355,9 @@ void Nivel::collectElement(int jugador)
 Nivel::~Nivel()
 {
     unica_instancia = 0;
+}
+
+void Nivel::resetJugador(int jug,int xr,int yr)
+{
+    jugadores[jug].ResetCoordenadas(xr,yr);
 }

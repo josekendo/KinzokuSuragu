@@ -260,7 +260,6 @@ void Juego::defensa()
             if(control->getf(1) && control->geta(1) == false)
             {
                 nivel->BlockJugador(0);//defensa jugador 0
-                finalNivel();
             }
         }
         else
@@ -329,13 +328,15 @@ void Juego::cargarNivel(int niv)
 {
     Nivel *nivel = Nivel::getInstance();//clase global
     nivel->cargarNivel(niv);//llamamos a cargar nivel de nivel
-    if(niv==1){
-    nivel->crearEnemigo(20,1,4,2,0,1,700,222);
-    nivel->crearEnemigo(20,1,4,2,0,1,2100,222);
+    if(niv==1)
+    {
+        nivel->crearEnemigo(20,1,4,2,0,1,700,222);
+        nivel->crearEnemigo(20,1,4,2,0,1,2100,222);
     }
-    else if(niv==2){
-    nivel->crearEnemigo(60,2,4,2,10,4,700,222);
-    nivel->crearEnemigo(60,2,4,2,10,4,2100,222);
+    else if(niv==2)
+    {
+        nivel->crearEnemigo(60,2,4,2,10,4,700,222);
+        nivel->crearEnemigo(60,2,4,2,10,4,2100,222);
     }
 }
 
