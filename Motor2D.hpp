@@ -79,6 +79,8 @@ public:
     void drawHud(int player);
     //fin hud
     void finalNivel();//cambia el estado de menu
+    
+    //ELEMENTOS
     void initEls(int elemento);
     void DrawEls(int elemento, int x, int y);
     
