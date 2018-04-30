@@ -346,8 +346,8 @@ void Juego::cargarNivel(int niv)
     nivel->crearEnemigo(60,3,5,2,30,2,10500,222);
     }
     else if(niv==2){
-    nivel->crearEnemigo(40,2,4,2,10,3,600,382);
-    nivel->crearEnemigo(40,2,4,2,10,3,2100,382);
+    nivel->crearEnemigo(40,2,4,2,10,3,600,322);
+    nivel->crearEnemigo(40,2,4,2,10,3,2100,350);
     }
 }
 
@@ -397,7 +397,12 @@ void Juego::Ejecucion()
 
 void Juego::finalNivel()
 {
-    estado=&menu;
-    motor->finalNivel();
+    motor->finalNivel();    
     control->offTwo();
+    cambiarEstado(1);
+}
+
+int Juego::queEstado()
+{
+    return estado->QueEstado();
 }

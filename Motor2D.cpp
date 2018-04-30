@@ -127,6 +127,7 @@ void Motor2D::initPersonaje(int player, int tipo)
     if(player == 1)
     {
         //std::cout << player-1 << " tipo textura 1" << tipo  << " t "<< std::endl;
+        jugadores[player-1] = sf::Sprite();
         jugadores[player-1].setTexture(texturas[tipo]);
         jugadores[player-1].setOrigin(48/2,48/2);
         jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48, 48,48));
@@ -136,6 +137,7 @@ void Motor2D::initPersonaje(int player, int tipo)
     if(player == 2)
     {
         //std::cout << player-1 << " tipo textura 2" << tipo  << " t "<< std::endl;
+        jugadores[player-1] = sf::Sprite();
         jugadores[player-1].setTexture(texturas[tipo]);
         jugadores[player-1].setOrigin(48/2,48/2);
         jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48, 48,48));
@@ -176,6 +178,7 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         enemy->setTexture(texturas[6]);
         enemy->setTextureRect(sf::IntRect(0, 0, 15,14));
         tip = enemigo;
+        enemigos[enemigo] = sf::Sprite();
         if(enemigo == 0){
         enemigos[enemigo].setTexture(texturas[6]);
         enemigos[enemigo].setOrigin(228/2,350/2);
@@ -312,8 +315,15 @@ void Motor2D::Inputs()
                             controles->pf(controles->whatPlayer(eventos.key.code));
                         if(eventos.key.code == controles->moveSalir())
                         {
-                            std::cout << "salir"<<"\n";
-                            window.close();
+                            if(juego->queEstado() == 1)
+                            {
+                                std::cout << "salir"<<"\n";
+                                window.close();
+                            }
+                            else
+                            {
+                                juego->finalNivel();
+                            }
                         }
                         break;
                 case sf::Event::KeyReleased:
@@ -567,7 +577,7 @@ void Motor2D::finalNivel()
 
 void Motor2D::initEls(int el)
 {  
-   
+    elementos[el] = sf::Sprite();
     elementos[el].setTexture(texturas[12]);
     
     int ele;
@@ -593,4 +603,9 @@ void Motor2D::DrawEls(int tipo, int x, int y)
 {  
     elementos[tipo].setPosition(x, y);
     window.draw(elementos[tipo]);
+}
+
+Motor2D::~Motor2D()
+{
+
 }

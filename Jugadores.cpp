@@ -202,10 +202,10 @@ void Jugadores::initJugador(int tip, int play)
 {
     //std::cout << play << " tipo textura - " << tip  << " t "<< std::endl;
     motor->initPersonaje(play,tip);
-    
     tipo = tip;
     
     player = play;
+    
     if(play <= 1)
     {
         coordenadas = Coordenadas(20,220);

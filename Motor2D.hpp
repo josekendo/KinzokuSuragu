@@ -32,6 +32,12 @@ public:
         unica_instancia = new Motor2D();
         return unica_instancia;  
     }
+    
+    static void ResetInstance()
+    {
+        delete unica_instancia;
+        unica_instancia = 0;
+    }
     //fin singleton public
     
     bool cargarCapa(int *matriz, int capa, int longitud, int anchura, int altura, char tileset[]);//carga las capas en las capas locales

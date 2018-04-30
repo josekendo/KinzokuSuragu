@@ -29,6 +29,7 @@ void FabricarNivel::construirNivel(char *nivel, char *tileset)
 {
     //se llama desde aqui a motor2d para que cargue las diferentes capas
     Motor2D *motor2D = Motor2D::getInstance();//clase global
+    
     int altura=0;
     int anchura=0;
     int casillas=0;

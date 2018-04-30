@@ -34,6 +34,12 @@ public:
         unica_instancia = new Nivel();
         return unica_instancia;  
     }
+    
+    static void ResetInstance()
+    {
+        delete unica_instancia;
+        unica_instancia = 0;
+    }
     //fin singleton public
     void cargarNivel(int niv);//carga el nivel pasado empezando por 1
     void juegoIndividual(int tipo);//prepara el personaje con el tipo 0-masculino, 1-femenino
@@ -50,7 +56,7 @@ public:
     
     
     void draw();//llama a pintar a todas las partes relacionadas con el nivel
-    
+    void resetJugador(int jug,int xr,int yr);
     void BlockJugador(int jugador);
     int getModo();//nos devuelve el modo de juego
     int separacion();//devuelve la separacion entre los jugadores solo en modo 2 si no devuelve 0 siempre
@@ -76,7 +82,7 @@ private:
     vector<Bullet*> bullet;//array autodimensionable de proyectiles
     int modo;//modo un jugador(0), dos jugadores(1)
     int enemy;
-    int nivel;
+    int level;//identifica el nivel en el que estamos
 };  
 
 #endif /* NIVEL_HPP */
