@@ -84,7 +84,7 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     }
     jugadores[0].ResetCoordenadas(40,48);
     jugadores[1].ResetCoordenadas(80,48);
-    
+    elementos[0].initEl(0);
   
 }
 
@@ -99,9 +99,10 @@ void Nivel::draw()
           //for (int i = 0; i > 5; i++)
          //{
          //}
-         //std::cout << "draw de nivel m 1" << std::endl;
-         jugadores[0].draw();
+         std::cout << "draw de nivel m 1" << std::endl;
          elementos[0].drawEl();
+         jugadores[0].draw();
+         
          
          
          //jugadores[0].Idle(1);
@@ -113,7 +114,7 @@ void Nivel::draw()
      {
          //std::cout << "draw de nivel m 2"  << std::endl;
          jugadores[0].draw();
-         
+         elementos[0].drawEl();
          
         //jugadores[0].Idle(1); //Estado default
          jugadores[1].draw();
