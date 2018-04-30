@@ -568,39 +568,29 @@ void Motor2D::finalNivel()
 void Motor2D::initEls(int elemento)
 {  
    
-    sf::Sprite *el = new sf::Sprite;
-    el->setTexture(texturas[12]);
-    el->setOrigin(48/2,48/2);
-    el->scale(sf::Vector2f(2, 2));
+    elementos[elemento].setTexture(texturas[12]);
+    elementos[elemento].setOrigin(48/2,48/2);
+    elementos[elemento].scale(sf::Vector2f(2, 2));
     
-    int el;
+    int ele;
     
     if (elemento == 0 || elemento == 5)
-        el = 0;
+        ele = 0;
     else if (elemento == 1 || elemento == 6)
-        el = 1;
+        ele = 1;
     else if (elemento == 2 || elemento == 7)
-        el = 2;
+        ele = 2;
     else if (elemento == 3 || elemento == 8)
-        el = 3;
+        ele = 3;
     else if (elemento == 4 || elemento == 9)
-        el = 4;
-        
-        
-    el->setTextureRect(sf::IntRect(el*48, 0, 48,48));
+        ele = 4;
     
-    elementos.push_back(el);
+    elementos[elemento].setTextureRect(sf::IntRect(ele*48, 0, 48,48));
         
 }
-void Motor2D::DrawEls(int elemento, int x, int y)
+void Motor2D::DrawEls(int tipo, int x, int y)
 {  
-    elementos[elemento]->setPosition(x,y);
-    window.draw(*elementos[elemento]);
+    elementos[tipo].setPosition(x,y);
+    window.draw(elementos[tipo]);
     
-}
-
-void Motor2D::deleteEl(int elemento)
-{
-    delete elementos[elemento];
-    elementos[elemento] = NULL;
 }

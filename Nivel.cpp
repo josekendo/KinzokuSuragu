@@ -45,21 +45,20 @@ void Nivel::juegoIndividual(int tipo)
     Controles *con = Controles::getInstance();
     con->offTwo();
     modo = 1;
+    
     if(tipo == 0)//masculino jugador 1
     {
       jugadores[0].initJugador(0,1);  
+      
     }
-    if(tipo == 1)//femenino jugador 1
+    else if(tipo == 1)//femenino jugador 1
     {
       jugadores[0].initJugador(1,1);  
     }    
     
     jugadores[0].ResetCoordenadas(40,48);
     
-    for (int i = 0; i > 5; i++)
-    {
-        elementos[i]->initElemento(i, 1);
-    }
+    elementos[0].initEl(0); 
 }
 //carga de dos jugadores
 void Nivel::juegoMultijugador(int tipo1, int tipo2)
@@ -86,10 +85,7 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     jugadores[0].ResetCoordenadas(40,48);
     jugadores[1].ResetCoordenadas(80,48);
     
-     for (int i = 0; i > 10; i++)
-    {
-        elementos[i]->initElemento(i, 2);
-    }
+  
 }
 
 void Nivel::draw()
@@ -100,13 +96,17 @@ void Nivel::draw()
      //pintamos a enemigos y jugadores
      if(modo == 1)
      {
+          //for (int i = 0; i > 5; i++)
+         //{
+         //}
          //std::cout << "draw de nivel m 1" << std::endl;
          jugadores[0].draw();
+         elementos[0].drawEl(); 
+         
          //jugadores[0].Idle(1);
-         for (int i = 0; i >= 5; i++)
-         {
-             elementos[i]->drawElemento();
-         }
+        
+        
+         
      }
      else
      {
@@ -118,10 +118,10 @@ void Nivel::draw()
          jugadores[1].draw();
          //jugadores[1].Idle(1); //Estado default
          
-         for (int i = 0; i > 10; i++)
+         /*for (int i = 0; i > 10; i++)
          {
-             elementos[i]->drawElemento();
-         }
+             elementos[i]->drawElemento(i);
+         */
    
      } 
      //pintamos balas

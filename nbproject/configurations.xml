@@ -9,8 +9,8 @@
       <itemPath>Camara.hpp</itemPath>
       <itemPath>Controles.h</itemPath>
       <itemPath>Coordenadas.hpp</itemPath>
-      <itemPath>Elementos.h</itemPath>
-      <itemPath>Elementos.hpp</itemPath>
+      <itemPath>Elements.hpp</itemPath>
+      <itemPath>Els.hpp</itemPath>
       <itemPath>Enemigos.hpp</itemPath>
       <itemPath>Estado.hpp</itemPath>
       <itemPath>FabricarNivel.h</itemPath>
@@ -33,8 +33,8 @@
       <itemPath>Camara.cpp</itemPath>
       <itemPath>Controles.cpp</itemPath>
       <itemPath>Coordenadas.cpp</itemPath>
-      <itemPath>Elemento.c</itemPath>
-      <itemPath>Elementos.cpp</itemPath>
+      <itemPath>Elements.cpp</itemPath>
+      <itemPath>Els.cpp</itemPath>
       <itemPath>Enemigos.cpp</itemPath>
       <itemPath>Estado.cpp</itemPath>
       <itemPath>FabricarNivel.cpp</itemPath>
@@ -51,6 +51,17 @@
       <itemPath>tinyxml.cpp</itemPath>
       <itemPath>tinyxmlerror.cpp</itemPath>
       <itemPath>tinyxmlparser.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -114,13 +125,9 @@
       </item>
       <item path="Coordenadas.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Elemento.c" ex="false" tool="0" flavor2="0">
+      <item path="Els.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Elementos.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Elementos.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Elementos.hpp" ex="false" tool="3" flavor2="0">
+      <item path="Els.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Enemigos.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -216,13 +223,9 @@
       </item>
       <item path="Coordenadas.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Elemento.c" ex="false" tool="0" flavor2="0">
+      <item path="Els.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Elementos.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Elementos.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Elementos.hpp" ex="false" tool="3" flavor2="0">
+      <item path="Els.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Enemigos.cpp" ex="false" tool="1" flavor2="0">
       </item>

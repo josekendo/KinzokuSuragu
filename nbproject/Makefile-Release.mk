@@ -39,8 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Camara.o \
 	${OBJECTDIR}/Controles.o \
 	${OBJECTDIR}/Coordenadas.o \
-	${OBJECTDIR}/Elemento.o \
-	${OBJECTDIR}/Elementos.o \
+	${OBJECTDIR}/Els.o \
 	${OBJECTDIR}/Enemigos.o \
 	${OBJECTDIR}/Estado.o \
 	${OBJECTDIR}/FabricarNivel.o \
@@ -103,15 +102,10 @@ ${OBJECTDIR}/Coordenadas.o: Coordenadas.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Coordenadas.o Coordenadas.cpp
 
-${OBJECTDIR}/Elemento.o: Elemento.c 
+${OBJECTDIR}/Els.o: Els.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Elemento.o Elemento.c
-
-${OBJECTDIR}/Elementos.o: Elementos.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Elementos.o Elementos.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Els.o Els.cpp
 
 ${OBJECTDIR}/Enemigos.o: Enemigos.cpp 
 	${MKDIR} -p ${OBJECTDIR}

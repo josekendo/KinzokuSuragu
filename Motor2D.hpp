@@ -79,10 +79,9 @@ public:
     void drawHud(int player);
     //fin hud
     void finalNivel();//cambia el estado de menu
-    
     void initEls(int elemento);
     void DrawEls(int elemento, int x, int y);
-    void deleteEl(int elemento);
+    
 private:
     //clase singleton 
     Motor2D();
@@ -91,10 +90,10 @@ private:
     sf::RenderWindow window;//ventana
     TileMap ca1,ca2,ca3;//capas
     sf::Sprite jugadores[2];//jugadores
-    
+    sf::Sprite elementos[10];//elementos
     std::vector<sf::Sprite*> bullets;//proyectiles
     sf::Sprite enemigos[6];//enemigos vector
-    sf::Texture texturas[11];//tilesets
+    sf::Texture texturas[13];//tilesets
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto
     sf::Clock animaciones;//nos sirve para saber cuando tenemos que cambiar de animacion
@@ -105,7 +104,6 @@ private:
     sf::View hud1,hud2;
     sf::Font fuent;
     int tip;
-    std::vector<sf::Sprite*> elementos;//elementos
     
 };
 

@@ -429,3 +429,4 @@ int * Jugadores::devolverEstadisticas()
     estas[0] = muertes;
     return estas;
 }
+

@@ -55,6 +55,8 @@ public:
     
     void ResetCoordenadas(int xn, int yn);//nos sirve para resetear las coordenadas del jugador
     int * devolverEstadisticas();    
+    
+    
 private:
     int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;  //stats  
     Coordenadas coordenadas;//coordenadas del sprite
