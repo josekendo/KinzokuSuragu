@@ -163,8 +163,9 @@ void Nivel::draw()
      
    for(int a = 0; a < enemigos.size();a++)
      {
-         if(enemigos[a]->sigoVivo()&&enemigos[a]->activacion())
-            enemigos[a]->draw();
+         if(enemigos[a]->sigoVivo()&&enemigos[a]->activacion()){
+            enemigos[a]->draw(); 
+         }
          else
          {
              if(enemigos[a]->activacion()==true){
@@ -304,7 +305,6 @@ void Nivel::realimentarBalas()
 
 void Nivel::crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x,int y)
 {
-    enemy = tipo;
     enemigos.push_back(new Enemigos(vid,ataq,ataqfisico,element,defen,tipo,x,y));
 }
 
@@ -316,6 +316,17 @@ void Nivel::realimentarEnemigo()
             enemigos[o]->realimentar(enemigos[o]->getOrientacion());
          
      }  
+}
+
+void Nivel::ataqueEnemigo(int dano)
+{ 
+         for(int a = 0; a < enemigos.size();a++){
+         
+    if(jugadores[0].getX()-enemigos[a]->getX()<10)  {
+        
+        jugadores[0].setDanoVida(5);
+    }
+     }
 }
 
 int * Nivel::devolverEstadisticas()

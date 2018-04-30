@@ -64,8 +64,9 @@ public:
     void crearBala(int tipo, int elemento,int x,int y,int jugador, int dano, int ori);//creamos una nueva bala
     void matarBala(int point);//elimina la bala
     void realimentarBalas();//le da propulsion a la bala
-    void crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x,int y);//creamos una nueva bala
-    void realimentarEnemigo();//le da propulsion a la bala
+    void crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x,int y);//creamos un nuevo enemigo
+    void realimentarEnemigo();//movimiento enemigo
+    void ataqueEnemigo(int dano);
     int * devolverEstadisticas();//devuelve las estadisticas de los jugadores
     
     void collectElement(int jugador);
@@ -81,7 +82,6 @@ private:
     std::vector<Enemigos*> enemigos;//array autodimensionable de enemigos
     vector<Bullet*> bullet;//array autodimensionable de proyectiles
     int modo;//modo un jugador(0), dos jugadores(1)
-    int enemy;
     int level;//identifica el nivel en el que estamos
 };  
 

@@ -330,10 +330,11 @@ void Juego::cargarNivel(int niv)
     nivel->cargarNivel(niv);//llamamos a cargar nivel de nivel
     if(niv==1){
     nivel->crearEnemigo(20,1,4,2,10,1,700,222);
+    nivel->ataqueEnemigo(4);
     nivel->crearEnemigo(20,1,4,2,10,1,1400,222);
     nivel->crearEnemigo(20,1,4,2,10,1,2100,222);
     nivel->crearEnemigo(20,1,4,2,10,1,2800,222);
-    nivel->crearEnemigo(40,2,4,2,20,0,3200,382);
+    nivel->crearEnemigo(40,2,4,2,20,0,3400,155);
     nivel->crearEnemigo(20,1,4,2,10,1,4200,222);
     nivel->crearEnemigo(20,1,4,2,10,1,4900,318);
     nivel->crearEnemigo(20,1,4,2,10,1,5600,318);

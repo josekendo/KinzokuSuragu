@@ -13,6 +13,7 @@
 
 #include "Enemigos.hpp"
 #include "Camara.hpp"
+#include "Nivel.hpp"
 
 Enemigos::Enemigos() 
 {
@@ -27,6 +28,8 @@ Enemigos::Enemigos()
     motor = Motor2D::getInstance();
     motor->initEnemigo(enemigo,0);
     coordenadas = Coordenadas(400,220);
+    cx = 400;
+    cy = 220;
     //animacion
     estado = 7;//estados
     frame = 7;//numero de frames
@@ -53,6 +56,8 @@ Enemigos::Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int t
     enemigo = tipo;
     motor->initEnemigo(enemigo,0);
     coordenadas = Coordenadas(x,y);
+    cx = x;
+    cy = y;
     //animacion
     estado = 7;//estados
     frame = 7;//numero de frames
@@ -158,8 +163,6 @@ void Enemigos::draw()
             frame_actual = 0;
         }
     }
-    
-    
     //aqui llamamos a motor
     motor->drawEnemigo(enemigo,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()));
 }
@@ -206,4 +209,20 @@ bool Enemigos::activacion()
 int Enemigos::getOrientacion()
 {
     return orientacion;
+}
+
+int Enemigos::getX()
+{
+    return cx;
+}
+
+int Enemigos::getY()
+{
+    return cy;
+}
+
+void Enemigos::ataqueEnemigo()
+{
+    Nivel *niv = Nivel::getInstance();
+    niv->ataqueEnemigo(4);
 }

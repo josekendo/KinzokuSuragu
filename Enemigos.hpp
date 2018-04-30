@@ -34,8 +34,11 @@ public:
     bool sigoVivo();//si sigue vivo devuelve true si no false
     bool activacion();//si la camará entra en un rango cercano devuelve true
     bool matarEnemigo(int point);//mata a su sprite en el motor 
+    void ataqueEnemigo();
     void realimentar(int orientacion);//realimentamos su velocidad
     int getOrientacion();
+    int getX();
+    int getY();
 private:
     int vida,defensa,ataque,ataquefisico,danototal,elemento,velocidad;    
     Coordenadas coordenadas;
@@ -55,6 +58,7 @@ private:
     int danorecibido;
     bool muerto;
     bool activado;
+    int cx, cy;
 };
 
 #endif /* ENEMIGOS_HPP */
