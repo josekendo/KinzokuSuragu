@@ -110,6 +110,8 @@ void Motor2D::drawPersonaje(int player,int esta, int fram, int ori, float x,floa
     {
         fram = fram + 1;
     }
+    
+    
     jugadores[player].setTextureRect(sf::IntRect(fram*48, esta*48, 48*ori,48));
     jugadores[player].setPosition(x,y);
     Camara *camara = Camara::getInstance();
