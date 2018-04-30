@@ -71,6 +71,7 @@ void Juego::izquierda()
             if(control->getl(1))
             {
                 nivel->moverJugadorAtras(0);
+                nivel->collectElement(0);
             }
         }
         else
@@ -78,11 +79,13 @@ void Juego::izquierda()
             if(control->getl(1))
             {
                 nivel->moverJugadorAtras(0);
+                nivel->collectElement(0);
             }
             
             if(control->getl(2))
             {
                 nivel->moverJugadorAtras(1);
+                nivel->collectElement(1);
             }
         }   
     }
@@ -99,6 +102,7 @@ void Juego::derecha()
             if(control->getr(1))
             {
                 nivel->moverJugador(0);
+                nivel->collectElement(0);
             }
         }
         else
@@ -106,11 +110,13 @@ void Juego::derecha()
             if(control->getr(1))
             {
                 nivel->moverJugador(0);
+                nivel->collectElement(0);
             }
             
             if(control->getr(2))
             {
                 nivel->moverJugador(1);
+                nivel->collectElement(1);
             }
         }
     }

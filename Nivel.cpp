@@ -48,7 +48,8 @@ void Nivel::juegoIndividual(int tipo)
     
     if(tipo == 0)//masculino jugador 1
     {
-      jugadores[0].initJugador(0,1);  
+      jugadores[0].initJugador(0,1); 
+       
       
     }
     else if(tipo == 1)//femenino jugador 1
@@ -58,7 +59,11 @@ void Nivel::juegoIndividual(int tipo)
     
     jugadores[0].ResetCoordenadas(40,48);
     
-    elementos[0].initEl(0); 
+    for (int i=0; i<10; i++)
+    {
+      elementos[i].initEl(i);
+    } 
+   
 }
 //carga de dos jugadores
 void Nivel::juegoMultijugador(int tipo1, int tipo2)
@@ -84,7 +89,12 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     }
     jugadores[0].ResetCoordenadas(40,48);
     jugadores[1].ResetCoordenadas(80,48);
-    elementos[0].initEl(0);
+    
+    for (int i=0; i<10; i++)
+    {
+      elementos[i].initEl(i);
+    } 
+    
   
 }
 
@@ -96,35 +106,24 @@ void Nivel::draw()
      //pintamos a enemigos y jugadores
      if(modo == 1)
      {
-          //for (int i = 0; i > 5; i++)
-         //{
-         //}
-         std::cout << "draw de nivel m 1" << std::endl;
-         elementos[0].drawEl();
-         jugadores[0].draw();
          
-         
-         
-         //jugadores[0].Idle(1);
-        
-        
-         
+        for (int i=0; i<10; i++)
+        {
+          elementos[i].drawEl();
+        } 
+        jugadores[0].draw();
+          
      }
      else
      {
          //std::cout << "draw de nivel m 2"  << std::endl;
-         jugadores[0].draw();
-         elementos[0].drawEl();
-         
-        //jugadores[0].Idle(1); //Estado default
-         jugadores[1].draw();
-         //jugadores[1].Idle(1); //Estado default
-         
-         /*for (int i = 0; i > 10; i++)
-         {
-             elementos[i]->drawElemento(i);
-         */
-   
+        for (int i=0; i<10; i++)
+        {
+          elementos[i].drawEl();
+        } 
+        jugadores[0].draw();
+        jugadores[1].draw();
+        
      } 
      //pintamos balas
       
@@ -170,7 +169,6 @@ void Nivel::moverJugador(int jugador)
     if (jugadores[jugador].mover() == 1)
     {
         jugadores[jugador].Walk(1);//Función para desplazar a personaje hacia adelante
-    
     }
     
 }
@@ -310,77 +308,33 @@ int * Nivel::devolverEstadisticas()
     return jug;
 }
 
-/*void Nivel::collectElement()
+void Nivel::collectElement(int jugador)
 {
-    if (modo == 1) //SI SOLO HAY UN JUGADOR
+    
+    for (int i = 0; i < 10; i++)
     {
-        for (int i = 0; i > 5; i++)
+        //std::cout<<"Se está comprobando colision"<<endl;
+        
+        
+        //std::cout<<"JUGADOR X: "<<jugadores[jugador].getX()<<endl;
+        //std::cout<<"ELEMENTO 0 X: "<<elementos[0].getX()<<endl;
+        
+        if (jugadores[jugador].getX() == elementos[i].getX() && jugadores[jugador].getY() == elementos[i].getY()) // SI HAY COLISION DE JUGADOR Y ELEMENTO
         {
-            if (jugadores[0].getX() == elementos[i].getX() && jugadores[0].getY() == elementos[i].getY()) // SI HAY COLISION DE JUGADOR Y ELEMENTO
-            {
-                if (i == 0)
-                    jugadores[0].cambiarElemento(i);
-                else if (i == 1)
-                    jugadores[0].cambiarElemento(i);
-                else if (i == 2)
-                    jugadores[0].cambiarElemento(i);
-                else if (i == 3)
-                    jugadores[0].cambiarElemento(i);
-                else if (i == 4)
-                    jugadores[0].cambiarElemento(i);
-                
-                
-                elementos[i].eraseEl(i);
+            std::cout<<"Recogió el elemento"<<endl;
+            if (i == 0 || i == 5)
+                jugadores[jugador].cambiarElemento(0);
+            else if (i == 1 || i == 6)
+                jugadores[jugador].cambiarElemento(1);
+            else if (i == 2 || i == 7)
+                jugadores[jugador].cambiarElemento(2);
+            else if (i == 3 || i == 8)
+                jugadores[jugador].cambiarElemento(3);
+            else if (i == 4 || i == 9)
+                jugadores[jugador].cambiarElemento(4);
             
-            }
-        
-        
+            elementos[i].ChangeCoords(elementos[i].getX(), -500);
         }
     }
-    
-    else if (modo == 2) //SI HAY DOS JUGADORES
-    {
-        
-        for (int k = 0; k > 10; k++)
-        {
-            if (jugadores[0].getX() == elementos[k].getX() && jugadores[0].getY() == elementos[k].getY()) // SI HAY COLISION DE JUGADOR Y ELEMENTO
-            {
-                
-                if (k == 0 || k == 5)
-                    jugadores[0].cambiarElemento(0);
-                else if (k == 1|| k == 6)
-                    jugadores[0].cambiarElemento(1);
-                else if (k == 2|| k == 7)
-                    jugadores[0].cambiarElemento(2);
-                else if (k == 3|| k == 8)
-                    jugadores[0].cambiarElemento(3);
-                else if (k == 4|| k == 9)
-                    jugadores[0].cambiarElemento(4);
-                
-                elementos[k].eraseEl(k);
-            
-            }
-            
-            if (jugadores[1].getX() == elementos[k].getX() && jugadores[1].getY() == elementos[k].getY()) // SI HAY COLISION DE JUGADOR Y ELEMENTO
-            {
-                
-                 if (k == 0 || k == 5)
-                    jugadores[1].cambiarElemento(0);
-                else if (k == 1|| k == 6)
-                    jugadores[1].cambiarElemento(1);
-                else if (k == 2|| k == 7)
-                    jugadores[1].cambiarElemento(2);
-                else if (k == 3|| k == 8)
-                    jugadores[1].cambiarElemento(3);
-                else if (k == 4|| k == 9)
-                    jugadores[1].cambiarElemento(4);
-                
-                elementos[k].eraseEl(k);
-            
-            }
-        
-        }
-    
-    }
+}
 
-}*/

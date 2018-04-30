@@ -24,6 +24,9 @@ public:
     
     void initEl(int type);
     void drawEl();
+    int getX();
+    int getY();
+    void ChangeCoords(int x, int y);
 private:
     
     Coordenadas coordenadas;//coordenadas del sprite

@@ -33,14 +33,45 @@ void Els::initEl(int type)
 {
     elemento = type;
     motor->initEls(type);
-    coordenadas = Coordenadas(200,20);
+    if (type == 0)
+        coordenadas = Coordenadas(100,48);
+    else if (type == 1)
+        coordenadas = Coordenadas(150,48);
+    else if (type == 2)
+        coordenadas = Coordenadas(200,48);
+    else if (type == 3)
+        coordenadas = Coordenadas(250,48);
+    else if (type == 4)
+        coordenadas = Coordenadas(300,48);
+    else if (type == 5)
+        coordenadas = Coordenadas(350,48);
+    else if (type == 6)
+        coordenadas = Coordenadas(400,48);
+    else if (type == 7)
+        coordenadas = Coordenadas(450,48);
+    else if (type == 8)
+        coordenadas = Coordenadas(500,48);
+    else if (type == 9)
+        coordenadas = Coordenadas(550,48);
 }
 
 void Els::drawEl()
 {
-    int x = coordenadas.getCoordenadaX();
-    int y = coordenadas.getCoordenadaY();
-    std::cout<<"Coordenada X: "<<x<<endl;
-    std::cout<<"Coordenada Y: "<<y<<endl;
     motor->DrawEls(elemento, coordenadas.getCoordenadaX(), coordenadas.getCoordenadaY());
+}
+
+int Els::getX()
+{
+    return coordenadas.getCoordenadaX();
+}
+
+int Els::getY()
+{
+    return coordenadas.getCoordenadaY();
+}
+
+void Els::ChangeCoords(int x, int y)
+{
+    coordenadas.ResetCoordenadas(x, y);
+
 }
