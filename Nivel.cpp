@@ -99,22 +99,12 @@ void Nivel::draw()
           //for (int i = 0; i > 5; i++)
          //{
          //}
-<<<<<<< HEAD
-         //std::cout << "draw de nivel m 1" << std::endl;
-         jugadores[0].draw();
-         //elementos[0].drawEl();
-=======
          std::cout << "draw de nivel m 1" << std::endl;
          elementos[0].drawEl();
          jugadores[0].draw();
          
->>>>>>> rama_Ale2
-         
-         
          //jugadores[0].Idle(1);
         
-        
-         
      }
      else
      {
