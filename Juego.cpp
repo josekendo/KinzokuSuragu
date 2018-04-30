@@ -260,6 +260,7 @@ void Juego::defensa()
             if(control->getf(1) && control->geta(1) == false)
             {
                 nivel->BlockJugador(0);//defensa jugador 0
+                finalNivel();
             }
         }
         else
@@ -377,7 +378,7 @@ void Juego::Ejecucion()
 
 void Juego::finalNivel()
 {
-    estado=&menu;
-    motor->finalNivel();
+    motor->finalNivel();    
     control->offTwo();
+    cambiarEstado(1);
 }

@@ -18,7 +18,7 @@ Nivel* Nivel::unica_instancia = 0;
 
 Nivel::Nivel() 
 {
-    
+   
 }
 
 void Nivel::cargarNivel(int niv)
@@ -48,9 +48,7 @@ void Nivel::juegoIndividual(int tipo)
     
     if(tipo == 0)//masculino jugador 1
     {
-      jugadores[0].initJugador(0,1); 
-       
-      
+      jugadores[0].initJugador(0,1);   
     }
     else if(tipo == 1)//femenino jugador 1
     {
@@ -328,4 +326,9 @@ void Nivel::collectElement(int jugador)
             elementos[i].ChangeCoords(elementos[i].getX(), -500);
         }
     }
+}
+
+Nivel::~Nivel()
+{
+    unica_instancia = 0;
 }

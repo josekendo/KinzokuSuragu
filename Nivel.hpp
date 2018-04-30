@@ -34,6 +34,12 @@ public:
         unica_instancia = new Nivel();
         return unica_instancia;  
     }
+    
+    static void ResetInstance()
+    {
+        delete unica_instancia;
+        unica_instancia = 0;
+    }
     //fin singleton public
     void cargarNivel(int niv);//carga el nivel pasado empezando por 1
     void juegoIndividual(int tipo);//prepara el personaje con el tipo 0-masculino, 1-femenino
