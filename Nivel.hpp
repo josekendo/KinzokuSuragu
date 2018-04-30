@@ -64,7 +64,7 @@ public:
     void crearBala(int tipo, int elemento,int x,int y,int jugador, int dano, int ori);//creamos una nueva bala
     void matarBala(int point);//elimina la bala
     void realimentarBalas();//le da propulsion a la bala
-    void crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo);//creamos una nueva bala
+    void crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x,int y);//creamos una nueva bala
     void realimentarEnemigo();//le da propulsion a la bala
     int * devolverEstadisticas();//devuelve las estadisticas de los jugadores
     
