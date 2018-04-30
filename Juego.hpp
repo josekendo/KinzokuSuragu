@@ -50,6 +50,7 @@ public:
     void mouse(int boton, int x, int y);
 //fin inputs
     void finalNivel();//se llamara cuando haya terminado nivel
+    int queEstado();//devuelve el estado 1 menu, 2 jugando
 private:
     
     //clase singleton 

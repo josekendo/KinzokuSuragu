@@ -315,8 +315,15 @@ void Motor2D::Inputs()
                             controles->pf(controles->whatPlayer(eventos.key.code));
                         if(eventos.key.code == controles->moveSalir())
                         {
-                            std::cout << "salir"<<"\n";
-                            window.close();
+                            if(juego->queEstado() == 1)
+                            {
+                                std::cout << "salir"<<"\n";
+                                window.close();
+                            }
+                            else
+                            {
+                                juego->finalNivel();
+                            }
                         }
                         break;
                 case sf::Event::KeyReleased:

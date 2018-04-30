@@ -390,3 +390,8 @@ void Juego::finalNivel()
     control->offTwo();
     cambiarEstado(1);
 }
+
+int Juego::queEstado()
+{
+    return estado->QueEstado();
+}
