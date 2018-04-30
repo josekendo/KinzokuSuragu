@@ -16,6 +16,8 @@
 
 Enemigos::Enemigos() 
 {
+    muerto = false;
+    activado = false;
     vida = 100;
     defensa = 0;
     ataque = 4;
@@ -34,22 +36,23 @@ Enemigos::Enemigos()
     proximo = 0;
     weapon = 0; //arma con la que inicia
     orientacion = 1;
-    stat = 0; //dice si el personaje está en movimiento o no
-    velocidad = 14;
+    velocidad = 3;
 }
 
-Enemigos::Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int tipo) 
+Enemigos::Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x, int y) 
 {
+    muerto = false;
+    activado = false;
     vida = vid;
     defensa = defen;
     ataque = ataq;
     ataquefisico = ataqfisico;
     danototal = 0;
-    elemento = 0;
+    elemento = element;
     motor = Motor2D::getInstance();
     enemigo = tipo;
     motor->initEnemigo(enemigo,0);
-    coordenadas = Coordenadas(400,220);
+    coordenadas = Coordenadas(x,y);
     //animacion
     estado = 7;//estados
     frame = 7;//numero de frames
@@ -59,7 +62,7 @@ Enemigos::Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int t
     proximo = 0;
     weapon = 0; //arma con la que inicia
     orientacion = 1;
-    stat = 0; //dice si el personaje está en movimiento o no
+    velocidad = 3;
 }
 
 Enemigos::Enemigos(const Enemigos& orig) {
@@ -155,6 +158,8 @@ void Enemigos::draw()
             frame_actual = 0;
         }
     }
+    
+    
     //aqui llamamos a motor
     motor->drawEnemigo(enemigo,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()));
 }
@@ -165,16 +170,17 @@ bool Enemigos::matarEnemigo(int point)
     return true;
 }
 
-void Enemigos::realimentar()
-{
-    sf::Vector2f movimiento(0.f,0.f);
-    
+void Enemigos::realimentar(int orientacion)
+{ 
+    /*if(activacion()){
+    coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*orientacion),coordenadas.getCoordenadaY());
+    }*/
 }
 
 bool Enemigos::sigoVivo()
 {
     Camara *cam = Camara::getInstance();
-    if(coordenadas.getCoordenadaX() > cam->coordenadaX()+400 || coordenadas.getCoordenadaX() < cam->coordenadaX()-400)
+    if(coordenadas.getCoordenadaX() < cam->coordenadaX()-400)
     {
         return false;
     }
@@ -182,4 +188,22 @@ bool Enemigos::sigoVivo()
     {
         return true;
     }
+}
+
+bool Enemigos::activacion()
+{
+    Camara *cam = Camara::getInstance();
+    if(coordenadas.getCoordenadaX() > cam->coordenadaX()+400)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+int Enemigos::getOrientacion()
+{
+    return orientacion;
 }

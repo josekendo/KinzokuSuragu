@@ -19,7 +19,7 @@
 class Enemigos {
 public:
     Enemigos();
-    Enemigos(int vid, int ataq, int ataqfisico,int element,int defen, int tipo);
+    Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int tipo, int x, int y);
     Enemigos(const Enemigos& orig);
     virtual ~Enemigos();
     int getVida();//devuelve la vida del personaje restante(100 maximo)
@@ -31,15 +31,15 @@ public:
     //estadisticas
     void addDano(int dano);//se agrega el dano realizado al marcador
     void draw();//se le llama a pintar esa bala en el motor
-    bool sigoVivo();//si sigue viva devuelve true si no false
+    bool sigoVivo();//si sigue vivo devuelve true si no false
+    bool activacion();//si la camará entra en un rango cercano devuelve true
     bool matarEnemigo(int point);//mata a su sprite en el motor 
-    void realimentar();//realimentamos su velocidad
+    void realimentar(int orientacion);//realimentamos su velocidad
+    int getOrientacion();
 private:
-    int vida,defensa,ataque,ataquefisico,danototal,elemento, velocidad;    
+    int vida,defensa,ataque,ataquefisico,danototal,elemento,velocidad;    
     Coordenadas coordenadas;
-    int tipo;//masculino 0, femenino 1
     int enemigo;
-    int player;//numero de jugador
     int weapon; //tipo de arma
     Motor2D *motor;
     int estado;//nos servira para saber cuantos estados tiene la animacion
@@ -51,10 +51,10 @@ private:
     int orientacion;
     int orientacion_actual;
     int stat;
-    int posX_actual; //posicion en x del jugador
-    int posY_actual; //posicion en y del jugador
     int danoecho;
     int danorecibido;
+    bool muerto;
+    bool activado;
 };
 
 #endif /* ENEMIGOS_HPP */

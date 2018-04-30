@@ -202,9 +202,9 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         }
         else if(enemigo == 4){
         enemigos[enemigo].setTexture(texturas[10]);
-        enemigos[enemigo].setOrigin(228/2,300/2);
+        enemigos[enemigo].setOrigin(228/2,600/2);
         enemigos[enemigo].setTextureRect(sf::IntRect(0*392, 0*550, 392, 550));
-        enemigos[enemigo].scale(sf::Vector2f(0.2f, 0.2f));
+        enemigos[enemigo].scale(sf::Vector2f(1.2f, 1.2f));
         }
         else if(enemigo == 5){
         enemigos[enemigo].setTexture(texturas[11]);
