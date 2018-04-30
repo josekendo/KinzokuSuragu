@@ -588,9 +588,10 @@ void Motor2D::initEls(int elemento)
     elementos[elemento].setTextureRect(sf::IntRect(ele*48, 0, 48,48));
         
 }
+
+
 void Motor2D::DrawEls(int tipo, int x, int y)
 {  
-    elementos[tipo].setPosition(x,y);
+    elementos[tipo].setPosition(x, y);
     window.draw(elementos[tipo]);
-    
 }

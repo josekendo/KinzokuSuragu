@@ -58,7 +58,7 @@ void Nivel::juegoIndividual(int tipo)
     
     jugadores[0].ResetCoordenadas(40,48);
     
-    elementos[0].initEl(0); 
+    //elementos[0].initEl(0); 
 }
 //carga de dos jugadores
 void Nivel::juegoMultijugador(int tipo1, int tipo2)
@@ -101,7 +101,8 @@ void Nivel::draw()
          //}
          //std::cout << "draw de nivel m 1" << std::endl;
          jugadores[0].draw();
-         elementos[0].drawEl(); 
+         //elementos[0].drawEl();
+         
          
          //jugadores[0].Idle(1);
         
@@ -125,7 +126,7 @@ void Nivel::draw()
    
      } 
      //pintamos balas
-     
+      
      int contador = 0;
      for(int a = 0; a < bullet.size();a++)
      {
