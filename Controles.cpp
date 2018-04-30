@@ -55,7 +55,7 @@ int Controles::whatPlayer(sf::Keyboard::Key key)
             return 2;
         }
     }
-    return -1;
+    return 1;
 }
 
 sf::Keyboard::Key Controles::moveUP()

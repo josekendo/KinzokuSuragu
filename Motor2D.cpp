@@ -297,8 +297,7 @@ void Motor2D::Inputs()
                         {
                             controles->cambiarControl(2);
                         }
-                                              
-                        
+                                                                  
                         if(eventos.key.code == controles->moveRIGHT())
                             controles->pr(controles->whatPlayer(eventos.key.code));
                         if(eventos.key.code == controles->moveLEFT())
@@ -328,6 +327,8 @@ void Motor2D::Inputs()
                             controles->cambiarControl(2);
                         }
                     
+                        //std::cout << "tecla" << eventos.key.code << " jug:" << controles->whatPlayer(eventos.key.code) <<"\n";
+                    
                         if(eventos.key.code == controles->moveRIGHT())
                             controles->dr(controles->whatPlayer(eventos.key.code));
                         if(eventos.key.code == controles->moveLEFT())
@@ -340,6 +341,7 @@ void Motor2D::Inputs()
                             controles->da(controles->whatPlayer(eventos.key.code));
                         if(eventos.key.code == controles->moveDefensa())
                             controles->df(controles->whatPlayer(eventos.key.code));
+                    break;
         }
             
     }

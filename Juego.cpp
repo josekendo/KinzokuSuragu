@@ -128,7 +128,7 @@ void Juego::salto()
     Nivel *nivel = Nivel::getInstance();//clase global
     if(estado->QueEstado() == 1)
     {
-        if(control->getu(2))
+        if(control->getu(1))
         {  
             motor->menuUP();
         }
@@ -164,7 +164,7 @@ void Juego::agacharse()
     //menu
     if(estado->QueEstado() == 1)
     {
-        if(control->getd(2))
+        if(control->getd(1))
         {
             motor->menuDOWN();
         }
@@ -200,7 +200,7 @@ void Juego::ataque()
     //menu
     if(estado->QueEstado() == 1)
     {
-        if(control->geta(2))
+        if(control->geta(1))
         {
             motor->menuSPACE();
         }
@@ -248,7 +248,7 @@ void Juego::defensa()
     //menu
     if(estado->QueEstado() == 1)
     {
-        if(control->getf(2))
+        if(control->getf(1))
         motor->menuATRAS();
     }
     //jugando
