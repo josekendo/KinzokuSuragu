@@ -231,7 +231,12 @@ void Jugadores::draw()
         }
         else
         {
-            frame_actual = 0;
+            if (estado == 4)
+                frame_actual = 7;
+            else if (estado == 6)
+                frame_actual = 7;
+            else
+                frame_actual = 0;
         }
     }
     //std::cout<< "Se está dibujando el personaje " << std::endl;

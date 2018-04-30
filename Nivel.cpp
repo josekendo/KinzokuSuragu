@@ -310,22 +310,26 @@ void Nivel::collectElement(int jugador)
         //std::cout<<"Se está comprobando colision"<<endl;
         //std::cout<<"JUGADOR X: "<<jugadores[jugador].getX()<<endl;
         //std::cout<<"ELEMENTO 0 X: "<<elementos[0].getX()<<endl;
-        
-        if (jugadores[jugador].getX() == elementos[i].getX() && jugadores[jugador].getY() == elementos[i].getY()) // SI HAY COLISION DE JUGADOR Y ELEMENTO
+        for (int j = 0; j<= 5; j++)
         {
-            std::cout<<"Recogió el elemento"<<endl;
-            if (i == 0 || i == 5)
-                jugadores[jugador].cambiarElemento(0);
-            else if (i == 1 || i == 6)
-                jugadores[jugador].cambiarElemento(1);
-            else if (i == 2 || i == 7)
-                jugadores[jugador].cambiarElemento(2);
-            else if (i == 3 || i == 8)
-                jugadores[jugador].cambiarElemento(3);
-            else if (i == 4 || i == 9)
-                jugadores[jugador].cambiarElemento(4);
-            
-            elementos[i].ChangeCoords(elementos[i].getX(), -500);
+            if ((jugadores[jugador].getX() == (elementos[i].getX()-j) || jugadores[jugador].getX() == (elementos[i].getX()+j))&& (jugadores[jugador].getY() == (elementos[i].getY()-j) || jugadores[jugador].getY() == (elementos[i].getY()+j))) // SI HAY COLISION DE JUGADOR Y ELEMENTO
+            {
+                std::cout<<"Recogió el elemento"<<endl;
+                if (i == 0 || i == 5)
+                    jugadores[jugador].cambiarElemento(0);
+                else if (i == 1 || i == 6)
+                    jugadores[jugador].cambiarElemento(1);
+                else if (i == 2 || i == 7)
+                    jugadores[jugador].cambiarElemento(2);
+                else if (i == 3 || i == 8)
+                    jugadores[jugador].cambiarElemento(3);
+                else if (i == 4 || i == 9)
+                    jugadores[jugador].cambiarElemento(4);
+
+                elementos[i].ChangeCoords(elementos[i].getX(), -500);
+            }
         }
+        
+        
     }
 }

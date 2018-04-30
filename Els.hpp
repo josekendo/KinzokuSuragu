@@ -32,7 +32,8 @@ private:
     Coordenadas coordenadas;//coordenadas del sprite
     int elemento;//
     Motor2D *motor;
-
+    int posicionesX[10];
+    int posicionesY[10];
 };
 
 #endif /* ELS_HPP */
