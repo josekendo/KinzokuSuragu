@@ -182,6 +182,7 @@ void Nivel::draw()
      }
 }
 
+
 void Nivel::moverJugador(int jugador)
 {
     direccion=1;
@@ -343,22 +344,23 @@ void Nivel::realimentarEnemigo()
 { 
     for(int o = 0; o < enemigos.size();o++)
      {
-         
             enemigos[o]->realimentar(enemigos[o]->getOrientacion());
-         
      }  
 }
 
-void Nivel::ataqueEnemigo(int dano)
+void Nivel::ataqueEnemigo()
 { 
          for(int a = 0; a < enemigos.size();a++){
          
-    if(jugadores[0].getX()-enemigos[a]->getX()<10)  {
+    if(enemigos[a]->getX()-jugadores[0].getX()<10)  {
         
-        jugadores[0].setDanoVida(5);
+        std::cout<< "ataqueeeee" << enemigos[a]->getX() << endl;
+        std::cout<< "ataqueeeee2 " << jugadores[0].getX() << endl;
+        jugadores[0].setDanoVida(2);
     }
      }
 }
+
 
 int * Nivel::devolverEstadisticas()
 {

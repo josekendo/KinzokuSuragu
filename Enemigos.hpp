@@ -59,6 +59,8 @@ private:
     bool muerto;
     bool activado;
     int cx, cy;
+    int cxo, cyo;
+    bool izq, der;
 };
 
 #endif /* ENEMIGOS_HPP */
