@@ -34,7 +34,7 @@ public:
     bool sigoVivo();//si sigue vivo devuelve true si no false
     bool activacion();//si la camará entra en un rango cercano devuelve true
     bool matarEnemigo(int point);//mata a su sprite en el motor 
-    void ataqueEnemigo();
+    int getAtaqueFisico();
     void realimentar(int orientacion);//realimentamos su velocidad
     int getOrientacion();
     int getX();

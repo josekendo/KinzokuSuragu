@@ -198,7 +198,7 @@ void Enemigos::realimentar(int orientacion)
            coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*1),coordenadas.getCoordenadaY());
        }
        else{
-           coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*orientacion),coordenadas.getCoordenadaY());
+           coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*-1),coordenadas.getCoordenadaY());
        }
     }
 }
@@ -244,8 +244,7 @@ int Enemigos::getY()
     return coordenadas.getCoordenadaY();
 }
 
-void Enemigos::ataqueEnemigo()
+int Enemigos::getAtaqueFisico()
 {
-    Nivel *niv = Nivel::getInstance();
-    niv->ataqueEnemigo();
+    return ataquefisico;
 }
