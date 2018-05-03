@@ -40,6 +40,9 @@ Jugadores::Jugadores()
     orientacion = 1;
     stat = 0; //dice si el personaje está en movimiento o no
     danoecho = 0;
+    boton=0;
+    saltoref=-500;
+    aceleracion=0;
 }
 
 Jugadores::Jugadores(const Jugadores& orig) {
@@ -147,13 +150,69 @@ void Jugadores::Block()
     }
 }
 
-void Jugadores::Jump()
+void Jugadores::Jump(int dir)
 {
     estado = 5;
     estado_actual = estado;
-    //orientacion = dir;
+    orientacion = dir;
     frame = 9;
     stat = 0;
+    int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())-((kVel*2));
+    /*if(aceleracion<kVel*2){
+        aceleracion=aceleracion+0.3;
+    }*/
+        coordenadas.cambiarPosicion(x,y);
+        
+    draw();
+}
+void Jugadores::Caida(int dir){
+    estado = 5;
+    estado_actual = estado;
+    orientacion = dir;
+    frame = 9;
+    stat = 0;
+    int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())+(kVel*2);
+    /*if(aceleracion<kVel*2){
+        aceleracion=aceleracion+0.3;
+    }*/
+    coordenadas.cambiarPosicion(x,y);
+    draw();
+}
+bool Jugadores::SaltoBloqueo(bool moverup){ //controla la altura maxima del salto
+    bool bloqueo=false;
+    float n=2;
+    
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
+    
+    if(getPulsarBoton()==2){//solo en estos dos casos actualizara la referencia de salto
+        saltoref=y;
+        //aceleracion=0;
+        setEn4();
+        std::cout<<"botton dos veces pulsado"<<std::endl;
+    }
+    else if(getPulsarBoton()==1 && saltoref==-500){
+        saltoref=y;
+        std::cout<<"boton una vez pulsado"<<std::endl;
+    }
+    
+    if(saltoref>-500){
+        if(saltoref-y>32*n || moverup==false){
+            saltoref=-600;
+            //aceleracion=0;
+            bloqueo=true;
+        }
+        else{
+            bloqueo=false;
+        }
+    }
+    else if(saltoref==-600){
+         std::cout<<"salto ref -600**"<<std::endl;
+        bloqueo=true;
+    }
+   
+    return bloqueo;
 }
 void Jugadores::Die()
 {
@@ -261,9 +320,11 @@ bool Jugadores::mover()
     //std::cout << "entro en jugador" << std::endl;
     //int mov = 5;
     int mov = kVel;
+    int x=coordenadas.getCoordenadaXI(motor->darUPDATE())+mov;
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
     Camara *camara = Camara::getInstance();
     Nivel *niv = Nivel::getInstance();
-    if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE())))
+    if(camara->mePuedoMover(x,y) && colision->ColisionLateral(x,y,1)==false)
     {
         //std::cout << "true moviendo" << std::endl;  
         //coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));
@@ -287,9 +348,11 @@ bool Jugadores::moverAtras()
     //std::cout << "entro en jugador" << std::endl;
    
     int mov = -kVel;
+    int x=coordenadas.getCoordenadaXI(motor->darUPDATE())-mov;
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
     Camara *camara = Camara::getInstance();
     
-    if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE())))
+    if(camara->mePuedoMover(x,y) && colision->ColisionLateral(x,y,-1)==false)
     {
         
         return  1;
@@ -299,6 +362,31 @@ bool Jugadores::moverAtras()
         //std::cout << "false moviendo" << std::endl;
        
         return 0;
+    }
+}
+bool Jugadores::moverAbajo(int direccion){
+    int mov=kVel*2;
+    int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())+mov;
+    
+    if(colision->ColisionSuelo(x,y,direccion)==true){//si colisiona
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+bool Jugadores::moverArriba(int direccion){
+    int mov=kVel*2;
+    int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())-mov;
+    
+    if(colision->ColisionTecho(x,y,direccion)==true){//si colisiona
+        return false;
+    }
+    else{
+        
+        return true;
     }
 }
 
@@ -435,5 +523,22 @@ int * Jugadores::devolverEstadisticas()
     estas[1] = danoecho;
     estas[0] = muertes;
     return estas;
+}
+int Jugadores::getPulsarBoton(){
+    
+    return boton;
+}
+void Jugadores::setPulsarBoton(){
+    if(boton<3){
+        boton++;
+    }
+}
+void Jugadores::setEn4(){
+    boton=4;;
+}
+void Jugadores::resetPulsarBoton(){
+    boton=0;
+    saltoref=-500;
+    aceleracion=0;
 }
 

@@ -141,19 +141,28 @@ void Juego::salto()
         {
             if(control->getu(1))
             {
-                nivel->brincarJugador(0);//saltar jugador 0
+                nivel->brincarJugador(0,0);//saltar jugador 0
+            }
+            else{
+                nivel->brincarJugador(0,1);
             }
         }
         else
         {
             if(control->getu(1))
             {
-                nivel->brincarJugador(0);//saltar jugador 0
+                nivel->brincarJugador(0,0);//saltar jugador 0
+            }
+            else{
+                nivel->brincarJugador(0,1);
             }
             
             if(control->getu(2))
             {
-                nivel->brincarJugador(1);//saltar jugador 1
+                nivel->brincarJugador(1,0);//saltar jugador 1
+            }
+            else{
+                nivel->brincarJugador(1,1);
             }
         }
     }

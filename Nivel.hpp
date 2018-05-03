@@ -46,7 +46,7 @@ public:
     void juegoMultijugador(int tipo1,int tipo2);//prepara los personajes con los tipos(0 masculino, 1 femenino)
     void moverJugador(int jugador);//mueve el jugador hacia delante
     void moverJugadorAtras(int jugador);//mueve el jugador pasado hacia atras
-    void brincarJugador(int jugador);
+    void brincarJugador(int jugador, bool caida);
    
     void AtaqueCercano(int jugador);
     void AtaqueLejano(int jugador);
@@ -75,6 +75,7 @@ private:
     //clase singleton 
     Nivel();
     static Nivel* unica_instancia;
+    int direccion;
     //fin clase singleto private
     FabricarNivel fabrica;
     Jugadores jugadores[2];//array de jugadores

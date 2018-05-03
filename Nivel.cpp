@@ -18,7 +18,7 @@ Nivel* Nivel::unica_instancia = 0;
 
 Nivel::Nivel() 
 {
-   
+   direccion=1;
 }
 
 void Nivel::cargarNivel(int niv)
@@ -184,6 +184,7 @@ void Nivel::draw()
 
 void Nivel::moverJugador(int jugador)
 {
+    direccion=1;
     jugadores[jugador].mover();//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
         
     //std::cout << "entro en nivel " << jugador << std::endl;
@@ -196,6 +197,7 @@ void Nivel::moverJugador(int jugador)
 
 void Nivel::moverJugadorAtras(int jugador)
 {
+    direccion=-1;
     //std::cout << "entro en nivel " << jugador << std::endl;
     jugadores[jugador].moverAtras();//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
     
@@ -212,21 +214,50 @@ void Nivel::moverJugadorAtras(int jugador)
     }
 }
 
-void Nivel::brincarJugador(int jugador)
-{
-    jugadores[jugador].mover();//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
-        
-    //std::cout << "entro en nivel " << jugador << std::endl;
-    if (jugadores[jugador].mover() == 1)
-    {
-        jugadores[jugador].Jump();//Función para desplazar que brinque el personaje
+void Nivel::brincarJugador(int jugador,bool caida)
+{  
+    bool moverup=false;
+    moverup=jugadores[jugador].moverArriba(direccion);
     
+     if(caida==false && (jugadores[jugador].getPulsarBoton()==0) && moverup==true ){
+           jugadores[jugador].Jump(direccion);//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
+           jugadores[jugador].setPulsarBoton();
+           //std::cout<<"condicion 1"<<std::endl;
     }
-    else if (jugadores[jugador].mover() == 0)
-    {
-        jugadores[jugador].Idle();//Función de estado default
+     else if(caida==false && (jugadores[jugador].getPulsarBoton()==1)&& moverup==true){
+         jugadores[jugador].Jump(direccion);
+         jugadores[jugador].setPulsarBoton();
+         jugadores[jugador].SaltoBloqueo(moverup);
+         //std::cout<<"condicion 2"<<std::endl;
+     }
+     else if(jugadores[jugador].getPulsarBoton()!=0 && jugadores[jugador].SaltoBloqueo(moverup)==false && moverup==true){// caida en salto
+        jugadores[jugador].Jump(direccion);
+        //std::cout<<"condicion 3"<<std::endl;
     }
-    
+     else if(jugadores[jugador].getPulsarBoton()!=0 && jugadores[jugador].SaltoBloqueo(moverup)==true){//caida en salto
+        //std::cout<<"condicion 4"<<std::endl;
+        if(jugadores[jugador].moverAbajo(direccion)==true){
+            //std::cout<<"condicion 4.1"<<std::endl;
+             //std::cout << "entro en nivel " << jugador << std::endl;
+            jugadores[jugador].Caida(direccion);
+        }
+        else{
+            //std::cout<<"condicion 4.2"<<std::endl;
+            jugadores[jugador].resetPulsarBoton(); // detecta colosion (toca suelo) y reinicia los saltos
+        }
+    }
+    else if(caida==true){ // caida libre
+        //std::cout<<"condicion 5"<<std::endl;
+        if(jugadores[jugador].moverAbajo(direccion)==true){
+            //std::cout<<"condicion 5.1"<<std::endl;
+             //std::cout << "entro en nivel " << jugador << std::endl;
+            jugadores[jugador].Caida(direccion);
+        }
+        else{
+            //std::cout<<"condicion 5.2"<<std::endl;
+            jugadores[jugador].resetPulsarBoton(); // detecta colosion (toca suelo) y reinicia los saltos
+        }
+    }
 }
 
 void Nivel::AtaqueCercano(int jugador)

@@ -36,17 +36,24 @@ public:
 
     bool mover();//se movera segun su estado una velocidad o otro (se debera agregar la colision aqui)
     bool moverAtras();//se movera hacia atras (aplicar colisiones o factores que hagan que no se mueva)
+    bool moverAbajo(int direccion);
+    bool moverArriba(int direccion);
     bool isMoving();
     int getX();//obtenemos la coordenada x
-    int getY();//obtenemos la coordenada y
+    int getY();//obtenemos la coordenada 
+    int getPulsarBoton();
+    void setPulsarBoton();
+    void setEn4();
+    void resetPulsarBoton();
 
-    
     void Idle();
     void Walk(int dir);
     void Shoot();
     void Kick();
     void Block();
-    void Jump();
+    void Jump(int dir);
+    void Caida(int dir);
+    bool SaltoBloqueo(bool moverup);
     void Die();
     
     int getElement();
@@ -58,6 +65,7 @@ public:
     
     
 private:
+    Colision* colision=Colision::getInstance();
     int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;  //stats  
     Coordenadas coordenadas;//coordenadas del sprite
     int tipo;//masculino 0, femenino 1
@@ -79,6 +87,8 @@ private:
     int danorecibido;
     int posX;
     int posY;
+    int boton,saltoref;//variables para salto
+    float aceleracion;
     //bool mover;
     //bool moverAtras;
 };

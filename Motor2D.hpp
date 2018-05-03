@@ -20,6 +20,7 @@
 #include "Controles.h"
 #include "Menus.h"
 #include "Hud.hpp"
+#include "Colision.hpp"
 //fin clases basicas
 
 class Motor2D {
@@ -95,6 +96,7 @@ private:
     Motor2D();
     static Motor2D* unica_instancia;
     //fin clase singleto private
+    Colision *colision= Colision::getInstance();
     sf::RenderWindow window;//ventana
     TileMap ca1,ca2,ca3;//capas
     sf::Sprite jugadores[2];//jugadores

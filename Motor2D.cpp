@@ -13,6 +13,8 @@
 
 #include "Motor2D.hpp"
 #include "Juego.hpp"
+#include "Colision.hpp"
+
 
 #define kVel 1
 
@@ -50,14 +52,17 @@ bool Motor2D::cargarCapa(int* matriz, int capa, int longitud, int anchura, int a
         case 1:
             if (ca1.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
                 ca1.setPosition(-32,-532);
+            colision->generarMatriz(matriz,capa,anchura,altura);
         break;
         case 2:
             if (ca2.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
                 ca2.setPosition(-32,-532);
+            colision->generarMatriz(matriz,capa,anchura,altura);
         break;
         case 3:
             if (ca3.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
                 ca3.setPosition(-32,-532);
+            colision->generarMatriz(matriz,capa,anchura,altura);
         break;
     }
 }
