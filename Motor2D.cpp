@@ -267,6 +267,8 @@ void Motor2D::Inputs()
 {
     sf::Event eventos;
     Juego *juego = Juego::getInstance();
+    int contro;
+    contro = 0; 
     
     while (window.pollEvent(eventos))
     {
@@ -280,7 +282,107 @@ void Motor2D::Inputs()
   
                 break;
                 case sf::Event::JoystickButtonPressed:
-                    std::cout << "boton:" << eventos.joystickButton.button << std::endl; 
+                      
+                    if(eventos.joystickButton.joystickId == 0)
+                    {
+                        //control 1
+                        contro = 1;
+                    }
+                    else
+                    {
+                        //control 2
+                        contro = 2;
+                    }
+                    
+                    if(eventos.joystickButton.button == 13)
+                    {
+                        //ARRIBA
+                        controles->pu(contro);
+                    }
+                    if(eventos.joystickButton.button == 15)
+                    {
+                        //IZQUIERDA
+                        controles->pl(contro);
+                    }
+                    if(eventos.joystickButton.button == 16)
+                    {
+                        //DERECHA
+                        controles->pr(contro);
+                    }
+                    if(eventos.joystickButton.button == 14)
+                    {
+                        //ABAJO
+                        controles->pd(contro);
+                    }
+                    if(eventos.joystickButton.button == 1)
+                    {
+                        //DEFENSA
+                        controles->pf(contro);
+                    }
+                    if(eventos.joystickButton.button == 0)
+                    {
+                        //ATAQUE
+                        controles->pa(contro);
+                    }
+                    if(eventos.joystickButton.button == 8)
+                    {
+                        //SALIR
+                        if(contro == 1)
+                        {  
+                            if(juego->queEstado() == 1)
+                            {
+                                std::cout << "salir"<<"\n";
+                                window.close();
+                            }
+                            else
+                            {
+                                juego->finalNivel();
+                            }
+                        }
+                    }
+                    std::cout << "boton:" << eventos.joystickButton.button << " mando->" << eventos.joystickButton.joystickId << std::endl; 
+                    break;
+                case sf::Event::JoystickButtonReleased:
+                    if(eventos.joystickButton.joystickId == 0)
+                    {
+                        //control 1
+                        contro = 1;
+                    }
+                    else
+                    {
+                        //control 2
+                        contro = 2;
+                    }
+                    if(eventos.joystickButton.button == 13)
+                    {
+                        //ARRIBA
+                        controles->du(contro);
+                    }
+                    if(eventos.joystickButton.button == 15)
+                    {
+                        //IZQUIERDA
+                        controles->dl(contro);
+                    }
+                    if(eventos.joystickButton.button == 16)
+                    {
+                        //DERECHA
+                        controles->dr(contro);
+                    }
+                    if(eventos.joystickButton.button == 14)
+                    {
+                        //ABAJO
+                        controles->dd(contro);
+                    }
+                    if(eventos.joystickButton.button == 1)
+                    {
+                        //DEFENSA
+                        controles->df(contro);
+                    }
+                    if(eventos.joystickButton.button == 0)
+                    {
+                        //ATAQUE
+                        controles->da(contro);
+                    }
                     break;
                 case sf::Event::JoystickMoved:
                     std::cout << "joystick:" << eventos.joystickMove.axis << std::endl;
