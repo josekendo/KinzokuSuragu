@@ -78,7 +78,7 @@ void Jugadores::Walk(int dir)
     
     estado = 1;
     frame = 7;
-    
+    Camara *camara = Camara::getInstance();
     //SI DIR = 1 VA A LA DERECHA
     //SI DIR = -1 VA A LA IZQUIERDA
      estado_actual = estado;
@@ -86,13 +86,15 @@ void Jugadores::Walk(int dir)
     orientacion_actual = orientacion;
     stat = 1;
     if (dir == 1)
-    {   
+    {  
+        if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+kVel,coordenadas.getCoordenadaYI(motor->darUPDATE())))
         coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+kVel,coordenadas.getCoordenadaYI(motor->darUPDATE()));
         //posX = coordenadas.getCoordenadaX();
         //std::cout<<"Nueva posicion en X"<<posX<<endl;
     }
     else if (dir == -1)
     {
+        if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())-kVel,coordenadas.getCoordenadaYI(motor->darUPDATE())))
         coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-kVel,coordenadas.getCoordenadaYI(motor->darUPDATE()));
     }
     //draw();
@@ -158,7 +160,7 @@ void Jugadores::Jump(int dir)
     frame = 9;
     stat = 0;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
-    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())-((kVel*2));
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())-((kVel*8));
     /*if(aceleracion<kVel*2){
         aceleracion=aceleracion+0.3;
     }*/
@@ -324,7 +326,7 @@ bool Jugadores::mover()
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
     Camara *camara = Camara::getInstance();
     Nivel *niv = Nivel::getInstance();
-    if(camara->mePuedoMover(x,y) && colision->ColisionLateral(x,y,1)==false)
+    if(colision->ColisionLateral(x,y,1)==false)
     {
         //std::cout << "true moviendo" << std::endl;  
         //coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));
@@ -352,7 +354,7 @@ bool Jugadores::moverAtras()
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
     Camara *camara = Camara::getInstance();
     
-    if(camara->mePuedoMover(x,y) && colision->ColisionLateral(x,y,-1)==false)
+    if(colision->ColisionLateral(x,y,-1)==false)
     {
         
         return  1;

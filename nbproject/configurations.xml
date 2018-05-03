@@ -117,6 +117,8 @@
       </item>
       <item path="Camara.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Colision.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Controles.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Controles.h" ex="false" tool="3" flavor2="0">
@@ -214,6 +216,8 @@
       <item path="Camara.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Camara.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Colision.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Controles.cpp" ex="false" tool="1" flavor2="0">
       </item>

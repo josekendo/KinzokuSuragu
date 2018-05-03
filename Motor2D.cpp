@@ -340,7 +340,7 @@ void Motor2D::Inputs()
                             }
                         }
                     }
-                    std::cout << "boton:" << eventos.joystickButton.button << " mando->" << eventos.joystickButton.joystickId << std::endl; 
+                     //std::cout << "boton:" << eventos.joystickButton.button << " mando->" << eventos.joystickButton.joystickId << std::endl; 
                     break;
                 case sf::Event::JoystickButtonReleased:
                     if(eventos.joystickButton.joystickId == 0)
@@ -380,13 +380,15 @@ void Motor2D::Inputs()
                     }
                     if(eventos.joystickButton.button == 0)
                     {
+                        
                         //ATAQUE
                         controles->da(contro);
                     }
                     break;
                 case sf::Event::JoystickMoved:
-                    std::cout << "joystick:" << eventos.joystickMove.axis << std::endl;
-                    std::cout << "joystick:" << eventos.joystickMove.position << std::endl; 
+                    //std::cout << "joystick eje:" << eventos.joystickMove.axis.PovX << std::endl;
+                    //std::cout << "joystick eje:" << eventos.joystickMove.axis.PovY<< std::endl;
+                    //std::cout << "joystick:" << eventos.joystickMove.position << std::endl;
                     break;
                     //fin mandos
                 case sf::Event::Closed:

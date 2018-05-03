@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Bullet.o \
 	${OBJECTDIR}/Camara.o \
+	${OBJECTDIR}/Colision.o \
 	${OBJECTDIR}/Controles.o \
 	${OBJECTDIR}/Coordenadas.o \
 	${OBJECTDIR}/Els.o \
@@ -91,6 +92,11 @@ ${OBJECTDIR}/Camara.o: Camara.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camara.o Camara.cpp
+
+${OBJECTDIR}/Colision.o: Colision.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Colision.o Colision.cpp
 
 ${OBJECTDIR}/Controles.o: Controles.cpp 
 	${MKDIR} -p ${OBJECTDIR}
