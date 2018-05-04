@@ -276,10 +276,6 @@ void Motor2D::matarEnemigo(int point)
     juego->finalNivel();
     }
     sound[point].stop();
-   /*delete enemigos[point];
-    enemigos[point] = NULL;
-    enemigos.erase(enemigos.begin()+point);*/
-    //std::cout << "se borra bala-sprite " << point << "\n";
     
 }
 

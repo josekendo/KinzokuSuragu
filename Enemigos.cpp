@@ -206,8 +206,9 @@ void Enemigos::realimentar(int orientacion)
 bool Enemigos::sigoVivo()
 {
     Camara *cam = Camara::getInstance();
-    if(coordenadas.getCoordenadaX() < cam->coordenadaX()-400)
+    if(coordenadas.getCoordenadaX() < cam->coordenadaX()-450)
     {
+        matarEnemigo(enemigo);
         return false;
     }
     else
