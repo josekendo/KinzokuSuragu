@@ -14,6 +14,7 @@
 #include "Motor2D.hpp"
 #include "Juego.hpp"
 #include "Colision.hpp"
+#include "SFML/Audio.hpp"
 
 
 #define kVel 1
@@ -40,6 +41,29 @@ Motor2D::Motor2D()
     texturas[10].loadFromFile("resources/zombiewalk2.png");
     texturas[11].loadFromFile("resources/saiyan2.png");
     texturas[12].loadFromFile("resources/Element_SpriteS.png");
+    sb[0].loadFromFile("resources/giro2.ogg");
+    sb[1].loadFromFile("resources/deslizar.ogg");
+    sb[2].loadFromFile("resources/shot1.ogg");
+    sb[3].loadFromFile("resources/dog1.ogg");
+    sb[4].loadFromFile("resources/zombiesound4.ogg");
+    sb[5].loadFromFile("resources/shot3.ogg");
+    sound[0].setBuffer(sb[0]);
+    sound[0].setLoop(true);
+    sound[0].setVolume(75);
+    sound[1].setBuffer(sb[1]);
+    sound[1].setLoop(true);
+    sound[1].setVolume(50);
+    sound[2].setBuffer(sb[2]);
+    sound[2].setLoop(true);
+    sound[2].setVolume(50);
+    sound[3].setBuffer(sb[3]);
+    sound[3].setLoop(true);
+    sound[3].setVolume(50);
+    sound[4].setBuffer(sb[4]);
+    sound[4].setLoop(true);
+    sound[5].setBuffer(sb[5]);
+    sound[5].setLoop(true);
+    sound[5].setVolume(25);
     initCamera();
     controles = Controles::getInstance();
     initMenu();
@@ -157,21 +181,39 @@ void Motor2D::drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float
     enemigos[enemigo].setPosition(x,y);
     if(enemigo==0){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*80, esta*300, ori*80,80));
+    if(sound[0].getStatus()!=sf::Sound::Playing){
+        sound[0].play();
+    }
     }
     else if(enemigo==1){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*80, esta*300, ori*80,80));
+    if(sound[1].getStatus()!=sf::Sound::Playing){
+        sound[1].play();
+    }
     }
     else if(enemigo==2){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*640, esta*750, ori*640, 750));
+    if(sound[2].getStatus()!=sf::Sound::Playing){
+        sound[2].play();
+    }
     }
     else if(enemigo==3){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*65, esta*300, ori*65, 32));
+    if(sound[3].getStatus()!=sf::Sound::Playing){
+        sound[3].play();
+    }
     }
     else if(enemigo==4){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*392, esta*550, ori*392, 550));
+    if(sound[4].getStatus()!=sf::Sound::Playing){
+        sound[4].play();
+    }
     }
     else if(enemigo==5){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*95, esta*95, ori*95, 95));
+    if(sound[5].getStatus()!=sf::Sound::Playing){
+        sound[5].play();
+    }
     }
     window.draw(enemigos[enemigo]);
 }
@@ -196,7 +238,7 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         enemigos[enemigo].setTexture(texturas[7]);
         enemigos[enemigo].setOrigin(228/2,400/2);
         enemigos[enemigo].setTextureRect(sf::IntRect(0*80, 0*300, 80,80));
-        enemy->scale(sf::Vector2f(1.5f, 1.5f));
+        enemigos[enemigo].scale(sf::Vector2f(1.0f, 1.0f));
         }
         else if(enemigo == 2){
         enemigos[enemigo].setTexture(texturas[8]);
@@ -233,6 +275,7 @@ void Motor2D::matarEnemigo(int point)
     Juego *juego = Juego::getInstance();
     juego->finalNivel();
     }
+    sound[point].stop();
    /*delete enemigos[point];
     enemigos[point] = NULL;
     enemigos.erase(enemigos.begin()+point);*/

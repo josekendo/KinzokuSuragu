@@ -73,7 +73,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/libsfml-window.so /usr/lib/x86_64-linux-gnu/libsfml-graphics.so /usr/lib/x86_64-linux-gnu/libsfml-system.so libbox2d.a
+LDLIBSOPTIONS=-L/usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/libsfml-window.so /usr/lib/x86_64-linux-gnu/libsfml-graphics.so /usr/lib/x86_64-linux-gnu/libsfml-system.so libbox2d.a /usr/lib/x86_64-linux-gnu/libsfml-audio.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -86,6 +86,8 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: /usr/lib/x86_64-linux-gnu/
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: /usr/lib/x86_64-linux-gnu/libsfml-system.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: libbox2d.a
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: /usr/lib/x86_64-linux-gnu/libsfml-audio.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}

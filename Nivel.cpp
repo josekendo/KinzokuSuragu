@@ -351,12 +351,13 @@ void Nivel::realimentarEnemigo()
 void Nivel::ataqueEnemigo()
 { 
          for(int a = 0; a < enemigos.size();a++){
-                if(enemigos[a]->getX()-100-jugadores[0].getX()<10)  {
-                     std::cout<< "ataqueeeee2 " << jugadores[0].getX() << endl;
+                if(enemigos[a]->getX()-100-jugadores[0].getX()<10&&enemigos[a]->getY()-174-jugadores[0].getY()<10)  {
+                     std::cout<< "ataqueeeee2 " << jugadores[0].getY() << endl;
+                     std::cout<< "ataqueeeee" << enemigos[a]->getY() << endl;
                      jugadores[0].setDanoVida(enemigos[a]->getAtaqueFisico());
                  }
                 if(modo==1){
-                    if(enemigos[a]->getX()-100-jugadores[1].getX()<10)  {
+                    if(enemigos[a]->getX()-100-jugadores[1].getX()<10&&enemigos[a]->getY()-174-jugadores[1].getY()<10)  {
                      std::cout<< "ataqueeeee" << enemigos[a]->getX() << endl;
                      std::cout<< "ataqueeeee2 " << jugadores[1].getX() << endl;
                      jugadores[1].setDanoVida(enemigos[a]->getAtaqueFisico());
