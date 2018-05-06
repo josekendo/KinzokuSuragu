@@ -69,6 +69,7 @@ void Nivel::juegoIndividual(int tipo)
     for (int i=0; i<10; i++)
     {
       elementos[i].initEl(i);
+      std::cout<<"Se generó elemento en posiciones: "<<elementos[i].getX()<< "  "<<elementos[i].getY()<<endl; 
     } 
 }
 //carga de dos jugadores
@@ -107,6 +108,7 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     for (int i=0; i<10; i++)
     {
       elementos[i].initEl(i);
+      std::cout<<"Se generó elemento en posiciones: "<<elementos[i].getX()<< "  "<<elementos[i].getY(); 
     } 
     
   
@@ -387,29 +389,27 @@ void Nivel::collectElement(int jugador)
 {
     for (int i = 0; i < 10; i++)
     {
-        //std::cout<<"Se está comprobando colision"<<endl;
-        //std::cout<<"JUGADOR X: "<<jugadores[jugador].getX()<<endl;
-        //std::cout<<"ELEMENTO 0 X: "<<elementos[0].getX()<<endl;
-        for (int j = 0; j<= 5; j++)
+        if (jugadores[jugador].ColisionElemento(jugador, i) == true)
         {
-            if ((jugadores[jugador].getX() == (elementos[i].getX()-j) || jugadores[jugador].getX() == (elementos[i].getX()+j))&& (jugadores[jugador].getY() == (elementos[i].getY()-j) || jugadores[jugador].getY() == (elementos[i].getY()+j))) // SI HAY COLISION DE JUGADOR Y ELEMENTO
-            {
-                std::cout<<"Recogió el elemento"<<endl;
-                if (i == 0 || i == 5)
-                    jugadores[jugador].cambiarElemento(0);
-                else if (i == 1 || i == 6)
-                    jugadores[jugador].cambiarElemento(1);
-                else if (i == 2 || i == 7)
-                    jugadores[jugador].cambiarElemento(2);
-                else if (i == 3 || i == 8)
-                    jugadores[jugador].cambiarElemento(3);
-                else if (i == 4 || i == 9)
-                    jugadores[jugador].cambiarElemento(4);
+            std::cout<<"Recogió el elemento"<<endl;
+            if (i == 0 || i == 5)
+                jugadores[jugador].cambiarElemento(0);
+            else if (i == 1 || i == 6)
+                jugadores[jugador].cambiarElemento(1);
+            else if (i == 2 || i == 7)
+                jugadores[jugador].cambiarElemento(2);
+            else if (i == 3 || i == 8)
+                jugadores[jugador].cambiarElemento(3);
+            else if (i == 4 || i == 9)
+                jugadores[jugador].cambiarElemento(4);
 
-                elementos[i].ChangeCoords(elementos[i].getX(), -500);
-            }
+            elementos[i].ChangeCoords(elementos[i].getX(), -500);
         }
     }
+    
+        
+                
+        
 }
 
 Nivel::~Nivel()

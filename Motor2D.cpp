@@ -759,6 +759,16 @@ void Motor2D::DrawEls(int tipo, int x, int y)
     window.draw(elementos[tipo]);
 }
 
+bool Motor2D::ElementCol(int player, int el)
+{
+    if (jugadores[player].getGlobalBounds().intersects(elementos[el].getGlobalBounds()))
+    {
+        std::cout<<"HA COLISIONADO CON EL ELEMENTO"<<endl;
+        return true;       
+    }           
+}
+
+
 Motor2D::~Motor2D()
 {
 
