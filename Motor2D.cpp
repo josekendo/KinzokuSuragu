@@ -41,6 +41,9 @@ Motor2D::Motor2D()
     texturas[10].loadFromFile("resources/zombiewalk2.png");
     texturas[11].loadFromFile("resources/saiyan2.png");
     texturas[12].loadFromFile("resources/Element_SpriteS.png");
+    texturas[13].loadFromFile("resources/bala1.png");
+    texturas[14].loadFromFile("resources/bala2.png");
+    texturas[15].loadFromFile("resources/bala3.png");
     sb[0].loadFromFile("resources/giro2.ogg");
     sb[1].loadFromFile("resources/deslizar.ogg");
     sb[2].loadFromFile("resources/shot1.ogg");
@@ -179,6 +182,10 @@ void Motor2D::initPersonaje(int player, int tipo)
 void Motor2D::drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float y)
 {
     enemigos[enemigo].setPosition(x,y);
+    if (ori == -1)
+    {
+        fram = fram + 1;
+    }
     if(enemigo==0){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*80, esta*300, ori*80,80));
     if(sound[0].getStatus()!=sf::Sound::Playing){
@@ -608,6 +615,44 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
             
         bullets.push_back(bala);
         //std::cout << "bullets guarda " << int(bullets.size()) << " numero de balas.\n";
+    }
+    if(tipo == 1){
+        sf::Sprite *bala = new sf::Sprite;
+        bala->setTexture(texturas[2]);
+        bala->setOrigin(48/2, 48/2);
+        bala->setScale(sf::Vector2f(2, 2));
+        bala->setTextureRect(sf::IntRect(0, 0, 48,48));
+        int fram;
+        
+        if (ori == -1)
+        {
+            fram = 1;
+        }
+        else if (ori == 1)
+        {
+            fram = 0;
+        }
+        
+        //color elemento
+        if(elemento == 1){
+        bala->setTexture(texturas[13]);
+        bala->setOrigin(228/2,400/2);
+        bala->setScale(sf::Vector2f(200, 200));
+            bala->setTextureRect(sf::IntRect(6*fram, 3*elemento, 6*ori, 3));
+        }
+        else if(elemento == 2){
+        bala->setTexture(texturas[14]);
+        bala->setScale(sf::Vector2f(2, 2));
+            bala->setTextureRect(sf::IntRect(142*fram, 42*elemento, 142*ori, 42));
+        }
+        else if(elemento == 5){
+            bala->setTexture(texturas[15]);
+        bala->setScale(sf::Vector2f(2, 2));
+            bala->setTextureRect(sf::IntRect(12*fram, 4*elemento, 12*ori, 4));
+        
+        }
+            
+        bullets.push_back(bala);
     }
 }
 

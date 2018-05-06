@@ -170,6 +170,7 @@ void Enemigos::draw()
     }
     //aqui llamamos a motor
     motor->drawEnemigo(enemigo,estado_actual,frame_actual, orientacion, coordenadas.getCoordenadaXI(motor->darUPDATE()),coordenadas.getCoordenadaYI(motor->darUPDATE()));
+
 }
 
 bool Enemigos::matarEnemigo(int point)
@@ -178,7 +179,7 @@ bool Enemigos::matarEnemigo(int point)
     return true;
 }
 
-void Enemigos::realimentar(int orientacion)
+void Enemigos::realimentar()
 { 
     
     if(activacion()){
@@ -193,12 +194,15 @@ void Enemigos::realimentar(int orientacion)
        
        if(der==true){
             coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*-1),coordenadas.getCoordenadaY());
+            orientacion = -1;
        }
        else if(izq==true){
            coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*1),coordenadas.getCoordenadaY());
+           orientacion = 1;
        }
        else{
            coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*-1),coordenadas.getCoordenadaY());
+           orientacion = -1;
        }
     }
 }
