@@ -80,7 +80,7 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     modo = 2;
     if(tipo1 == 0)//masculino jugador 1
     {
-        jugadores[0].initJugador(1,1);  
+        jugadores[0].initJugador(0,1);  
     }
     if(tipo1 == 1)//femenino jugador 1
     {
