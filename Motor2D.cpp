@@ -581,12 +581,12 @@ void Motor2D::menuDOWN()
 
 void Motor2D::menuIZQ()
 {
-    
+    menus->MoverIzquierda();
 }
 
 void Motor2D::menuDER()
 {
-    
+    menus->MoverDerecha();
 }
 
 void Motor2D::menuSPACE()

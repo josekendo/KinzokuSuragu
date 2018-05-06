@@ -44,7 +44,27 @@ Menus::~Menus() {
 void Menus::Intro()
 {
     //cambiamos de menu
-    intro = true;
+    if(estado == 1 || estado == 2)
+    {
+        if(estado == 1)
+        {
+            Juego *juego = Juego::getInstance();
+            Nivel *nivel = Nivel::getInstance();
+            juego ->cargarNivel(nivel_estamos);
+            nivel ->juegoIndividual(0);
+        }
+        else
+        {
+            Juego *juego = Juego::getInstance();
+            Nivel *nivel = Nivel::getInstance();
+            juego ->cargarNivel(nivel_estamos);
+            nivel ->juegoMultijugador(0,0);     
+        }    
+    }
+    else
+    {
+        intro = true;
+    }
 }
 
 void Menus::Intro(int x, int y)
@@ -716,7 +736,10 @@ void Menus::cambioEstado(int nuevo)
                         textoNiveles[a].setPosition(niveles[a].getPosition().x+20,niveles[a].getPosition().y);
                         tituloNiveles[a].setFont(fuente);
                         if(a == 0)
-                            tituloNiveles[a].setString("Selva \nAlienigena");                            
+                        {    
+                            tituloNiveles[a].setString("Selva \nAlienigena"); 
+                            niveles[a].setColor(sf::Color::Green);
+                        }
                         else if(a == 1)
                         {
                             tituloNiveles[a].setString("Ciudad \nVerde");
@@ -729,6 +752,7 @@ void Menus::cambioEstado(int nuevo)
                         tituloNiveles[a].setPosition(niveles[a].getPosition().x+90,niveles[a].getPosition().y+30);                    
                     contador++;
                 }
+                nivel_estamos = 1;
                 break;
             case 2:
                 bgNivels.setTexture(bgNiveles);
@@ -776,7 +800,10 @@ void Menus::cambioEstado(int nuevo)
                         textoNiveles[a].setPosition(niveles[a].getPosition().x+20,niveles[a].getPosition().y);
                         tituloNiveles[a].setFont(fuente);
                         if(a == 0)
+                        {
                             tituloNiveles[a].setString("Selva \nAlienigena");                            
+                            niveles[a].setColor(sf::Color::Green);
+                        }
                         else if(a == 1)
                         {
                             tituloNiveles[a].setString("Ciudad \nVerde");
@@ -788,7 +815,8 @@ void Menus::cambioEstado(int nuevo)
                         }
                         tituloNiveles[a].setPosition(niveles[a].getPosition().x+90,niveles[a].getPosition().y+30);                    
                     contador++;
-                }                
+                }      
+                nivel_estamos =1;
                 break;
             case 3:
                 bgNivels.setTexture(bgNiveles);
@@ -958,5 +986,31 @@ void Menus::cierrePunteros()
     {
         delete[] Estadisticas;
         Estadisticas = NULL;
+    }
+}
+
+void Menus::MoverIzquierda()
+{
+    if(estado == 1 || estado == 2)
+    {
+       if(nivel_estamos == 2)
+       {
+            nivel_estamos = 1;
+            niveles[0].setColor(sf::Color::Green);
+            niveles[1].setColor(sf::Color(255,255,255));
+       }
+    }
+}
+
+void Menus::MoverDerecha()
+{
+    if(estado == 1 || estado == 2)
+    {
+       if(nivel_estamos == 1)
+       {
+           nivel_estamos = 2;
+           niveles[1].setColor(sf::Color::Green);
+           niveles[0].setColor(sf::Color(255,255,255));
+       }        
     }
 }
