@@ -624,7 +624,7 @@ void Motor2D::initBala(int px, int py, int tipo, int elemento)
 }
 void Motor2D::crearBala(int tipo, int elemento, int ori)
 {
-    if(tipo == 0)//jugadores
+    if(tipo == 0 || tipo == 1)//jugadores
     {
         sf::Sprite *bala = new sf::Sprite;
         bala->setTexture(texturas[2]);
@@ -804,7 +804,7 @@ void Motor2D::initEls(int el)
     else if (el == 4 || el == 9)
         ele = 4;
     
-    elementos[el].setTextureRect(sf::IntRect(ele*48, 0, 48,48));
+    elementos[el].setTextureRect(sf::IntRect((ele*48)+17, 22, 16,17));
     elementos[el].setOrigin(48/2,48/2);
     elementos[el].scale(sf::Vector2f(2, 2));
         
