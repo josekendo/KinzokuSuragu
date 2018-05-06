@@ -69,6 +69,7 @@ void Nivel::juegoIndividual(int tipo)
     for (int i=0; i<10; i++)
     {
       elementos[i].initEl(i);
+      std::cout<<"Se generó elemento en posiciones: "<<elementos[i].getX()<< "  "<<elementos[i].getY()<<endl; 
     } 
 }
 //carga de dos jugadores
@@ -107,6 +108,7 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     for (int i=0; i<10; i++)
     {
       elementos[i].initEl(i);
+      std::cout<<"Se generó elemento en posiciones: "<<elementos[i].getX()<< "  "<<elementos[i].getY(); 
     } 
     
   
@@ -352,14 +354,14 @@ void Nivel::realimentarEnemigo()
 void Nivel::ataqueEnemigo()
 { 
          for(int a = 0; a < enemigos.size();a++){
-                if(enemigos[a]->getX()-100-jugadores[0].getX()<10&&enemigos[a]->getY()-174-jugadores[0].getY()<10)  {
+                if(enemigos[a]->getX()-100-jugadores[0].getX()<10 && enemigos[a]->getX()-100-jugadores[0].getX()>-50 && enemigos[a]->getY()-174-jugadores[0].getY()<10 && enemigos[a]->getY()-174-jugadores[0].getY()>-10)  {
                      std::cout<< "ataqueeeee2 " << jugadores[0].getY() << endl;
-                     std::cout<< "ataqueeeee" << enemigos[a]->getY() << endl;
+                     std::cout<< "ataqueeeee " << enemigos[a]->getY() << endl;
                      jugadores[0].setDanoVida(enemigos[a]->getAtaqueFisico());
                  }
                 if(modo==1){
-                    if(enemigos[a]->getX()-100-jugadores[1].getX()<10&&enemigos[a]->getY()-174-jugadores[1].getY()<10)  {
-                     std::cout<< "ataqueeeee" << enemigos[a]->getX() << endl;
+                    if(enemigos[a]->getX()-100-jugadores[1].getX()<10 && enemigos[a]->getX()-100-jugadores[1].getX()>-50 && enemigos[a]->getY()-174-jugadores[1].getY()<10 && enemigos[a]->getY()-174-jugadores[1].getY()>-10)  {
+                     std::cout<< "ataqueeeee " << enemigos[a]->getX() << endl;
                      std::cout<< "ataqueeeee2 " << jugadores[1].getX() << endl;
                      jugadores[1].setDanoVida(enemigos[a]->getAtaqueFisico());
                  }
@@ -388,29 +390,27 @@ void Nivel::collectElement(int jugador)
 {
     for (int i = 0; i < 10; i++)
     {
-        //std::cout<<"Se está comprobando colision"<<endl;
-        //std::cout<<"JUGADOR X: "<<jugadores[jugador].getX()<<endl;
-        //std::cout<<"ELEMENTO 0 X: "<<elementos[0].getX()<<endl;
-        for (int j = 0; j<= 5; j++)
+        if (jugadores[jugador].ColisionElemento(jugador, i) == true)
         {
-            if ((jugadores[jugador].getX() == (elementos[i].getX()-j) || jugadores[jugador].getX() == (elementos[i].getX()+j))&& (jugadores[jugador].getY() == (elementos[i].getY()-j) || jugadores[jugador].getY() == (elementos[i].getY()+j))) // SI HAY COLISION DE JUGADOR Y ELEMENTO
-            {
-                std::cout<<"Recogió el elemento"<<endl;
-                if (i == 0 || i == 5)
-                    jugadores[jugador].cambiarElemento(0);
-                else if (i == 1 || i == 6)
-                    jugadores[jugador].cambiarElemento(1);
-                else if (i == 2 || i == 7)
-                    jugadores[jugador].cambiarElemento(2);
-                else if (i == 3 || i == 8)
-                    jugadores[jugador].cambiarElemento(3);
-                else if (i == 4 || i == 9)
-                    jugadores[jugador].cambiarElemento(4);
+            std::cout<<"Recogió el elemento"<<endl;
+            if (i == 0 || i == 5)
+                jugadores[jugador].cambiarElemento(0);
+            else if (i == 1 || i == 6)
+                jugadores[jugador].cambiarElemento(1);
+            else if (i == 2 || i == 7)
+                jugadores[jugador].cambiarElemento(2);
+            else if (i == 3 || i == 8)
+                jugadores[jugador].cambiarElemento(3);
+            else if (i == 4 || i == 9)
+                jugadores[jugador].cambiarElemento(4);
 
-                elementos[i].ChangeCoords(elementos[i].getX(), -500);
-            }
+            elementos[i].ChangeCoords(elementos[i].getX(), -500);
         }
     }
+    
+        
+                
+        
 }
 
 Nivel::~Nivel()

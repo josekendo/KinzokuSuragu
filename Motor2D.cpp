@@ -283,10 +283,6 @@ void Motor2D::matarEnemigo(int point)
     juego->finalNivel();
     }
     sound[point].stop();
-   /*delete enemigos[point];
-    enemigos[point] = NULL;
-    enemigos.erase(enemigos.begin()+point);*/
-    //std::cout << "se borra bala-sprite " << point << "\n";
     
 }
 
@@ -319,7 +315,8 @@ void Motor2D::Inputs()
     Juego *juego = Juego::getInstance();
     int contro;
     contro = 0; 
-    
+    sf::Vector2f movimiento;
+            
     while (window.pollEvent(eventos))
     {
               
@@ -364,6 +361,11 @@ void Motor2D::Inputs()
                         //ABAJO
                         controles->pd(contro);
                     }
+                    if(eventos.joystickButton.button == 2)
+                    {
+                        //cuerpo a cuerpo
+                        controles->pd(contro);
+                    }
                     if(eventos.joystickButton.button == 1)
                     {
                         //DEFENSA
@@ -390,7 +392,6 @@ void Motor2D::Inputs()
                             }
                         }
                     }
-                     //std::cout << "boton:" << eventos.joystickButton.button << " mando->" << eventos.joystickButton.joystickId << std::endl; 
                     break;
                 case sf::Event::JoystickButtonReleased:
                     if(eventos.joystickButton.joystickId == 0)
@@ -423,6 +424,11 @@ void Motor2D::Inputs()
                         //ABAJO
                         controles->dd(contro);
                     }
+                    if(eventos.joystickButton.button == 2)
+                    {
+                        //ataque cuerpo a cuerpo
+                        controles->dd(contro);
+                    }
                     if(eventos.joystickButton.button == 1)
                     {
                         //DEFENSA
@@ -436,11 +442,59 @@ void Motor2D::Inputs()
                     }
                     break;
                 case sf::Event::JoystickMoved:
-                    //std::cout << "joystick eje:" << eventos.joystickMove.axis.PovX << std::endl;
-                    //std::cout << "joystick eje:" << eventos.joystickMove.axis.PovY<< std::endl;
-                    //std::cout << "joystick:" << eventos.joystickMove.position << std::endl;
+                    if(eventos.joystickMove.joystickId == 0)
+                    {
+                        //control 1
+                        contro = 1;
+                    }
+                    else
+                    {
+                        //control 2
+                        contro = 2;
+                    }
+                    
+                    movimiento = sf::Vector2f(sf::Joystick::getAxisPosition(eventos.joystickMove.joystickId,sf::Joystick::X),sf::Joystick::getAxisPosition(eventos.joystickMove.joystickId,sf::Joystick::Y));
+                    
+                    if(movimiento.x > 0)
+                    {
+                        //derecha
+                        controles->pr(contro);
+                    }
+                    else
+                    {
+                        controles->dr(contro);
+                    }
+                    
+                    if(movimiento.x < 0)
+                    {
+                        //izquierda
+                        controles->pl(contro);
+                    }
+                    else
+                    {
+                        controles->dl(contro);
+                    }
+                    
+                    if(movimiento.y > 0)
+                    {
+                        //abajo
+                        controles->pd(contro);
+                    }
+                    else
+                    {
+                        controles->dd(contro);
+                    }
+                    
+                    if(movimiento.y < 0)
+                    {
+                        //arriba
+                        controles->pu(contro);
+                    }
+                    else
+                    {
+                        controles->du(contro);
+                    }
                     break;
-                    //fin mandos
                 case sf::Event::Closed:
                     window.close();
                     break;
@@ -534,12 +588,12 @@ void Motor2D::menuDOWN()
 
 void Motor2D::menuIZQ()
 {
-    
+    menus->MoverIzquierda();
 }
 
 void Motor2D::menuDER()
 {
-    
+    menus->MoverDerecha();
 }
 
 void Motor2D::menuSPACE()
@@ -807,6 +861,16 @@ void Motor2D::DrawEls(int tipo, int x, int y)
     elementos[tipo].setPosition(x, y);
     window.draw(elementos[tipo]);
 }
+
+bool Motor2D::ElementCol(int player, int el)
+{
+    if (jugadores[player].getGlobalBounds().intersects(elementos[el].getGlobalBounds()))
+    {
+        std::cout<<"HA COLISIONADO CON EL ELEMENTO"<<endl;
+        return true;       
+    }           
+}
+
 
 Motor2D::~Motor2D()
 {

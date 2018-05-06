@@ -192,11 +192,11 @@ bool Jugadores::SaltoBloqueo(bool moverup){ //controla la altura maxima del salt
         saltoref=y;
         //aceleracion=0;
         setEn4();
-        std::cout<<"botton dos veces pulsado"<<std::endl;
+        //std::cout<<"botton dos veces pulsado"<<std::endl;
     }
     else if(getPulsarBoton()==1 && saltoref==-500){
         saltoref=y;
-        std::cout<<"boton una vez pulsado"<<std::endl;
+        //std::cout<<"boton una vez pulsado"<<std::endl;
     }
     
     if(saltoref>-500){
@@ -210,7 +210,7 @@ bool Jugadores::SaltoBloqueo(bool moverup){ //controla la altura maxima del salt
         }
     }
     else if(saltoref==-600){
-         std::cout<<"salto ref -600**"<<std::endl;
+         //std::cout<<"salto ref -600**"<<std::endl;
         bloqueo=true;
     }
    
@@ -544,3 +544,14 @@ void Jugadores::resetPulsarBoton(){
     aceleracion=0;
 }
 
+bool Jugadores::ColisionElemento(int player, int el)
+{
+    if (motor->ElementCol(player, el) == true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}

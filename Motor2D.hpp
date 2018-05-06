@@ -92,6 +92,10 @@ public:
     void initEls(int elemento);
     void DrawEls(int elemento, int x, int y);
     
+    //COLISION DE ELEMENTO
+    bool ElementCol(int player, int el);
+    
+
 private:
     //clase singleton 
     Motor2D();

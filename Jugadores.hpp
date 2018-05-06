@@ -61,7 +61,9 @@ public:
     int getOri();
     
     void ResetCoordenadas(int xn, int yn);//nos sirve para resetear las coordenadas del jugador
-    int * devolverEstadisticas();    
+    int * devolverEstadisticas();  
+    
+    bool ColisionElemento(int player, int el);
     
     
 private:
