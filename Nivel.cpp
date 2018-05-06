@@ -117,6 +117,7 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
 void Nivel::draw()
 {
      Motor2D *motor2D = Motor2D::getInstance();//clase global
+     Juego *juego = Juego::getInstance();//clase global
      if(level==1){
      motor2D->drawCap3();
      motor2D->drawCap1();
@@ -165,12 +166,12 @@ void Nivel::draw()
      
    for(int a = 0; a < enemigos.size();a++)
      {
-         if(enemigos[a]->sigoVivo()&&enemigos[a]->activacion()){
+         if(enemigos[a]->sigoVivo()&&enemigos[a]->activacion()&&juego->queEstado()==2){
             enemigos[a]->draw(); 
          }
          else
          {
-             if(enemigos[a]->activacion()==true){
+             if(enemigos[a]->activacion()==true&&juego->queEstado()!=2){
              bool ver = enemigos[a]->matarEnemigo(a);
              delete enemigos[a];
              enemigos[a] = NULL;
@@ -340,13 +341,14 @@ void Nivel::realimentarBalas()
 void Nivel::crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x,int y)
 {
     enemigos.push_back(new Enemigos(vid,ataq,ataqfisico,element,defen,tipo,x,y));
+    crearBala(1, tipo, x, y, 0, ataq, 1);
 }
 
 void Nivel::realimentarEnemigo()
 { 
     for(int o = 0; o < enemigos.size();o++)
      {
-            enemigos[o]->realimentar(enemigos[o]->getOrientacion());
+            enemigos[o]->realimentar();
      }  
 }
 
@@ -368,6 +370,13 @@ void Nivel::ataqueEnemigo()
           }
 }
 
+void Nivel::matarEnemigo()
+{ 
+    for(int o = 0; o < enemigos.size();o++)
+     {
+            enemigos[o]->matarEnemigo(o);
+     }  
+}
 
 int * Nivel::devolverEstadisticas()
 {

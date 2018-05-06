@@ -62,6 +62,7 @@ private:
     sf::Text tituloVentana;
     sf::Text *Estadisticas;
     sf::Text creditos;
+    int nivel_estamos;
     void drawMenus(sf::RenderWindow &ventana);
     void drawNiveles(sf::RenderWindow &ventana,int players);
     void drawEstadisticas(sf::RenderWindow &ventana);

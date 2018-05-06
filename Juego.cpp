@@ -62,6 +62,14 @@ void Juego::Draw()
 
 void Juego::izquierda()
 {
+    //menu
+    if(estado->QueEstado() == 1)
+    {
+        if(control->getl(1))
+        {
+            motor->menuIZQ();
+        }
+    }
     //jugando
     if(estado->QueEstado() == 2)
     {
@@ -93,6 +101,14 @@ void Juego::izquierda()
 
 void Juego::derecha()
 {
+    //menu
+    if(estado->QueEstado() == 1)
+    {
+        if(control->getr(1))
+        {
+            motor->menuDER();
+        }
+    }
     //jugando
     if(estado->QueEstado() == 2)
     {
@@ -316,6 +332,13 @@ void Juego::quieto()
         }      
     }
 }
+
+void Juego::matarEnemigo()
+{
+        Nivel *niv = Nivel::getInstance();
+        niv->matarEnemigo();
+}
+
 void Juego::mouse(int boton, int x, int y)
 {
     //menu
@@ -379,6 +402,9 @@ void Juego::Ejecucion()
                 defensa();
                 agacharse();
                 salto();
+                derecha();            
+                izquierda();
+                matarEnemigo();
             }
             
             if(estado->QueEstado() == 2)
@@ -400,6 +426,7 @@ void Juego::Ejecucion()
             {
                ataque(); 
                defensa();
+               matarEnemigo();
             }
             
             motor->reiniciarUPDATE();

@@ -108,7 +108,7 @@ private:
     sf::Sprite elementos[10];//elementos
     std::vector<sf::Sprite*> bullets;//proyectiles
     sf::Sprite enemigos[6];//enemigos vector
-    sf::Texture texturas[13];//tilesets
+    sf::Texture texturas[16];//tilesets
     sf::SoundBuffer sb[6];
     sf::Sound sound[6];
     sf::View camera;//camara del juego

@@ -35,7 +35,7 @@ public:
     bool activacion();//si la camará entra en un rango cercano devuelve true
     bool matarEnemigo(int point);//mata a su sprite en el motor 
     int getAtaqueFisico();
-    void realimentar(int orientacion);//realimentamos su velocidad
+    void realimentar();//realimentamos su velocidad
     int getOrientacion();
     int getX();
     int getY();
