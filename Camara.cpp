@@ -46,19 +46,42 @@ void Camara::desbloquear()
 void Camara::meMuevo(int xn, int yn)
 {
     //std::cout << "Memuevo 0 " << (x+400) << " - " << xn << std::endl;
-    if(!block && xn < maxLimite)
+    Nivel *nivel = Nivel::getInstance();
+    if(!block)
     {
+        if(nivel->getInstance()->getModo() == 2)
+        {
+            if(xn > x && nivel->separacion() < 390)
+            {
+                if(x+4 < xn)
+                {
+                    x = x+4;
+                }
+                else
+                x = xn;
+            }   
+            if(xn > x-380 && xn < x && nivel->separacion() > 700)
+            x = x+4;
+        }
+        else
+        {
+            if(xn > x)
+            {
+                x = xn;
+            }
+        }
         //std::cout << "Memuevo 1 " << xn << std::endl;
-        if(xn > x+370)
+        /*if(xn > x+370)
         {
             //std::cout << "Memuevo 2 " << xn << std::endl;
             x = x+(xn-(x+370));
-        }
+        }*/
     }
 }
 
 bool Camara::mePuedoMover(int xn, int yn)
 {
+    //std::cout << x << " " << xn << "\n";
     Nivel *nivel = Nivel::getInstance();
     if(!block)
     {
@@ -75,20 +98,22 @@ bool Camara::mePuedoMover(int xn, int yn)
         if(nivel->getModo() == 2)
         {
             //en este modo tenemos que comprobar que entre uno y otro no haya mas de 790 puesto que las medidas de la camara son de 800 
-            if(xn < maxLimite && xn > x-380)
+            if(xn < maxLimite && xn > x-390)
             {
-                //std::cout << nivel->separacion() << "no " << (x+400)-xn<< std::endl;
-                if(nivel->separacion() < 750 && (x+400)-xn >= 25)
-                {        
-                    return true;
-                }
-                else if(((x+400)-xn) >= 775 && nivel->separacion() >= 750)
+                if(xn-390 < x  && xn+390 > x)
                 {
-                    return true;
-                }
-                else if(((x+400)-xn) >= 35 && nivel->separacion() >= 750)
-                {
-                    return true;
+                    if(nivel->separacion() < 750)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        //tenemos que comprobar que las coordenadas sean menor que el rango
+                        if(xn < x+390)
+                        {
+                            return true;
+                        }
+                    }
                 }
             }
             else
@@ -103,6 +128,7 @@ bool Camara::mePuedoMover(int xn, int yn)
         else
             return false;
     }
+    return false;
 }
 
 int Camara::coordenadaX()

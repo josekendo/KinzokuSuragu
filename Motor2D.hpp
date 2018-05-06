@@ -16,10 +16,12 @@
 #define TIEMPOUPDATE 1000/15
 //clases basicas
 #include <SFML/Graphics.hpp>
+#include "SFML/Audio.hpp"
 #include "TileMap.cpp"
 #include "Controles.h"
 #include "Menus.h"
 #include "Hud.hpp"
+#include "Colision.hpp"
 //fin clases basicas
 
 class Motor2D {
@@ -95,6 +97,7 @@ private:
     Motor2D();
     static Motor2D* unica_instancia;
     //fin clase singleto private
+    Colision *colision= Colision::getInstance();
     sf::RenderWindow window;//ventana
     TileMap ca1,ca2,ca3;//capas
     sf::Sprite jugadores[2];//jugadores
@@ -102,6 +105,8 @@ private:
     std::vector<sf::Sprite*> bullets;//proyectiles
     sf::Sprite enemigos[6];//enemigos vector
     sf::Texture texturas[13];//tilesets
+    sf::SoundBuffer sb[6];
+    sf::Sound sound[6];
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto
     sf::Clock animaciones;//nos sirve para saber cuando tenemos que cambiar de animacion

@@ -15,6 +15,7 @@
 #include "Camara.hpp"
 #include "Nivel.hpp"
 
+
 Enemigos::Enemigos() 
 {
     muerto = false;
@@ -30,6 +31,8 @@ Enemigos::Enemigos()
     coordenadas = Coordenadas(400,220);
     cx = 400;
     cy = 220;
+    cxo = 400;
+    cyo = 220;
     //animacion
     estado = 7;//estados
     frame = 7;//numero de frames
@@ -58,6 +61,8 @@ Enemigos::Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int t
     coordenadas = Coordenadas(x,y);
     cx = x;
     cy = y;
+    cxo = x;
+    cyo = y;
     //animacion
     estado = 7;//estados
     frame = 7;//numero de frames
@@ -175,16 +180,35 @@ bool Enemigos::matarEnemigo(int point)
 
 void Enemigos::realimentar(int orientacion)
 { 
-    /*if(activacion()){
-    coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*orientacion),coordenadas.getCoordenadaY());
-    }*/
+    
+    if(activacion()){
+       if(coordenadas.getCoordenadaX()<cxo-50){
+            der = true;
+            izq = false;
+       }
+       else if(coordenadas.getCoordenadaX()>cxo+50){
+            izq = true;
+            der = false;
+       }
+       
+       if(der==true){
+            coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*-1),coordenadas.getCoordenadaY());
+       }
+       else if(izq==true){
+           coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*1),coordenadas.getCoordenadaY());
+       }
+       else{
+           coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*-1),coordenadas.getCoordenadaY());
+       }
+    }
 }
 
 bool Enemigos::sigoVivo()
 {
     Camara *cam = Camara::getInstance();
-    if(coordenadas.getCoordenadaX() < cam->coordenadaX()-400)
+    if(coordenadas.getCoordenadaX() < cam->coordenadaX()-450)
     {
+        matarEnemigo(enemigo);
         return false;
     }
     else
@@ -213,16 +237,15 @@ int Enemigos::getOrientacion()
 
 int Enemigos::getX()
 {
-    return cx;
+    return coordenadas.getCoordenadaX();
 }
 
 int Enemigos::getY()
 {
-    return cy;
+    return coordenadas.getCoordenadaY();
 }
 
-void Enemigos::ataqueEnemigo()
+int Enemigos::getAtaqueFisico()
 {
-    Nivel *niv = Nivel::getInstance();
-    niv->ataqueEnemigo(4);
+    return ataquefisico;
 }

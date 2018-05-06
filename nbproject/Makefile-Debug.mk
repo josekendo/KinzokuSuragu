@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Bullet.o \
 	${OBJECTDIR}/Camara.o \
+	${OBJECTDIR}/Colision.o \
 	${OBJECTDIR}/Controles.o \
 	${OBJECTDIR}/Coordenadas.o \
 	${OBJECTDIR}/Els.o \
@@ -72,7 +73,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/libsfml-window.so /usr/lib/x86_64-linux-gnu/libsfml-graphics.so /usr/lib/x86_64-linux-gnu/libsfml-system.so libbox2d.a
+LDLIBSOPTIONS=-L/usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/libsfml-window.so /usr/lib/x86_64-linux-gnu/libsfml-graphics.so /usr/lib/x86_64-linux-gnu/libsfml-system.so libbox2d.a /usr/lib/x86_64-linux-gnu/libsfml-audio.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -85,6 +86,8 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: /usr/lib/x86_64-linux-gnu/
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: /usr/lib/x86_64-linux-gnu/libsfml-system.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: libbox2d.a
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: /usr/lib/x86_64-linux-gnu/libsfml-audio.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegobase: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -99,6 +102,11 @@ ${OBJECTDIR}/Camara.o: Camara.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camara.o Camara.cpp
+
+${OBJECTDIR}/Colision.o: Colision.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -IBox2D -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Colision.o Colision.cpp
 
 ${OBJECTDIR}/Controles.o: Controles.cpp 
 	${MKDIR} -p ${OBJECTDIR}

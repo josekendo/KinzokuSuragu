@@ -46,7 +46,7 @@ public:
     void juegoMultijugador(int tipo1,int tipo2);//prepara los personajes con los tipos(0 masculino, 1 femenino)
     void moverJugador(int jugador);//mueve el jugador hacia delante
     void moverJugadorAtras(int jugador);//mueve el jugador pasado hacia atras
-    void brincarJugador(int jugador);
+    void brincarJugador(int jugador, bool caida);
    
     void AtaqueCercano(int jugador);
     void AtaqueLejano(int jugador);
@@ -66,7 +66,7 @@ public:
     void realimentarBalas();//le da propulsion a la bala
     void crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x,int y);//creamos un nuevo enemigo
     void realimentarEnemigo();//movimiento enemigo
-    void ataqueEnemigo(int dano);
+    void ataqueEnemigo();
     int * devolverEstadisticas();//devuelve las estadisticas de los jugadores
     
     void collectElement(int jugador);
@@ -75,6 +75,7 @@ private:
     //clase singleton 
     Nivel();
     static Nivel* unica_instancia;
+    int direccion;
     //fin clase singleto private
     FabricarNivel fabrica;
     Jugadores jugadores[2];//array de jugadores

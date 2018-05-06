@@ -7,6 +7,7 @@
       <itemPath>../../Desktop/Proyectos NetBeans/PrototipoBase/Box2D.h</itemPath>
       <itemPath>Bullet.hpp</itemPath>
       <itemPath>Camara.hpp</itemPath>
+      <itemPath>Colision.hpp</itemPath>
       <itemPath>Controles.h</itemPath>
       <itemPath>Coordenadas.hpp</itemPath>
       <itemPath>Elements.hpp</itemPath>
@@ -31,6 +32,7 @@
                    projectFiles="true">
       <itemPath>Bullet.cpp</itemPath>
       <itemPath>Camara.cpp</itemPath>
+      <itemPath>Colision.cpp</itemPath>
       <itemPath>Controles.cpp</itemPath>
       <itemPath>Coordenadas.cpp</itemPath>
       <itemPath>Elements.cpp</itemPath>
@@ -101,6 +103,7 @@
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsfml-graphics.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsfml-system.so</linkerLibFileItem>
             <linkerLibFileItem>libbox2d.a</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsfml-audio.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -116,6 +119,10 @@
       <item path="Camara.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Camara.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Colision.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Colision.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Controles.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -214,6 +221,10 @@
       <item path="Camara.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Camara.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Colision.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Colision.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Controles.cpp" ex="false" tool="1" flavor2="0">
       </item>
