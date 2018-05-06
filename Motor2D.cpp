@@ -670,44 +670,6 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
         bullets.push_back(bala);
         //std::cout << "bullets guarda " << int(bullets.size()) << " numero de balas.\n";
     }
-    if(tipo == 1){
-        sf::Sprite *bala = new sf::Sprite;
-        bala->setTexture(texturas[2]);
-        bala->setOrigin(48/2, 48/2);
-        bala->setScale(sf::Vector2f(2, 2));
-        bala->setTextureRect(sf::IntRect(0, 0, 48,48));
-        int fram;
-        
-        if (ori == -1)
-        {
-            fram = 1;
-        }
-        else if (ori == 1)
-        {
-            fram = 0;
-        }
-        
-        //color elemento
-        if(elemento == 1){
-        bala->setTexture(texturas[13]);
-        bala->setOrigin(228/2,400/2);
-        bala->setScale(sf::Vector2f(200, 200));
-            bala->setTextureRect(sf::IntRect(6*fram, 3*elemento, 6*ori, 3));
-        }
-        else if(elemento == 2){
-        bala->setTexture(texturas[14]);
-        bala->setScale(sf::Vector2f(2, 2));
-            bala->setTextureRect(sf::IntRect(142*fram, 42*elemento, 142*ori, 42));
-        }
-        else if(elemento == 5){
-            bala->setTexture(texturas[15]);
-        bala->setScale(sf::Vector2f(2, 2));
-            bala->setTextureRect(sf::IntRect(12*fram, 4*elemento, 12*ori, 4));
-        
-        }
-            
-        bullets.push_back(bala);
-    }
 }
 
 void Motor2D::drawBala(int point,int x, int y)
