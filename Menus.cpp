@@ -906,14 +906,14 @@ void Menus::cambioEstado(int nuevo)
                 titul.setScale(1.8f,1.8f);
                 titul.setColor(sf::Color(255,255,255,180));
                 textconf[0].setFont(fuente);
-                textconf[0].setString("Movimiento un Jugador");
+                textconf[0].setString("Movimiento de Jugadores");
                 textconf[0].setPosition(30,-200);
                 textconf[1].setFont(fuente);
                 textconf[1].setString("Teclas Fijas");
                 textconf[1].setColor(sf::Color(255,0,0,255));      
                 textconf[1].setPosition(30,0);
                 textconf[2].setFont(fuente);
-                textconf[2].setString(" Shift > Ataque \n Ctrl > Defensa \n Espace > Salto \n Esc > Atras \n Q > Salir");
+                textconf[2].setString(" Shift > Ataque(j1) o Aceptar \n Ctrl > Defensa(j1) o Atras \n Q > Salir \n Shift derecho > Ataque(j2) \n Ctrl derecho > Defensa(j2)");
                 textconf[2].setPosition(30,50);
                 conf[0].setTexture(c1);
                 conf[0].setPosition(200,-160);
@@ -962,7 +962,7 @@ void Menus::cambioEstado(int nuevo)
                 Estadisticas[4].setString(os.str());
                 Estadisticas[4].setPosition(30,10);
                 os.str("");
-                os << "Numero de veces Muerto Jugador 1" << info[9];                
+                os << "Numero de veces Muerto Jugador 1:" << info[9];                
                 Estadisticas[5].setString(os.str());
                 Estadisticas[5].setPosition(30,50);
                 os.str("");
