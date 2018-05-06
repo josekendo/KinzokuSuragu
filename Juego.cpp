@@ -332,6 +332,13 @@ void Juego::quieto()
         }      
     }
 }
+
+void Juego::matarEnemigo()
+{
+        Nivel *niv = Nivel::getInstance();
+        niv->matarEnemigo();
+}
+
 void Juego::mouse(int boton, int x, int y)
 {
     //menu
@@ -397,6 +404,7 @@ void Juego::Ejecucion()
                 salto();
                 derecha();            
                 izquierda();
+                matarEnemigo();
             }
             
             if(estado->QueEstado() == 2)
@@ -418,6 +426,7 @@ void Juego::Ejecucion()
             {
                ataque(); 
                defensa();
+               matarEnemigo();
             }
             
             motor->reiniciarUPDATE();
