@@ -286,6 +286,17 @@ void Motor2D::matarEnemigo(int point)
     
 }
 
+void Motor2D::desactivarSonidos()
+{
+    
+    for(int i=0;i<6;i++){
+    if(sound[i].getStatus()==sf::Sound::Playing){
+    sound[i].stop();
+    }
+    }
+    
+}
+
 void Motor2D::initCamera()
 {
     camera = sf::View(sf::FloatRect(0, 0, 800, 600));

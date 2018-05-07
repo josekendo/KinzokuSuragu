@@ -333,10 +333,9 @@ void Juego::quieto()
     }
 }
 
-void Juego::matarEnemigo()
+void Juego::desactivarSonidos()
 {
-        Nivel *niv = Nivel::getInstance();
-        niv->matarEnemigo();
+        motor->desactivarSonidos();
 }
 
 void Juego::mouse(int boton, int x, int y)
@@ -404,7 +403,6 @@ void Juego::Ejecucion()
                 salto();
                 derecha();            
                 izquierda();
-                matarEnemigo();
             }
             
             if(estado->QueEstado() == 2)
@@ -426,7 +424,6 @@ void Juego::Ejecucion()
             {
                ataque(); 
                defensa();
-               matarEnemigo();
             }
             
             motor->reiniciarUPDATE();
@@ -437,6 +434,7 @@ void Juego::finalNivel()
 {
     motor->finalNivel();    
     control->offTwo();
+    desactivarSonidos();
     cambiarEstado(1);
 }
 
