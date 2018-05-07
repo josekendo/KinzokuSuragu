@@ -67,7 +67,6 @@ public:
     void crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x,int y);//creamos un nuevo enemigo
     void realimentarEnemigo();//movimiento enemigo
     void ataqueEnemigo();
-    void matarEnemigo();
     int * devolverEstadisticas();//devuelve las estadisticas de los jugadores
     
     void collectElement(int jugador);

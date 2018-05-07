@@ -47,7 +47,7 @@ public:
     void ataque();
     void defensa();
     void quieto();
-    void desactivarSonidos();
+    void matarEnemigos();
     void mouse(int boton, int x, int y);
 //fin inputs
     void finalNivel();//se llamara cuando haya terminado nivel

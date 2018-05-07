@@ -370,14 +370,6 @@ void Nivel::ataqueEnemigo()
           }
 }
 
-void Nivel::matarEnemigo()
-{ 
-    for(int o = 0; o < enemigos.size();o++)
-     {
-            enemigos[o]->matarEnemigo(o);
-     }  
-}
-
 int * Nivel::devolverEstadisticas()
 {
     int * jug = new int[6];

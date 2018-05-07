@@ -282,7 +282,9 @@ void Motor2D::matarEnemigo(int point)
     Juego *juego = Juego::getInstance();
     juego->finalNivel();
     }
+    if(sound[point].getStatus()==sf::Sound::Playing){
     sound[point].stop();
+    }
     
 }
 

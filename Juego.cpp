@@ -333,9 +333,9 @@ void Juego::quieto()
     }
 }
 
-void Juego::desactivarSonidos()
+void Juego::matarEnemigos()
 {
-        motor->desactivarSonidos();
+        Nivel *niv = Nivel::getInstance();
 }
 
 void Juego::mouse(int boton, int x, int y)
@@ -433,8 +433,9 @@ void Juego::Ejecucion()
 void Juego::finalNivel()
 {
     motor->finalNivel();    
+    motor->desactivarSonidos();
     control->offTwo();
-    desactivarSonidos();
+    matarEnemigos();
     cambiarEstado(1);
 }
 
