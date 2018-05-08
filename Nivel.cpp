@@ -362,8 +362,8 @@ void Nivel::ataqueEnemigo()
 { 
          for(int a = 0; a < enemigos.size();a++){
                 if(enemigos[a]->getX()-100-jugadores[0].getX()<10 && enemigos[a]->getX()-100-jugadores[0].getX()>-50 && enemigos[a]->getY()-174-jugadores[0].getY()<10 && enemigos[a]->getY()-174-jugadores[0].getY()>-10)  {
-                     std::cout<< "ataqueeeee2 " << jugadores[0].getY() << endl;
-                     std::cout<< "ataqueeeee " << enemigos[a]->getY() << endl;
+                    // std::cout<< "ataqueeeee2 " << jugadores[0].getY() << endl;
+                    // std::cout<< "ataqueeeee " << enemigos[a]->getY() << endl;
                      jugadores[0].setDanoVida(enemigos[a]->getAtaqueFisico());
                  }
                 if(modo==1){
@@ -374,6 +374,23 @@ void Nivel::ataqueEnemigo()
                  }
                 }
           }
+}
+
+void Nivel::matarEnemigos()
+{ 
+     Motor2D *motor2D = Motor2D::getInstance();//clase global
+     Juego *juego = Juego::getInstance();//clase global
+    for(int m = 0; m < enemigos.size();m++)
+     {
+        if(juego->queEstado()!=2){
+             std::cout<< "mataaaaaaaaa " << m << endl;
+             bool ver = enemigos[m]->matarEnemigo(m);
+             delete enemigos[m];
+             enemigos[m] = NULL;
+             enemigos.erase(enemigos.begin()+m);
+     }  
+    }
+             enemigos.resize(0);
 }
 
 int * Nivel::devolverEstadisticas()

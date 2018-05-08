@@ -175,7 +175,10 @@ void Enemigos::draw()
 
 bool Enemigos::matarEnemigo(int point)
 {
+    if(muerto==false){
     motor->matarEnemigo(enemigo);
+    }
+    muerto = true;
     return true;
 }
 
@@ -213,10 +216,12 @@ bool Enemigos::sigoVivo()
     if(coordenadas.getCoordenadaX() < cam->coordenadaX()-450)
     {
         matarEnemigo(enemigo);
+        muerto = true;
         return false;
     }
     else
     {
+        muerto = false;
         return true;
     }
 }

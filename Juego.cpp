@@ -336,6 +336,7 @@ void Juego::quieto()
 void Juego::matarEnemigos()
 {
         Nivel *niv = Nivel::getInstance();
+        niv->matarEnemigos();
 }
 
 void Juego::mouse(int boton, int x, int y)
@@ -435,8 +436,8 @@ void Juego::finalNivel()
     motor->finalNivel();    
     motor->desactivarSonidos();
     control->offTwo();
-    matarEnemigos();
     cambiarEstado(1);
+    matarEnemigos();
 }
 
 int Juego::queEstado()

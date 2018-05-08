@@ -278,9 +278,11 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
 
 void Motor2D::matarEnemigo(int point)
 {
-    if(point==2||point==5){
     Juego *juego = Juego::getInstance();
+    if(juego->queEstado()==2){
+    if(point==2||point==5){
     juego->finalNivel();
+    }
     }
     if(sound[point].getStatus()==sf::Sound::Playing){
     sound[point].stop();
