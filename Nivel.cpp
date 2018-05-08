@@ -274,14 +274,20 @@ void Nivel::AtaqueCercano(int jugador)
 
 void Nivel::AtaqueLejano(int jugador)
 {
-   
-    
-    int x = jugadores[jugador].getX();
-    int y = jugadores[jugador].getY();
+    int ori = jugadores[jugador].getOri();
+    int y = jugadores[jugador].getY() + 2;
     int elemento = jugadores[jugador].getElement();
     int tipo = jugadores[jugador].getType();
     int dano = jugadores[jugador].getDano(elemento, tipo);
-    int ori = jugadores[jugador].getOri();
+    int x; 
+    
+    if (ori == 1)
+        x = jugadores[jugador].getX() + 40;
+    else if (ori == -1)
+        x = jugadores[jugador].getX() - 40;
+    
+    
+    
     //std::cout<< "Orientacion: " << ori << endl;
     crearBala(tipo, elemento, x, y, jugador, dano, ori);
     jugadores[jugador].Shoot();//Función para que el personaje Dispare (ataquelejano)
@@ -392,7 +398,7 @@ void Nivel::collectElement(int jugador)
     {
         if (jugadores[jugador].ColisionElemento(jugador, i) == true)
         {
-            std::cout<<"Recogió el elemento"<<endl;
+            //std::cout<<"Recogió el elemento"<<endl;
             if (i == 0 || i == 5)
                 jugadores[jugador].cambiarElemento(0);
             else if (i == 1 || i == 6)

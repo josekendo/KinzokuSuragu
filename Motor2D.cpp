@@ -29,7 +29,7 @@ Motor2D::Motor2D()
     fuent.loadFromFile("resources/Menu/fuente.ttf");
     texturas[0].loadFromFile("resources/SpriteSheet_Character1.png");
     texturas[1].loadFromFile("resources/SpriteSheet_Character2.png");
-    texturas[2].loadFromFile("resources/Bullet_SpriteSheet.png");
+    texturas[2].loadFromFile("resources/Bullet_Sprites_New.png");
     //texturas[1].loadFromFile("resources/SpriteSheet_Character2.png"); FALTA SPRITESHEET JUGADOR 2
     texturas[3].loadFromFile("resources/Hud/life.png");
     texturas[4].loadFromFile("resources/Hud/defense.png");
@@ -144,7 +144,7 @@ void Motor2D::drawPersonaje(int player,int esta, int fram, int ori, float x,floa
     }
     
     
-    jugadores[player].setTextureRect(sf::IntRect(fram*48, esta*48, 48*ori,48));
+    jugadores[player].setTextureRect(sf::IntRect(fram*48, (esta*48)+8, 48*ori, 32));
     jugadores[player].setPosition(x,y);
     Camara *camara = Camara::getInstance();
     camara->meMuevo(x,y);
@@ -163,8 +163,8 @@ void Motor2D::initPersonaje(int player, int tipo)
         //std::cout << player-1 << " tipo textura 1" << tipo  << " t "<< std::endl;
         jugadores[player-1] = sf::Sprite();
         jugadores[player-1].setTexture(texturas[tipo]);
-        jugadores[player-1].setOrigin(48/2,48/2);
-        jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48, 48,48));
+        jugadores[player-1].setOrigin(48/2,32/2);
+        jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48 + 8, 48, 32));
         jugadores[player-1].scale(sf::Vector2f(2, 2));
     }
     
@@ -173,8 +173,8 @@ void Motor2D::initPersonaje(int player, int tipo)
         //std::cout << player-1 << " tipo textura 2" << tipo  << " t "<< std::endl;
         jugadores[player-1] = sf::Sprite();
         jugadores[player-1].setTexture(texturas[tipo]);
-        jugadores[player-1].setOrigin(48/2,48/2);
-        jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48, 48,48));
+        jugadores[player-1].setOrigin(48/2,32/2);
+        jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48 + 8, 48, 32));
         jugadores[player-1].scale(sf::Vector2f(2, 2));
     }
 }
@@ -648,9 +648,9 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
     {
         sf::Sprite *bala = new sf::Sprite;
         bala->setTexture(texturas[2]);
-        bala->setOrigin(48/2, 48/2);
+        bala->setOrigin(4/2, 2/2);
         bala->setScale(sf::Vector2f(2, 2));
-        bala->setTextureRect(sf::IntRect(0, 0, 48,48));
+        bala->setTextureRect(sf::IntRect(0, 0, 4, 2));
         int fram;
         
         if (ori == -1)
@@ -664,19 +664,19 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
         
         //color elemento
         if(elemento == 0)
-            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
+            bala->setTextureRect(sf::IntRect(4*fram, 2*elemento, 4*ori,2));
             //bala->setColor(sf::Color::White);
         else if(elemento == 1)
-            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
+            bala->setTextureRect(sf::IntRect(4*fram, 2*elemento, 4*ori,2));
             //bala->setColor(sf::Color::Blue);
         else if(elemento == 2)
-            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
+            bala->setTextureRect(sf::IntRect(4*fram, 2*elemento, 4*ori,2));
             //bala->setColor(sf::Color::Cyan);
         else if(elemento == 3)
-            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
+            bala->setTextureRect(sf::IntRect(4*fram, 2*elemento, 4*ori,2));
             //bala->setColor(sf::Color::Green);
         else if(elemento == 4)
-            bala->setTextureRect(sf::IntRect(48*fram, 48*elemento, 48*ori,48));
+            bala->setTextureRect(sf::IntRect(4*fram, 2*elemento, 4*ori,2));
             //bala->setColor(sf::Color::Magenta);
             //bala->setColor(sf::Color::Red);
             
@@ -841,7 +841,7 @@ bool Motor2D::ElementCol(int player, int el)
 {
     if (jugadores[player].getGlobalBounds().intersects(elementos[el].getGlobalBounds()))
     {
-        std::cout<<"HA COLISIONADO CON EL ELEMENTO"<<endl;
+        //std::cout<<"HA COLISIONADO CON EL ELEMENTO"<<endl;
         return true;       
     }           
 }

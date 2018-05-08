@@ -60,6 +60,7 @@ int Jugadores::getVida()
 void Jugadores::addMuerte()
 {
     muertes= muertes+1;
+    
     Die();
 }
 
@@ -180,7 +181,6 @@ void Jugadores::Caida(int dir){
         aceleracion=aceleracion+0.3;
     }*/
     coordenadas.cambiarPosicion(x,y);
-    draw();
 }
 bool Jugadores::SaltoBloqueo(bool moverup){ //controla la altura maxima del salto
     bool bloqueo=false;

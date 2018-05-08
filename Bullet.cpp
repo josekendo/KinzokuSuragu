@@ -52,6 +52,8 @@ bool Bullet::matarBala(int point)
 void Bullet::realimentar(int ori)
 {
     Motor2D *motor = Motor2D::getInstance();
+    /*if (ori == -1)
+        Coordenadas(coordenadas.getCoordenadaX())*/
     coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+(velocidad*ori),coordenadas.getCoordenadaY());
     
     //if(ori == -1)

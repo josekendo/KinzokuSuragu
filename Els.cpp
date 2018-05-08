@@ -39,7 +39,7 @@ void Els::initEl(int type)
     {
         
         posicionesX[i] = rand() % 11100 + 0;
-        std::cout<<"PosicionX generada: "<<i<<"  "<<posicionesX[i]<<endl;
+        //std::cout<<"PosicionX generada: "<<i<<"  "<<posicionesX[i]<<endl;
         
     }
     srand (time(NULL));
@@ -48,7 +48,7 @@ void Els::initEl(int type)
     {
         
         posicionesY[j] = rand() % 300 + 0;
-        std::cout<<"PosicionY generada: "<<j<<"  "<<posicionesY[j]<<endl;
+        //std::cout<<"PosicionY generada: "<<j<<"  "<<posicionesY[j]<<endl;
         
     }
     srand (1);
