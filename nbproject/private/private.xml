@@ -7,6 +7,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Els.cpp</file>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Coordenadas.hpp</file>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Estado.hpp</file>
@@ -20,6 +21,9 @@
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Motor2D.hpp</file>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Nivel.hpp</file>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Controles.h</file>
+=======
+            <file>file:/home/fv/NetBeansProjects/JuegoBase/KinzokuSuragu/main.cpp</file>
+>>>>>>> 48696a0294fa9fb5a504ed8b92183cc8d45d04f6
         </group>
     </open-files>
 </project-private>

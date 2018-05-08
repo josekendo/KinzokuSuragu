@@ -70,6 +70,7 @@ public:
     void initEnemigo(int tipo, int elemento);//crea un sprite de un enemigo
     void drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float y);//pinta el enemigo en esa posicion
     void matarEnemigo(int point);//elimina el sprite del enemigo 
+    void desactivarSonidos();
     //relojes
     int darUPDATE();
     void reiniciarUPDATE();
