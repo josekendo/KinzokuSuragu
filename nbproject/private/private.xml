@@ -9,16 +9,17 @@
         <group>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Els.cpp</file>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Coordenadas.hpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Estado.hpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/main.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Juego.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Nivel.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Estado.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Bullet.cpp</file>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Motor2D.cpp</file>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Jugadores.cpp</file>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Motor2D.hpp</file>
-            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/main.cpp</file>
-            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Juego.cpp</file>
             <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Nivel.hpp</file>
-            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Nivel.cpp</file>
-            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Jugadores.hpp</file>
-            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Els.hpp</file>
-            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Coordenadas.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Controles.h</file>
         </group>
     </open-files>
 </project-private>
