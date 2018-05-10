@@ -93,6 +93,16 @@ bool Motor2D::cargarCapa(int* matriz, int capa, int longitud, int anchura, int a
                 ca3.setPosition(-32,-532);
             colision->generarMatriz(matriz,capa,anchura,altura);
         break;
+        case 4:
+            if (ca4.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
+                ca4.setPosition(-32,-532);
+            //colision->generarMatriz(matriz,capa,anchura,altura);
+        break;
+        case 5:
+            if (ca5.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
+                ca5.setPosition(-32,-532);
+            //colision->generarMatriz(matriz,capa,anchura,altura);
+        break;
     }
 }
 
@@ -132,6 +142,17 @@ void Motor2D::drawCap3()
     window.draw(ca3);
    
 }
+
+void Motor2D::drawCap4()
+{
+    window.draw(ca4);
+}
+
+void Motor2D::drawCap5()
+{
+    window.draw(ca5);  
+}
+
 
 void Motor2D::mostrar()
 {
@@ -399,7 +420,7 @@ void Motor2D::Inputs()
                         {  
                             if(juego->queEstado() == 1)
                             {
-                                std::cout << "salir"<<"\n";
+                                //std::cout << "salir"<<"\n";
                                 window.close();
                             }
                             else
@@ -552,7 +573,7 @@ void Motor2D::Inputs()
                         {
                             if(juego->queEstado() == 1)
                             {
-                                std::cout << "salir"<<"\n";
+                                //std::cout << "salir"<<"\n";
                                 window.close();
                             }
                             else

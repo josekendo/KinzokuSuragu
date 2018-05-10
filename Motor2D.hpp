@@ -46,6 +46,8 @@ public:
     void drawCap1();//pinta la capa 1
     void drawCap2();//pinta la capa 2
     void drawCap3();//pinta la capa 3
+    void drawCap4();//pinta la capa 4
+    void drawCap5();//pinta la capa 5    
     void initMenu();//inicializa la variable de menu
     void drawMenu();//pinta el menu (en cualquier de sus subestados)
     void menuDOWN();//redireccion a menu control abajo
@@ -105,7 +107,7 @@ private:
     //fin clase singleto private
     Colision *colision= Colision::getInstance();
     sf::RenderWindow window;//ventana
-    TileMap ca1,ca2,ca3;//capas
+    TileMap ca1,ca2,ca3,ca4,ca5;//capas
     sf::Sprite jugadores[2];//jugadores
     sf::Sprite elementos[10];//elementos
     std::vector<sf::Sprite*> bullets;//proyectiles

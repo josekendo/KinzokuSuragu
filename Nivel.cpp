@@ -119,15 +119,8 @@ void Nivel::draw()
      Motor2D *motor2D = Motor2D::getInstance();//clase global
      Juego *juego = Juego::getInstance();//clase global
      Hud *hud = Hud::getInstance();
-     if(level==1){
-     motor2D->drawCap3();
-     motor2D->drawCap1();
-     }
-     else{
-     motor2D->drawCap3();
-     motor2D->drawCap1();
-     motor2D->drawCap2();
-     }
+        motor2D->drawCap3();
+        motor2D->drawCap1();
      //pintamos a enemigos y jugadores
      if(modo == 1)
      {
@@ -186,9 +179,9 @@ void Nivel::draw()
          }
      }
          
-     if(level==1){
      motor2D->drawCap2();
-     }
+     motor2D->drawCap4();
+    //motor2D->drawCap5();
 }
 
 
