@@ -61,7 +61,7 @@ int Jugadores::getVida()
 void Jugadores::addMuerte()
 {
     muertes= muertes+1;
-    
+    vida = 100;//restablecemos la vida
     Die();
 }
 

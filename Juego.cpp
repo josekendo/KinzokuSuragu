@@ -12,6 +12,7 @@
  */
 
 #include "Juego.hpp"
+#include "GestionArchivos.hpp"
 
 Juego* Juego::unica_instancia = 0;
 
@@ -441,6 +442,9 @@ void Juego::Ejecucion()
 
 void Juego::finalNivel()
 {
+    GestionArchivos *gestion = GestionArchivos::getInstance();
+    Nivel *nivel = Nivel::getInstance();
+    gestion->guardarValores(0,nivel->getModo());
     motor->finalNivel();    
     motor->desactivarSonidos();
     control->offTwo();
