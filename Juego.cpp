@@ -140,6 +140,10 @@ void Juego::derecha()
 
 void Juego::salto()
 {
+    tiempo1=tiempo1+inputblock.getElapsedTime().asMilliseconds();//para el player1
+    tiempo2=tiempo2+inputblock.getElapsedTime().asMilliseconds();//para el player2
+    inputblock.restart();
+    
     //menu
     Nivel *nivel = Nivel::getInstance();//clase global
     if(estado->QueEstado() == 1)
@@ -153,11 +157,13 @@ void Juego::salto()
     if(estado->QueEstado() == 2)
     {
         Nivel *nivel = Nivel::getInstance();//clase global
+        
         if(nivel->getModo() == 1)
         {
-            if(control->getu(1))
+            if(control->getu(1) && tiempo1>250)
             {
                 nivel->brincarJugador(0,0);//saltar jugador 0
+                tiempo1=0;
             }
             else{
                 nivel->brincarJugador(0,1);
@@ -165,17 +171,19 @@ void Juego::salto()
         }
         else
         {
-            if(control->getu(1))
+            if(control->getu(1) && tiempo1>250)
             {
                 nivel->brincarJugador(0,0);//saltar jugador 0
+                tiempo1=0;
             }
             else{
                 nivel->brincarJugador(0,1);
             }
             
-            if(control->getu(2))
+            if(control->getu(2) && tiempo2>250)
             {
                 nivel->brincarJugador(1,0);//saltar jugador 1
+                tiempo2=0;
             }
             else{
                 nivel->brincarJugador(1,1);

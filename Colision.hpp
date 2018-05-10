@@ -14,6 +14,7 @@
 #ifndef COLISION_HPP
 #define COLISION_HPP
 #include "Coordenadas.hpp"
+#include <SFML/Graphics.hpp>
 
 class Colision {
 public:
@@ -26,10 +27,9 @@ public:
     }
     
     void generarMatriz(int* matriz,int capa,int altura, int anchura);
-    bool ColisionSuelo(int x, int y, int dir);
-    bool ColisionTecho(int x, int y, int dir);
-    bool ColisionLateral(int x,int y,int dir);
-    bool ColisionIzquierda(int x, int y);
+    bool ColisionSuelo(int x, int y, sf::Vector2f dim,int dir);
+    bool ColisionTecho(int x, int y,sf::Vector2f dim,int dir);
+    bool ColisionLateral(int x,int y,sf::Vector2f dim,int dir);
     
 private: 
     

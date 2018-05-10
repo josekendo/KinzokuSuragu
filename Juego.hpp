@@ -14,6 +14,7 @@
 #ifndef JUEGO_HPP
 #define JUEGO_HPP
 
+#include <SFML/Graphics.hpp>
 #include "Estado.hpp"
 #include "Nivel.hpp"
 #include "Motor2D.hpp"
@@ -65,6 +66,9 @@ private:
     Menu menu;
     Jugando jugando;
     Controles *control;
+    sf:: Clock inputblock;
+    float tiempo1;
+    float tiempo2;
 };
 
 #endif /* JUEGO_HPP */

@@ -95,6 +95,7 @@ public:
     
     //COLISION DE ELEMENTO
     bool ElementCol(int player, int el);
+    sf:: Vector2f getDimensiones(int tipo);
     
 
 private:

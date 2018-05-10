@@ -91,6 +91,7 @@ private:
     int posY;
     int boton,saltoref;//variables para salto
     float aceleracion;
+    sf::Vector2f dimensiones;
     //bool mover;
     //bool moverAtras;
 };

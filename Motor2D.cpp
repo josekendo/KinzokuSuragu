@@ -70,6 +70,8 @@ Motor2D::Motor2D()
     initCamera();
     controles = Controles::getInstance();
     initMenu();
+    
+    
 }
 
 bool Motor2D::cargarCapa(int* matriz, int capa, int longitud, int anchura, int altura, char tileset[])
@@ -128,6 +130,7 @@ void Motor2D::drawCap3()
 {
     window.clear(sf::Color::Black);
     window.draw(ca3);
+   
 }
 
 void Motor2D::mostrar()
@@ -148,8 +151,6 @@ void Motor2D::drawPersonaje(int player,int esta, int fram, int ori, float x,floa
     jugadores[player].setPosition(x,y);
     Camara *camara = Camara::getInstance();
     camara->meMuevo(x,y);
-    
-    
 
     window.draw(jugadores[player]);
 }
@@ -846,6 +847,16 @@ bool Motor2D::ElementCol(int player, int el)
         //std::cout<<"HA COLISIONADO CON EL ELEMENTO"<<endl;
         return true;       
     }           
+}
+sf::Vector2f Motor2D::getDimensiones(int tipo){
+    sf::Vector2f dimensiones;
+    if(tipo==-1){
+        dimensiones=sf::Vector2f(jugadores[0].getGlobalBounds().height,jugadores[0].getGlobalBounds().width);
+    }
+    else{
+        dimensiones=sf::Vector2f(enemigos[tipo].getGlobalBounds().height,enemigos[tipo].getGlobalBounds().width);
+    }
+    return dimensiones;
 }
 
 
