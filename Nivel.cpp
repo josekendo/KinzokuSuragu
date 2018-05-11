@@ -119,8 +119,8 @@ void Nivel::draw()
      Motor2D *motor2D = Motor2D::getInstance();//clase global
      Juego *juego = Juego::getInstance();//clase global
      Hud *hud = Hud::getInstance();
-        motor2D->drawCap1();
         motor2D->drawCap3();
+        motor2D->drawCap1();
      //pintamos a enemigos y jugadores
      if(modo == 1)
      {
