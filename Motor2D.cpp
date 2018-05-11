@@ -68,6 +68,8 @@ Motor2D::Motor2D()
     initCamera();
     controles = Controles::getInstance();
     initMenu();
+    
+    
 }
 
 bool Motor2D::cargarCapa(int* matriz, int capa, int longitud, int anchura, int altura, char tileset[])
@@ -88,6 +90,16 @@ bool Motor2D::cargarCapa(int* matriz, int capa, int longitud, int anchura, int a
             if (ca3.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
                 ca3.setPosition(-32,-532);
             colision->generarMatriz(matriz,capa,anchura,altura);
+        break;
+        case 4:
+            if (ca4.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
+                ca4.setPosition(-32,-532);
+            //colision->generarMatriz(matriz,capa,anchura,altura);
+        break;
+        case 5:
+            if (ca5.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
+                ca5.setPosition(-32,-532);
+            //colision->generarMatriz(matriz,capa,anchura,altura);
         break;
     }
 }
@@ -126,7 +138,19 @@ void Motor2D::drawCap3()
 {
     window.clear(sf::Color::Black);
     window.draw(ca3);
+   
 }
+
+void Motor2D::drawCap4()
+{
+    window.draw(ca4);
+}
+
+void Motor2D::drawCap5()
+{
+    window.draw(ca5);  
+}
+
 
 void Motor2D::mostrar()
 {
@@ -146,8 +170,6 @@ void Motor2D::drawPersonaje(int player,int esta, int fram, int ori, float x,floa
     jugadores[player].setPosition(x,y);
     Camara *camara = Camara::getInstance();
     camara->meMuevo(x,y);
-    
-    
 
     window.draw(jugadores[player]);
 }
@@ -397,7 +419,7 @@ void Motor2D::Inputs()
                         {  
                             if(juego->queEstado() == 1)
                             {
-                                std::cout << "salir"<<"\n";
+                                //std::cout << "salir"<<"\n";
                                 window.close();
                             }
                             else
@@ -550,7 +572,7 @@ void Motor2D::Inputs()
                         {
                             if(juego->queEstado() == 1)
                             {
-                                std::cout << "salir"<<"\n";
+                                //std::cout << "salir"<<"\n";
                                 window.close();
                             }
                             else
@@ -728,6 +750,12 @@ void Motor2D::matarBala(int point)
 
 void Motor2D::initHud(int player)
 {   
+    textos[0].setCharacterSize(16);
+    textos[1].setCharacterSize(16);
+    textos[2].setCharacterSize(16);
+    textos[3].setCharacterSize(16);
+    textos[4].setCharacterSize(16);
+    textos[5].setCharacterSize(16);   
     if(player <= 1)
     {
         hud1 = sf::View(sf::FloatRect(0, 0, 100, 100));
@@ -746,15 +774,15 @@ void Motor2D::initHud(int player)
         textos[0].setFont(fuent);
         textos[0].setColor(sf::Color::Red);
         textos[0].setString("0");        
-        textos[0].setPosition(280,-50);
+        textos[0].setPosition(280,-38);
         textos[1].setFont(fuent);
-        textos[1].setColor(sf::Color::Green);
+        textos[1].setColor(sf::Color(209,132,14));
         textos[1].setString("0");        
-        textos[1].setPosition(280,-25);
+        textos[1].setPosition(280,-13);
         textos[2].setFont(fuent);
         textos[2].setColor(sf::Color::Blue);
         textos[2].setString("0");        
-        textos[2].setPosition(280,0);
+        textos[2].setPosition(280,13);
         hud1.setCenter(300,0);
         hud1.setViewport(sf::FloatRect(0.0f, 0, 0.25f, 0.25f));
     }
@@ -777,22 +805,22 @@ void Motor2D::initHud(int player)
         textos[3].setFont(fuent);
         textos[3].setColor(sf::Color::Red);
         textos[3].setString("0");        
-        textos[3].setPosition(280,-50);
+        textos[3].setPosition(280,-38);
         textos[4].setFont(fuent);
-        textos[4].setColor(sf::Color::Green);
+        textos[4].setColor(sf::Color(209,132,14));
         textos[4].setString("0");        
-        textos[4].setPosition(280,-25);
+        textos[4].setPosition(280,-13);
         textos[5].setFont(fuent);
         textos[5].setColor(sf::Color::Blue);
         textos[5].setString("0");        
-        textos[5].setPosition(280,0);
+        textos[5].setPosition(280,13);
         hud2.setCenter(300,0);
         hud2.setViewport(sf::FloatRect(0.85f, 0, 0.25f, 0.25f));
     }
 }
 
 void Motor2D::drawHud(int player)
-{
+{ 
     Hud *hud = Hud::getInstance();
     if(player <= 1)
     {       
@@ -802,7 +830,7 @@ void Motor2D::drawHud(int player)
         window.draw(textos[0]);
         textos[1].setString(to_string(hud->getDefensa(1)));
         window.draw(textos[1]);
-        textos[2].setString(to_string(hud->getMunicion(1)));
+        textos[2].setString("-");
         window.draw(textos[2]);
         window.draw(marcadores[0]);
         window.draw(marcadores[1]);
@@ -817,7 +845,7 @@ void Motor2D::drawHud(int player)
         window.draw(textos[3]);
         textos[4].setString(to_string(hud->getDefensa(2)));
         window.draw(textos[4]);
-        textos[5].setString(to_string(hud->getMunicion(2)));
+        textos[5].setString("-");
         window.draw(textos[5]);
         window.draw(marcadores[3]);
         window.draw(marcadores[4]);
@@ -868,6 +896,16 @@ bool Motor2D::ElementCol(int player, int el)
         //std::cout<<"HA COLISIONADO CON EL ELEMENTO"<<endl;
         return true;       
     }           
+}
+sf::Vector2f Motor2D::getDimensiones(int tipo){
+    sf::Vector2f dimensiones;
+    if(tipo==-1){
+        dimensiones=sf::Vector2f(jugadores[0].getGlobalBounds().height,jugadores[0].getGlobalBounds().width);
+    }
+    else{
+        dimensiones=sf::Vector2f(enemigos[tipo].getGlobalBounds().height,enemigos[tipo].getGlobalBounds().width);
+    }
+    return dimensiones;
 }
 
 

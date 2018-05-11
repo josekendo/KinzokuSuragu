@@ -43,6 +43,7 @@ Jugadores::Jugadores()
     boton=0;
     saltoref=-500;
     aceleracion=0;
+    dimensiones= motor->getDimensiones(-1);//el -1 es para el sprite del heroe/gato
 }
 
 Jugadores::Jugadores(const Jugadores& orig) {
@@ -60,7 +61,7 @@ int Jugadores::getVida()
 void Jugadores::addMuerte()
 {
     muertes= muertes+1;
-    
+    vida = 100;//restablecemos la vida
     Die();
 }
 
@@ -326,7 +327,7 @@ bool Jugadores::mover()
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
     Camara *camara = Camara::getInstance();
     Nivel *niv = Nivel::getInstance();
-    if(colision->ColisionLateral(x,y,1)==false)
+    if(colision->ColisionLateral(x,y,dimensiones,1)==false)
     {
         //std::cout << "true moviendo" << std::endl;  
         //coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+mov,coordenadas.getCoordenadaYI(motor->darUPDATE()));
@@ -354,7 +355,7 @@ bool Jugadores::moverAtras()
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
     Camara *camara = Camara::getInstance();
     
-    if(colision->ColisionLateral(x,y,-1)==false)
+    if(colision->ColisionLateral(x,y,dimensiones,-1)==false)
     {
         
         return  1;
@@ -371,7 +372,7 @@ bool Jugadores::moverAbajo(int direccion){
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE())+mov;
     
-    if(colision->ColisionSuelo(x,y,direccion)==true){//si colisiona
+    if(colision->ColisionSuelo(x,y,dimensiones,direccion)==true){//si colisiona
         return false;
     }
     else{
@@ -379,11 +380,11 @@ bool Jugadores::moverAbajo(int direccion){
     }
 }
 bool Jugadores::moverArriba(int direccion){
-    int mov=kVel*2;
+    int mov=kVel*8;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE())-mov;
     
-    if(colision->ColisionTecho(x,y,direccion)==true){//si colisiona
+    if(colision->ColisionTecho(x,y,dimensiones,direccion)==true){//si colisiona
         return false;
     }
     else{

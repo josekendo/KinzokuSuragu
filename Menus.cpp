@@ -614,6 +614,14 @@ void Menus::cambioEstado(int nuevo)
         estado =nuevo;
         GestionArchivos *gestion = GestionArchivos::getInstance();
         int *info = gestion->devolverInformacion();
+        int *info2;
+        
+        if(estado == 8)
+        {
+            Nivel *jugando = Nivel::getInstance();
+            info2 = jugando->devolverEstadisticas();
+        }
+        
         switch(estado)
         {
             case 0:
@@ -840,31 +848,31 @@ void Menus::cambioEstado(int nuevo)
                 {
                     Estadisticas[a].setFont(fuente);
                 }
-                os << "Dolor recibido:" << info[4]+info[5];
+                os << "Dolor recibido: " << info[4]+info[5];
                 Estadisticas[0].setString(os.str());
                 Estadisticas[0].setPosition(30,-150);
                 os.str("");
-                os << "Dolor total causado:" << info[6]+info[7];
+                os << "Dolor total causado: " << info[6]+info[7];
                 Estadisticas[1].setString(os.str());
                 Estadisticas[1].setPosition(30,-110);
                 os.str("");
-                os << "Objetos Cogidos:" << info[11];
+                os << "Objetos Cogidos: " << info[11];
                 Estadisticas[2].setString(os.str());
                 Estadisticas[2].setPosition(30,-70);
                 os.str("");
-                os << "Tiempo de Juego:" << info[10] << " Minutos";
+                os << "Tiempo de Juego: " << info[10] << " Minutos";
                 Estadisticas[3].setString(os.str());
                 Estadisticas[3].setPosition(30,-30);
                 os.str("");
-                os << "Partidas Individuales:" << info[8];
+                os << "Partidas Individuales: " << info[8];
                 Estadisticas[4].setString(os.str());
                 Estadisticas[4].setPosition(30,10);
                 os.str("");
-                os << "Partidas Dos Jugadores:" << info[9];                
+                os << "Partidas Dos Jugadores: " << info[9];                
                 Estadisticas[5].setString(os.str());
                 Estadisticas[5].setPosition(30,50);
                 os.str("");
-                os << "Numero de veces Muerto:" << info[12];                 
+                os << "Numero de veces Muerto: " << info[12];                 
                 Estadisticas[6].setString(os.str());
                 Estadisticas[6].setPosition(30,90);
                 delete info;
@@ -942,31 +950,31 @@ void Menus::cambioEstado(int nuevo)
                 {
                     Estadisticas[a].setFont(fuente);
                 }
-                os << "Presione Defensa para volver al menu" << info[4]+info[5];
+                os << "Presione Defensa para volver al menu";
                 Estadisticas[0].setString(os.str());
                 Estadisticas[0].setPosition(30,-150);
                 os.str("");
-                os << "Dolor Causado Jugador 1:" << info[6]+info[7];
+                os << "Dolor Causado Jugador 1: " << info2[1];
                 Estadisticas[1].setString(os.str());
                 Estadisticas[1].setPosition(30,-110);
                 os.str("");
-                os << "Dolor Causado Jugador 2:" << info[11];
+                os << "Dolor Causado Jugador 2: " << info2[4];
                 Estadisticas[2].setString(os.str());
                 Estadisticas[2].setPosition(30,-70);
                 os.str("");
-                os << "Dolor recibido Jugador 1:" << info[10];
+                os << "Dolor recibido Jugador 1: " << info2[2];
                 Estadisticas[3].setString(os.str());
                 Estadisticas[3].setPosition(30,-30);
                 os.str("");
-                os << "Dolor recibido Jugador 2:" << info[8];
+                os << "Dolor recibido Jugador 2: " << info2[5];
                 Estadisticas[4].setString(os.str());
                 Estadisticas[4].setPosition(30,10);
                 os.str("");
-                os << "Numero de veces Muerto Jugador 1:" << info[9];                
+                os << "Numero de veces Muerto Jugador 1: " << info2[0];                
                 Estadisticas[5].setString(os.str());
                 Estadisticas[5].setPosition(30,50);
                 os.str("");
-                os << "Numero de veces Muerto Jugador 2:" << info[12];                 
+                os << "Numero de veces Muerto Jugador 2: " << info2[3];                 
                 Estadisticas[6].setString(os.str());
                 Estadisticas[6].setPosition(30,90);
                 delete info;

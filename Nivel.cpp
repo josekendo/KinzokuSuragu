@@ -118,18 +118,14 @@ void Nivel::draw()
 {
      Motor2D *motor2D = Motor2D::getInstance();//clase global
      Juego *juego = Juego::getInstance();//clase global
-     if(level==1){
-     motor2D->drawCap3();
-     motor2D->drawCap1();
-     }
-     else{
-     motor2D->drawCap3();
-     motor2D->drawCap1();
-     motor2D->drawCap2();
-     }
+     Hud *hud = Hud::getInstance();
+        motor2D->drawCap1();
+        motor2D->drawCap3();
      //pintamos a enemigos y jugadores
      if(modo == 1)
      {
+        //llamamos a hud para que se actualice
+        hud->cambiarVida(1,jugadores [0].getVida()); 
         for (int i=0; i<10; i++)
         {
           elementos[i].drawEl();
@@ -138,6 +134,9 @@ void Nivel::draw()
      }
      else
      {
+         //llamamos a hud para que se actualice
+         hud->cambiarVida(1,jugadores [0].getVida()); 
+         hud->cambiarVida(2,jugadores [1].getVida()); 
          //std::cout << "draw de nivel m 2"  << std::endl;
         for (int i=0; i<10; i++)
         {
@@ -180,9 +179,9 @@ void Nivel::draw()
          }
      }
          
-     if(level==1){
      motor2D->drawCap2();
-     }
+     motor2D->drawCap4();
+     motor2D->drawCap5();
 }
 
 

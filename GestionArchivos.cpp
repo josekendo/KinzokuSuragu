@@ -136,7 +136,8 @@ void GestionArchivos::guardarArchivos()
     #elif defined __GNUC__
     arch = "saves/save";
     #endif
-    std::ofstream buffer;    
+    std::ofstream buffer;   
+    buffer.open(arch,std::ofstream::out);
     if(!buffer.fail())
     {
         int *info = devolverInformacion();

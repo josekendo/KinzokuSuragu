@@ -47,15 +47,19 @@ void FabricarNivel::construirNivel(char *nivel, char *tileset)
             string capa1 = root->FirstChildElement("layer")->FirstChildElement("data")->GetText(); 
             string capa2 = root->FirstChildElement("layer")->NextSibling()->FirstChild()->FirstChild()->Value();
             string capa3 = root->FirstChildElement("layer")->NextSibling()->NextSibling()->FirstChild()->FirstChild()->Value();
-            
+            std::cout << "capa 00" << "\n";
+            string capa4 = root->FirstChildElement("layer")->NextSibling()->NextSibling()->NextSibling()->FirstChild()->FirstChild()->Value();
+            //string capa5 = root->FirstChildElement("layer")->NextSibling()->NextSibling()->NextSibling()->NextSibling()->FirstChild()->FirstChild()->Value();
             int *cap1 = FabricarNivel::Split(capa1,',');
             int *cap2 = FabricarNivel::Split(capa2,',');
             int *cap3 = FabricarNivel::Split(capa3,',');
-            
+            int *cap4 = FabricarNivel::Split(capa4,',');
+            //int *cap5 = FabricarNivel::Split(capa5,',');          
             motor2D->cargarCapa(cap1,1,32,350,26,tileset);
             motor2D->cargarCapa(cap2,2,32,350,26,tileset);
             motor2D->cargarCapa(cap3,3,32,350,26,tileset);
-              
+            motor2D->cargarCapa(cap4,4,32,350,26,tileset);
+            //motor2D->cargarCapa(cap5,5,32,350,26,tileset);
         }
     }
     
