@@ -258,3 +258,13 @@ int Enemigos::getAtaqueFisico()
 {
     return ataquefisico;
 }
+
+int Enemigos::getAtaqueLejano()
+{
+    return ataque;
+}
+
+int Enemigos::getTipoEnemigo()
+{
+    return enemigo;
+}

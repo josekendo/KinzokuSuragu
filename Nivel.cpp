@@ -347,7 +347,7 @@ void Nivel::realimentarBalas()
 void Nivel::crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x,int y)
 {
     enemigos.push_back(new Enemigos(vid,ataq,ataqfisico,element,defen,tipo,x,y));
-    crearBala(1, tipo, x, y, 0, ataq, 1);
+    
 }
 
 void Nivel::realimentarEnemigo()
@@ -355,6 +355,9 @@ void Nivel::realimentarEnemigo()
     for(int o = 0; o < enemigos.size();o++)
      {
             enemigos[o]->realimentar();
+            if(enemigos[o]->getTipoEnemigo()==1||enemigos[o]->getTipoEnemigo()==2||enemigos[o]->getTipoEnemigo()==5){
+             crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-75, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
+            }
      }  
 }
 

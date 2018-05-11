@@ -41,9 +41,7 @@ Motor2D::Motor2D()
     texturas[10].loadFromFile("resources/zombiewalk2.png");
     texturas[11].loadFromFile("resources/saiyan2.png");
     texturas[12].loadFromFile("resources/Element_SpriteS.png");
-    texturas[13].loadFromFile("resources/bala1.png");
-    texturas[14].loadFromFile("resources/bala2.png");
-    texturas[15].loadFromFile("resources/bala3.png");
+    texturas[13].loadFromFile("resources/balas.png");
     sb[0].loadFromFile("resources/giro2.ogg");
     sb[1].loadFromFile("resources/deslizar.ogg");
     sb[2].loadFromFile("resources/shot1.ogg");
@@ -194,6 +192,7 @@ void Motor2D::drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float
     }
     else if(enemigo==1){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*80, esta*300, ori*80,80));
+    
     if(sound[1].getStatus()!=sf::Sound::Playing){
         sound[1].play();
     }
@@ -665,6 +664,7 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
         }
         
         //color elemento
+        if(tipo==0){
         if(elemento == 0)
             bala->setTextureRect(sf::IntRect(4*fram, 2*elemento, 4*ori,2));
             //bala->setColor(sf::Color::White);
@@ -681,10 +681,32 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
             bala->setTextureRect(sf::IntRect(4*fram, 2*elemento, 4*ori,2));
             //bala->setColor(sf::Color::Magenta);
             //bala->setColor(sf::Color::Red);
-            
+        }
+        else{
+        if(elemento == 1){
+            bala->setTexture(texturas[13]);
+            bala->setOrigin(228/2,3250/2);
+            bala->setScale(sf::Vector2f(0.1f, 0.1f));
+            bala->setTextureRect(sf::IntRect(142*fram, 42*0, 142*ori,42));
+        }
+        else if(elemento == 2){
+            bala->setTexture(texturas[13]);
+            bala->setOrigin(600/2,200/2);
+            bala->setScale(sf::Vector2f(20, 20));
+            bala->setTextureRect(sf::IntRect(284*fram, 84*0, 284*ori,84));
+        }
+        else if(elemento == 5){
+            bala->setTexture(texturas[13]);
+            bala->setOrigin(228/2,240/2);
+            bala->setScale(sf::Vector2f(2, 2));
+            bala->setTextureRect(sf::IntRect(142*fram, 42*2, 144*ori,42));
+        }
+        }
+        
         bullets.push_back(bala);
         //std::cout << "bullets guarda " << int(bullets.size()) << " numero de balas.\n";
     }
+    
 }
 
 void Motor2D::drawBala(int point,int x, int y)
