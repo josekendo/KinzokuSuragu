@@ -65,6 +65,7 @@ public:
     int * devolverEstadisticas();  
     
     bool ColisionElemento(int player, int el);
+  
     
     
 private:

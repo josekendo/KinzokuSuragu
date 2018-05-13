@@ -22,6 +22,7 @@
 #include "Menus.h"
 #include "Hud.hpp"
 #include "Colision.hpp"
+
 //fin clases basicas
 
 class Motor2D {

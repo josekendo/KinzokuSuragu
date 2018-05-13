@@ -43,7 +43,7 @@ Jugadores::Jugadores()
     boton=0;
     saltoref=-500;
     aceleracion=0;
-    dimensiones= motor->getDimensiones(-1);//el -1 es para el sprite del heroe/gato
+    dimensiones.x=0,dimensiones.y=0;
 }
 
 Jugadores::Jugadores(const Jugadores& orig) {
@@ -346,7 +346,7 @@ bool Jugadores::moverAtras()
     //comprobar colisiones
     //obtenemos la posicion en la que estamos segun su tiempo de interpolacion
     //std::cout << "entro en jugador" << std::endl;
-   
+    
     int mov = -kVel;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE())-mov;
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
@@ -365,6 +365,9 @@ bool Jugadores::moverAtras()
     }
 }
 bool Jugadores::moverAbajo(int direccion){
+    if(dimensiones.x==0){
+        dimensiones= motor->getDimensiones(-1);//el -1 es para el sprite del heroe/gato
+    }
     int mov=kVel*2;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE())+mov;

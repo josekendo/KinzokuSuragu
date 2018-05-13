@@ -41,6 +41,8 @@ private:
     int** capa1;
     int** capa2;
     int** capa3;
+    int** capa4;
+    int** capa5;
 };
 
 #endif /* COLISION_HPP */

@@ -15,6 +15,7 @@
 #include "Juego.hpp"
 #include "Colision.hpp"
 #include "SFML/Audio.hpp"
+#include "Jugadores.hpp"
 
 
 #define kVel 1
@@ -94,12 +95,12 @@ bool Motor2D::cargarCapa(int* matriz, int capa, int longitud, int anchura, int a
         case 4:
             if (ca4.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
                 ca4.setPosition(-32,-532);
-            //colision->generarMatriz(matriz,capa,anchura,altura);
+            colision->generarMatriz(matriz,capa,anchura,altura);
         break;
         case 5:
             if (ca5.load(tileset, sf::Vector2u(longitud, longitud), matriz, anchura, altura))
                 ca5.setPosition(-32,-532);
-            //colision->generarMatriz(matriz,capa,anchura,altura);
+            colision->generarMatriz(matriz,capa,anchura,altura);
         break;
     }
 }
@@ -126,7 +127,9 @@ void Motor2D::drawMenu()
 
 void Motor2D::drawCap1()
 {
+    window.clear(sf::Color::Black);
     window.draw(ca1);
+    
 }
 
 void Motor2D::drawCap2()
@@ -136,7 +139,7 @@ void Motor2D::drawCap2()
 
 void Motor2D::drawCap3()
 {
-    window.clear(sf::Color::Black);
+    
     window.draw(ca3);
    
 }
@@ -186,6 +189,9 @@ void Motor2D::initPersonaje(int player, int tipo)
         jugadores[player-1].setOrigin(48/2,32/2);
         jugadores[player-1].setTextureRect(sf::IntRect(0*48, 0*48 + 8, 48, 32));
         jugadores[player-1].scale(sf::Vector2f(2, 2));
+       
+        
+        
     }
     
     if(player == 2)

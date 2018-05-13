@@ -119,8 +119,10 @@ void Nivel::draw()
      Motor2D *motor2D = Motor2D::getInstance();//clase global
      Juego *juego = Juego::getInstance();//clase global
      Hud *hud = Hud::getInstance();
-        motor2D->drawCap3();
-        motor2D->drawCap1();
+     
+     motor2D->drawCap1();   
+     motor2D->drawCap3();
+        
      //pintamos a enemigos y jugadores
      if(modo == 1)
      {
@@ -225,12 +227,12 @@ void Nivel::brincarJugador(int jugador,bool caida)
            jugadores[jugador].Jump(direccion);//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
            jugadores[jugador].setPulsarBoton();
            jugadores[jugador].SaltoBloqueo(moverup);
-           std::cout<<"condicion 1"<<std::endl;
+           //std::cout<<"condicion 1"<<std::endl;
     }
     //ascenso mientras NO pulsamos salto, el salto debe seguir subiendo aunque no estemos pulsando el boton de saltar
     else if(jugadores[jugador].getPulsarBoton()!=0 && jugadores[jugador].SaltoBloqueo(moverup)==false && moverup==true){
         jugadores[jugador].Jump(direccion);
-        std::cout<<"condicion 3"<<std::endl;
+        //std::cout<<"condicion 3"<<std::endl;
     }
     else if(caida==true){ // acuta siempre en direccion al suelo mientras no estemos en mitad de un salto
        
