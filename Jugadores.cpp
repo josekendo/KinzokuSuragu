@@ -193,16 +193,14 @@ bool Jugadores::SaltoBloqueo(bool moverup){ //controla la altura maxima del salt
         saltoref=y;
         //aceleracion=0;
         setEn4();
-        //std::cout<<"botton dos veces pulsado"<<std::endl;
     }
     else if(getPulsarBoton()==1 && saltoref==-500){
         saltoref=y;
-        //std::cout<<"boton una vez pulsado"<<std::endl;
     }
     
-    if(saltoref>-500){
+    if(saltoref>-500){ // el -500 simboliza que no hay una referencia anterior, si saltoref es mayor que este numero siginfica que si hay una ref
         if(saltoref-y>32*n || moverup==false){
-            saltoref=-600;
+            saltoref=-600; 
             //aceleracion=0;
             bloqueo=true;
         }
@@ -211,7 +209,6 @@ bool Jugadores::SaltoBloqueo(bool moverup){ //controla la altura maxima del salt
         }
     }
     else if(saltoref==-600){
-         //std::cout<<"salto ref -600**"<<std::endl;
         bloqueo=true;
     }
    
@@ -538,6 +535,12 @@ void Jugadores::setPulsarBoton(){
 }
 void Jugadores::setEn4(){
     boton=4;;
+}
+void Jugadores::setEn1(){
+    if(boton==0){
+        boton=1;
+        saltoref=-600;
+    }
 }
 void Jugadores::resetPulsarBoton(){
     boton=0;

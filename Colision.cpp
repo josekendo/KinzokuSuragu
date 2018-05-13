@@ -104,14 +104,14 @@ bool Colision::ColisionSuelo(int x, int y, sf::Vector2f dim, int dir){
             }
         }*/
        if(y<0){ // al tener y negativas y realizar la division para comparar el numero en la matriz, acabamos con dos posicioens 0, con este if se evita
-             if(capa2[(tbot/32)+16][(tizq/32)+1]>=0 || capa2[(tbot/32)+16][(tder/32)+1]>=0){ // colision por abajo
+             if(capa3[(tbot/32)+16][(tizq/32)+1]>=0 || capa3[(tbot/32)+16][(tder/32)+1]>=0){ // colision por abajo
                 tocasuelo=true;
                 
             }  
        }
        else{
            
-         if(capa2[(tbot/32)+17][(tizq/32)+1]>=0 || capa2[(tbot/32)+17][(tder/32)+1]>=0){ // colision por abajo
+         if(capa3[(tbot/32)+17][(tizq/32)+1]>=0 || capa3[(tbot/32)+17][(tder/32)+1]>=0){ // colision por abajo
             tocasuelo=true;
         }  
        }
@@ -135,13 +135,13 @@ bool Colision::ColisionTecho(int x, int y,sf::Vector2f dim, int dir){
     if(xaux<col-1 && yaux<filas-1){//estan dentro de los limites del mapa
         
        if(y<0){ // al tener y negativas y realizar la division para comparar el numero en la matriz, acabamos con dos posicioens 0, con este if se evita
-             if(capa2[(ctop/32)+16][(cizq/32)+1]>=0 || capa2[(ctop/32)+16][(cder/32)+1]>=0){ // colision por abajo
+             if(capa3[(ctop/32)+16][(cizq/32)+1]>=0 || capa3[(ctop/32)+16][(cder/32)+1]>=0){ // colision por abajo
                 tocasuelo=true;
                 std::cout<<"cabeza por arriba-----1"<<std::endl;
             }  
        }
        else{
-         if(capa2[(ctop/32)+17][(cizq/32)+1]>=0 || capa2[(ctop/32)+17][(cder/32)+1]>=0){ // colision por abajo
+         if(capa3[(ctop/32)+17][(cizq/32)+1]>=0 || capa3[(ctop/32)+17][(cder/32)+1]>=0){ // colision por abajo
             tocasuelo=true;
             std::cout<<"cabeza por arriba ++++1"<<std::endl;
         }  
@@ -165,23 +165,23 @@ bool Colision::ColisionLateral(int x, int y,sf::Vector2f dim, int dir){
         cizq=x;cder=x+10;
         pizq=x;pder=x+10;
         if(y<0){ // al tener y negativas y realizar la division para comparar el numero en la matriz, acabamos con dos posicioens 0, con este if se evita
-                if(capa2[(ctop/32)+16][(cder/32)+1]>=0 || capa2[(cbot/32)+16][(cder/32)+1]>=0){ // colision cabeza
+                if(capa3[(ctop/32)+16][(cder/32)+1]>=0 || capa3[(cbot/32)+16][(cder/32)+1]>=0){ // colision cabeza
                     techocas=true;
                     std::cout<<"-cabeza"<<std::endl;
                 }
-                else if(capa2[(ptop/32)+16][(pder/32)]>=0 || capa2[(pbot/32)+16][(pder/32)]>=0){ // colision piernas
+                else if(capa3[(ptop/32)+16][(pder/32)]>=0 || capa3[(pbot/32)+16][(pder/32)]>=0){ // colision piernas
                     techocas=true;
                     //std::cout<<"-piernas "<<std::endl;
                 }
             }
             else{
             
-                if(capa2[(ctop/32)+17][(cder/32)]>=0 || capa2[(cbot/32)+17][(cder/32)]>=0){ // colision cabeza
+                if(capa3[(ctop/32)+17][(cder/32)]>=0 || capa3[(cbot/32)+17][(cder/32)]>=0){ // colision cabeza
                     techocas=true;
                     std::cout<<"cabeza"<<std::endl;
                 }
 
-                else if(capa2[(ptop/32)+17][(pder/32)]>=0 || capa2[(pbot/32)+17][(pder/32)]>=0){
+                else if(capa3[(ptop/32)+17][(pder/32)]>=0 || capa3[(pbot/32)+17][(pder/32)]>=0){
                      techocas=true;
                      //std::cout<<"piernas"<<std::endl;
                 } 
@@ -189,22 +189,22 @@ bool Colision::ColisionLateral(int x, int y,sf::Vector2f dim, int dir){
         }
         else {
             if(y<0){ // al tener y negativas y realizar la division para comparar el numero en la matriz, acabamos con dos posicioens 0, con este if se evita
-                if(capa2[(ctop/32)+16][(cder/32)+1]>=0 || capa2[(cbot/32)+16][(cder/32)+1]>=0){ // colision cabeza
+                if(capa3[(ctop/32)+16][(cder/32)+1]>=0 || capa3[(cbot/32)+16][(cder/32)+1]>=0){ // colision cabeza
                     techocas=true;
                     //std::cout<<"-cabeza"<<std::endl;
                 }
-                else if(capa2[(ptop/32)+16][(pder/32)+1]>=0 || capa2[(pbot/32)+16][(pder/32)+1]>=0){ // colision piernas
+                else if(capa3[(ptop/32)+16][(pder/32)+1]>=0 || capa3[(pbot/32)+16][(pder/32)+1]>=0){ // colision piernas
                     techocas=true;
                     //std::cout<<"-piernas "<<std::endl;
                 }
             }
             else{
-                if(capa2[(ctop/32)+17][(cder/32)+1]>=0 || capa2[(cbot/32)+17][(cder/32)+1]>=0){ // colision cabeza
+                if(capa3[(ctop/32)+17][(cder/32)+1]>=0 || capa3[(cbot/32)+17][(cder/32)+1]>=0){ // colision cabeza
                     techocas=true;
                     //std::cout<<"cabeza"<<std::endl;
                 }
 
-                else if(capa2[(ptop/32)+17][(pder/32)+1]>=0 || capa2[(pbot/32)+17][(pder/32)+1]>=0){
+                else if(capa3[(ptop/32)+17][(pder/32)+1]>=0 || capa3[(pbot/32)+17][(pder/32)+1]>=0){
                      techocas=true;
                      //std::cout<<"piernas"<<std::endl;
                 } 

@@ -43,6 +43,7 @@ public:
     int getY();//obtenemos la coordenada 
     int getPulsarBoton();
     void setPulsarBoton();
+    void setEn1();
     void setEn4();
     void resetPulsarBoton();
 
