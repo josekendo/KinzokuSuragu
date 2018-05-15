@@ -120,8 +120,8 @@ void Nivel::draw()
      Juego *juego = Juego::getInstance();//clase global
      Hud *hud = Hud::getInstance();
      
-     motor2D->drawCap1();   
-     motor2D->drawCap3();
+     motor2D->drawCap1();  
+     motor2D->drawCap2(); 
         
      //pintamos a enemigos y jugadores
      if(modo == 1)
@@ -149,6 +149,7 @@ void Nivel::draw()
      } 
      //pintamos balas
       
+     
      int contador = 0;
      for(int a = 0; a < bullet.size();a++)
      {
@@ -164,6 +165,9 @@ void Nivel::draw()
              //std::cout << "se borra bala " << a << "\n";
          }
      }
+     
+     motor2D->drawCap3();
+     motor2D->drawCap4();
      
    for(int a = 0; a < enemigos.size();a++)
      {
@@ -181,8 +185,6 @@ void Nivel::draw()
          }
      }
          
-     motor2D->drawCap2();
-     motor2D->drawCap4();
      motor2D->drawCap5();
 }
 
@@ -338,8 +340,14 @@ void Nivel::realimentarEnemigo()
     for(int o = 0; o < enemigos.size();o++)
      {
             enemigos[o]->realimentar();
-            if(enemigos[o]->getTipoEnemigo()==1||enemigos[o]->getTipoEnemigo()==2||enemigos[o]->getTipoEnemigo()==5){
+            if(enemigos[o]->getTipoEnemigo()==1){
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-75, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
+            }
+            if(enemigos[o]->getTipoEnemigo()==2){
+             crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
+            }
+            if(enemigos[o]->getTipoEnemigo()==5){
+             crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-205, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
             }
      }  
 }

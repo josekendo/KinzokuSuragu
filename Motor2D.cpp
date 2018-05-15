@@ -43,12 +43,12 @@ Motor2D::Motor2D()
     texturas[11].loadFromFile("resources/saiyan2.png");
     texturas[12].loadFromFile("resources/Element_SpriteS.png");
     texturas[13].loadFromFile("resources/balas.png");
-    sb[0].loadFromFile("resources/giro2.ogg");
-    sb[1].loadFromFile("resources/deslizar.ogg");
-    sb[2].loadFromFile("resources/shot1.ogg");
-    sb[3].loadFromFile("resources/dog1.ogg");
-    sb[4].loadFromFile("resources/zombiesound4.ogg");
-    sb[5].loadFromFile("resources/shot3.ogg");
+    sb[0].loadFromFile("resources/Sound/Enemigo/giro2.ogg");
+    sb[1].loadFromFile("resources/Sound/Enemigo/deslizar.ogg");
+    sb[2].loadFromFile("resources/Sound/Enemigo/shot1.ogg");
+    sb[3].loadFromFile("resources/Sound/Enemigo/dog1.ogg");
+    sb[4].loadFromFile("resources/Sound/Enemigo/zombiesound4.ogg");
+    sb[5].loadFromFile("resources/Sound/Enemigo/shot3.ogg");
     sound[0].setBuffer(sb[0]);
     sound[0].setLoop(true);
     sound[0].setVolume(75);
@@ -127,7 +127,7 @@ void Motor2D::drawMenu()
 
 void Motor2D::drawCap1()
 {
-    window.clear(sf::Color::Black);
+window.clear(sf::Color::Black);
     window.draw(ca1);
     
 }
@@ -717,16 +717,16 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
             bala->setScale(sf::Vector2f(0.1f, 0.1f));
             bala->setTextureRect(sf::IntRect(142*fram, 42*0, 142*ori,42));
         }
-        else if(elemento == 2){
+         else if(elemento == 2){
             bala->setTexture(texturas[13]);
-            bala->setOrigin(600/2,200/2);
-            bala->setScale(sf::Vector2f(20, 20));
-            bala->setTextureRect(sf::IntRect(284*fram, 84*0, 284*ori,84));
+            bala->setOrigin(228/2,1850/2);
+            bala->setScale(sf::Vector2f(0.2f, 0.2f));
+            bala->setTextureRect(sf::IntRect(142*fram, 42*1, 142*ori,42));
         }
         else if(elemento == 5){
             bala->setTexture(texturas[13]);
-            bala->setOrigin(228/2,240/2);
-            bala->setScale(sf::Vector2f(2, 2));
+            bala->setOrigin(228/2,2070/2);
+            bala->setScale(sf::Vector2f(0.2f, 0.2f));
             bala->setTextureRect(sf::IntRect(142*fram, 42*2, 144*ori,42));
         }
         }
