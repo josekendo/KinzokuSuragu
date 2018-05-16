@@ -185,7 +185,7 @@ bool Enemigos::matarEnemigo(int point)
 void Enemigos::realimentar()
 { 
     
-    if(activacion()){
+    if(activacion()&&enemigo!=5){
        if(coordenadas.getCoordenadaX()<cxo-50){
             der = true;
             izq = false;
@@ -194,7 +194,6 @@ void Enemigos::realimentar()
             izq = true;
             der = false;
        }
-       
        if(der==true){
             coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-(velocidad*-1),coordenadas.getCoordenadaY());
             orientacion = -1;

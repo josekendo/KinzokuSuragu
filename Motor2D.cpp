@@ -303,6 +303,15 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
     
 }
 
+bool Motor2D::ataqueEnemigo(int player, int tipo)
+{
+    if (jugadores[player].getGlobalBounds().intersects(enemigos[tipo].getGlobalBounds()))
+    {
+        return true;   
+    }           
+    return false;
+}
+
 void Motor2D::matarEnemigo(int point)
 {
     Juego *juego = Juego::getInstance();

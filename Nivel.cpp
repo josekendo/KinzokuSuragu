@@ -337,9 +337,15 @@ void Nivel::crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen
 
 void Nivel::realimentarEnemigo()
 { 
+     Motor2D *motor2D = Motor2D::getInstance();
     for(int o = 0; o < enemigos.size();o++)
      {
+        if(enemigos[o]->getX()-100-jugadores[0].getX()<10 && enemigos[o]->getX()-100-jugadores[0].getX()>-50 && enemigos[o]->getY()-174-jugadores[0].getY()<10 && enemigos[o]->getY()-174-jugadores[0].getY()>-10)  {            
+  
+        }
+        else{
             enemigos[o]->realimentar();
+        }
             if(enemigos[o]->getTipoEnemigo()==1){
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-75, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
             }
@@ -354,17 +360,16 @@ void Nivel::realimentarEnemigo()
 
 void Nivel::ataqueEnemigo()
 { 
+     Motor2D *motor2D = Motor2D::getInstance();
          for(int a = 0; a < enemigos.size();a++){
-                if(enemigos[a]->getX()-100-jugadores[0].getX()<10 && enemigos[a]->getX()-100-jugadores[0].getX()>-50 && enemigos[a]->getY()-174-jugadores[0].getY()<10 && enemigos[a]->getY()-174-jugadores[0].getY()>-10)  {
+                if(motor2D->ataqueEnemigo(0,a)==true)  {
                     // std::cout<< "ataqueeeee2 " << jugadores[0].getY() << endl;
                     // std::cout<< "ataqueeeee " << enemigos[a]->getY() << endl;
                      jugadores[0].setDanoVida(enemigos[a]->getAtaqueFisico());
                  }
-                if(modo==1){
-                    if(enemigos[a]->getX()-100-jugadores[1].getX()<10 && enemigos[a]->getX()-100-jugadores[1].getX()>-50 && enemigos[a]->getY()-174-jugadores[1].getY()<10 && enemigos[a]->getY()-174-jugadores[1].getY()>-10)  {
-                     std::cout<< "ataqueeeee " << enemigos[a]->getX() << endl;
-                     std::cout<< "ataqueeeee2 " << jugadores[1].getX() << endl;
-                     jugadores[1].setDanoVida(enemigos[a]->getAtaqueFisico());
+                if(modo==2){
+                if(motor2D->ataqueEnemigo(1,a)==true)  {
+                    jugadores[1].setDanoVida(enemigos[a]->getAtaqueFisico());
                  }
                 }
           }
@@ -372,7 +377,7 @@ void Nivel::ataqueEnemigo()
 
 void Nivel::matarEnemigos()
 { 
-     Motor2D *motor2D = Motor2D::getInstance();//clase global
+     Motor2D *motor2D = Motor2D::getInstance();
      Juego *juego = Juego::getInstance();//clase global
     for(int m = 0; m < enemigos.size();m++)
      {
