@@ -338,7 +338,7 @@ void Nivel::crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen
 void Nivel::realimentarEnemigo()
 { 
      Motor2D *motor2D = Motor2D::getInstance();
-    for(int o = 0; o < enemigos.size();o++)
+     for(int o = 0; o < enemigos.size();o++)
      {
           if(enemigos[o]->getX()-jugadores[0].getX()<100 && enemigos[o]->getX()-jugadores[0].getX()>-100 && enemigos[o]->getY()-jugadores[0].getY()-174<50 && enemigos[o]->getY()-jugadores[0].getY()-174>-50)  {            
             if(enemigos[o]->getX()-jugadores[0].getX()-65<10 && enemigos[o]->getX()-jugadores[0].getX()-65>-90)  {   
@@ -354,10 +354,10 @@ void Nivel::realimentarEnemigo()
            else{
               enemigos[o]->realimentar();
            }
-                     std::cout<< "realm2 " << enemigos[o]->getX() << endl;
-                     std::cout<< "realm3 " << jugadores[0].getX() << endl;
-                     std::cout<< "realm4 " << enemigos[o]->getY() << endl;
-                     std::cout<< "realm5 " << jugadores[0].getY() << endl;
+                  //   std::cout<< "realm2 " << enemigos[o]->getX() << endl;
+                  //   std::cout<< "realm3 " << jugadores[0].getX() << endl;
+                  //   std::cout<< "realm4 " << enemigos[o]->getY() << endl;
+                  //   std::cout<< "realm5 " << jugadores[0].getY() << endl;
             if(enemigos[o]->getTipoEnemigo()==1){
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-75, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
             }
@@ -376,7 +376,7 @@ void Nivel::ataqueEnemigo()
          for(int a = 0; a < enemigos.size();a++){
                 if(motor2D->ataqueEnemigo(0,a)==true)  {
                     // std::cout<< "ataqueeeee2 " << jugadores[0].getY() << endl;
-                    std::cout<< "ataqueeeee " << a << endl;
+                  //  std::cout<< "ataqueeeee " << a << endl;
                      jugadores[0].setDanoVida(enemigos[a]->getAtaqueFisico());
                  }
                 if(modo==2){
