@@ -45,7 +45,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Estado.o \
 	${OBJECTDIR}/FabricarNivel.o \
 	${OBJECTDIR}/GestionArchivos.o \
-	${OBJECTDIR}/GestorAudio.o \
 	${OBJECTDIR}/Hud.o \
 	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/Jugadores.o \
@@ -133,11 +132,6 @@ ${OBJECTDIR}/GestionArchivos.o: GestionArchivos.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GestionArchivos.o GestionArchivos.cpp
-
-${OBJECTDIR}/GestorAudio.o: GestorAudio.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GestorAudio.o GestorAudio.cpp
 
 ${OBJECTDIR}/Hud.o: Hud.cpp 
 	${MKDIR} -p ${OBJECTDIR}

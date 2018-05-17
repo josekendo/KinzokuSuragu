@@ -77,4 +77,9 @@ private:
     //fin nivel
 };
 
+<<<<<<< HEAD
 #endif /* GESTORAUDIO_HPP */
+=======
+#endif /* GESTORAUDIO_HPP */
+
+>>>>>>> 387d132ea04062d6257be34d37211f1bd3c004c3
