@@ -23,14 +23,17 @@ Nivel::Nivel()
 
 void Nivel::cargarNivel(int niv)
 {
+    GestorAudio *audio = GestorAudio::getInstance();
     level = niv;
     switch(niv)
     {
         case 1:
             fabrica.construirNivel("resources/niveles/1.xml","resources/1.png");
+            audio->fondoNivel(1);
         break;
         case 2:
             fabrica.construirNivel("resources/niveles/2.xml","resources/2.png");
+            audio->fondoNivel(2);
         break;
         case 3:
             fabrica.construirNivel("resources/niveles/3.xml","resources/3.png");
@@ -229,6 +232,8 @@ void Nivel::brincarJugador(int jugador,bool caida)
            jugadores[jugador].Jump(direccion);//el mira su estado actual y se movera en consecuencia (aqui deberia ir el stop cuando no se pueda mover a causa de una colision)
            jugadores[jugador].setPulsarBoton();
            jugadores[jugador].SaltoBloqueo(moverup);
+           GestorAudio *audio = GestorAudio::getInstance();
+           audio->saltar(jugador+1);
            //std::cout<<"condicion 1"<<std::endl;
     }
     //ascenso mientras NO pulsamos salto, el salto debe seguir subiendo aunque no estemos pulsando el boton de saltar
@@ -254,18 +259,21 @@ void Nivel::AtaqueCercano(int jugador)
     if (jugadores[jugador].isMoving() != 1)
     {
         jugadores[jugador].Kick(); //Función para que el personaje Patee (ataquecercano) 
+        GestorAudio *audio = GestorAudio::getInstance();
+        audio->cuerpoacuerpo(jugador+1);
     }
 }
 
 void Nivel::AtaqueLejano(int jugador)
 {
+    GestorAudio *audio = GestorAudio::getInstance();
     int ori = jugadores[jugador].getOri();
     int y = jugadores[jugador].getY() + 2;
     int elemento = jugadores[jugador].getElement();
     int tipo = jugadores[jugador].getType();
     int dano = jugadores[jugador].getDano(elemento, tipo);
     int x; 
-    
+    audio->disparar(jugador+1);
     if (ori == 1)
         x = jugadores[jugador].getX() + 40;
     else if (ori == -1)
@@ -290,7 +298,9 @@ void Nivel::BlockJugador(int jugador)
 {
     if (jugadores[jugador].isMoving() != 1 )
     {
-        jugadores[jugador].Block(); //Función para que el personaje Patee (ataquecercano) 
+        jugadores[jugador].Block(); //Función para que el personaje Patee (ataquecercano)
+        GestorAudio *audio = GestorAudio::getInstance();
+        audio->defensa(jugador+1);
     }
 }
 
