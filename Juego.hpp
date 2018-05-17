@@ -20,6 +20,7 @@
 #include "Motor2D.hpp"
 #include "Camara.hpp"
 #include "Controles.h"
+#include "GestorAudio.hpp"
 
 class Juego {
 public:

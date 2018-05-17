@@ -19,6 +19,8 @@ Juego* Juego::unica_instancia = 0;
 Juego::Juego() 
 {
     estado = &menu;
+    GestorAudio *audio =GestorAudio::getInstance();
+    audio->fondo();
     motor = Motor2D::getInstance();
     camara = Camara::getInstance();
     control = Controles::getInstance();
@@ -26,6 +28,11 @@ Juego::Juego()
 
 void Juego::cambiarEstado(int est)
 {
+    GestorAudio *audio =GestorAudio::getInstance();
+    if(est == 1)
+    {
+        audio->fondo();
+    }
     switch(est)
     {
         case 1:
@@ -236,6 +243,8 @@ void Juego::ataque()
     {
         if(control->geta(1))
         {
+            GestorAudio *audio = GestorAudio::getInstance();
+            audio->aceptar();
             motor->menuSPACE();
         }
     }
@@ -283,7 +292,11 @@ void Juego::defensa()
     if(estado->QueEstado() == 1)
     {
         if(control->getf(1))
-        motor->menuATRAS();
+        {
+            GestorAudio *audio = GestorAudio::getInstance();
+            audio->denegar();
+            motor->menuATRAS();
+        }
     }
     //jugando
     if(estado->QueEstado() == 2)

@@ -23,6 +23,7 @@
 #include <vector> 
 #include <iostream>
 #include "Controles.h"
+#include "GestorAudio.hpp"
 
 class Nivel {
 public:
