@@ -43,6 +43,7 @@ Enemigos::Enemigos()
     weapon = 0; //arma con la que inicia
     orientacion = 1;
     velocidad = 3;
+    colPersonaje=false;
 }
 
 Enemigos::Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x, int y) 
@@ -73,6 +74,7 @@ Enemigos::Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int t
     weapon = 0; //arma con la que inicia
     orientacion = 1;
     velocidad = 3;
+    colPersonaje=false;
 }
 
 Enemigos::Enemigos(const Enemigos& orig) {
@@ -243,6 +245,11 @@ int Enemigos::getOrientacion()
     return orientacion;
 }
 
+void Enemigos::setOrientacion(int ori)
+{
+    orientacion=ori;
+}
+
 int Enemigos::getX()
 {
     return coordenadas.getCoordenadaX();
@@ -266,4 +273,14 @@ int Enemigos::getAtaqueLejano()
 int Enemigos::getTipoEnemigo()
 {
     return enemigo;
+}
+
+void Enemigos::setColPersonaje(bool col)
+{
+    colPersonaje=col;
+}
+
+bool Enemigos::getColPersonaje()
+{
+    return colPersonaje;
 }

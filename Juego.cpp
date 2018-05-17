@@ -386,16 +386,16 @@ void Juego::cargarNivel(int niv)
     nivel->crearEnemigo(60,4,5,2,30,2,10500,222);
     }
     else if(niv==2){
-    nivel->crearEnemigo(30,0,3,2,20,3,500,322);
-    nivel->crearEnemigo(30,0,3,2,20,3,1200,322);
-    nivel->crearEnemigo(30,0,3,2,20,3,2400,322);
-    nivel->crearEnemigo(30,0,3,2,20,3,3100,322);
-    nivel->crearEnemigo(60,0,4,2,20,4,4400,322);
-    nivel->crearEnemigo(30,0,3,2,20,3,5000,226);
-    nivel->crearEnemigo(30,0,3,2,20,3,5500,162);
-    nivel->crearEnemigo(30,0,3,2,20,3,6300,322);
-    nivel->crearEnemigo(30,0,3,2,20,3,7700,322);
-    nivel->crearEnemigo(30,0,3,2,20,3,9400,322);
+    nivel->crearEnemigo(30,0,3,2,20,3,500,282);
+    nivel->crearEnemigo(30,0,3,2,20,3,1200,282);
+    nivel->crearEnemigo(30,0,3,2,20,3,2400,282);
+    nivel->crearEnemigo(30,0,3,2,20,3,3100,282);
+    nivel->crearEnemigo(60,0,4,2,20,4,4400,282);
+    nivel->crearEnemigo(30,0,3,2,20,3,5000,188);
+    nivel->crearEnemigo(30,0,3,2,20,3,5500,122);
+    nivel->crearEnemigo(30,0,3,2,20,3,6300,282);
+    nivel->crearEnemigo(30,0,3,2,20,3,7700,282);
+    nivel->crearEnemigo(30,0,3,2,20,3,9400,282);
     nivel->crearEnemigo(80,5,5,2,50,5,10500,322);
     }
 }

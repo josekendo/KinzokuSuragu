@@ -282,7 +282,7 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         }
         else if(enemigo == 3){
         enemigos[enemigo].setTexture(texturas[9]);
-        enemigos[enemigo].setOrigin(228/2,300/2);
+        enemigos[enemigo].setOrigin(228/2,250/2);
         enemigos[enemigo].setTextureRect(sf::IntRect(0*65, 0*300, 65, 32));
         enemigos[enemigo].scale(sf::Vector2f(1.5f, 1.5f));
         }
@@ -305,10 +305,11 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
 
 bool Motor2D::ataqueEnemigo(int player, int tipo)
 {
+   // if(enemigos[tipo].getPosition().x-100-jugadores[player].getPosition().x<10&&enemigos[tipo].getPosition().x-100-jugadores[player].getPosition().x>50&&enemigos[tipo].getPosition().y-174-jugadores[player].getPosition().y<10&&enemigos[tipo].getPosition().y-174-jugadores[player].getPosition().y>-10){
     if (jugadores[player].getGlobalBounds().intersects(enemigos[tipo].getGlobalBounds()))
     {
         return true;   
-    }           
+    }       
     return false;
 }
 
