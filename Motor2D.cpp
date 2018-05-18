@@ -365,17 +365,15 @@ void Motor2D::Inputs()
             
     while (window.pollEvent(eventos))
     {
-              
-            switch(eventos.type){
                 //Si se recibe el evento de cerrar la ventana la cierro
                 //comprobacion de mandos
-                case sf::Event::MouseButtonPressed:
+                if(sf::Event::MouseButtonPressed == eventos.type)
+                {
                     // std::cout << "mouse:" << eventos.mouseButton.button << eventos.mouseButton.y << std::endl;
                      juego->mouse(eventos.mouseButton.button,eventos.mouseButton.x,eventos.mouseButton.y);
-  
-                break;
-                case sf::Event::JoystickButtonPressed:
-                      
+                }
+                if(sf::Event::JoystickButtonPressed == eventos.type)
+                {     
                     if(eventos.joystickButton.joystickId == 0)
                     {
                         //control 1
@@ -438,8 +436,9 @@ void Motor2D::Inputs()
                             }
                         }
                     }
-                    break;
-                case sf::Event::JoystickButtonReleased:
+                }
+                if(sf::Event::JoystickButtonReleased == eventos.type)
+                {
                     if(eventos.joystickButton.joystickId == 0)
                     {
                         //control 1
@@ -486,8 +485,9 @@ void Motor2D::Inputs()
                         //ATAQUE
                         controles->da(contro);
                     }
-                    break;
-                case sf::Event::JoystickMoved:
+                }
+                if(sf::Event::JoystickMoved == eventos.type)
+                {    
                     if(eventos.joystickMove.joystickId == 0)
                     {
                         //control 1
@@ -540,13 +540,14 @@ void Motor2D::Inputs()
                     {
                         controles->du(contro);
                     }
-                    break;
-                case sf::Event::Closed:
+                }
+                if(sf::Event::Closed == eventos.type)
+                {
                     window.close();
-                    break;
+                }
                 //Se pulsó una tecla, imprimo su codigo
-                case sf::Event::KeyPressed:
-                    
+                if(sf::Event::KeyPressed == eventos.type)
+                {
                     if(eventos.key.code == sf::Keyboard::Num1)//un jugador a
                         controles->cambiarControl(1);
                     if(eventos.key.code == sf::Keyboard::Num2)//un jugador b
@@ -590,9 +591,9 @@ void Motor2D::Inputs()
                                 juego->finalNivel();
                             }
                         }
-                        break;
-                case sf::Event::KeyReleased:
-                        
+                }
+                if(sf::Event::KeyReleased == eventos.type)
+                {        
                     if(controles->whatPlayer(eventos.key.code) == 1)
                         {
                             controles->cambiarControl(1);
@@ -616,11 +617,9 @@ void Motor2D::Inputs()
                             controles->da(controles->whatPlayer(eventos.key.code));
                         if(eventos.key.code == controles->moveDefensa())
                             controles->df(controles->whatPlayer(eventos.key.code));
-                    break;
-        }
-            
+            }
+        }    
     }
-}
 
 void Motor2D::menuUP()
 {
