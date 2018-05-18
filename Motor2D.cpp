@@ -208,40 +208,33 @@ void Motor2D::drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float
     }
     if(enemigo==0){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*80, esta*300, ori*80,80));
-    if(sound[0].getStatus()!=sf::Sound::Playing){
-        sound[0].play();
-    }
+    Juego *juego = Juego::getInstance();
+    juego->activarSonidos(enemigo);
     }
     else if(enemigo==1){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*80, esta*300, ori*80,80));
-    
-    if(sound[1].getStatus()!=sf::Sound::Playing){
-        sound[1].play();
-    }
+    Juego *juego = Juego::getInstance();
+    juego->activarSonidos(enemigo);
     }
     else if(enemigo==2){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*640, esta*750, ori*640, 750));
-    if(sound[2].getStatus()!=sf::Sound::Playing){
-        sound[2].play();
-    }
+    Juego *juego = Juego::getInstance();
+    juego->activarSonidos(enemigo);
     }
     else if(enemigo==3){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*65, esta*300, ori*65, 32));
-    if(sound[3].getStatus()!=sf::Sound::Playing){
-        sound[3].play();
-    }
+    Juego *juego = Juego::getInstance();
+    juego->activarSonidos(enemigo);
     }
     else if(enemigo==4){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*392, esta*550, ori*392, 550));
-    if(sound[4].getStatus()!=sf::Sound::Playing){
-        sound[4].play();
-    }
+    Juego *juego = Juego::getInstance();
+    juego->activarSonidos(enemigo);
     }
     else if(enemigo==5){
     enemigos[enemigo].setTextureRect(sf::IntRect(fram*95, esta*95, ori*95, 95));
-    if(sound[5].getStatus()!=sf::Sound::Playing){
-        sound[5].play();
-    }
+    Juego *juego = Juego::getInstance();
+    juego->activarSonidos(enemigo);
     }
     window.draw(enemigos[enemigo]);
 }

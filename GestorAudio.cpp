@@ -49,6 +49,26 @@ GestorAudio::GestorAudio()
     fondoNiv2.loadFromFile("resources/Sound/Niveles/2.wav");
     fondoNiv.setLoop(true);
     
+    //Enemigos
+    
+    e1.loadFromFile("resources/Sound/Enemigo/giro2.ogg");
+    e2.loadFromFile("resources/Sound/Enemigo/deslizar.ogg");
+    e3.loadFromFile("resources/Sound/Enemigo/shot1.ogg");
+    e4.loadFromFile("resources/Sound/Enemigo/dog1.ogg");
+    e5.loadFromFile("resources/Sound/Enemigo/zombiesound4.ogg");
+    e6.loadFromFile("resources/Sound/Enemigo/shot3.ogg");
+    en1.setBuffer(e1);
+    en1.setVolume(75);
+    en2.setBuffer(e2);
+    en2.setVolume(50);
+    en3.setBuffer(e3);
+    en3.setVolume(50);
+    en4.setBuffer(e4);
+    en4.setVolume(50);
+    en5.setBuffer(e5);
+    en6.setBuffer(e6);
+    en6.setVolume(25);
+    
 }
 
 GestorAudio::~GestorAudio() 
@@ -141,6 +161,36 @@ void GestorAudio::fondo()
         fondoNiv.stop();
     }
     fondo1.play();
+}
+
+//enemigos
+
+void GestorAudio::enemigo(int tipo)
+{
+    if(tipo=0){
+    if(en1.getStatus() == sf::SoundSource::Stopped)
+    en1.play();
+    }
+    if(tipo=1){
+    if(en2.getStatus() == sf::SoundSource::Stopped)
+    en2.play();
+    }
+    if(tipo=2){
+    if(en3.getStatus() == sf::SoundSource::Stopped)
+    en3.play();
+    }
+    if(tipo=3){
+    if(en4.getStatus() == sf::SoundSource::Stopped)
+    en4.play();
+    }
+    if(tipo=4){
+    if(en5.getStatus() == sf::SoundSource::Stopped)
+    en5.play();
+    }
+    if(tipo=5){
+    if(en6.getStatus() == sf::SoundSource::Stopped)
+    en6.play();
+    }
 }
 
 //nivel

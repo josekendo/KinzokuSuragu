@@ -355,6 +355,12 @@ void Juego::quieto()
     }
 }
 
+void Juego::activarSonidos(int tipo)
+{ 
+    GestorAudio *audio = GestorAudio::getInstance();
+    audio->enemigo(tipo);
+}
+
 void Juego::matarEnemigos()
 {
         Nivel *niv = Nivel::getInstance();

@@ -45,7 +45,7 @@ public:
     //fin menu
     
     //enemigos
-    
+    void enemigo(int tipo);//se oye cuando aceptamos 
     //fin enemigos
     
     //niveles
@@ -69,6 +69,8 @@ private:
     //fin menu
     
     //enemigos
+    sf::SoundBuffer e1,e2,e3,e4,e5,e6;
+    sf::Sound en1,en2,en3,en4,en5,en6;
     //fin enemigos
     
     //nivel
