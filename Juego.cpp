@@ -19,7 +19,7 @@ Juego* Juego::unica_instancia = 0;
 Juego::Juego() 
 {
     estado = &menu;
-    GestorAudio *audio =GestorAudio::getInstance();
+    GestorAudio *audio = GestorAudio::getInstance();
     audio->fondo();
     motor = Motor2D::getInstance();
     camara = Camara::getInstance();
@@ -31,7 +31,7 @@ void Juego::cambiarEstado(int est)
     GestorAudio *audio =GestorAudio::getInstance();
     if(est == 1)
     {
-        audio->fondo();
+        //audio->fondo();
     }
     switch(est)
     {

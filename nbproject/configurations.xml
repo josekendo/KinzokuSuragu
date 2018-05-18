@@ -16,6 +16,7 @@
       <itemPath>Estado.hpp</itemPath>
       <itemPath>FabricarNivel.h</itemPath>
       <itemPath>GestionArchivos.hpp</itemPath>
+      <itemPath>GestorAudio.hpp</itemPath>
       <itemPath>Hud.hpp</itemPath>
       <itemPath>Juego.hpp</itemPath>
       <itemPath>Jugadores.hpp</itemPath>
@@ -41,6 +42,7 @@
       <itemPath>Estado.cpp</itemPath>
       <itemPath>FabricarNivel.cpp</itemPath>
       <itemPath>GestionArchivos.cpp</itemPath>
+      <itemPath>GestorAudio.cpp</itemPath>
       <itemPath>Hud.cpp</itemPath>
       <itemPath>Juego.cpp</itemPath>
       <itemPath>Jugadores.cpp</itemPath>
