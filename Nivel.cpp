@@ -404,6 +404,7 @@ void Nivel::matarEnemigos()
     for(int m = 0; m < enemigos.size();m++)
      {
         if(juego->queEstado()!=2){
+             juego->desactivarSonidos(m);
              std::cout<< "mataaaaaaaaa " << m << endl;
              bool ver = enemigos[m]->matarEnemigo(m);
              delete enemigos[m];

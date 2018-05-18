@@ -51,23 +51,26 @@ GestorAudio::GestorAudio()
     
     //Enemigos
     
-    e1.loadFromFile("resources/Sound/Enemigo/giro2.ogg");
-    e2.loadFromFile("resources/Sound/Enemigo/deslizar.ogg");
-    e3.loadFromFile("resources/Sound/Enemigo/shot1.ogg");
-    e4.loadFromFile("resources/Sound/Enemigo/dog1.ogg");
-    e5.loadFromFile("resources/Sound/Enemigo/zombiesound4.ogg");
-    e6.loadFromFile("resources/Sound/Enemigo/shot3.ogg");
-    en1.setBuffer(e1);
-    en1.setVolume(75);
-    en2.setBuffer(e2);
-    en2.setVolume(50);
-    en3.setBuffer(e3);
-    en3.setVolume(50);
-    en4.setBuffer(e4);
-    en4.setVolume(50);
-    en5.setBuffer(e5);
-    en6.setBuffer(e6);
-    en6.setVolume(25);
+    e[0].loadFromFile("resources/Sound/Enemigo/giro2.ogg");
+    e[1].loadFromFile("resources/Sound/Enemigo/deslizar.ogg");
+    e[2].loadFromFile("resources/Sound/Enemigo/shot1.ogg");
+    e[3].loadFromFile("resources/Sound/Enemigo/dog1.ogg");
+    e[4].loadFromFile("resources/Sound/Enemigo/zombiesound4.ogg");
+    e[5].loadFromFile("resources/Sound/Enemigo/shot3.ogg");
+    e[6].loadFromFile("resources/Sound/Enemigo/shot4.ogg");
+    en[0].setBuffer(e[0]);
+    en[0].setVolume(100);
+    en[1].setBuffer(e[1]);
+    en[1].setVolume(100);
+    en[2].setBuffer(e[2]);
+    en[2].setVolume(100);
+    en[3].setBuffer(e[3]);
+    en[3].setVolume(100);
+    en[4].setBuffer(e[4]);
+    en[5].setBuffer(e[5]);
+    en[5].setVolume(100);
+    en[6].setBuffer(e[6]);
+    en[6].setVolume(75);
     
 }
 
@@ -165,31 +168,27 @@ void GestorAudio::fondo()
 
 //enemigos
 
-void GestorAudio::enemigo(int tipo)
+void GestorAudio::actEnemigo(int tipo)
 {
-    if(tipo=0){
-    if(en1.getStatus() == sf::SoundSource::Stopped)
-    en1.play();
+    if(tipo>=0&&tipo<=5){
+     if(en[tipo].getStatus() == sf::SoundSource::Stopped)
+     en[tipo].play();
+    if(tipo==1){
+     if(en[6].getStatus() == sf::SoundSource::Stopped)
+     en[6].play();
     }
-    if(tipo=1){
-    if(en2.getStatus() == sf::SoundSource::Stopped)
-    en2.play();
     }
-    if(tipo=2){
-    if(en3.getStatus() == sf::SoundSource::Stopped)
-    en3.play();
+}
+
+void GestorAudio::desEnemigo(int tipo)
+{
+    if(tipo>=0&&tipo<=5){
+     if(en[tipo].getStatus() != sf::SoundSource::Stopped)
+     en[tipo].stop();
+    if(tipo==1){
+     if(en[6].getStatus() != sf::SoundSource::Stopped)
+     en[6].stop();
     }
-    if(tipo=3){
-    if(en4.getStatus() == sf::SoundSource::Stopped)
-    en4.play();
-    }
-    if(tipo=4){
-    if(en5.getStatus() == sf::SoundSource::Stopped)
-    en5.play();
-    }
-    if(tipo=5){
-    if(en6.getStatus() == sf::SoundSource::Stopped)
-    en6.play();
     }
 }
 

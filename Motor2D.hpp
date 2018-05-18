@@ -74,7 +74,7 @@ public:
     void drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float y);//pinta el enemigo en esa posicion
     void matarEnemigo(int point);//elimina el sprite del enemigo 
     bool ataqueEnemigo(int player, int tipo);//ataque enemigo 
-    void desactivarSonidos();
+    
     //relojes
     int darUPDATE();
     void reiniciarUPDATE();
@@ -115,8 +115,6 @@ private:
     std::vector<sf::Sprite*> bullets;//proyectiles
     sf::Sprite enemigos[6];//enemigos vector
     sf::Texture texturas[14];//tilesets
-    sf::SoundBuffer sb[6];
-    sf::Sound sound[6];
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto
     sf::Clock animaciones;//nos sirve para saber cuando tenemos que cambiar de animacion

@@ -358,7 +358,13 @@ void Juego::quieto()
 void Juego::activarSonidos(int tipo)
 { 
     GestorAudio *audio = GestorAudio::getInstance();
-    audio->enemigo(tipo);
+    audio->actEnemigo(tipo);
+}
+
+void Juego::desactivarSonidos(int tipo)
+{ 
+    GestorAudio *audio = GestorAudio::getInstance();
+    audio->desEnemigo(tipo);
 }
 
 void Juego::matarEnemigos()
@@ -472,7 +478,6 @@ void Juego::finalNivel()
     Nivel *nivel = Nivel::getInstance();
     gestion->guardarValores(0,nivel->getModo());
     motor->finalNivel();    
-    motor->desactivarSonidos();
     control->offTwo();
     cambiarEstado(1);
     matarEnemigos();

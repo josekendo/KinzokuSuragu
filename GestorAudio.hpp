@@ -45,7 +45,8 @@ public:
     //fin menu
     
     //enemigos
-    void enemigo(int tipo);//se oye cuando aceptamos 
+    void actEnemigo(int tipo);//activa los sonidos enemigos 
+    void desEnemigo(int tipo);//desactiva los sonidos enemigos
     //fin enemigos
     
     //niveles
@@ -69,8 +70,8 @@ private:
     //fin menu
     
     //enemigos
-    sf::SoundBuffer e1,e2,e3,e4,e5,e6;
-    sf::Sound en1,en2,en3,en4,en5,en6;
+    sf::SoundBuffer e[7];
+    sf::Sound en[7];
     //fin enemigos
     
     //nivel

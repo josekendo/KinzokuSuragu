@@ -43,23 +43,7 @@ Motor2D::Motor2D()
     texturas[11].loadFromFile("resources/saiyan2.png");
     texturas[12].loadFromFile("resources/Element_SpriteS.png");
     texturas[13].loadFromFile("resources/balas.png");
-    sb[0].loadFromFile("resources/Sound/Enemigo/giro2.ogg");
-    sb[1].loadFromFile("resources/Sound/Enemigo/deslizar.ogg");
-    sb[2].loadFromFile("resources/Sound/Enemigo/shot1.ogg");
-    sb[3].loadFromFile("resources/Sound/Enemigo/dog1.ogg");
-    sb[4].loadFromFile("resources/Sound/Enemigo/zombiesound4.ogg");
-    sb[5].loadFromFile("resources/Sound/Enemigo/shot3.ogg");
-    sound[0].setBuffer(sb[0]);
-    sound[0].setVolume(75);
-    sound[1].setBuffer(sb[1]);
-    sound[1].setVolume(50);
-    sound[2].setBuffer(sb[2]);
-    sound[2].setVolume(50);
-    sound[3].setBuffer(sb[3]);
-    sound[3].setVolume(50);
-    sound[4].setBuffer(sb[4]);
-    sound[5].setBuffer(sb[5]);
-    sound[5].setVolume(25);
+    
     initCamera();
     controles = Controles::getInstance();
     initMenu();
@@ -308,20 +292,7 @@ void Motor2D::matarEnemigo(int point)
     juego->finalNivel();
     }
     }
-    if(sound[point].getStatus()==sf::Sound::Playing){
-    sound[point].stop();
-    }
-    
-}
-
-void Motor2D::desactivarSonidos()
-{
-    
-    for(int i=0;i<6;i++){
-    if(sound[i].getStatus()==sf::Sound::Playing){
-    sound[i].stop();
-    }
-    }
+    juego->desactivarSonidos(point);
     
 }
 
