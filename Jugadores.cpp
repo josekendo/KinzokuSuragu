@@ -162,10 +162,10 @@ void Jugadores::Jump(int dir)
     frame = 9;
     stat = 0;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
-    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())-((kVel*8));
-    /*if(aceleracion<kVel*2){
-        aceleracion=aceleracion+0.3;
-    }*/
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())-((kVel*4)-aceleracion);
+    if(kVel*4-aceleracion>6){
+        aceleracion=aceleracion + 2;
+    }
         coordenadas.cambiarPosicion(x,y);
         
     draw();
@@ -177,21 +177,22 @@ void Jugadores::Caida(int dir){
     frame = 9;
     stat = 0;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
-    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())+(kVel*2);
-    /*if(aceleracion<kVel*2){
-        aceleracion=aceleracion+0.3;
-    }*/
+    int y=coordenadas.getCoordenadaYI(motor->darUPDATE())+(kVel*4)-aceleracion;
+    if(aceleracion>0){
+       aceleracion=aceleracion-2; 
+    }
+    
     coordenadas.cambiarPosicion(x,y);
 }
 bool Jugadores::SaltoBloqueo(bool moverup){ //controla la altura maxima del salto
     bool bloqueo=false;
-    float n=2;
+    float n=3;
     
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
     
     if(getPulsarBoton()==2){//solo en estos dos casos actualizara la referencia de salto
         saltoref=y;
-        //aceleracion=0;
+        aceleracion=0;
         setEn4();
     }
     else if(getPulsarBoton()==1 && saltoref==-500){
@@ -337,7 +338,6 @@ bool Jugadores::mover()
         
         return 0;
     }
-        
 }
 
 bool Jugadores::moverAtras()
@@ -368,24 +368,57 @@ bool Jugadores::moverAbajo(int direccion){
     if(dimensiones.x==0){
         dimensiones= motor->getDimensiones(-1);//el -1 es para el sprite del heroe/gato
     }
-    int mov=kVel*2;
+    int mov=kVel*4+aceleracion;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
+    int y2=coordenadas.getCoordenadaYI(motor->darUPDATE())+mov/2;
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE())+mov;
     
-    if(colision->ColisionSuelo(x,y,dimensiones,direccion)==true){//si colisiona
+    if(colision->ColisionSuelo(x,y2,dimensiones,direccion)==true){
+        if(y2>=0){
+            y2=y2/32;
+            y2=(y2*32); 
+            coordenadas.cambiarPosicion(x,y2+15);
+        }
+        else{
+            y2=(y2/32)-1;
+            y2=(y2*32);
+            coordenadas.cambiarPosicion(x,y2+15);
+        }
+        
         return false;
+    }
+    else if(colision->ColisionSuelo(x,y,dimensiones,direccion)==true){//si colisiona
+        if(y>=0){
+            y=y/32;
+            y=(y*32); 
+            coordenadas.cambiarPosicion(x,y+15);
+        }
+        else{
+            y=(y/32)-1;
+            y=(y*32);
+            coordenadas.cambiarPosicion(x,y+15);
+        }
+        
+        return false;
+        
     }
     else{
         return true;
     }
 }
 bool Jugadores::moverArriba(int direccion){
-    int mov=kVel*8;
+    int mov=kVel*4-aceleracion;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE());
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE())-mov;
     
-    if(colision->ColisionTecho(x,y,dimensiones,direccion)==true){//si colisiona
+    //std::cout<<"prueba: "<<colision->ColisionTecho(x,y,dimensiones,direccion)<<std::endl;
+    if(colision->ColisionTecho(x,y,dimensiones,direccion)==1){//si colisiona
+      
+
         return false;
+        
+        
+        
     }
     else{
         
