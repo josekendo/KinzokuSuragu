@@ -258,7 +258,7 @@ void Menus::Intro(int x, int y)
                     Juego *juego = Juego::getInstance();
                     Nivel *nivel = Nivel::getInstance();
                     juego ->cargarNivel(1);
-                    nivel ->juegoMultijugador(0,0);
+                    nivel ->juegoMultijugador(0,1);
                 }
             }
 
@@ -270,7 +270,7 @@ void Menus::Intro(int x, int y)
                     Juego *juego = Juego::getInstance();
                     Nivel *nivel = Nivel::getInstance();
                     juego ->cargarNivel(2);
-                    nivel ->juegoMultijugador(0,0);
+                    nivel ->juegoMultijugador(0,1);
                 }
             }
 
