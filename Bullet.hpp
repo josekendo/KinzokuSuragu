@@ -18,13 +18,14 @@
 
 class Bullet {
 public:
-    Bullet(int tipo, int elemento, int x, int y, int jugador, int dano, int ori);
+    Bullet(int tipo, int elemento, int x, int y, int jugador, int dano, int ori, int amigo);
     virtual ~Bullet();
     void draw(int point);//se le llama a pintar esa bala en el motor
     bool sigoViva();//si sigue viva devuelve true si no false
     bool matarBala(int point);//mata a su sprite en el motor 
     int getOri();
     void realimentar(int ori);//realimentamos su velocidad
+    bool getFuegoAmigo(int f);//devuelve true si el creador de las balas es amigo
     
 private:
     
@@ -35,6 +36,7 @@ private:
     int jugadorb;
     int danob;
     int velocidad;//velocidad que tendra las 15 veces que se ejecute por reloj
+    int fuegoamigo;
     bool ini = false;
 };
 

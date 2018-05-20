@@ -16,7 +16,7 @@
 #include "Camara.hpp"
 using namespace std;
 
-Bullet::Bullet(int tipo, int elemento, int x, int y, int jugador, int dano, int ori)
+Bullet::Bullet(int tipo, int elemento, int x, int y, int jugador, int dano, int ori, int amigo)
 {
     //creamos bala en el motor2d
     Motor2D *motor = Motor2D::getInstance();
@@ -29,6 +29,7 @@ Bullet::Bullet(int tipo, int elemento, int x, int y, int jugador, int dano, int 
     danob = dano;
     coordenadas = Coordenadas(x,y);
     velocidad = 14;
+    fuegoamigo = amigo;
     ini = true;
 }
 
@@ -78,5 +79,17 @@ bool Bullet::sigoViva()
         return true;
     }
 }
+bool Bullet::getFuegoAmigo(int f){ // el fuego de los enemigos es 0 y el de los gatos 1
+    bool fuego=false;
+    
+    if(f==fuegoamigo){
+        fuego=true;
+    }
+    else{
+        false;
+    }
+    return fuego;
+}
+
 
 

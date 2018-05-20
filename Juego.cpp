@@ -470,6 +470,7 @@ void Juego::Ejecucion()
                 Nivel *niv = Nivel::getInstance();
                 niv->realimentarBalas();
                 niv->realimentarEnemigo();
+                niv->ColBalasNivel();
             }
             
             if(estado->QueEstado() == 3)
