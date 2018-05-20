@@ -231,8 +231,6 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         sf::Sprite *enemy = new sf::Sprite;
         enemy->setTexture(texturas[6]);
         enemy->setTextureRect(sf::IntRect(0, 0, 15,14));
-        tip = enemigo;
-        enemigos[enemigo] = sf::Sprite();
         if(enemigo == 0){
         enemigos[enemigo].setTexture(texturas[6]);
         enemigos[enemigo].setOrigin(228/2,350/2);
@@ -276,8 +274,12 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
 
 bool Motor2D::ataqueEnemigo(int player, int tipo)
 {
+    std::cout << "ataqueee1 " << tipo << std::endl;
+    std::cout << "ataqueee2 " << enemigos[tipo].getPosition().x << std::endl;
     if (jugadores[player].getGlobalBounds().intersects(enemigos[tipo].getGlobalBounds()))
     {
+    std::cout << "ataqueee3 " << tipo << std::endl;
+    std::cout << "ataqueee4 " << enemigos[tipo].getPosition().x << std::endl;
         return true;   
     }       
     return false;
