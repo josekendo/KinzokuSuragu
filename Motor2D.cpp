@@ -38,7 +38,7 @@ Motor2D::Motor2D()
     texturas[6].loadFromFile("resources/blob_Fire.png");
     texturas[7].loadFromFile("resources/miniblob_Water.png");
     texturas[8].loadFromFile("resources/Boss1_Shoot.png");
-    texturas[9].loadFromFile("resources/aliendog2_Fire.png");
+    texturas[9].loadFromFile("resources/aliendog2.png");
     texturas[10].loadFromFile("resources/Wood_Enemy_Idle.png");
     texturas[11].loadFromFile("resources/Boss2_Shoot.png");
     texturas[12].loadFromFile("resources/Element_SpriteS.png");
@@ -208,7 +208,7 @@ void Motor2D::drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float
     juego->activarSonidos(enemigo);
     }
     else if(enemigo==3){
-    enemigos[enemigo].setTextureRect(sf::IntRect(fram*65, esta*300, ori*65, 32));
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*66, esta*32, ori*66, 32));
     Juego *juego = Juego::getInstance();
     juego->activarSonidos(enemigo);
     }
@@ -276,12 +276,8 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
 
 bool Motor2D::ataqueEnemigo(int player, int tipo)
 {
-    std::cout << "ataqueee1 " << tipo << std::endl;
-    std::cout << "ataqueee2 " << enemigos[tipo].getPosition().x << std::endl;
     if (jugadores[player].getGlobalBounds().intersects(enemigos[tipo].getGlobalBounds()))
     {
-    std::cout << "ataqueee3 " << tipo << std::endl;
-    std::cout << "ataqueee4 " << enemigos[tipo].getPosition().x << std::endl;
         return true;   
     }       
     return false;
