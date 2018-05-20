@@ -86,7 +86,7 @@ public:
     void crearBala(int tipo, int elemento, int ori);//crea un sprite de una bala
     void drawBala(int point, int x, int y);//pinta la bala en esa posicion
     void matarBala(int point);//elimina el sprite de la bala 
-    int ColBalas(int player);
+    int ColBalas(int point, int player);
     //fin bala
     //hud
     void initHud(int player);
@@ -115,7 +115,7 @@ private:
     sf::Sprite elementos[10];//elementos
     std::vector<sf::Sprite*> bullets;//proyectiles
     sf::Sprite enemigos[6];//enemigos vector
-    sf::Texture texturas[14];//tilesets
+    sf::Texture texturas[16];//tilesets
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto
     sf::Clock animaciones;//nos sirve para saber cuando tenemos que cambiar de animacion

@@ -334,16 +334,24 @@ void Nivel::ColBalasNivel(){
     Motor2D *motor = Motor2D::getInstance();
     
     if(bullet.size()>0){
-        int i=motor->ColBalas(0);//player 0
-        if(i!=-1){ //existe colision
-            if(bullet[i]->getFuegoAmigo(1)==false){ 
-                std::cout<<"colisiona la bala: "<<i<<std::endl;
+        for(int i=0;i<bullet.size();i++){
+           if(motor->ColBalas(i,0)!=-1){
+               if(bullet[i]->getFuegoAmigo(1)==false){
                 bool ver = bullet[i]->matarBala(i);
                 delete bullet[i];
                 bullet[i] = NULL;
                 bullet.erase(bullet.begin()+i);
-           //bullet[i]->matarBala(i);
-            }
+                
+               }
+           }
+           if(motor->ColBalas(i,1)!=-1){
+               if(bullet[i]->getFuegoAmigo(1)==false){
+                bool ver = bullet[i]->matarBala(i);
+                delete bullet[i];
+                bullet[i] = NULL;
+                bullet.erase(bullet.begin()+i);
+               }
+           }
         }
     }
     //jugadores->ColBalasJugadores();
@@ -360,6 +368,8 @@ void Nivel::realimentarEnemigo()
      Motor2D *motor2D = Motor2D::getInstance();
      for(int o = 0; o < enemigos.size();o++)
      {
+            std::cout << "nivelll1 " << enemigos[o]->getX() << std::endl;
+            std::cout << "nivelll12 " << enemigos[o]->getY() << std::endl;
           if(enemigos[o]->getX()-jugadores[0].getX()<100 && enemigos[o]->getX()-jugadores[0].getX()>-100 && enemigos[o]->getY()-jugadores[0].getY()-174<50 && enemigos[o]->getY()-jugadores[0].getY()-174>-50)  {            
             if(enemigos[o]->getX()-jugadores[0].getX()-65<10 && enemigos[o]->getX()-jugadores[0].getX()-65>-90)  {   
               enemigos[o]->setOrientacion(-1);
@@ -378,13 +388,19 @@ void Nivel::realimentarEnemigo()
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-75, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
             }
             else if(enemigos[o]->getTipoEnemigo()==2){
+
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
+
+             crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
+            
+                 crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY()+30, 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
+                 crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY()-30, 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
+
             }
             else if(enemigos[o]->getTipoEnemigo()==5){
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-205, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
             }
             if((motor2D->ataqueEnemigo(0,enemigos[o]->getTipoEnemigo())==true&&enemigos[o]->activacion()==true))  {
-            std::cout << "nivelll1 " << enemigos[o]->getTipoEnemigo() << std::endl;
                     ataqueEnemigo();
             }
             if(modo==2){

@@ -35,14 +35,16 @@ Motor2D::Motor2D()
     texturas[3].loadFromFile("resources/Hud/life.png");
     texturas[4].loadFromFile("resources/Hud/defense.png");
     texturas[5].loadFromFile("resources/Hud/loa.png");
-    texturas[6].loadFromFile("resources/blob.png");
-    texturas[7].loadFromFile("resources/miniblob.png");
-    texturas[8].loadFromFile("resources/wizard3.png");
-    texturas[9].loadFromFile("resources/aliendog2.png");
-    texturas[10].loadFromFile("resources/zombiewalk2.png");
-    texturas[11].loadFromFile("resources/saiyan2.png");
+    texturas[6].loadFromFile("resources/blob_Fire.png");
+    texturas[7].loadFromFile("resources/miniblob_Water.png");
+    texturas[8].loadFromFile("resources/Boss1_Shoot.png");
+    texturas[9].loadFromFile("resources/aliendog2_Fire.png");
+    texturas[10].loadFromFile("resources/Wood_Enemy_Idle.png");
+    texturas[11].loadFromFile("resources/Boss2_Shoot.png");
     texturas[12].loadFromFile("resources/Element_SpriteS.png");
     texturas[13].loadFromFile("resources/balas.png");
+    texturas[14].loadFromFile("resources/Bala_Boss1.png");
+    texturas[15].loadFromFile("resources/Bala_Boss2.png");
     
     initCamera();
     controles = Controles::getInstance();
@@ -201,7 +203,7 @@ void Motor2D::drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float
     juego->activarSonidos(enemigo);
     }
     else if(enemigo==2){
-    enemigos[enemigo].setTextureRect(sf::IntRect(fram*640, esta*750, ori*640, 750));
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*80, esta*88, ori*80, 88));
     Juego *juego = Juego::getInstance();
     juego->activarSonidos(enemigo);
     }
@@ -211,12 +213,12 @@ void Motor2D::drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float
     juego->activarSonidos(enemigo);
     }
     else if(enemigo==4){
-    enemigos[enemigo].setTextureRect(sf::IntRect(fram*392, esta*550, ori*392, 550));
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*650, esta*724, ori*650, 724));
     Juego *juego = Juego::getInstance();
     juego->activarSonidos(enemigo);
     }
     else if(enemigo==5){
-    enemigos[enemigo].setTextureRect(sf::IntRect(fram*95, esta*95, ori*95, 95));
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*94, esta*95, ori*94, 95));
     Juego *juego = Juego::getInstance();
     juego->activarSonidos(enemigo);
     }
@@ -245,9 +247,9 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         }
         else if(enemigo == 2){
         enemigos[enemigo].setTexture(texturas[8]);
-        enemigos[enemigo].setOrigin(600/2,2600/2);
-        enemigos[enemigo].setTextureRect(sf::IntRect(0*640, 0*750, 640, 750));
-        enemigos[enemigo].scale(sf::Vector2f(0.2f, 0.2f));
+        enemigos[enemigo].setOrigin(228/2,435/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*80, 0*88, 80, 88));
+        enemigos[enemigo].scale(sf::Vector2f(1.0f, 1.0f));
         }
         else if(enemigo == 3){
         enemigos[enemigo].setTexture(texturas[9]);
@@ -257,15 +259,15 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         }
         else if(enemigo == 4){
         enemigos[enemigo].setTexture(texturas[10]);
-        enemigos[enemigo].setOrigin(228/2,2800/2);
-        enemigos[enemigo].setTextureRect(sf::IntRect(0*392, 0*550, 392, 550));
+        enemigos[enemigo].setOrigin(228/2,3150/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*650, 0*724, 650, 724));
         enemigos[enemigo].scale(sf::Vector2f(0.2f, 0.2f));
         }
         else if(enemigo == 5){
         enemigos[enemigo].setTexture(texturas[11]);
-        enemigos[enemigo].setOrigin(228/2,240/2);
-        enemigos[enemigo].setTextureRect(sf::IntRect(0*95, 0*95, 95, 95));
-        enemigos[enemigo].scale(sf::Vector2f(3.0f, 3.0f));
+        enemigos[enemigo].setOrigin(228/2,310/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*94, 0*95, 94, 95));
+        enemigos[enemigo].scale(sf::Vector2f(2.5f, 2.5f));
         }
             
     }
@@ -687,21 +689,21 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
             bala->setTextureRect(sf::IntRect(142*fram, 42*0, 142*ori,42));
         }
          else if(elemento == 2){
-            bala->setTexture(texturas[13]);
-            bala->setOrigin(228/2,1850/2);
-            bala->setScale(sf::Vector2f(0.2f, 0.2f));
-            bala->setTextureRect(sf::IntRect(142*fram, 42*1, 142*ori,42));
-            int random = rand() %10 +1;
-             if(random==1){
-              bala->setOrigin(228/2,400/2);
-              bala->setScale(sf::Vector2f(1.0f, 1.0f));
-             }
+            bala->setTexture(texturas[14]);
+            bala->setOrigin(228/2,750/2);
+            bala->setScale(sf::Vector2f(0.5f, 0.5f));
+            bala->setTextureRect(sf::IntRect(30*fram, 30*0, 30*ori,30));
         }
         else if(elemento == 5){
-            bala->setTexture(texturas[13]);
-            bala->setOrigin(228/2,2070/2);
-            bala->setScale(sf::Vector2f(0.2f, 0.2f));
-            bala->setTextureRect(sf::IntRect(142*fram, 42*2, 144*ori,42));
+            bala->setTexture(texturas[15]);
+            bala->setOrigin(228/2,555/2);
+            bala->setScale(sf::Vector2f(1.0f, 1.0f));
+            bala->setTextureRect(sf::IntRect(11*fram, 12*0, 11*ori,12));
+            int random = rand() %4 +1;
+            if(random==1){
+            bala->setOrigin(10/2,65/2);
+            bala->setScale(sf::Vector2f(10.0f, 10.0f));
+            }
         }
         }
         
@@ -727,20 +729,12 @@ void Motor2D::matarBala(int point)
     //std::cout << "se borra bala-sprite " << point << "\n";
     
 }
-int Motor2D::ColBalas(int player){
+int Motor2D::ColBalas(int point, int player){
     int bala=-1;
     
-    for(int i=0;i<bullets.size() && bala==-1 ;i++){
-        if(bullets[i]!=NULL){
-            if(jugadores[player].getGlobalBounds().intersects(bullets[i]->getGlobalBounds())){ // las balas impactan contra el pj
-            bala=i;
-            
-            //std::cout<<"colisiona"<<std::endl;
-            }
-            else{
-            //std::cout<<"no colisiona"<<std::endl;
-            }
-        }
+    if(jugadores[player].getGlobalBounds().intersects(bullets[point]->getGlobalBounds())){
+        bala=1;
+        std::cout<<"colisiona"<<std::endl;
     }
     
     return bala;
