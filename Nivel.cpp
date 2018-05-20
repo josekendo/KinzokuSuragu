@@ -350,6 +350,8 @@ void Nivel::realimentarEnemigo()
      Motor2D *motor2D = Motor2D::getInstance();
      for(int o = 0; o < enemigos.size();o++)
      {
+            std::cout << "nivelll1 " << enemigos[o]->getX() << std::endl;
+            std::cout << "nivelll12 " << enemigos[o]->getY() << std::endl;
           if(enemigos[o]->getX()-jugadores[0].getX()<100 && enemigos[o]->getX()-jugadores[0].getX()>-100 && enemigos[o]->getY()-jugadores[0].getY()-174<50 && enemigos[o]->getY()-jugadores[0].getY()-174>-50)  {            
             if(enemigos[o]->getX()-jugadores[0].getX()-65<10 && enemigos[o]->getX()-jugadores[0].getX()-65>-90)  {   
               enemigos[o]->setOrientacion(-1);
@@ -369,12 +371,15 @@ void Nivel::realimentarEnemigo()
             }
             else if(enemigos[o]->getTipoEnemigo()==2){
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
+            
+                 crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY()+30, 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
+                 crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY()-30, 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
+            
             }
             else if(enemigos[o]->getTipoEnemigo()==5){
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-205, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
             }
             if((motor2D->ataqueEnemigo(0,enemigos[o]->getTipoEnemigo())==true&&enemigos[o]->activacion()==true))  {
-            std::cout << "nivelll1 " << enemigos[o]->getTipoEnemigo() << std::endl;
                     ataqueEnemigo();
             }
             if(modo==2){

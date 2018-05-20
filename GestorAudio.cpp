@@ -73,7 +73,7 @@ GestorAudio::GestorAudio()
     en[5].setBuffer(e[5]);
     en[5].setVolume(100);
     en[6].setBuffer(e[6]);
-    en[6].setVolume(75);
+    en[6].setVolume(25);
     en[7].setBuffer(e[7]);
     en[7].setVolume(100);
     
