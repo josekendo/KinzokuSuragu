@@ -7,23 +7,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/GestorAudio.cpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/main.cpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Bullet.hpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Estado.cpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Bullet.cpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Nivel.hpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Juego.cpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Colision.cpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Motor2D.cpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Enemigos.hpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Motor2D.hpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Nivel.cpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Juego.hpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Jugadores.hpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Jugadores.cpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/GestorAudio.hpp</file>
-            <file>file:/home/agp/NetBeansProjects/KinzokuSuragu/Enemigos.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Els.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Coordenadas.hpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Estado.hpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/main.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Juego.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Nivel.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Estado.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Bullet.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Motor2D.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Jugadores.cpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Motor2D.hpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Nivel.hpp</file>
+            <file>file:/home/fv/NetBeansProjects/PG/KinzokuSuragu/Controles.h</file>
         </group>
     </open-files>
 </project-private>

@@ -41,7 +41,7 @@ Motor2D::Motor2D()
     texturas[9].loadFromFile("resources/aliendog2.png");
     texturas[10].loadFromFile("resources/Wood_Enemy_Idle.png");
     texturas[11].loadFromFile("resources/Boss2_Shoot.png");
-    texturas[12].loadFromFile("resources/Element_SpriteS.png");
+    texturas[12].loadFromFile("resources/Element_SpriteSheet.png");
     texturas[13].loadFromFile("resources/balas.png");
     texturas[14].loadFromFile("resources/Bala_Boss1.png");
     texturas[15].loadFromFile("resources/Bala_Boss2.png");
@@ -864,9 +864,9 @@ void Motor2D::initEls(int el)
     else if (el == 4 || el == 9)
         ele = 4;
     
-    elementos[el].setTextureRect(sf::IntRect((ele*48)+17, 22, 16,17));
+    elementos[el].setTextureRect(sf::IntRect((ele*100), 0, 100,100));
     elementos[el].setOrigin(48/2,48/2);
-    elementos[el].scale(sf::Vector2f(2, 2));
+    elementos[el].scale(sf::Vector2f(0.3, 0.3));
         
 }
 
