@@ -36,6 +36,7 @@ private:
     int seleccion;//la opcion seleccionada[General]
     int estado; //en que parte del menu nos encontramos[General]
     sf::Font fuente;//fuente global[General]
+    sf::Font tit;//fuente para titulo
     sf::Clock espera;//reloj para eventos generales
     sf::Texture background;//bg menu [Menus]
     sf::Texture bgNiveles;//bg niveles[Niveles]
@@ -46,11 +47,13 @@ private:
     sf::Texture scroll;//textura scroll[General]
     sf::Texture c1;
     sf::Texture c2;//228 145
+    sf::Texture nave;//593 434
     sf::Sprite backsp;//bg menu [Menus]
     sf::Sprite bgNivels;//bg niveles[Niveles]
     sf::Sprite titul;//sprite del titulo donde estamos[General]
     sf::Sprite sc;//sprite de la barra scroll[General]
     sf::Sprite conf[2];
+    sf::Sprite ovni;
     sf::Text textconf[3];
     bool intro;//se comprueba que se hace intro o que se pulsa con el raton[General]
     int animacion;//para hacer la animacion de que has pulsado es un estado[General]
@@ -63,6 +66,7 @@ private:
     sf::Text *Estadisticas;
     sf::Text creditos;
     int nivel_estamos;
+    bool salir = false;
     void drawMenus(sf::RenderWindow &ventana);
     void drawNiveles(sf::RenderWindow &ventana,int players);
     void drawEstadisticas(sf::RenderWindow &ventana);

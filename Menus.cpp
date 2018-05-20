@@ -20,7 +20,7 @@
 
 Menus::Menus(float x,float y,int tipo) {
     
-    if (!(fuente.loadFromFile("resources/Menu/fuente.ttf") && background.loadFromFile("resources/Menu/b.png") && button.loadFromFile("resources/Menu/bg.png") && exi.loadFromFile("resources/Menu/ex.png") && bgNiveles.loadFromFile("resources/Menu/niveles.jpg") && nivel.loadFromFile("resources/Menu/nivel.jpg") && titulo.loadFromFile("resources/Menu/titulo2.png") && scroll.loadFromFile("resources/Menu/scroll.png") && c1.loadFromFile("resources/Menu/flechas.png") && c2.loadFromFile("resources/Menu/teclas.png")))
+    if (!(tit.loadFromFile("resources/Menu/fuente4.ttf") && nave.loadFromFile("resources/Menu/ovni2.png") && fuente.loadFromFile("resources/Menu/fuente3.ttf") && background.loadFromFile("resources/Menu/b.png") && button.loadFromFile("resources/Menu/bg.png") && exi.loadFromFile("resources/Menu/ex.png") && bgNiveles.loadFromFile("resources/Menu/niveles.jpg") && nivel.loadFromFile("resources/Menu/nivel.jpg") && titulo.loadFromFile("resources/Menu/titulo2.png") && scroll.loadFromFile("resources/Menu/scroll.png") && c1.loadFromFile("resources/Menu/flechas.png") && c2.loadFromFile("resources/Menu/teclas.png")))
     {
         std::cout << "error: cargando el menu" << std::endl;
     }
@@ -44,6 +44,11 @@ Menus::~Menus() {
 void Menus::Intro()
 {
     //cambiamos de menu
+    if(seleccion == 6)
+    {
+        salir = true;
+    }
+    
     if(estado == 1 || estado == 2)
     {
         if(estado == 1)
@@ -58,7 +63,7 @@ void Menus::Intro()
             Juego *juego = Juego::getInstance();
             Nivel *nivel = Nivel::getInstance();
             juego ->cargarNivel(nivel_estamos);
-            nivel ->juegoMultijugador(0,0);     
+            nivel ->juegoMultijugador(0,1);     
         }    
     }
     else
@@ -137,6 +142,7 @@ void Menus::Intro(int x, int y)
             buttons[4].setColor(sf::Color(255, 255, 255, 255));
             seleccion = 6;
             intro = true;
+            salir = true;
         }
     break;
     case 1:
@@ -252,7 +258,7 @@ void Menus::Intro(int x, int y)
                     Juego *juego = Juego::getInstance();
                     Nivel *nivel = Nivel::getInstance();
                     juego ->cargarNivel(1);
-                    nivel ->juegoMultijugador(0,0);
+                    nivel ->juegoMultijugador(0,1);
                 }
             }
 
@@ -264,7 +270,7 @@ void Menus::Intro(int x, int y)
                     Juego *juego = Juego::getInstance();
                     Nivel *nivel = Nivel::getInstance();
                     juego ->cargarNivel(2);
-                    nivel ->juegoMultijugador(0,0);
+                    nivel ->juegoMultijugador(0,1);
                 }
             }
 
@@ -440,6 +446,11 @@ void Menus::draw(sf::RenderWindow &ventana)
     //4 Estadisticas
     //5 Creditos
     //6 Configuracion
+    if(salir)
+    {
+        ventana.close();
+    }
+    
     switch(estado)
     {
         case 0://menu
@@ -492,6 +503,7 @@ void Menus::drawMenus(sf::RenderWindow &ventana)
         }
     }            
     ventana.draw(backsp);
+    ventana.draw(ovni);
     ventana.draw(buttons[0]);
     ventana.draw(buttons[1]);
     ventana.draw(buttons[2]);
@@ -634,11 +646,17 @@ void Menus::cambioEstado(int nuevo)
                 backsp.setPosition(0,-300); 
                 backsp.setColor(sf::Color(255, 255, 255, 200));//transparencia
                 backsp.setScale(4.0f,2.0f);
+                ovni.setTexture(nave);
+                ovni.setTextureRect(sf::IntRect(0, 0, 2500, 1335));
+                ovni.setOrigin(2500/2,1335/2);
+                ovni.setScale(0.10f,0.10f);
+                ovni.setPosition(175,40);
+                ovni.setRotation(-30);
                 opciones[0].setString("Un Jugador");
                 opciones[0].setStyle(sf::Text::Bold);
-                opciones[0].setCharacterSize(36);
+                opciones[0].setCharacterSize(20);
                 opciones[0].setFont(fuente);
-                opciones[0].setPosition(350,-250);
+                opciones[0].setPosition(350,-240);
                 buttons[0].setTexture(button);
                 buttons[0].setTextureRect(sf::IntRect(0, 0, 197, 44));
                 buttons[0].setOrigin(15,0);
@@ -646,9 +664,9 @@ void Menus::cambioEstado(int nuevo)
                 buttons[0].setPosition(350,-250);
                 opciones[1].setString("Dos Jugadores");
                 opciones[1].setStyle(sf::Text::Bold);
-                opciones[1].setCharacterSize(36);
+                opciones[1].setCharacterSize(20);
                 opciones[1].setFont(fuente);
-                opciones[1].setPosition(350,-150);    
+                opciones[1].setPosition(350,-140);    
                 buttons[1].setTexture(button);
                 buttons[1].setTextureRect(sf::IntRect(0, 0, 197, 44));
                 buttons[1].setOrigin(15,0);
@@ -656,9 +674,9 @@ void Menus::cambioEstado(int nuevo)
                 buttons[1].setPosition(350,-150);
                 opciones[2].setString("Estadisticas");
                 opciones[2].setStyle(sf::Text::Bold);
-                opciones[2].setCharacterSize(36);
+                opciones[2].setCharacterSize(20);
                 opciones[2].setFont(fuente);
-                opciones[2].setPosition(350,-50);
+                opciones[2].setPosition(350,-40);
                 buttons[2].setTexture(button);
                 buttons[2].setTextureRect(sf::IntRect(0, 0, 197, 44));
                 buttons[2].setOrigin(15,0);
@@ -666,9 +684,9 @@ void Menus::cambioEstado(int nuevo)
                 buttons[2].setPosition(350,-50);
                 opciones[3].setString("Creditos");
                 opciones[3].setStyle(sf::Text::Bold);
-                opciones[3].setCharacterSize(36);
+                opciones[3].setCharacterSize(20);
                 opciones[3].setFont(fuente);
-                opciones[3].setPosition(350,50);
+                opciones[3].setPosition(350,60);
                 buttons[3].setTexture(button);
                 buttons[3].setTextureRect(sf::IntRect(0, 0, 197, 44));
                 buttons[3].setOrigin(15,0);
@@ -676,19 +694,19 @@ void Menus::cambioEstado(int nuevo)
                 buttons[3].setPosition(350,50);
                 opciones[4].setString("Configuracion");
                 opciones[4].setStyle(sf::Text::Bold);
-                opciones[4].setCharacterSize(36);
+                opciones[4].setCharacterSize(20);
                 opciones[4].setFont(fuente);
-                opciones[4].setPosition(350,150);
+                opciones[4].setPosition(350,160);
                 buttons[4].setTexture(button);
                 buttons[4].setTextureRect(sf::IntRect(0, 0, 197, 44));
                 buttons[4].setOrigin(15,0);
                 buttons[4].setScale(1.4f,1.1f);
                 buttons[4].setPosition(350,150);
-                opciones[5].setString("Kinzoku \nSuragu\n   X");
+                opciones[5].setString("Kinzoku \nSuragu\n     X");
                 opciones[5].setStyle(sf::Text::Bold);
-                opciones[5].setCharacterSize(70);
-                opciones[5].setFont(fuente);
-                opciones[5].setPosition(70,-300);
+                opciones[5].setCharacterSize(50);
+                opciones[5].setFont(tit);
+                opciones[5].setPosition(50,-280);
                 buttons[5].setTexture(exi);
                 buttons[5].setPosition(760,-280);
                 buttons[5].setTextureRect(sf::IntRect(0, 0, 28,27));
@@ -706,8 +724,9 @@ void Menus::cambioEstado(int nuevo)
                 sc.setTexture(scroll);
                 sc.setPosition(760,-270);
                 sc.setScale(0.6,78.0f/(float)Pages);
-                tituloVentana.setPosition(70,-270);
+                tituloVentana.setPosition(70,-260);
                 tituloVentana.setString("Un jugador");
+                tituloVentana.setCharacterSize(20);
                 tituloVentana.setFont(fuente);
                 titulo.setSmooth(true);
                 titul.setTexture(titulo);
@@ -743,6 +762,7 @@ void Menus::cambioEstado(int nuevo)
                         textoNiveles[a].setString(std::to_string(a+1));
                         textoNiveles[a].setPosition(niveles[a].getPosition().x+20,niveles[a].getPosition().y);
                         tituloNiveles[a].setFont(fuente);
+                        tituloNiveles[a].setCharacterSize(16);
                         if(a == 0)
                         {    
                             tituloNiveles[a].setString("Selva \nAlienigena"); 
@@ -757,7 +777,7 @@ void Menus::cambioEstado(int nuevo)
                             tituloNiveles[a].setString("\nProximamente");//esto lo obtendremos de gestionarchivos
                             niveles[a].setColor(sf::Color::Yellow);
                         }
-                        tituloNiveles[a].setPosition(niveles[a].getPosition().x+90,niveles[a].getPosition().y+30);                    
+                        tituloNiveles[a].setPosition(niveles[a].getPosition().x+50,niveles[a].getPosition().y+30);                    
                     contador++;
                 }
                 nivel_estamos = 1;
@@ -770,9 +790,10 @@ void Menus::cambioEstado(int nuevo)
                 sc.setTexture(scroll);
                 sc.setPosition(760,-270);
                 sc.setScale(0.6,78.0f/(float)Pages);
-                tituloVentana.setPosition(70,-270);
+                tituloVentana.setPosition(70,-260);
                 tituloVentana.setString("Dos jugadores");
                 tituloVentana.setFont(fuente);
+                tituloVentana.setCharacterSize(20);
                 titulo.setSmooth(true);
                 titul.setTexture(titulo);
                 titul.setPosition(20,-270);
@@ -807,6 +828,7 @@ void Menus::cambioEstado(int nuevo)
                         textoNiveles[a].setString(std::to_string(a+1));
                         textoNiveles[a].setPosition(niveles[a].getPosition().x+20,niveles[a].getPosition().y);
                         tituloNiveles[a].setFont(fuente);
+                        tituloNiveles[a].setCharacterSize(16);
                         if(a == 0)
                         {
                             tituloNiveles[a].setString("Selva \nAlienigena");                            
@@ -821,7 +843,7 @@ void Menus::cambioEstado(int nuevo)
                             tituloNiveles[a].setString("\nProximamente");//esto lo obtendremos de gestionarchivos
                             niveles[a].setColor(sf::Color::Yellow);
                         }
-                        tituloNiveles[a].setPosition(niveles[a].getPosition().x+90,niveles[a].getPosition().y+30);                    
+                        tituloNiveles[a].setPosition(niveles[a].getPosition().x+50,niveles[a].getPosition().y+30);                    
                     contador++;
                 }      
                 nivel_estamos =1;
@@ -834,8 +856,9 @@ void Menus::cambioEstado(int nuevo)
                 sc.setTexture(scroll);
                 sc.setPosition(760,-270);
                 sc.setScale(0.6,78.0f/(float)Pages);
-                tituloVentana.setPosition(70,-270);
+                tituloVentana.setPosition(70,-260);
                 tituloVentana.setString("Estadisticas");
+                tituloVentana.setCharacterSize(20);
                 tituloVentana.setFont(fuente);
                 titulo.setSmooth(true);
                 titul.setTexture(titulo);
@@ -850,30 +873,37 @@ void Menus::cambioEstado(int nuevo)
                 }
                 os << "Dolor recibido: " << info[4]+info[5];
                 Estadisticas[0].setString(os.str());
+                Estadisticas[0].setCharacterSize(16);
                 Estadisticas[0].setPosition(30,-150);
                 os.str("");
                 os << "Dolor total causado: " << info[6]+info[7];
                 Estadisticas[1].setString(os.str());
+                Estadisticas[1].setCharacterSize(16);
                 Estadisticas[1].setPosition(30,-110);
                 os.str("");
                 os << "Objetos Cogidos: " << info[11];
                 Estadisticas[2].setString(os.str());
+                Estadisticas[2].setCharacterSize(16);
                 Estadisticas[2].setPosition(30,-70);
                 os.str("");
                 os << "Tiempo de Juego: " << info[10] << " Minutos";
                 Estadisticas[3].setString(os.str());
+                Estadisticas[3].setCharacterSize(16);
                 Estadisticas[3].setPosition(30,-30);
                 os.str("");
                 os << "Partidas Individuales: " << info[8];
                 Estadisticas[4].setString(os.str());
+                Estadisticas[4].setCharacterSize(16);
                 Estadisticas[4].setPosition(30,10);
                 os.str("");
                 os << "Partidas Dos Jugadores: " << info[9];                
                 Estadisticas[5].setString(os.str());
+                Estadisticas[5].setCharacterSize(16);
                 Estadisticas[5].setPosition(30,50);
                 os.str("");
                 os << "Numero de veces Muerto: " << info[12];                 
                 Estadisticas[6].setString(os.str());
+                Estadisticas[6].setCharacterSize(16);
                 Estadisticas[6].setPosition(30,90);
                 delete info;
                 break;
@@ -885,9 +915,10 @@ void Menus::cambioEstado(int nuevo)
                 sc.setTexture(scroll);
                 sc.setPosition(760,-270);
                 sc.setScale(0.6,78.0f/(float)Pages);
-                tituloVentana.setPosition(70,-270);
+                tituloVentana.setPosition(70,-260);
                 tituloVentana.setString("Creditos");
                 tituloVentana.setFont(fuente);
+                tituloVentana.setCharacterSize(20);
                 titulo.setSmooth(true);
                 titul.setTexture(titulo);
                 titul.setPosition(20,-270);
@@ -895,6 +926,7 @@ void Menus::cambioEstado(int nuevo)
                 titul.setColor(sf::Color(255,255,255,180));
                 creditos.setFont(fuente);
                 creditos.setString("Desarrollado para Fundamentos de los videojuegos \n\n Universidad de Alicante \n\n Creado por Hard Metaleros \n Adrian \n Jose Luis \n Alejandra(Erasmus) \n Jose Vicente");
+                creditos.setCharacterSize(16);
                 creditos.setPosition(90,-150);
                 break;
             case 5:
@@ -905,9 +937,10 @@ void Menus::cambioEstado(int nuevo)
                 sc.setTexture(scroll);
                 sc.setPosition(760,-270);
                 sc.setScale(0.6,78.0f/(float)Pages);
-                tituloVentana.setPosition(70,-270);
+                tituloVentana.setPosition(70,-260);
                 tituloVentana.setString("Configuracion");
                 tituloVentana.setFont(fuente);
+                tituloVentana.setCharacterSize(20);
                 titulo.setSmooth(true);
                 titul.setTexture(titulo);
                 titul.setPosition(20,-270);
@@ -915,13 +948,16 @@ void Menus::cambioEstado(int nuevo)
                 titul.setColor(sf::Color(255,255,255,180));
                 textconf[0].setFont(fuente);
                 textconf[0].setString("Movimiento de Jugadores");
+                textconf[0].setCharacterSize(20);
                 textconf[0].setPosition(30,-200);
                 textconf[1].setFont(fuente);
                 textconf[1].setString("Teclas Fijas");
+                textconf[1].setCharacterSize(20);
                 textconf[1].setColor(sf::Color(255,0,0,255));      
                 textconf[1].setPosition(30,0);
                 textconf[2].setFont(fuente);
                 textconf[2].setString(" Shift > Ataque(j1) o Aceptar \n Ctrl > Defensa(j1) o Atras \n Q > Salir \n Shift derecho > Ataque(j2) \n Ctrl derecho > Defensa(j2)");
+                textconf[2].setCharacterSize(16);
                 textconf[2].setPosition(30,50);
                 conf[0].setTexture(c1);
                 conf[0].setPosition(200,-160);
@@ -936,9 +972,10 @@ void Menus::cambioEstado(int nuevo)
                 sc.setTexture(scroll);
                 sc.setPosition(760,-270);
                 sc.setScale(0.6,78.0f/(float)Pages);
-                tituloVentana.setPosition(50,-270);
+                tituloVentana.setPosition(50,-260);
                 tituloVentana.setString("Estadisticas de Nivel");
                 tituloVentana.setFont(fuente);
+                tituloVentana.setCharacterSize(20);
                 titulo.setSmooth(true);
                 titul.setTexture(titulo);
                 titul.setPosition(20,-270);
@@ -952,30 +989,37 @@ void Menus::cambioEstado(int nuevo)
                 }
                 os << "Presione Defensa para volver al menu";
                 Estadisticas[0].setString(os.str());
+                Estadisticas[0].setCharacterSize(16);
                 Estadisticas[0].setPosition(30,-150);
                 os.str("");
                 os << "Dolor Causado Jugador 1: " << info2[1];
                 Estadisticas[1].setString(os.str());
+                Estadisticas[1].setCharacterSize(16);
                 Estadisticas[1].setPosition(30,-110);
                 os.str("");
                 os << "Dolor Causado Jugador 2: " << info2[4];
                 Estadisticas[2].setString(os.str());
+                Estadisticas[2].setCharacterSize(16);
                 Estadisticas[2].setPosition(30,-70);
                 os.str("");
                 os << "Dolor recibido Jugador 1: " << info2[2];
                 Estadisticas[3].setString(os.str());
+                Estadisticas[3].setCharacterSize(16);
                 Estadisticas[3].setPosition(30,-30);
                 os.str("");
                 os << "Dolor recibido Jugador 2: " << info2[5];
                 Estadisticas[4].setString(os.str());
+                Estadisticas[4].setCharacterSize(16);
                 Estadisticas[4].setPosition(30,10);
                 os.str("");
                 os << "Numero de veces Muerto Jugador 1: " << info2[0];                
                 Estadisticas[5].setString(os.str());
+                Estadisticas[5].setCharacterSize(16);
                 Estadisticas[5].setPosition(30,50);
                 os.str("");
                 os << "Numero de veces Muerto Jugador 2: " << info2[3];                 
                 Estadisticas[6].setString(os.str());
+                Estadisticas[6].setCharacterSize(16);
                 Estadisticas[6].setPosition(30,90);
                 delete info;
                 break;                
