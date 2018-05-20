@@ -52,6 +52,7 @@ public:
     
     void activarSonidos(int tipo);
     void desactivarSonidos(int tipo);
+    void sonidoMuerte();
     void matarEnemigos();
     
     void mouse(int boton, int x, int y);

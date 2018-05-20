@@ -11,6 +11,8 @@
  * Created on May 17, 2018, 9:01 AM
  */
 
+#include <iostream>
+
 #include "GestorAudio.hpp"
 
 GestorAudio* GestorAudio::unica_instancia = 0;
@@ -58,6 +60,7 @@ GestorAudio::GestorAudio()
     e[4].loadFromFile("resources/Sound/Enemigo/zombiesound4.ogg");
     e[5].loadFromFile("resources/Sound/Enemigo/shot3.ogg");
     e[6].loadFromFile("resources/Sound/Enemigo/shot4.ogg");
+    e[7].loadFromFile("resources/Sound/Enemigo/muerte.ogg");
     en[0].setBuffer(e[0]);
     en[0].setVolume(100);
     en[1].setBuffer(e[1]);
@@ -71,6 +74,8 @@ GestorAudio::GestorAudio()
     en[5].setVolume(100);
     en[6].setBuffer(e[6]);
     en[6].setVolume(75);
+    en[7].setBuffer(e[7]);
+    en[7].setVolume(100);
     
 }
 
@@ -190,6 +195,12 @@ void GestorAudio::desEnemigo(int tipo)
      en[6].stop();
     }
     }
+}
+
+void GestorAudio::muerteEnemigo()
+{
+     if(en[7].getStatus() == sf::SoundSource::Stopped)
+     en[7].play();
 }
 
 //nivel

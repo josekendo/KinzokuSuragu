@@ -276,7 +276,6 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
 
 bool Motor2D::ataqueEnemigo(int player, int tipo)
 {
-   // if(enemigos[tipo].getPosition().x-100-jugadores[player].getPosition().x<10&&enemigos[tipo].getPosition().x-100-jugadores[player].getPosition().x>50&&enemigos[tipo].getPosition().y-174-jugadores[player].getPosition().y<10&&enemigos[tipo].getPosition().y-174-jugadores[player].getPosition().y>-10){
     if (jugadores[player].getGlobalBounds().intersects(enemigos[tipo].getGlobalBounds()))
     {
         return true;   
@@ -292,6 +291,7 @@ void Motor2D::matarEnemigo(int point)
     juego->finalNivel();
     }
     }
+    juego->sonidoMuerte();
     juego->desactivarSonidos(point);
     
 }
@@ -689,6 +689,11 @@ void Motor2D::crearBala(int tipo, int elemento, int ori)
             bala->setOrigin(228/2,1850/2);
             bala->setScale(sf::Vector2f(0.2f, 0.2f));
             bala->setTextureRect(sf::IntRect(142*fram, 42*1, 142*ori,42));
+            int random = rand() %10 +1;
+             if(random==1){
+              bala->setOrigin(228/2,400/2);
+              bala->setScale(sf::Vector2f(1.0f, 1.0f));
+             }
         }
         else if(elemento == 5){
             bala->setTexture(texturas[13]);

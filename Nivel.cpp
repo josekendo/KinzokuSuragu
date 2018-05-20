@@ -377,7 +377,33 @@ void Nivel::realimentarEnemigo()
             if(enemigos[o]->getTipoEnemigo()==5){
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-205, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion());
             }
-     }  
+          if(enemigos[o]->getTipoEnemigo()==1&&enemigos[o]->activacion()==true){
+              
+                    std::cout<< "nivelllllllll " << enemigos[o]->getX() << endl;
+          }
+          if(enemigos[o]->getTipoEnemigo()==1&&motor2D->ataqueEnemigo(0,o)==true){
+              
+                    std::cout<< "nivelllllllll2 " << enemigos[o]->getX() << endl;
+          }
+          if(o==0&&enemigos[o]->activacion()==true){
+              
+                    std::cout<< "nivelllllllll3 " << enemigos[o]->getX() << endl;
+          }
+          if(motor2D->ataqueEnemigo(0,o)==true&&enemigos[o]->activacion()==true){
+              
+                    std::cout<< "nivelllllllll4 " << enemigos[o]->getX() << endl;
+          }
+          if(o==1&&motor2D->ataqueEnemigo(0,o)==true){
+              
+                    std::cout<< "nivelllllllll5 " << enemigos[o]->getX() << endl;
+          }
+            if((motor2D->ataqueEnemigo(0,enemigos[o]->getTipoEnemigo())==true&&enemigos[o]->activacion()==true)||(motor2D->ataqueEnemigo(1,enemigos[o]->getTipoEnemigo())==true&&enemigos[o]->activacion()==true))  {
+            
+                    std::cout<< "nivelllllllll6 " << o << endl;
+                    ataqueEnemigo();
+            }
+        }  
+     
 }
 
 void Nivel::ataqueEnemigo()
@@ -386,8 +412,8 @@ void Nivel::ataqueEnemigo()
          for(int a = 0; a < enemigos.size();a++){
                 if(motor2D->ataqueEnemigo(0,a)==true)  {
                     // std::cout<< "ataqueeeee2 " << jugadores[0].getY() << endl;
-                  //  std::cout<< "ataqueeeee " << a << endl;
-                     jugadores[0].setDanoVida(enemigos[a]->getAtaqueFisico());
+                    std::cout<< "ataqueeeee " << a << endl;
+                     jugadores[0].setDanoVida(enemigos[enemigos[a]->getTipoEnemigo()]->getAtaqueFisico());
                  }
                 if(modo==2){
                 if(motor2D->ataqueEnemigo(1,a)==true)  {

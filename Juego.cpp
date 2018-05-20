@@ -367,6 +367,14 @@ void Juego::desactivarSonidos(int tipo)
     audio->desEnemigo(tipo);
 }
 
+void Juego::sonidoMuerte()
+{ 
+    if(estado->QueEstado() == 2){
+    GestorAudio *audio = GestorAudio::getInstance();
+    audio->muerteEnemigo();
+    }
+}
+
 void Juego::matarEnemigos()
 {
         Nivel *niv = Nivel::getInstance();
@@ -399,7 +407,7 @@ void Juego::cargarNivel(int niv)
     nivel->crearEnemigo(20,2,1,2,10,1,1250,222);
     nivel->crearEnemigo(20,2,1,2,10,1,2100,222);
     nivel->crearEnemigo(20,2,1,2,10,1,2800,222);
-    nivel->crearEnemigo(40,0,3,2,20,0,3300,155);
+    nivel->crearEnemigo(40,0,3,2,30,0,3300,155);
     nivel->crearEnemigo(20,2,1,2,10,1,4200,222);
     nivel->crearEnemigo(20,2,1,2,10,1,4900,318);
     nivel->crearEnemigo(20,2,1,2,10,1,6020,318);
@@ -408,20 +416,23 @@ void Juego::cargarNivel(int niv)
     nivel->crearEnemigo(20,2,1,2,10,1,7700,254);
     nivel->crearEnemigo(20,2,1,2,10,1,9000,382);
     nivel->crearEnemigo(20,2,1,2,10,1,9800,254);
-    nivel->crearEnemigo(60,4,5,2,30,2,10500,222);
+    nivel->crearEnemigo(60,4,5,2,40,2,10500,222);
     }
     else if(niv==2){
     nivel->crearEnemigo(30,0,3,2,20,3,500,282);
     nivel->crearEnemigo(30,0,3,2,20,3,1200,282);
+    nivel->crearEnemigo(30,0,3,2,20,3,1975,282);
     nivel->crearEnemigo(30,0,3,2,20,3,2400,282);
     nivel->crearEnemigo(30,0,3,2,20,3,3100,282);
-    nivel->crearEnemigo(60,0,4,2,20,4,4400,282);
+    nivel->crearEnemigo(30,0,3,2,20,3,4060,348);
+    nivel->crearEnemigo(60,0,4,2,40,4,4400,322);
     nivel->crearEnemigo(30,0,3,2,20,3,5000,188);
     nivel->crearEnemigo(30,0,3,2,20,3,5500,122);
     nivel->crearEnemigo(30,0,3,2,20,3,6300,282);
+    nivel->crearEnemigo(30,0,3,2,20,3,7000,282);
     nivel->crearEnemigo(30,0,3,2,20,3,7700,282);
     nivel->crearEnemigo(30,0,3,2,20,3,9400,282);
-    nivel->crearEnemigo(80,5,5,2,50,5,10500,322);
+    nivel->crearEnemigo(80,5,5,2,60,5,10500,322);
     }
 }
 
@@ -459,7 +470,6 @@ void Juego::Ejecucion()
                 Nivel *niv = Nivel::getInstance();
                 niv->realimentarBalas();
                 niv->realimentarEnemigo();
-                niv->ataqueEnemigo();
             }
             
             if(estado->QueEstado() == 3)
