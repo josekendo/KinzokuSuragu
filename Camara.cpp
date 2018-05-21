@@ -23,7 +23,7 @@ Camara::Camara()
     x = 400;
     y = 0;
     minLimite = 400;
-    maxLimite = 11150;
+    maxLimite = 11100;
     Motor2D *motor = Motor2D::getInstance();
     motor->initCamera();
 }
@@ -152,4 +152,9 @@ void Camara::draw()
     Motor2D *motor = Motor2D::getInstance();
     motor->cambiarPosicionCamera(x,y);
     motor->drawCamera();
+}
+
+int Camara::darCentro()
+{
+    return x;
 }

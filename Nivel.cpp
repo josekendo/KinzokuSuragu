@@ -72,7 +72,7 @@ void Nivel::juegoIndividual(int tipo)
     for (int i=0; i<10; i++)
     {
       elementos[i].initEl(i);
-      std::cout<<"Se generó elemento en posiciones: "<<elementos[i].getX()<< "  "<<elementos[i].getY()<<endl; 
+      //std::cout<<"Se generó elemento en posiciones: "<<elementos[i].getX()<< "  "<<elementos[i].getY()<<endl; 
     } 
 }
 //carga de dos jugadores
@@ -111,7 +111,7 @@ void Nivel::juegoMultijugador(int tipo1, int tipo2)
     for (int i=0; i<10; i++)
     {
       elementos[i].initEl(i);
-      std::cout<<"Se generó elemento en posiciones: "<<elementos[i].getX()<< "  "<<elementos[i].getY(); 
+      //std::cout<<"Se generó elemento en posiciones: "<<elementos[i].getX()<< "  "<<elementos[i].getY(); 
     } 
     
   

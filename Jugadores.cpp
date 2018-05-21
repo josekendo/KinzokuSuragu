@@ -62,6 +62,8 @@ void Jugadores::addMuerte()
 {
     muertes= muertes+1;
     vida = 100;//restablecemos la vida
+    Camara *cam = Camara::getInstance();
+    coordenadas.ResetCoordenadas(cam->darCentro(),-290);  
     Die();
 }
 

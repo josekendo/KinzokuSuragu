@@ -35,6 +35,7 @@ public:
     int coordenadaX();//devuelve la coordenada x
     int coordenadaY();//devuelve la coordenada y
     bool mePuedoMover(int xn,int yn);//devuelve true si se puede mover a esa posicion el jugador
+    int darCentro();//nos sirve para resetear al jugador hay
     
 private:
     
