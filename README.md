@@ -9,19 +9,29 @@ Ejecucion en **Android**, se debera utilizar ndk, sdk, libreria sfml. Mas inform
 ### Jugador 1
 
 W -> arriba
+
 S -> patada
+
 A -> izquierda
+
 D -> derecha
+
 LControl -> defensa
+
 Space -> Disparar
 
 ### Jugador 2
 
 Flecha arriba -> arriba
+
 Flecha abajo -> patada
+
 Flecha izquierda -> izquierda
+
 Flecha derecha -> derecha
+
 RControl -> defensa
+
 Enter -> Disparar
 
 Licencia
