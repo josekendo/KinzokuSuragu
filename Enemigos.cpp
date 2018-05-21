@@ -120,10 +120,13 @@ bool Enemigos::setDanoVida(int dano)
         vida = vida-dano;
     }
     
-    if(vida > 0)
+    if(vida > 0){
         return true;
-    else
+    }
+    else{
+        muerto = true;
         return false;
+    }
 }
 
 int Enemigos::getDano(int element,int tipo)
