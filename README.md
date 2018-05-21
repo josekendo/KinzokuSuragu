@@ -5,19 +5,30 @@ Para jugarlo debera compilar en su maquina el codigo, para ello si es linux o al
 
 ## Controles
 
-###Jugador 1
-  W -> arriba
-  S -> patada
-  A -> izquierda
-  D -> derecha
-  LControl -> defensa
-  Space -> Disparar
+### Jugador 1
 
-###Jugador 2
+W -> arriba
 
-  Flecha arriba -> arriba
-  Flecha abajo -> patada
-  Flecha izquierda -> izquierda
-  Flecha derecha -> derecha
-  RControl -> defensa
-  Enter -> Disparar
+S -> patada
+
+A -> izquierda
+
+D -> derecha
+
+LControl -> defensa
+
+Space -> Disparar
+
+### Jugador 2
+
+Flecha arriba -> arriba
+
+Flecha abajo -> patada
+
+Flecha izquierda -> izquierda
+
+Flecha derecha -> derecha
+
+RControl -> defensa
+
+Enter -> Disparar
