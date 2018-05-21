@@ -48,12 +48,14 @@ private:
     sf::Texture c1;
     sf::Texture c2;//228 145
     sf::Texture nave;//593 434
+    sf::Texture log;//2621 2062
     sf::Sprite backsp;//bg menu [Menus]
     sf::Sprite bgNivels;//bg niveles[Niveles]
     sf::Sprite titul;//sprite del titulo donde estamos[General]
     sf::Sprite sc;//sprite de la barra scroll[General]
     sf::Sprite conf[2];
     sf::Sprite ovni;
+    sf::Sprite logo;
     sf::Text textconf[3];
     bool intro;//se comprueba que se hace intro o que se pulsa con el raton[General]
     int animacion;//para hacer la animacion de que has pulsado es un estado[General]
