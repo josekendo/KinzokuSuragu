@@ -956,7 +956,7 @@ void Menus::cambioEstado(int nuevo)
                 textconf[1].setColor(sf::Color(255,0,0,255));      
                 textconf[1].setPosition(30,0);
                 textconf[2].setFont(fuente);
-                textconf[2].setString(" Shift > Ataque(j1) o Aceptar \n Ctrl > Defensa(j1) o Atras \n Q > Salir \n Shift derecho > Ataque(j2) \n Ctrl derecho > Defensa(j2)");
+                textconf[2].setString(" Space > Ataque(j1) o Aceptar \n Ctrl > Defensa(j1) o Atras \n Q > Salir \n Enter > Ataque(j2) \n Ctrl derecho > Defensa(j2)");
                 textconf[2].setCharacterSize(16);
                 textconf[2].setPosition(30,50);
                 conf[0].setTexture(c1);
