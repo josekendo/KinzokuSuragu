@@ -26,6 +26,10 @@ public:
     int getOri();
     void realimentar(int ori);//realimentamos su velocidad
     bool getFuegoAmigo(int f);//devuelve true si el creador de las balas es amigo
+    int getTipo();
+    int getElemento();
+    int getDano();
+    int FuegoAmigo();
     
 private:
     

@@ -191,7 +191,6 @@ void Nivel::draw()
      motor2D->drawCap5();
 }
 
-
 void Nivel::moverJugador(int jugador)
 {
     direccion=1;
@@ -335,8 +334,9 @@ void Nivel::ColBalasNivel(){
     
     if(bullet.size()>0){
         for(int i=0;i<bullet.size();i++){
-           if(motor->ColBalas(i,0)!=-1){
+           if(motor->ColBalas(i,-1)!=-1){//-1 es para el player 0
                if(bullet[i]->getFuegoAmigo(1)==false){
+                jugadores[0].setDanoVida(bullet[i]->getDano());
                 bool ver = bullet[i]->matarBala(i);
                 delete bullet[i];
                 bullet[i] = NULL;
@@ -344,8 +344,9 @@ void Nivel::ColBalasNivel(){
                 
                }
            }
-           if(motor->ColBalas(i,1)!=-1){
+           if(motor->ColBalas(i,-2)!=-1){//-2 es para el player 2
                if(bullet[i]->getFuegoAmigo(1)==false){
+                jugadores[1].setDanoVida(bullet[i]->getDano());
                 bool ver = bullet[i]->matarBala(i);
                 delete bullet[i];
                 bullet[i] = NULL;
@@ -354,7 +355,24 @@ void Nivel::ColBalasNivel(){
            }
         }
     }
-    //jugadores->ColBalasJugadores();
+    if(enemigos.size()>0 && bullet.size()>0){
+        for(int i=0;i<enemigos.size();i++){
+            for(int j=0;j<bullet.size();j++){
+                if(enemigos[i]!=NULL){
+                    if(motor->ColBalas(j,enemigos[i]->getTipoEnemigo())!=-1){
+                        if(bullet[j]->getFuegoAmigo(0)==false){
+                        //std::cout<<"le doy al enemigo"<<std::endl;
+                            bool ver = bullet[i]->matarBala(i);
+                            delete bullet[i];
+                            bullet[i] = NULL;
+                            bullet.erase(bullet.begin()+i);
+                        
+                        }
+                    }
+                }
+            }
+        }
+    }
     
 }
 void Nivel::crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x,int y)

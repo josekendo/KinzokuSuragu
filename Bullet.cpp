@@ -81,7 +81,7 @@ bool Bullet::sigoViva()
 }
 bool Bullet::getFuegoAmigo(int f){ // el fuego de los enemigos es 0 y el de los gatos 1
     bool fuego=false;
-    
+   
     if(f==fuegoamigo){
         fuego=true;
     }
@@ -90,6 +90,17 @@ bool Bullet::getFuegoAmigo(int f){ // el fuego de los enemigos es 0 y el de los 
     }
     return fuego;
 }
-
+int Bullet::getTipo(){
+    return tipob;
+}
+int Bullet::getElemento(){
+    return elementob;
+}
+int Bullet::getDano(){
+    return danob;
+}
+int Bullet::FuegoAmigo(){
+    return fuegoamigo;
+}
 
 
