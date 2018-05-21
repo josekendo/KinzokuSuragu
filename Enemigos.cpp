@@ -43,7 +43,6 @@ Enemigos::Enemigos()
     weapon = 0; //arma con la que inicia
     orientacion = 1;
     velocidad = 3;
-    colPersonaje=false;
 }
 
 Enemigos::Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int tipo,int x, int y) 
@@ -74,7 +73,6 @@ Enemigos::Enemigos(int vid, int ataq, int ataqfisico,int element,int defen,int t
     weapon = 0; //arma con la que inicia
     orientacion = 1;
     velocidad = 3;
-    colPersonaje=false;
 }
 
 Enemigos::Enemigos(const Enemigos& orig) {
@@ -120,10 +118,13 @@ bool Enemigos::setDanoVida(int dano)
         vida = vida-dano;
     }
     
-    if(vida > 0)
+    if(vida > 0){
         return true;
-    else
+    }
+    else{
+        muerto = true;
         return false;
+    }
 }
 
 int Enemigos::getDano(int element,int tipo)
@@ -214,7 +215,7 @@ void Enemigos::realimentar()
 bool Enemigos::sigoVivo()
 {
     Camara *cam = Camara::getInstance();
-    if(coordenadas.getCoordenadaX() < cam->coordenadaX()-450)
+    if(coordenadas.getCoordenadaX() < cam->coordenadaX()-450||muerto==true)
     {
         matarEnemigo(enemigo);
         muerto = true;
@@ -273,14 +274,4 @@ int Enemigos::getAtaqueLejano()
 int Enemigos::getTipoEnemigo()
 {
     return enemigo;
-}
-
-void Enemigos::setColPersonaje(bool col)
-{
-    colPersonaje=col;
-}
-
-bool Enemigos::getColPersonaje()
-{
-    return colPersonaje;
 }
