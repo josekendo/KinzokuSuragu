@@ -38,7 +38,7 @@ Motor2D::Motor2D()
     texturas[6].loadFromFile("resources/blob_Fire.png");
     texturas[7].loadFromFile("resources/miniblob_Water.png");
     texturas[8].loadFromFile("resources/Boss1_Shoot.png");
-    texturas[9].loadFromFile("resources/aliendog2.png");
+    texturas[9].loadFromFile("resources/aliendog2_Fire.png");
     texturas[10].loadFromFile("resources/Wood_Enemy_Idle.png");
     texturas[11].loadFromFile("resources/Boss2_Shoot.png");
     texturas[12].loadFromFile("resources/Element_SpriteSheet.png");
@@ -208,7 +208,7 @@ void Motor2D::drawEnemigo(int enemigo,int esta, int fram, int ori, float x,float
     juego->activarSonidos(enemigo);
     }
     else if(enemigo==3){
-    enemigos[enemigo].setTextureRect(sf::IntRect(fram*66, esta*32, ori*66, 32));
+    enemigos[enemigo].setTextureRect(sf::IntRect(fram*65, esta*32, ori*65, 32));
     Juego *juego = Juego::getInstance();
     juego->activarSonidos(enemigo);
     }
@@ -253,9 +253,9 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         }
         else if(enemigo == 3){
         enemigos[enemigo].setTexture(texturas[9]);
-        enemigos[enemigo].setOrigin(228/2,250/2);
-        enemigos[enemigo].setTextureRect(sf::IntRect(0*65, 0*300, 65, 32));
-        enemigos[enemigo].scale(sf::Vector2f(1.5f, 1.5f));
+        enemigos[enemigo].setOrigin(228/2,235/2);
+        enemigos[enemigo].setTextureRect(sf::IntRect(0*65, 0*32, 65, 32));
+        enemigos[enemigo].scale(sf::Vector2f(1.04f, 1.04f));
         }
         else if(enemigo == 4){
         enemigos[enemigo].setTexture(texturas[10]);

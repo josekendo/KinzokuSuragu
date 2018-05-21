@@ -386,20 +386,9 @@ void Nivel::realimentarEnemigo()
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-75, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
             }
             else if(enemigos[o]->getTipoEnemigo()==2){
-
-
-             crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
-
-             crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
-            
-                 crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY()+30, 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
-                 crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY()-30, 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
-
-
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY()+30, 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX(), enemigos[o]->getY()-30, 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
-
             }
             else if(enemigos[o]->getTipoEnemigo()==5){
              crearBala(1, enemigos[o]->getTipoEnemigo(), enemigos[o]->getX()-205, enemigos[o]->getY(), 0, enemigos[o]->getAtaqueLejano(), -enemigos[o]->getOrientacion(),0);
