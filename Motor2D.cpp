@@ -45,6 +45,7 @@ Motor2D::Motor2D()
     texturas[13].loadFromFile("resources/balas.png");
     texturas[14].loadFromFile("resources/Bala_Boss1.png");
     texturas[15].loadFromFile("resources/Bala_Boss2.png");
+    texturas[16].loadFromFile("resources/explosion.png");
     
     initCamera();
     controles = Controles::getInstance();
@@ -270,6 +271,10 @@ void Motor2D::initEnemigo(int enemigo, int tipo)
         enemigos[enemigo].scale(sf::Vector2f(2.5f, 2.5f));
         }
             
+        explosion.setTexture(texturas[16]);
+        explosion.setOrigin(850/2,1350/2);
+        explosion.setTextureRect(sf::IntRect(0*310, 0*270, 310, 270));
+        explosion.scale(sf::Vector2f(0.92f, 0.92f));
     }
     
 }
@@ -290,6 +295,10 @@ void Motor2D::matarEnemigo(int point)
     if(point==2||point==5){
     juego->finalNivel();
     }
+    }
+    if(point>0){
+    explosion.setPosition(enemigos[point-1].getPosition().x, enemigos[point-1].getPosition().y);
+    window.draw(explosion);
     }
     juego->sonidoMuerte();
     juego->desactivarSonidos(point);

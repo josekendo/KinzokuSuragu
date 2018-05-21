@@ -115,7 +115,8 @@ private:
     sf::Sprite elementos[10];//elementos
     std::vector<sf::Sprite*> bullets;//proyectiles
     sf::Sprite enemigos[6];//enemigos vector
-    sf::Texture texturas[16];//tilesets
+    sf::Sprite explosion;//jugadores
+    sf::Texture texturas[17];//tilesets
     sf::View camera;//camara del juego
     sf::Clock update;//nos sirve para saber cuando tenemos que ejecutar la parte logica 1000/15 por defecto
     sf::Clock animaciones;//nos sirve para saber cuando tenemos que cambiar de animacion
