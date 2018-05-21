@@ -6,6 +6,7 @@ Para jugarlo debera compilar en su maquina el codigo, para ello si es **linux** 
 Ejecucion en **Android**, se debera utilizar ndk, sdk, libreria sfml. Mas informacion [Enlace](https://www.foro.lospillaos.es/tutorial-configurar-sfml-para-usar-en-android-vt14407.html)
 ## Controles
 
+
 ### Jugador 1
 
 W -> arriba
@@ -19,6 +20,7 @@ D -> derecha
 LControl -> defensa
 
 Space -> Disparar
+
 
 ### Jugador 2
 
