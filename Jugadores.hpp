@@ -66,7 +66,9 @@ public:
     
     bool ColisionElemento(int player, int el);
   
+    bool estaProtegido();//si esta protegido devuelve true si no false
     
+    void incrementarDanoEcho(int dan);//aumenta el dano realizado
     
 private:
     Colision* colision=Colision::getInstance();

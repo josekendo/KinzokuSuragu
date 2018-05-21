@@ -340,9 +340,10 @@ void Nivel::ColBalasNivel(){
             {//-1 es para el player 0
                if(bullet[i]->getFuegoAmigo(1)==false)
                {
-                    jugadores[0].setDanoVida(bullet[i]->getDano());
+                   if(!jugadores[0].estaProtegido())
+                    jugadores[0].setDanoVida(bullet[i]->getDano());   
+                   
                     bullet[i]->MataBalas();
-                    std::cout << " mato bala " << i << "\n";
                }
             }
            
@@ -351,7 +352,9 @@ void Nivel::ColBalasNivel(){
            {
                if(bullet[i]->getFuegoAmigo(1)==false)
                {
+                   if(!jugadores[1].estaProtegido())
                     jugadores[1].setDanoVida(bullet[i]->getDano());
+                   
                     bullet[i]->MataBalas();
                }
            }
@@ -369,7 +372,11 @@ void Nivel::ColBalasNivel(){
                     {   
                         if(bullet[j]->getFuegoAmigo(0)==false)
                         {
-                            bullet[j]->MataBalas();
+                            //std::cout << " dano bala >> " << bullet[j]->getDano() << "\n";
+                            //std::cout << " dueno bala >> " << bullet[j]->getJugador() << "\n";
+                            jugadores[bullet[j]->getJugador()-1].incrementarDanoEcho(bullet[j]->getDano());
+                            enemigos[i]->setDanoVida(bullet[j]->getDano());
+                            bullet[j]->MataBalas();                            
                         }
                     }
             }
