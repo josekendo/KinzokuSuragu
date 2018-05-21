@@ -37,8 +37,6 @@ public:
     int getAtaqueFisico();
     int getAtaqueLejano();
     int getTipoEnemigo();
-    void setColPersonaje(bool col);
-    bool getColPersonaje();
     void realimentar();//realimentamos su velocidad
     int getOrientacion();
     void setOrientacion(int ori);
@@ -63,7 +61,6 @@ private:
     int danorecibido;
     bool muerto;
     bool activado;
-    bool colPersonaje;
     int cx, cy;
     int cxo, cyo;
     bool izq, der;
