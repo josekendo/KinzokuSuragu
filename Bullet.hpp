@@ -30,6 +30,7 @@ public:
     int getElemento();
     int getDano();
     int FuegoAmigo();
+    void MataBalas();
     
 private:
     
@@ -42,6 +43,7 @@ private:
     int velocidad;//velocidad que tendra las 15 veces que se ejecute por reloj
     int fuegoamigo;
     bool ini = false;
+    bool vida;
 };
 
 #endif /* BULLET_HPP */

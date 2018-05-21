@@ -31,6 +31,7 @@ Bullet::Bullet(int tipo, int elemento, int x, int y, int jugador, int dano, int 
     velocidad = 14;
     fuegoamigo = amigo;
     ini = true;
+    vida=false;
 }
 
 Bullet::~Bullet() {
@@ -69,6 +70,9 @@ int Bullet::getOri()
 
 bool Bullet::sigoViva()
 {
+    if(vida){
+        return false;
+    }
     Camara *cam = Camara::getInstance();
     if(coordenadas.getCoordenadaX() > cam->coordenadaX()+400 || coordenadas.getCoordenadaX() < cam->coordenadaX()-400)
     {
@@ -102,5 +106,7 @@ int Bullet::getDano(){
 int Bullet::FuegoAmigo(){
     return fuegoamigo;
 }
-
+void Bullet::MataBalas(){
+    vida=true;
+}
 

@@ -741,8 +741,6 @@ int Motor2D::ColBalas(int point, int player){
     else{
            if(enemigos[player].getGlobalBounds().intersects(bullets[point]->getGlobalBounds())){
             bala=1;
-            
-            
         }
     }
     
