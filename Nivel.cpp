@@ -401,7 +401,7 @@ void Nivel::realimentarEnemigo()
              if(enemigos[o]->sigoVivo()==false){
                  p=o;
                  p++;
-                 if(enemigos[p]->getX()>cam->coordenadaX()+300){
+                 if(enemigos[p]->getX()>cam->coordenadaX()+400){
                  enemigos[p]->setSigoVivo();
                  }
              }
