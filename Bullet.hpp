@@ -31,6 +31,7 @@ public:
     int getDano();
     int FuegoAmigo();
     void MataBalas();
+    int getJugador();//para saber de que jugador es la bala
     
 private:
     

@@ -72,6 +72,7 @@ public:
     void realimentarEnemigo();//movimiento enemigo
     void ataqueEnemigo();
     void matarEnemigos();
+    void matarEnemigo(int point);
     
     int * devolverEstadisticas();//devuelve las estadisticas de los jugadores
     
@@ -90,6 +91,9 @@ private:
     vector<Bullet*> bullet;//array autodimensionable de proyectiles
     int modo;//modo un jugador(0), dos jugadores(1)
     int level;//identifica el nivel en el que estamos
+    int c=0;
+    int p=0;
+    
 };  
 
 #endif /* NIVEL_HPP */

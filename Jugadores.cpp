@@ -595,3 +595,18 @@ bool Jugadores::ColisionElemento(int player, int el)
         return false;
     }
 }
+
+bool Jugadores::estaProtegido()
+{
+    if(estado == 4)
+    {
+        return true;
+    }
+    
+    return false;
+}
+
+void Jugadores::incrementarDanoEcho(int dan)
+{
+    danoecho = danoecho+dan;
+}

@@ -14,7 +14,7 @@
 #include "Enemigos.hpp"
 #include "Camara.hpp"
 #include "Nivel.hpp"
-
+#include <iostream>
 
 Enemigos::Enemigos() 
 {
@@ -113,6 +113,9 @@ bool Enemigos::tieneDefensa()
 
 bool Enemigos::setDanoVida(int dano)
 {
+    std::cout << " dano recibido " << dano << "\n";
+    std::cout << " vida enemigo " << vida << "\n";  
+    std::cout << " defensa enemigo " << defensa << "\n";
     if(defensa < dano)
     {
         vida = vida-dano;
@@ -178,11 +181,14 @@ void Enemigos::draw()
 
 bool Enemigos::matarEnemigo(int point)
 {
-    if(muerto==false){
     motor->matarEnemigo(enemigo);
-    }
     muerto = true;
     return true;
+}
+
+void Enemigos::mataEnemigo()
+{
+    muerto = true;
 }
 
 void Enemigos::realimentar()
@@ -226,6 +232,10 @@ bool Enemigos::sigoVivo()
         muerto = false;
         return true;
     }
+}
+void Enemigos::setSigoVivo()
+{
+    muerto=false;
 }
 
 bool Enemigos::activacion()

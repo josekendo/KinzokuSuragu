@@ -32,8 +32,10 @@ public:
     void addDano(int dano);//se agrega el dano realizado al marcador
     void draw();//se le llama a pintar esa bala en el motor
     bool sigoVivo();//si sigue vivo devuelve true si no false
+    void setSigoVivo();//si sigue vivo devuelve true si no false
     bool activacion();//si la camará entra en un rango cercano devuelve true
     bool matarEnemigo(int point);//mata a su sprite en el motor 
+    void mataEnemigo();//mata a su sprite en el motor 
     int getAtaqueFisico();
     int getAtaqueLejano();
     int getTipoEnemigo();

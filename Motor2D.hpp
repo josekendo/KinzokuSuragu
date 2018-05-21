@@ -127,7 +127,7 @@ private:
     sf::Sprite marcadores[6];//aqui iran los marcadores
     sf::View hud1,hud2;
     sf::Font fuent;
-    int tip=0;
+    int num=0;
     
 };
 

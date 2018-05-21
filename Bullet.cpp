@@ -109,3 +109,8 @@ void Bullet::MataBalas(){
     vida=true;
 }
 
+int Bullet::getJugador()
+{
+   return jugadorb;
+}
+

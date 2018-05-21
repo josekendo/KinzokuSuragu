@@ -340,9 +340,10 @@ void Nivel::ColBalasNivel(){
             {//-1 es para el player 0
                if(bullet[i]->getFuegoAmigo(1)==false)
                {
-                    jugadores[0].setDanoVida(bullet[i]->getDano());
+                   if(!jugadores[0].estaProtegido())
+                    jugadores[0].setDanoVida(bullet[i]->getDano());   
+                   
                     bullet[i]->MataBalas();
-                    std::cout << " mato bala " << i << "\n";
                }
             }
            
@@ -351,7 +352,9 @@ void Nivel::ColBalasNivel(){
            {
                if(bullet[i]->getFuegoAmigo(1)==false)
                {
+                   if(!jugadores[1].estaProtegido())
                     jugadores[1].setDanoVida(bullet[i]->getDano());
+                   
                     bullet[i]->MataBalas();
                }
            }
@@ -369,7 +372,11 @@ void Nivel::ColBalasNivel(){
                     {   
                         if(bullet[j]->getFuegoAmigo(0)==false)
                         {
-                            bullet[j]->MataBalas();
+                            //std::cout << " dano bala >> " << bullet[j]->getDano() << "\n";
+                            //std::cout << " dueno bala >> " << bullet[j]->getJugador() << "\n";
+                            jugadores[bullet[j]->getJugador()-1].incrementarDanoEcho(bullet[j]->getDano());
+                            enemigos[i]->setDanoVida(bullet[j]->getDano());
+                            bullet[j]->MataBalas();                            
                         }
                     }
             }
@@ -385,9 +392,20 @@ void Nivel::crearEnemigo(int vid, int ataq, int ataqfisico,int element,int defen
 
 void Nivel::realimentarEnemigo()
 { 
+     Camara *cam = Camara::getInstance();
      Motor2D *motor2D = Motor2D::getInstance();
      for(int o = 0; o < enemigos.size();o++)
      {
+             std::cout<< "reaaaaa1 " << o << endl;
+             std::cout<< "reaaaaa2 " << enemigos[p]->getX() << endl;
+             if(enemigos[o]->sigoVivo()==false){
+                 p=o;
+                 p++;
+                 if(enemigos[p]->getX()>cam->coordenadaX()+300){
+                 enemigos[p]->setSigoVivo();
+                 }
+             }
+         if(enemigos[o]->sigoVivo()){
           if(enemigos[o]->getX()-jugadores[0].getX()<100 && enemigos[o]->getX()-jugadores[0].getX()>-100 && enemigos[o]->getY()-jugadores[0].getY()-174<50 && enemigos[o]->getY()-jugadores[0].getY()-174>-50)  {            
             if(enemigos[o]->getX()-jugadores[0].getX()-65<10 && enemigos[o]->getX()-jugadores[0].getX()-65>-90)  {   
               enemigos[o]->setOrientacion(-1);
@@ -421,6 +439,7 @@ void Nivel::realimentarEnemigo()
                     ataqueEnemigo();
             }
             }
+         }
         }  
      
 }
@@ -456,6 +475,15 @@ void Nivel::matarEnemigos()
      }  
     }
              enemigos.resize(0);
+}
+
+void Nivel::matarEnemigo(int point)
+{ 
+    
+    delete enemigos[point];
+    enemigos[point] = NULL;
+    enemigos.erase(enemigos.begin()+point);
+    
 }
 
 int * Nivel::devolverEstadisticas()

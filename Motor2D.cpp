@@ -297,8 +297,7 @@ void Motor2D::matarEnemigo(int point)
     }
     }
     if(point>0){
-    explosion.setPosition(enemigos[point-1].getPosition().x, enemigos[point-1].getPosition().y);
-    window.draw(explosion);
+    explosion.setPosition(enemigos[point].getPosition().x, enemigos[point].getPosition().y);
     }
     juego->sonidoMuerte();
     juego->desactivarSonidos(point);
