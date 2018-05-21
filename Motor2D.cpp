@@ -725,25 +725,26 @@ void Motor2D::matarBala(int point)
     //std::cout << "se borra bala-sprite " << point << "\n";
     
 }
-int Motor2D::ColBalas(int point, int player){
-    int bala=-1;
-    
-    if(player<0){
-        int aux=0; //para player -1 es el 0
-        if(player==-2){
-            aux=1; // para player -2 es el 1
-        }
-        if(jugadores[aux].getGlobalBounds().intersects(bullets[point]->getGlobalBounds())){
-            bala=1;
+
+int Motor2D::ColBalas(int point, int player)
+{
+    int bala = -1;
+    if(jugadores[player-1].getGlobalBounds().intersects(bullets[point]->getGlobalBounds()))
+    {
+        bala=1;
         //std::cout<<"colisiona"<<std::endl;
-        }
     }
-    else{
-           if(enemigos[player].getGlobalBounds().intersects(bullets[point]->getGlobalBounds())){
-            bala=1;
-        }
+    return bala;
+}
+
+int Motor2D::ColBalasEnemigos(int bal, int enemy)
+{
+    int bala = -1;
+    if(enemigos[enemy].getGlobalBounds().intersects(bullets[bal]->getGlobalBounds()))
+    {
+        bala=1;
+        //std::cout<<"colisiona"<<std::endl;
     }
-    
     return bala;
 }
 

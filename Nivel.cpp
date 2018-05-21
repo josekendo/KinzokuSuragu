@@ -335,49 +335,43 @@ void Nivel::ColBalasNivel(){
     
     if(bullet.size()>0){
         for(int i=0;i<bullet.size();i++){
-           if(motor->ColBalas(i,-1)!=-1){//-1 es para el player 0
-               if(bullet[i]->getFuegoAmigo(1)==false){
-                   //colision=true;
-                jugadores[0].setDanoVida(bullet[i]->getDano());
-                bullet[i]->MataBalas();
-                /*bool ver = bullet[i]->matarBala(i);
-                delete bullet[i];
-                bullet[i] = NULL;
-                bullet.erase(bullet.begin()+i);*/
-                
+           
+            if(motor->ColBalas(i,1) != -1)
+            {//-1 es para el player 0
+               if(bullet[i]->getFuegoAmigo(1)==false)
+               {
+                    jugadores[0].setDanoVida(bullet[i]->getDano());
+                    bullet[i]->MataBalas();
+                    std::cout << " mato bala " << i << "\n";
+               }
+            }
+           
+           
+           if(motor->ColBalas(i,2) != -1)
+           {
+               if(bullet[i]->getFuegoAmigo(1)==false)
+               {
+                    jugadores[1].setDanoVida(bullet[i]->getDano());
+                    bullet[i]->MataBalas();
                }
            }
-           if(motor->ColBalas(i,-2)!=-1){//-2 es para el player 2
-               if(bullet[i]->getFuegoAmigo(1)==false){
-                   //colision=true;
-                jugadores[1].setDanoVida(bullet[i]->getDano());
-                /*bool ver = bullet[i]->matarBala(i);
-                delete bullet[i];
-                bullet[i] = NULL;
-                bullet.erase(bullet.begin()+i);*/
-               }
-           }
+           
         }
     }
     //colision=false;
-    if(enemigos.size()>0 && bullet.size()>0){
-        for(int i=0;i<enemigos.size();i++){
-            for(int j=0;j<bullet.size();j++){
-                if(enemigos[i]!=NULL && bullet[j]!=NULL){
-                    if(motor->ColBalas(j,enemigos[i]->getTipoEnemigo())!=-1){
-                        
-                        if(bullet[j]->getFuegoAmigo(0)==false){
-                            bullet[i]->MataBalas();
-                            //colision=true;
-                        //std::cout<<"le doy al enemigo"<<std::endl;
-                            /*bool ver = bullet[i]->matarBala(i);
-                            delete bullet[i];
-                            bullet[i] = NULL;
-                            bullet.erase(bullet.begin()+i);*/
-                        
+    if(enemigos.size()>0 && bullet.size()>0)
+    {
+        for(int i=0;i<enemigos.size();i++)
+        {
+            for(int j=0;j<bullet.size();j++)
+            {
+                    if(motor->ColBalasEnemigos(j,enemigos[i]->getTipoEnemigo())!=-1)
+                    {   
+                        if(bullet[j]->getFuegoAmigo(0)==false)
+                        {
+                            bullet[j]->MataBalas();
                         }
                     }
-                }
             }
         }
     }

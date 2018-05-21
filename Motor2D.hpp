@@ -87,6 +87,7 @@ public:
     void drawBala(int point, int x, int y);//pinta la bala en esa posicion
     void matarBala(int point);//elimina el sprite de la bala 
     int ColBalas(int point, int player);
+    int ColBalasEnemigos(int bal, int enemy);
     //fin bala
     //hud
     void initHud(int player);
