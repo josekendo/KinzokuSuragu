@@ -31,7 +31,7 @@ void Juego::cambiarEstado(int est)
     GestorAudio *audio =GestorAudio::getInstance();
     if(est == 1)
     {
-        //audio->fondo();
+        audio->fondo();
     }
     switch(est)
     {
