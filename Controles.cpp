@@ -46,7 +46,7 @@ int Controles::whatPlayer(sf::Keyboard::Key key)
 {
     if(twoPlayer)
     {
-        if(key == sf::Keyboard::W || key == sf::Keyboard::A || key == sf::Keyboard::D || key == sf::Keyboard::S || key == sf::Keyboard::LShift || key == sf::Keyboard::LControl || key == sf::Keyboard::Q ||key == sf::Keyboard::Escape)
+        if(key == sf::Keyboard::W || key == sf::Keyboard::A || key == sf::Keyboard::D || key == sf::Keyboard::S || key == sf::Keyboard::Space || key == sf::Keyboard::LControl || key == sf::Keyboard::Q ||key == sf::Keyboard::Escape)
         {
             return 1;
         }
@@ -93,9 +93,9 @@ sf::Keyboard::Key Controles::moveRIGHT()
 sf::Keyboard::Key Controles::moveAtaque()
 {
     if(control == 1)
-    return sf::Keyboard::LShift;
+    return sf::Keyboard::Space;
     else
-    return sf::Keyboard::RShift;
+    return sf::Keyboard::Return;
 }
 
 sf::Keyboard::Key Controles::moveDefensa()

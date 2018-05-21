@@ -20,7 +20,7 @@
 
 Menus::Menus(float x,float y,int tipo) {
     
-    if (!(tit.loadFromFile("resources/Menu/fuente4.ttf") && nave.loadFromFile("resources/Menu/ovni2.png") && fuente.loadFromFile("resources/Menu/fuente3.ttf") && background.loadFromFile("resources/Menu/b.png") && button.loadFromFile("resources/Menu/bg.png") && exi.loadFromFile("resources/Menu/ex.png") && bgNiveles.loadFromFile("resources/Menu/niveles.jpg") && nivel.loadFromFile("resources/Menu/nivel.jpg") && titulo.loadFromFile("resources/Menu/titulo2.png") && scroll.loadFromFile("resources/Menu/scroll.png") && c1.loadFromFile("resources/Menu/flechas.png") && c2.loadFromFile("resources/Menu/teclas.png")))
+    if (!(log.loadFromFile("resources/Menu/logo.png") && tit.loadFromFile("resources/Menu/fuente4.ttf") && nave.loadFromFile("resources/Menu/ovni2.png") && fuente.loadFromFile("resources/Menu/fuente3.ttf") && background.loadFromFile("resources/Menu/b.png") && button.loadFromFile("resources/Menu/bg.png") && exi.loadFromFile("resources/Menu/ex.png") && bgNiveles.loadFromFile("resources/Menu/niveles.jpg") && nivel.loadFromFile("resources/Menu/nivel.jpg") && titulo.loadFromFile("resources/Menu/titulo2.png") && scroll.loadFromFile("resources/Menu/scroll.png") && c1.loadFromFile("resources/Menu/flechas.png") && c2.loadFromFile("resources/Menu/teclas.png")))
     {
         std::cout << "error: cargando el menu" << std::endl;
     }
@@ -504,6 +504,7 @@ void Menus::drawMenus(sf::RenderWindow &ventana)
     }            
     ventana.draw(backsp);
     ventana.draw(ovni);
+    ventana.draw(logo);
     ventana.draw(buttons[0]);
     ventana.draw(buttons[1]);
     ventana.draw(buttons[2]);
@@ -515,7 +516,7 @@ void Menus::drawMenus(sf::RenderWindow &ventana)
     ventana.draw(opciones[2]);
     ventana.draw(opciones[3]);
     ventana.draw(opciones[4]);
-    ventana.draw(opciones[5]);
+    //ventana.draw(opciones[5]);
 }
 
 void Menus::drawNiveles(sf::RenderWindow &ventana,int players)
@@ -646,6 +647,12 @@ void Menus::cambioEstado(int nuevo)
                 backsp.setPosition(0,-300); 
                 backsp.setColor(sf::Color(255, 255, 255, 200));//transparencia
                 backsp.setScale(4.0f,2.0f);
+                logo.setTexture(log);
+                logo.setTextureRect(sf::IntRect(0, 0, 2621, 2062));
+                logo.setOrigin(2621/2,2062/2);
+                logo.setScale(0.10f,0.10f);
+                logo.setPosition(180,-180);
+                ovni.setPosition(175,40);
                 ovni.setTexture(nave);
                 ovni.setTextureRect(sf::IntRect(0, 0, 2500, 1335));
                 ovni.setOrigin(2500/2,1335/2);
@@ -956,7 +963,7 @@ void Menus::cambioEstado(int nuevo)
                 textconf[1].setColor(sf::Color(255,0,0,255));      
                 textconf[1].setPosition(30,0);
                 textconf[2].setFont(fuente);
-                textconf[2].setString(" Shift > Ataque(j1) o Aceptar \n Ctrl > Defensa(j1) o Atras \n Q > Salir \n Shift derecho > Ataque(j2) \n Ctrl derecho > Defensa(j2)");
+                textconf[2].setString(" Space > Ataque(j1) o Aceptar \n Ctrl > Defensa(j1) o Atras \n Q > Salir \n Enter > Ataque(j2) \n Ctrl derecho > Defensa(j2)");
                 textconf[2].setCharacterSize(16);
                 textconf[2].setPosition(30,50);
                 conf[0].setTexture(c1);
