@@ -102,7 +102,8 @@ public:
     //COLISION DE ELEMENTO
     bool ElementCol(int player, int el);
     sf:: Vector2f getDimensiones(int tipo);
-    
+    void initclock();//inicia el tiempo de juego
+    int finisclock();//devuelve el tiempo de reloj en minutos
 
 private:
     //clase singleton 
@@ -128,7 +129,7 @@ private:
     sf::View hud1,hud2;
     sf::Font fuent;
     int num=0;
-    
+    sf::Clock tiempojuego; 
 };
 
 #endif /* MOTOR2D_HPP */

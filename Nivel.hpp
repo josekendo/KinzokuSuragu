@@ -77,7 +77,7 @@ public:
     int * devolverEstadisticas();//devuelve las estadisticas de los jugadores
     
     void collectElement(int jugador);
-    
+    int getElementos();
 private:
     //clase singleton 
     Nivel();

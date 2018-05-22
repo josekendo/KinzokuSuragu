@@ -204,12 +204,13 @@ int * GestionArchivos::devolverInformacion()
 void GestionArchivos::guardarValores(bool victoria, int modo)
 {
     Nivel *nivel = Nivel::getInstance();
+    Motor2D *motor = Motor2D::getInstance();
     int *valores = devolverInformacion();
     int *vala = nivel->devolverEstadisticas();
     if(modo == 2)
     {
-        minutosJugados = valores[10];
-        objetosCogidos = valores[11];
+        minutosJugados = valores[10]+motor->finisclock();
+        objetosCogidos = valores[11]+nivel->getElementos();
         numMuertes = valores[12]+(vala[0]+vala[3]);
         danorecibido[0] = valores[4]+(vala[2]);
         danorecibido[1] = valores[5]+(vala[5]);
@@ -226,8 +227,8 @@ void GestionArchivos::guardarValores(bool victoria, int modo)
     }
     else
     {
-        minutosJugados = valores[10];
-        objetosCogidos = valores[11];
+        minutosJugados = valores[10]+motor->finisclock();
+        objetosCogidos = valores[11]+nivel->getElementos();
         numMuertes = valores[12]+(vala[0]);
         partidasIndi = valores[8]+1;
         danorecibido[0] = valores[4]+(vala[2]);

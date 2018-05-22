@@ -70,9 +70,11 @@ public:
     
     void incrementarDanoEcho(int dan);//aumenta el dano realizado
     
+    void recogerElemento();
+    int getElementos();
 private:
     Colision* colision=Colision::getInstance();
-    int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento;  //stats  
+    int vida,defensa,ataque,ataquefisico,muertes,danototal,elemento,danoecho,recogido;  //stats  
     Coordenadas coordenadas;//coordenadas del sprite
     int tipo;//masculino 0, femenino 1
     int player;//numero de jugador
@@ -89,7 +91,6 @@ private:
     int stat;
     int posX_actual; //posicion en x del jugador
     int posY_actual; //posicion en y del jugador
-    int danoecho;
     int danorecibido;
     int posX;
     int posY;
