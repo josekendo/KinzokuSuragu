@@ -23,6 +23,7 @@
 #include <dirent.h>
 #include <fstream>
 #include <sstream>
+#include "Motor2D.hpp"
 #include "Nivel.hpp"
 #if defined _MSC_VER
 #include <direct.h>

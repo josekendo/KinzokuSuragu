@@ -384,7 +384,7 @@ void Nivel::ColBalasNivel(){
                         {
                             //std::cout << " dano bala >> " << bullet[j]->getDano() << "\n";
                             //std::cout << " dueno bala >> " << bullet[j]->getJugador() << "\n";
-                            jugadores[bullet[j]->getJugador()-1].incrementarDanoEcho(bullet[j]->getDano());
+                            jugadores[bullet[j]->getJugador()].incrementarDanoEcho(bullet[j]->getDano());
                             enemigos[i]->setDanoVida(bullet[j]->getDano());
                             bullet[j]->MataBalas();                            
                         }
@@ -498,6 +498,8 @@ int * Nivel::devolverEstadisticas()
     int * jug = new int[6];
     int * jug1 = jugadores[0].devolverEstadisticas();
     int * jug2 = jugadores[1].devolverEstadisticas();
+    //std::cout << "danoecho 1 " << jug1[1] << "\n";
+    //std::cout << "danoecho 2 " << jug2[1] << "\n";
     jug[0] = jug1[0];
     jug[1] = jug1[1];
     jug[2] = jug1[2];
@@ -528,6 +530,9 @@ void Nivel::collectElement(int jugador)
                 jugadores[jugador].cambiarElemento(4);
 
             elementos[i].ChangeCoords(elementos[i].getX(), -500);
+            
+            //sumamos a la recogida 1
+            jugadores[jugador].recogerElemento();
         }
     }
     
@@ -545,3 +550,9 @@ void Nivel::resetJugador(int jug,int xr,int yr)
 {
     jugadores[jug].ResetCoordenadas(xr,yr);
 }
+
+int Nivel::getElementos()
+{
+    return (jugadores[0].getElementos()+jugadores[1].getElementos());
+}
+

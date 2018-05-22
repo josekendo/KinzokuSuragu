@@ -23,6 +23,7 @@ Jugadores::Jugadores()
     vida = 100;
     defensa = 0;
     ataque = 4;
+    recogido = 0;
     ataquefisico = 7;
     muertes = 0;
     danototal = 0;
@@ -91,15 +92,15 @@ void Jugadores::Walk(int dir)
     stat = 1;
     if (dir == 1)
     {  
-        if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+kVel,coordenadas.getCoordenadaYI(motor->darUPDATE())))
-        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+kVel,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+        if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())+8,coordenadas.getCoordenadaYI(motor->darUPDATE())))
+        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())+8,coordenadas.getCoordenadaYI(motor->darUPDATE()));
         //posX = coordenadas.getCoordenadaX();
         //std::cout<<"Nueva posicion en X"<<posX<<endl;
     }
     else if (dir == -1)
     {
-        if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())-kVel,coordenadas.getCoordenadaYI(motor->darUPDATE())))
-        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-kVel,coordenadas.getCoordenadaYI(motor->darUPDATE()));
+        if(camara->mePuedoMover(coordenadas.getCoordenadaXI(motor->darUPDATE())-8,coordenadas.getCoordenadaYI(motor->darUPDATE())))
+        coordenadas.cambiarPosicion(coordenadas.getCoordenadaXI(motor->darUPDATE())-8,coordenadas.getCoordenadaYI(motor->darUPDATE()));
     }
     //draw();
    
@@ -322,7 +323,7 @@ bool Jugadores::mover()
     //obtenemos la posicion en la que estamos segun su tiempo de interpolacion
     //std::cout << "entro en jugador" << std::endl;
     //int mov = 5;
-    int mov = kVel;
+    int mov = 8;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE())+mov;
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
     Camara *camara = Camara::getInstance();
@@ -349,7 +350,7 @@ bool Jugadores::moverAtras()
     //obtenemos la posicion en la que estamos segun su tiempo de interpolacion
     //std::cout << "entro en jugador" << std::endl;
     
-    int mov = -kVel;
+    int mov = -8;
     int x=coordenadas.getCoordenadaXI(motor->darUPDATE())-mov;
     int y=coordenadas.getCoordenadaYI(motor->darUPDATE());
     Camara *camara = Camara::getInstance();
@@ -610,5 +611,21 @@ bool Jugadores::estaProtegido()
 
 void Jugadores::incrementarDanoEcho(int dan)
 {
+    if(danoecho < 0)
+    danoecho = 0;
+    
     danoecho = danoecho+dan;
+}
+
+void Jugadores::recogerElemento()
+{
+    if(recogido < 0)
+    recogido = 0;
+    
+    recogido = recogido+1;
+}
+
+int Jugadores::getElementos()
+{
+    return recogido;
 }

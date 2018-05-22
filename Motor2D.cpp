@@ -26,6 +26,7 @@ Motor2D::Motor2D()
 {
     window.create(sf::VideoMode(800, 600), "Kinzoku Suragu");
     initMenu();
+    //window.setFramerateLimit(60);
     fuent.loadFromFile("resources/Menu/fuente.ttf");
     texturas[0].loadFromFile("resources/SpriteSheet_Character1.png");
     texturas[1].loadFromFile("resources/SpriteSheet_Character2.png");
@@ -921,4 +922,14 @@ sf::Vector2f Motor2D::getDimensiones(int tipo){
 Motor2D::~Motor2D()
 {
 
+}
+
+void Motor2D::initclock()
+{
+    tiempojuego.restart();
+}
+
+int Motor2D::finisclock()
+{
+    return (tiempojuego.getElapsedTime().asSeconds()/60);
 }

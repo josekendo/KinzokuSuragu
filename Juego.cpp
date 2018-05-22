@@ -442,6 +442,8 @@ void Juego::cargaCompleta()
 {
     //cambiaremos el estado ya que termino el loading
     cambiarEstado(2);
+    //iniciamos reloj del motor
+    motor->initclock();
 }
 
 void Juego::Ejecucion()
