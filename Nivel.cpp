@@ -172,14 +172,24 @@ void Nivel::draw()
      motor2D->drawCap3();
      motor2D->drawCap4();
      
+     if(enemigos.size()>0){
    for(int a = 0; a < enemigos.size();a++)
      {
+       Camara *cam = Camara::getInstance();
+            if(enemigos[a]->sigoVivo()==false){
+            p=a;
+            p++;
+            if(enemigos[a]->getX()>cam->coordenadaX()+600){
+              Juego *juego = Juego::getInstance();
+              enemigos[a]->setSigoVivo();
+            }
+         }
          if(enemigos[a]->sigoVivo()&&enemigos[a]->activacion()&&juego->queEstado()==2){
             enemigos[a]->draw(); 
          }
          else
          {
-             if(enemigos[a]->activacion()==true&&juego->queEstado()!=2){
+             if(enemigos[a]->activacion()==true&&enemigos[a]->sigoVivo()==false&&juego->queEstado()==2){
              bool ver = enemigos[a]->matarEnemigo(a);
              delete enemigos[a];
              enemigos[a] = NULL;
@@ -187,7 +197,7 @@ void Nivel::draw()
              }
          }
      }
-         
+     }
      motor2D->drawCap5();
 }
 
@@ -394,18 +404,20 @@ void Nivel::realimentarEnemigo()
 { 
      Camara *cam = Camara::getInstance();
      Motor2D *motor2D = Motor2D::getInstance();
+     if(enemigos.size()>0){
      for(int o = 0; o < enemigos.size();o++)
      {
-             std::cout<< "reaaaaa1 " << o << endl;
-             std::cout<< "reaaaaa2 " << enemigos[p]->getX() << endl;
-             if(enemigos[o]->sigoVivo()==false){
-                 p=o;
-                 p++;
-                 if(enemigos[p]->getX()>cam->coordenadaX()+400){
-                 enemigos[p]->setSigoVivo();
-                 }
-             }
+         if(enemigos[o]->sigoVivo()==false){
+            p=o;
+            p++;
+            if(enemigos[p]->getX()>cam->coordenadaX()+600){
+              Juego *juego = Juego::getInstance();
+              enemigos[p]->setSigoVivo();
+              juego->activarSonidos(o-2);
+            }
+         }
          if(enemigos[o]->sigoVivo()){
+     if(enemigos.size()>0){
           if(enemigos[o]->getX()-jugadores[0].getX()<100 && enemigos[o]->getX()-jugadores[0].getX()>-100 && enemigos[o]->getY()-jugadores[0].getY()-174<50 && enemigos[o]->getY()-jugadores[0].getY()-174>-50)  {            
             if(enemigos[o]->getX()-jugadores[0].getX()-65<10 && enemigos[o]->getX()-jugadores[0].getX()-65>-90)  {   
               enemigos[o]->setOrientacion(-1);
@@ -440,13 +452,15 @@ void Nivel::realimentarEnemigo()
             }
             }
          }
+         }
         }  
-     
+     }
 }
 
 void Nivel::ataqueEnemigo()
 { 
      Motor2D *motor2D = Motor2D::getInstance();
+     if(enemigos.size()>0){
          for(int a = 0; a < enemigos.size();a++){
                 if(motor2D->ataqueEnemigo(0,enemigos[a]->getTipoEnemigo())==true)  {
                      jugadores[0].setDanoVida(enemigos[a]->getAtaqueFisico());
@@ -456,6 +470,7 @@ void Nivel::ataqueEnemigo()
                     jugadores[1].setDanoVida(enemigos[a]->getAtaqueFisico());
                  }
                 }
+         }
           }
 }
 
@@ -463,11 +478,11 @@ void Nivel::matarEnemigos()
 { 
      Motor2D *motor2D = Motor2D::getInstance();
      Juego *juego = Juego::getInstance();//clase global
+     if(enemigos.size()>0){
     for(int m = 0; m < enemigos.size();m++)
      {
         if(juego->queEstado()!=2){
              juego->desactivarSonidos(m);
-             std::cout<< "mataaaaaaaaa " << m << endl;
              bool ver = enemigos[m]->matarEnemigo(m);
              delete enemigos[m];
              enemigos[m] = NULL;
@@ -475,15 +490,7 @@ void Nivel::matarEnemigos()
      }  
     }
              enemigos.resize(0);
-}
-
-void Nivel::matarEnemigo(int point)
-{ 
-    
-    delete enemigos[point];
-    enemigos[point] = NULL;
-    enemigos.erase(enemigos.begin()+point);
-    
+     }
 }
 
 int * Nivel::devolverEstadisticas()

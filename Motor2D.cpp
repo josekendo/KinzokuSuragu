@@ -26,7 +26,6 @@ Motor2D::Motor2D()
 {
     window.create(sf::VideoMode(800, 600), "Kinzoku Suragu");
     initMenu();
-    window.setFramerateLimit(60);
     fuent.loadFromFile("resources/Menu/fuente.ttf");
     texturas[0].loadFromFile("resources/SpriteSheet_Character1.png");
     texturas[1].loadFromFile("resources/SpriteSheet_Character2.png");
@@ -296,9 +295,11 @@ void Motor2D::matarEnemigo(int point)
     juego->finalNivel();
     }
     }
-    if(point>0){
+    if(point==0){
     explosion.setPosition(enemigos[point].getPosition().x, enemigos[point].getPosition().y);
+    window.draw(explosion);
     }
+    enemigos[point].setPosition(0,0);
     juego->sonidoMuerte();
     juego->desactivarSonidos(point);
     

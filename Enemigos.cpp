@@ -113,9 +113,6 @@ bool Enemigos::tieneDefensa()
 
 bool Enemigos::setDanoVida(int dano)
 {
-    std::cout << " dano recibido " << dano << "\n";
-    std::cout << " vida enemigo " << vida << "\n";  
-    std::cout << " defensa enemigo " << defensa << "\n";
     if(defensa < dano)
     {
         vida = vida-dano;
@@ -184,11 +181,6 @@ bool Enemigos::matarEnemigo(int point)
     motor->matarEnemigo(enemigo);
     muerto = true;
     return true;
-}
-
-void Enemigos::mataEnemigo()
-{
-    muerto = true;
 }
 
 void Enemigos::realimentar()
